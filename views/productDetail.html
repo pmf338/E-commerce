@@ -7,6 +7,56 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <header>
+        <div class="header-div-nav">
+            <nav>
+                <ul>
+                    <li><a href="#" id="artist">Artistas</a></li>
+                    <li><a href="#" id="shop">Tienda</a></li>
+                    <li><a href="#" id="contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-div-logo">
+            <img class="img-logo" src="/images/Rocket-Music.svg" alt="imagen-logo" style="width:40px;height:40px">
+        </div>
+        <div class="header-div-searchlogin">
+            <ul>
+                <li><input type="search" name="search-bar" id="search-bar" placeholder="Buscar en la tienda"></li>
+                <li><input type="button" value="login-signin"></li> <!-- Este boton se va a modificar con JS para Loguin / Iniciar Sesión -->
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div>
+        <!-- Esto va a ser un GRID -->
+        <!-- LADO IZQUIERDO : fotorama con carrousel -->
+        <!-- LADO DERECHO: Todos los datos se deberan traer de la bd -->
+        <div class="main-grid-product-detail">
+            <h2>Nombre de producto</h2>
+            <ul>
+                <li id="price">Precio</li>
+                <li id="quantity"><input type="number" name="quantity" id="input-quantity"></li>
+                <li id="release-date">Fecha estimada de entrega</li> <!-- este dato lo vamos a calcular desde la bd -->
+            </ul>
+        </div>
+        <div class="line-separator"></div>
+        <div class="main-grid-product-description">
+            <p>Descripcion</p> <!-- Se trae de la bd -->
+        </div>
+        </div>
+        <div class="main-grid-product-add">
+            <button><a href=""></a>AGREGAR CARRITO</button> <!-- traer el icono -->
+        </div>
+    </main>
+    <footer>
+        <div class="footer-icons">
+            <a href="#" class="footer-icon">facebook</a>
+            <a href="#" class="footer-icon">instagram</a>
+            <a href="#" class="footer-icon">youtube</a>
+            <a href="#" class="footer-icon">twitter</a>
+            <a href="#" class="footer-icon">spotify</a>
+        </div>
+    </footer>
 </body>
 </html>
