@@ -48,3 +48,6 @@ Biografías
 
 - Wireframe de las páginas
 https://www.figma.com/file/abluktN2woHtylC4gQh9Eo/E-Commers?node-id=0%3A1&t=bpMEEmbESTiIgLWp-0
+
+- Link al espacio de trabajo
+https://trello.com/b/s27zUjXh/e-commerce
