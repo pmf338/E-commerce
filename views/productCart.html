@@ -1,12 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <header>
+        <div class="header-div-nav">
+            <nav>
+                <ul>
+                    <li><a href="#" id="artist">Artistas</a></li>
+                    <li><a href="#" id="shop">Tienda</a></li>
+                    <li><a href="#" id="contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-div-logo">
+            <img class="img-logo" src="/images/Rocket-Music.svg" alt="imagen-logo" style="width:40px;height:40px">
+        </div>
+        <div class="header-div-searchlogin">
+            <ul>
+                <li><input type="search" name="search-bar" id="search-bar" placeholder="Buscar en la tienda"></li>
+                <li><input type="button" value="login-signin"></li>
+                <!-- Este boton se va a modificar con JS para Loguin / Iniciar Sesión -->
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="main-delivery-payment">
+            <input type="button" value="btn-entrega" placeholder="ENTREGA">
+            <input type="button" value="btn-pago" placeholder="PAGO">
+        </div>
+        <div class="main-contact-details">
+            <h1>DATOS DE CONTACTO</h1>
+            <input type="text" name="email" id="email" placeholder="Email">
+            <input type="radio" name="chbx-ofertas" id="chbx-ofertas">Quiero recibir ofertas y novedades por email
+        </div>
+        <div class="main-delivery">
+            <h3>Entrega</h3>
+            <div class="main-delivery-options">
+                <div class="main-delivery-option-box">
+                    <button></button>
+                </div>
+                <div class="main-delivery-option-box">
+                    <button></button>
+                </div>
+                <div class="main-delivery-option-box">
+                    <button></button>
+                </div>
+            </div>
+        </div>
+        <div class="main-product-detail">
+            <div class="main-product-detail-up">
+                <img src="" alt=""> <!-- PONER IMAGEN DEL PRODCUTO -->
+                <span>Nombre de producto</span> <!-- Se trae de la bd -->
+                <span id="price">Precio</span> <!-- Se trae de la bd * cant -->
+                <span id="quantity">Cant XX</span> <!-- Se trae por parámetro -->
+            </div>
+            <div class="main-product-detail-down">
+                <div class="line-separator"></div>
+                <div class="main-product-detail-down-row">
+                    <h4>SUBTOTAL</h4>
+                    <span>XXXX</span> <!-- Se calcula por js -->
+                </div>
+                <div class="line-separator"></div>
+                <div class="main-product-detail-down-row">
+                    <h4>SUBTOTAL</h4>
+                    <span>XXXX</span> <!-- Se calcula por js -->
+                </div>
+            </div>            
+        </div>
+        <div class="main-btn-continue">
+            <button><a href=""></a>CONTINUAR</button>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-icons">
+            <a href="#" class="footer-icon">facebook</a>
+            <a href="#" class="footer-icon">instagram</a>
+            <a href="#" class="footer-icon">youtube</a>
+            <a href="#" class="footer-icon">twitter</a>
+            <a href="#" class="footer-icon">spotify</a>
+        </div>
+    </footer>
 </body>
+
 </html>

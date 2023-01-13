@@ -5,6 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles_navbar.css">
+    <!-- jQuery 1.8 or later, 33 KB -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Fotorama from CDNJS, 19 KB -->
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    <link rel="stylesheet" href="/css/styles_index.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <title>Document</title>
 </head>
 
@@ -17,37 +27,53 @@
                     <li><a href="#" id="shop">Tienda</a></li>
                     <li><a href="#" id="contact">Contacto</a></li>
                 </ul>
+                    <a href="#" class="img-logo"><img class="logo" src="/images/Rocket-Music.svg" alt="imagen-logo"></a>
+                <div class="header-div-searchlogin">
+                    <ul>
+                        <li><input type="search" name="search-bar" id="search-bar" placeholder="Buscar en la tienda">
+                        </li>
+                        <li><input type="button" value="login-signin"></li>
+                        <!-- Este boton se va a modificar con JS para Loguin / Iniciar Sesión -->
+                    </ul>
+                </div>
+                <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    <i class="fas fa-bars"></i>
+                </label>
             </nav>
-        </div>
-        <div class="header-div-logo">
-            <img class="img-logo" src="/images/Rocket-Music.svg" alt="imagen-logo" style="width:40px;height:40px">
-        </div>
-        <div class="header-div-searchlogin">
-            <ul>
-                <li><input type="search" name="search-bar" id="search-bar" placeholder="Buscar en la tienda"></li>
-                <li><input type="button" value="login-signin"></li> <!-- Este boton se va a modificar con JS para Loguin / Iniciar Sesión -->
-            </ul>
         </div>
     </header>
     <main>
-        <div class="main-carrousel">
-            <!-- Acá iria un Carrousel -->
+        <div class="main-carrousel fotorama data-transition="slide" data-clicktransition="crossfade"">
+            <img src="/images/vinilo1.jpg" alt="">
+            <img src="/images/vinilo2.jpg" alt="">
+            <img src="/images/vinilo3.jpg" alt="">
         </div>
-        <div>
+        <div class="main-title">
             <h1>Colleción de Artistas</h1>
         </div>
         <div class="main-artist-collection">
-            <!-- Acá vamos a usar un grid para las imagenes -->
+            <div><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-1.jpg" alt></div>
+            <div><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-2.jpg" alt></div>
+            <div><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-3.jpg" alt></div>
+            <div><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-4.jpg" alt></div>
+            <div><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-5.jpg" alt></div>
         </div>
     </main>
     <footer>
-        <div class="footer-icons">
-            <a href="#" class="footer-icon">facebook</a>
-            <a href="#" class="footer-icon">instagram</a>
-            <a href="#" class="footer-icon">youtube</a>
-            <a href="#" class="footer-icon">twitter</a>
-            <a href="#" class="footer-icon">spotify</a>
-        </div>
+		<div class="footer-copy-redes">
+			<div class="main-copy-redes">
+				<div class="footer-copy">
+					&copy; 2018, Todos los derechos reservados.
+				</div>
+				<div class="footer-redes">
+					<a href="#" class="fa fa-facebook"></a>
+					<a href="#" class="fa fa-twitter"></a>
+					<a href="#" class="fa fa-youtube-play"></a>
+					<a href="#" class="fa fa-github"></a>
+				</div>
+			</div>
+		</div>
     </footer>
 </body>
 

@@ -1,0 +1,109 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+/*Carrousel*/
+.main-carrousel{
+    height: 40vh;
+}
+.main-title{
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 0.70rem;
+}
+
+/*Gallery Image Classes*/
+.main-artist-collection { 
+    padding: .5vw;
+    font-size: 0;
+    display: -ms-flexbox;
+    -ms-flex-wrap: wrap;
+    -ms-flex-direction: column;
+    -webkit-flex-flow: row wrap; 
+    flex-flow: row wrap; 
+    display: -webkit-box;
+    display: flex;
+  }
+  .main-artist-collection div { 
+    -webkit-box-flex: auto;
+    -ms-flex: auto;
+    flex: auto; 
+    width: 200px; 
+    margin: .5vw; 
+  }
+  .main-artist-collection div img { 
+    width: 100%; 
+    height: auto; 
+  }
+  @media screen and (max-width: 400px) {
+    header div { margin: 0; }
+    header { padding: 0; }
+  }
+
+  /*Footer*/
+  .footer-copy-redes {
+	width: 100%;
+	background: #000;
+	border-top: 3px solid #fff;
+}
+.main-copy-redes {
+	width: 98%;
+	max-width: 1000px;
+	padding: 15px 0;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	-ms-align-items: center;
+	align-items: center;
+}
+.main-copy-redes .footer-copy {
+	width: 70%;
+	color: #fff;
+}
+.main-copy-redes .footer-redes {
+	width: 30%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.main-copy-redes .footer-redes a {
+	display: inline-block;
+	text-decoration: none;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border-radius:50%;
+	background: #fff;
+	color: #000;
+	text-align: center;
+}
+.main-copy-redes .footer-copy {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.main-copy-redes .footer-redes {
+    width: 80%;
+    margin: auto;
+}
+
+/*Tablet*/
+@media (min-width: 361px){
+    .main-title{
+        font-size: 0.90rem;
+    }
+    .main-carrousel{
+        height: 60vh;
+    }
+}
+
+/*Desk*/
+@media (min-width: 769px){
+    .main-title{
+        font-size: 1rem;
+    }
+    .main-carrousel{
+        height: 100vh;
+    }
+}
