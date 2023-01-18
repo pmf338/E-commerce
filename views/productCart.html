@@ -5,74 +5,99 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/styles_header.css">
+    <link rel="stylesheet" href="/css/styles_product_cart.css">
+    <script src="https://kit.fontawesome.com/ac12a4126f.js" crossorigin="anonymous"></script>
+    <title>Product Cart</title>
 </head>
-
 <body>
-    <header>
-        <div class="header-div-nav">
-            <nav>
+    <header class="header">
+        <div class="header-top">
+            <div class="header-div-logo"> 
+                <img class="img-logo" src="/images/Rocket-Music.svg" alt="imagen-logo" style="width:40px;height:40px">
+            </div>
+            <span>
+                <i class="fa-solid fa-compact-disc"></i>Ponele música a tu vida
+            </span>
+            <div class="header-user">
+                <ul>
+                    <li><button id="login-signin"><i class="fa-solid fa-user"></i></button></li>
+                    <li><button id="cart"><i class="fa-solid fa-cart-shopping"></i></button></li>
+                    <!-- Este boton se va a modificar con JS para Loguin / Iniciar Sesión -->
+                </ul>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <a href="#" class="bars-button"><i class="fa-solid fa-bars"></i></a>
+            <nav class="header-nav-bar">
                 <ul>
                     <li><a href="#" id="artist">Artistas</a></li>
                     <li><a href="#" id="shop">Tienda</a></li>
                     <li><a href="#" id="contact">Contacto</a></li>
-                </ul>
+               </ul>
             </nav>
-        </div>
-        <div class="header-div-logo">
-            <img class="img-logo" src="/images/Rocket-Music.svg" alt="imagen-logo" style="width:40px;height:40px">
-        </div>
-        <div class="header-div-searchlogin">
-            <ul>
+            <ul class="header-search-bar">
                 <li><input type="search" name="search-bar" id="search-bar" placeholder="Buscar en la tienda"></li>
-                <li><input type="button" value="login-signin"></li>
-                <!-- Este boton se va a modificar con JS para Loguin / Iniciar Sesión -->
+                <li><button id="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button></li>
+                <!-- Mobile + Tablet : Apretar el boton para aparecer la barra de search -->
             </ul>
         </div>
     </header>
     <main>
-        <div class="main-delivery-payment">
-            <input type="button" value="btn-entrega" placeholder="ENTREGA">
-            <input type="button" value="btn-pago" placeholder="PAGO">
+        <div class="main-top-btn">
+            <input type="button" value="ENTREGA">
+            <input type="button" value="PAGO">
         </div>
-        <div class="main-contact-details">
-            <h1>DATOS DE CONTACTO</h1>
-            <input type="text" name="email" id="email" placeholder="Email">
-            <input type="radio" name="chbx-ofertas" id="chbx-ofertas">Quiero recibir ofertas y novedades por email
+        <div class="main-float-menu">
+            <span>Ver detalle de la compra</span>
         </div>
-        <div class="main-delivery">
-            <h3>Entrega</h3>
-            <div class="main-delivery-options">
-                <div class="main-delivery-option-box">
-                    <button></button>
+        <div class="main-container">
+            <div class="container-left">
+                <div class="contact-details">
+                    <h1>DATOS DE CONTACTO</h1>
+                    <ul>
+                        <label>Email</label>
+                        <li><input class="txt-email" type="text" name="email" id="email" placeholder="example@example.com"></li>
+                        <li><input class = "rd-ofertas"type="radio" name="chbx-ofertas" id="chbx-ofertas">Quiero recibir ofertas y novedades por email</li>
+                    </ul>
                 </div>
-                <div class="main-delivery-option-box">
-                    <button></button>
-                </div>
-                <div class="main-delivery-option-box">
-                    <button></button>
-                </div>
+                <div class="delivery">
+                    <h3>Entrega</h3>
+                    <div class="main-delivery-options">
+                        <div class="main-delivery-option-box">
+                            <button></button>
+                        </div>
+                        <div class="main-delivery-option-box">
+                            <button></button>
+                        </div>
+                        <div class="main-delivery-option-box">
+                            <button></button>
+                        </div>
+                    </div>
+                </div>    
             </div>
-        </div>
-        <div class="main-product-detail">
-            <div class="main-product-detail-up">
-                <img src="" alt=""> <!-- PONER IMAGEN DEL PRODCUTO -->
-                <span>Nombre de producto</span> <!-- Se trae de la bd -->
-                <span id="price">Precio</span> <!-- Se trae de la bd * cant -->
-                <span id="quantity">Cant XX</span> <!-- Se trae por parámetro -->
-            </div>
-            <div class="main-product-detail-down">
-                <div class="line-separator"></div>
-                <div class="main-product-detail-down-row">
-                    <h4>SUBTOTAL</h4>
-                    <span>XXXX</span> <!-- Se calcula por js -->
-                </div>
-                <div class="line-separator"></div>
-                <div class="main-product-detail-down-row">
-                    <h4>SUBTOTAL</h4>
-                    <span>XXXX</span> <!-- Se calcula por js -->
-                </div>
-            </div>            
+            <div class="container-right">
+                <div class="product-detail">
+                    <div class="main-product-detail-up">
+                        <img src="" alt=""> <!-- PONER IMAGEN DEL PRODCUTO -->
+                        <span>Nombre de producto</span> <!-- Se trae de la bd -->
+                        <span id="price">Precio</span> <!-- Se trae de la bd * cant -->
+                        <span id="quantity">Cant XX</span> <!-- Se trae por parámetro -->
+                    </div>
+                    <div class="main-product-detail-down">
+                        <div class="line-separator"></div>
+                        <div class="main-product-detail-down-row">
+                            <h4>SUBTOTAL</h4>
+                            <span>XXXX</span> <!-- Se calcula por js -->
+                        </div>
+                        <div class="line-separator"></div>
+                        <div class="main-product-detail-down-row">
+                            <h4>SUBTOTAL</h4>
+                            <span>XXXX</span> <!-- Se calcula por js -->
+                        </div>
+                    </div>            
+                </div> 
+            </div>      
         </div>
         <div class="main-btn-continue">
             <button><a href=""></a>CONTINUAR</button>

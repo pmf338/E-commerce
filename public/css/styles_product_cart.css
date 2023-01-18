@@ -1,0 +1,66 @@
+/*
+#0B1320 Navbar / Footer
+#F3F6FA Tipografia / Iconos footer
+#00004D Boton seleccionado del Carrusel
+#AFC1D0 Boton sin seleecionar del Carrusel
+#F3F6FA Fondo
+
+border: solid 1px red;
+*/
+
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+main{
+    font-family: 'Times New Roman', Times, serif;
+}
+.main-top-btn{
+    padding: 20px 0px 20px 20px;
+}
+.main-top-btn input{
+    padding: 3px;
+    width: 100px;  
+    border-radius: 8px;
+}
+.main-float-menu{
+    display: none;
+}
+
+/*CONTAINER*/
+.main-container{
+    display: flex;
+    justify-content: center;
+}
+
+/*CONTAINER LEFT*/
+.container-left{
+    width: 100%;
+}
+.contact-details{
+}
+.contact-details h1{
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+}
+.contact-details ul{
+    border: solid 1px black;
+    margin : 0px 10px 5px 10px;
+    padding: 5px;
+}
+.contact-details li{
+    padding-bottom: 3px;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+
+/*CONTAINER RIGHT*/
+.container-right{
+    display: none;
+}
+
