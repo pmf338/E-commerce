@@ -40,55 +40,10 @@
     header { padding: 0; }
   }
 
-  /*Footer*/
-  .footer-copy-redes {
-	width: 100%;
-	background: #000;
-	border-top: 3px solid #fff;
-}
-.main-copy-redes {
-	width: 98%;
-	max-width: 1000px;
-	padding: 15px 0;
-	margin: auto;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	-ms-align-items: center;
-	align-items: center;
-}
-.main-copy-redes .footer-copy {
-	width: 70%;
-	color: #fff;
-}
-.main-copy-redes .footer-redes {
-	width: 30%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-}
-.main-copy-redes .footer-redes a {
-	display: inline-block;
-	text-decoration: none;
-	width: 40px;
-	height: 40px;
-	line-height: 40px;
-	border-radius:50%;
-	background: #fff;
-	color: #000;
-	text-align: center;
-}
-.main-copy-redes .footer-copy {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-}
-.main-copy-redes .footer-redes {
-    width: 80%;
-    margin: auto;
-}
 
-/*Tablet*/
+
+
+/*Tablet*/ 
 @media (min-width: 361px){
     .main-title{
         font-size: 0.90rem;
@@ -106,4 +61,12 @@
     .main-carrousel{
         height: 100vh;
     }
+}
+
+.zoom {
+    transition: transform .2s; 
+}
+ 
+.zoom:hover {
+    transform: scale(1.1); 
 }
