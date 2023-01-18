@@ -1,0 +1,205 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.main-container {
+
+    height: 120vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg');
+    background-size: cover;
+
+}
+
+.form {
+
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    background: #0b1320;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+
+    text-align: center;
+    font-size: 27px;
+    font-weight: 600;
+    margin-top: 30px;
+    color: #f3f6fa;
+}
+
+.form .form-login {
+
+    padding: 30px;
+}
+
+.form .input-field {
+
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.input-field input{
+
+    position: absolute;
+    height: 75%;
+    width: 100%;
+    padding: 0 5px;
+    border-radius: 30px;
+    outline: none;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    
+}
+
+.input-field input:is(:focus){
+
+    border-color: blue;
+}
+
+.form .checkbox-text{
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+}
+
+.checkbox-text .checkbox-content {
+
+    display: flex;
+    align-items: center;
+    
+}
+
+.checkbox-content input{
+
+    margin: 0 8px -2px 4px;
+    accent-color: red; /*cambiar*/
+}
+
+.form .main-container-access-with {
+
+    margin-top: 30px;
+    text-align: center;
+}
+
+.main-container-access-with .container-access-icons {
+
+    justify-content: space-between;
+    
+}
+
+.form .main-container-forgot-create {
+
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.form a{
+
+    text-decoration: none;
+}
+
+.form a:hover {
+
+    text-decoration: underline;
+}
+
+@media (max-width: 400px) {
+    
+    .main-container {
+
+        height: 130vh;
+    }
+    
+    .form {
+
+        width: 83%;
+    }
+
+    .input-field {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+
+@media (min-width: 400px) {
+
+    .main-container {
+
+        height: 130vh;
+    }
+
+    .form {
+
+        width: 83%;
+    }
+}
+
+
+@media (min-width: 769px) {
+    .form {
+        width: 83%;
+    }
+} 
+
+/*------------------------------------------------Footer----------------------------------------------------*/
+.footer-copy-redes {
+	width: 100%;
+	background: #000;
+	border-top: 3px solid #fff;
+}
+
+.main-copy-redes {
+	width: 98%;
+	max-width: 1000px;
+	padding: 15px 0;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	-ms-align-items: center;
+	align-items: center;
+}
+.main-copy-redes .footer-copy {
+	width: 70%;
+	color: #fff;
+}
+.main-copy-redes .footer-redes {
+	width: 30%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.main-copy-redes .footer-redes a {
+	display: inline-block;
+	text-decoration: none;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border-radius:50%;
+	background: #fff;
+	color: #000;
+	text-align: center;
+}
+.main-copy-redes .footer-copy {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.main-copy-redes .footer-redes {
+    width: 80%;
+    margin: auto;
+}

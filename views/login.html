@@ -4,35 +4,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rocket Music login</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/styles_login.css">
+    <link rel="stylesheet" href="/public/css/styles_navbar.css">
+    <!-- jQuery 1.8 or later, 33 KB -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Fotorama from CDNJS, 19 KB -->
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/eb1e7833c7.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <div class="header-div-logo">
-            <img class="img-logo" src="/images/Rocket-Music.svg" alt="imagen-logo" style="width:40px;height:40px">
+            <img class="img-logo" src="/public/images/Rocket-Music.svg" alt="imagen-logo" style="width:40px;height:40px">
         </div>
     </header>
     <main>
         <div class="main-container">
-            <h1>Inicie Sesion</h1>
-            <form class="main-container-form" action="" method="post">
-                <input type="text" name="user" id="user" placeholder="Ingresar usuario">
-                <input type="password" name="pass" id="pass" placeholder="Ingresar password">
-                <label for="remember">Recordarme</label>
-                <input type="checkbox" name="remember" id="chk-remember">
-                <button type="submit">Iniciar Sesion</button>
-            </form>
+   
+            <div class="form">
+    
+                <h1 class="title">Ingrese sus datos</h1>
+    
+                <form class="form-login" action="#" method="post">
+                    <div class="input-field">
+                        <input type="text" name="user" id="user" placeholder="Nombre de usuario">
+                    </div>
+                    
+                    <div class="input-field">
+                        <input type="password" name="pass" id="pass" placeholder="Contraseña">
+                        <!--Agregar icono para mostrar/ocultar contraseña-->
+                    </div>
+
+                    <div class="checkbox-text">
+                        <div class="checkbox-content">
+                            <input type="text" id="logcheck">
+                            <label for="logcheck" class="text">Recuerdame</label>
+
+                        </div>
+
+                    </div>
+            
             <div class="main-container-access-with">
                 <h2>Acceda con:</h2>
-                <a href="#">Google</a>
-                <a href="#">Feisbuk</a>
+                    <div class="container-access-icons">
+                    <a href="#">Google</a>
+                    <a href="#">Facebook</a>
+                    </div>
             </div>
+            
             <div class="main-container-forgot-create">
-                <a>Olvido su contraseña</a>  <!-- Al hacer click aparecería un pop-up -->
+                <a>¿Olvido su contraseña?</a>  <!-- Al hacer click aparecería un pop-up -->
+             <div>
                 <a href="#">Crear una cuenta</a>
+             </div>   
+                
             </div>
-        </div>
+
+                </form>
+            </div>
+        </div>  
     </main>
+    
     <footer>
         <div class="footer-icons">
             <a href="#" class="footer-icon">facebook</a>

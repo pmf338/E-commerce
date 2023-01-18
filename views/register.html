@@ -5,42 +5,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rocket Music registro de cuenta</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/styles_register.css">
+    <link rel="stylesheet" href="/public/css/styles_navbar.css">
+    <!-- jQuery 1.8 or later, 33 KB -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Fotorama from CDNJS, 19 KB -->
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/eb1e7833c7.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header>
-        <div class="header-div-logo">
-            <img class="img-logo" src="/images/Rocket-Music.svg" alt="imagen-logo" style="width:40px;height:40px">
-        </div>
+        
+        <nav><a href="#" class="img-logo"><img class="logo" src="/public/images/Rocket-Music.svg" alt="imagen-logo"></a></nav>
+        
     </header>
-    <main>
-        <div class="main-container">
-            <h1>Registro de cuenta</h1>
-            <form class="main-container-form" action="" method="post">
-                <input type="text" name="user" id="user" placeholder="Nombre de usuario">
-                <input type="text" name="email" id="email" placeholder="Email">
-                <input type="password" name="pass" id="pass" placeholder="Password">
-                <input type="password" name="repass" id="repass" placeholder="Reingrese la password">
-                <label for="date">Fecha de nacimiento</label>
-                <input type="date" id="date" name="date" value="" min="" max="2018-12-31"> <!-- Verificar inicio/tope de fecha -->
-                <button type="submit">Registrarse</button>
+<main>
+    <div class="main-container">
+   
+        <div class="form">
+
+            <h1 class="title">Registro de cuenta</h1>
+
+            <form class="form-register" action="#" method="post">
+                <div class="input-field">
+                    <input type="text" name="user" id="user" placeholder="Nombre de usuario">
+                </div>
+                
+                <div class="input-field">
+                    <input type="text" name="email" id="email" placeholder="Email">
+                </div>
+                
+                <div class="input-field">
+                    <input type="password" name="pass" id="pass" placeholder="Contraseña">
+                    <!--Agregar icono para mostrar/ocultar contraseña-->
+                </div>
+                
+                <div class="input-field">
+                    <input type="password" name="repass" id="repass" placeholder="Reingrese la contraseña">
+                </div>
+                
+                <div class="input-date">
+                    <label for="date">Fecha de nacimiento</label>
+                    <input type="date" id="date" name="date" value="" min="" max="2018-12-31"> <!-- Verificar inicio/tope de fecha -->
+                </div>
+                
+                <div class="register-button">
+                    <input type="button" value="Registrarse">
+                </div>
+                
+
+                <div class="already-account">
+                    
+                    <label >¿Ya tienes una cuenta?</label>
+                    <a href="#">Iniciar sesión</a>
+                
+                </div>
+           
             </form>
-            <div class="main-container-access-with">
-                <h3>¿Ya tienes una cuenta?</h3>
-                <a href="#">Iniciar sesión</a>
-            </div>
         </div>
-    </main>
-    <footer>
-        <div class="footer-icons">
-            <a href="#" class="footer-icon">facebook</a>
-            <a href="#" class="footer-icon">instagram</a>
-            <a href="#" class="footer-icon">youtube</a>
-            <a href="#" class="footer-icon">twitter</a>
-            <a href="#" class="footer-icon">spotify</a>
-        </div>
-    </footer>
+            
+ 
+    </div>
+    
+</main>
+    
+<footer>
+    <div class="footer-icons">
+        <a href="#" class="footer-icon">facebook</a>
+        <a href="#" class="footer-icon">instagram</a>
+        <a href="#" class="footer-icon">youtube</a>
+        <a href="#" class="footer-icon">twitter</a>
+        <a href="#" class="footer-icon">spotify</a>
+    </div>
+</footer>
+
 </body>
 
 </html>

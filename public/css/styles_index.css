@@ -35,6 +35,7 @@
     width: 100%; 
     height: auto; 
   }
+  
   @media screen and (max-width: 400px) {
     header div { margin: 0; }
     header { padding: 0; }
