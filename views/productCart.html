@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/styles_header.css">
     <link rel="stylesheet" href="/css/styles_product_cart.css">
     <link rel="stylesheet" href="/css/styles_footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ac12a4126f.js" crossorigin="anonymous"></script>
     <title>Product Cart</title>
 </head>
@@ -53,12 +54,27 @@
         </div>
     </header>
     <main>
+        <div class="main-float-menu-mobile"> <!-- ESTO DEBERIA SER UN MENU FLOTANTE -->
+            <div class="float-menu-resume">
+                <i class="fa-solid fa-circle-down">Ver detalles de mi compra</i>
+                <div class="resume-price">
+                </div>
+            </div>
+            <div class="float-menu-details">
+                <img src="/images/vinilo1.jpg" alt="" style="height:100px">
+                <h2>Nombre de producto</h2>
+                <ul>
+                    <li id="price">Precio <input class="input-data" name="price" id="input-price" placeholder="20 USD" readonly=»readonly» ></li>
+                    <br>
+                    <li id="quantity">Cantidad <input class="input-data" type="number" name="quantity" id="input-quantity" placeholder="Ingrese una cantidad"></li>
+                    <br>
+                    <li id="delivery-date">Fecha estimada de entrega <input class="input-data" name="delivery-date" id="input-delivery-date" placeholder="Junio 2023" readonly=»readonly» ></li>
+                </ul>
+            </div>
+        </div>
         <div class="main-top-btn">
             <input type="button" value="ENTREGA">
             <input type="button" value="PAGO">
-        </div>
-        <div class="main-float-menu">
-            <span>Ver detalle de la compra</span>
         </div>
         <div class="main-container">
             <div class="container-left">
@@ -66,48 +82,75 @@
                     <h1>DATOS DE CONTACTO</h1>
                     <ul>
                         <label>Email</label>
-                        <li><input class="txt-email" type="text" name="email" id="email" placeholder="example@example.com"></li>
-                        <li><input class = "rd-ofertas"type="radio" name="chbx-ofertas" id="chbx-ofertas">Quiero recibir ofertas y novedades por email</li>
+                        <li><input class="txt-email" type="text" name="email" id="email" placeholder="example@xxx.com"></li>
+                        <li><input class = "chbx-offers"type="checkbox" name="chbx-offers" id="chbx-offers">Quiero recibir ofertas y novedades por email</li>
                     </ul>
                 </div>
                 <div class="delivery">
-                    <h3>Entrega</h3>
-                    <div class="main-delivery-options">
-                        <div class="main-delivery-option-box">
-                            <button></button>
-                        </div>
-                        <div class="main-delivery-option-box">
-                            <button></button>
-                        </div>
-                        <div class="main-delivery-option-box">
-                            <button></button>
-                        </div>
+                    <h2>Seleccionar método de entrega</h2>
+                    <label>Envío a domicilio</label>
+                    <div class="delivery-option-box">
+                        <input class ="chbx-option"type="checkbox" name="chbx-option-1" id="chbx-option-1">
+                        <ul>
+                            <li>$ XX.XX</li>
+                            <li>Envio Opcion 1</li>
+                        </ul>
                     </div>
-                </div>    
+                    <div class="delivery-option-box">
+                        <input class ="chbx-option"type="checkbox" name="chbx-option-2" id="chbx-option-2">
+                        <ul>
+                            <li>$ XX.XX</li>
+                            <li>Envio Opcion 1</li>
+                        </ul>
+                    </div>
+                    <label>Retirar pedido</label>
+                    <div class="delivery-option-box">
+                        <input class ="chbx-option"type="checkbox" name="chbx-option-1" id="chbx-option-1">
+                        <ul>
+                            <li>GRATIS</li>
+                            <li>Retiro Opcion 1</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="delivery-information">
+                    <h2>Datos de entrega</h2>
+                    <ul>
+                        <li><input type="text" name="" id="" placeholder="País"></li>
+                        <li><input type="text" name="" id="" placeholder="Dirección"></li>
+                        <li><input type="text" name="" id="" placeholder="Nombre"></li>
+                        <li><input type="text" name="" id="" placeholder="Apellido"></li>
+                        <li><input type="text" name="" id="" placeholder="DNI"></li>
+                        <li><input type="text" name="" id="" placeholder="Teléfono"></li>
+                    </ul>
+                </div>
             </div>
             <div class="container-right">
-                <div class="product-detail">
-                    <div class="main-product-detail-up">
-                        <img src="" alt=""> <!-- PONER IMAGEN DEL PRODCUTO -->
-                        <span>Nombre de producto</span> <!-- Se trae de la bd -->
-                        <span id="price">Precio</span> <!-- Se trae de la bd * cant -->
-                        <span id="quantity">Cant XX</span> <!-- Se trae por parámetro -->
-                    </div>
-                    <div class="main-product-detail-down">
-                        <div class="line-separator"></div>
-                        <div class="main-product-detail-down-row">
-                            <h4>SUBTOTAL</h4>
-                            <span>XXXX</span> <!-- Se calcula por js -->
+                <div class="container-right-up">
+                    <img src="/images/vinilo1.jpg" alt="" style="height:100px">
+                    <ul>
+                        <h2>Nombre de producto</h2>
+                        <li><label>Precio</label></li>
+                        <li id="price"><input class="input-data" name="price" id="input-price" placeholder="20 USD" readonly=»readonly» ></li>
+                        <li><label>Cantidad</label></li>
+                        <li id="quantity"> <input class="input-data" type="number" name="quantity" id="input-quantity" placeholder="Ingrese una cantidad"></li>
+                        <li><label>Fecha estimada de entrega</label></li>
+                        <li id="delivery-date"><input class="input-data" name="delivery-date" id="input-delivery-date" placeholder="Junio 2023" readonly=»readonly» ></li>
+                    </ul>
+                </div>
+                <div class="container-right-bottom">
+                        <div class="price-details-line"></div>
+                        <div class="price-subtotal">
+                            <label>Subtotal</label>
+                            <label>$XX.XX</label>
                         </div>
-                        <div class="line-separator"></div>
-                        <div class="main-product-detail-down-row">
-                            <h4>SUBTOTAL</h4>
-                            <span>XXXX</span> <!-- Se calcula por js -->
+                        <div class="price-details-line"></div>
+                        <div class="price-total">
+                            <label>TOTAL</label>
+                            <label>$XX.XX</label>
                         </div>
-                    </div>            
-                </div> 
-            </div>      
-        </div>
+                </div>
+            </div>            
+        </div> 
         <div class="main-btn-continue">
             <button><a href=""></a>CONTINUAR</button>
         </div>
