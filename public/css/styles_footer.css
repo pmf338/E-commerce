@@ -1,11 +1,9 @@
   /*Footer*/
-  .footer-copy-redes {
+.footer-copy-redes {
 	width: 100%;
 	background: #0b1320;
-	border-top: 3px solid #f3f6fa;
     font: 90% sans-serif;
 }
-
 .main-copy-redes {
 	width: 98%;
 	max-width: 1000px;

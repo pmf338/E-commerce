@@ -2,9 +2,13 @@
     padding: 0;
     margin: 0;
 }
+
+
 /*Carrousel*/
 .main-carrousel{
-    height: 40vh;
+    height: 100%;
+    display: flex;
+    justify-content: center;
 }
 .main-title{
     text-align: center;
@@ -49,18 +53,12 @@
     .main-title{
         font-size: 0.90rem;
     }
-    .main-carrousel{
-        height: 60vh;
-    }
 }
 
 /*Desk*/
 @media (min-width: 769px){
     .main-title{
         font-size: 1rem;
-    }
-    .main-carrousel{
-        height: 100vh;
     }
 }
 
