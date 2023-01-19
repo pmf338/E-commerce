@@ -30,10 +30,10 @@
 .title {
 
     text-align: center;
-    font-size: 27px;
+    font-size: 40px;
     font-weight: 600;
     margin-top: 30px;
-    color: #f3f6fa;
+    color: gray;
 }
 
 
@@ -55,24 +55,33 @@
     position: absolute;
     height: 75%;
     width: 100%;
-    padding: 0 5px;
+    padding: 0 35px;
     border-radius: 30px;
     outline: none;
-    font-size: 13px;
+    font-size: 15px;
     transition: all 0.2s ease;
     
 }
 
+.input-field i {
+
+    position: absolute;
+    top: 37%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 17px;
+}
+
 .input-field input:is(:focus){
 
-    border-color: blue;
+    border-color: yellow;
 }
 
 /*Faltan los iconos*/
 
 .input-date {
 
-    color: #f3f6fa;
+    color: gray;
     margin-top: 20px;
 }
 
@@ -84,8 +93,9 @@
 
 .form .register-button input {
 
-    border: none;
-    color: white; /*CAMBIAR EL COLOR */
+    border: #afc1d0;
+    border-radius: 8px;
+    color: gray; /*CAMBIAR EL COLOR */
     font-size: 17px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -103,6 +113,7 @@
 
    margin-top: 30px;
    text-align: center;
+   color: gray;
 } 
 
 
