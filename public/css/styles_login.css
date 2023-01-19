@@ -27,7 +27,7 @@
 .title {
 
     text-align: center;
-    font-size: 27px;
+    font-size: 40px;
     font-weight: 600;
     margin-top: 30px;
     color: #f3f6fa;
@@ -51,17 +51,26 @@
     position: absolute;
     height: 75%;
     width: 100%;
-    padding: 0 5px;
+    padding: 0 35px;
     border-radius: 30px;
     outline: none;
-    font-size: 13px;
+    font-size: 15px;
     transition: all 0.2s ease;
     
 }
 
+.input-field i {
+
+    position: absolute;
+    top: 37%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 17px;
+}
+
 .input-field input:is(:focus){
 
-    border-color: blue;
+    border-color: yellow; /*A CAMBIAR*/
 }
 
 .form .checkbox-text{
@@ -70,6 +79,7 @@
         justify-content: space-between;
         align-items: center;
         margin-top: 20px;
+        color: #f3f6fa;
 }
 
 .checkbox-text .checkbox-content {
@@ -82,20 +92,30 @@
 .checkbox-content input{
 
     margin: 0 8px -2px 4px;
-    accent-color: red; /*cambiar*/
+    accent-color: red; /*A CAMBIAR*/
+    width: 15px;
+    height: 15px;
 }
 
 .form .main-container-access-with {
 
     margin-top: 30px;
     text-align: center;
+    color: #f3f6fa;
+    font-size: 25px;
 }
 
 .main-container-access-with .container-access-icons {
 
     justify-content: space-between;
+    margin: auto;
+    display: flex;
+    width: 40%;
+    margin-top: 20px;
+    font-size: 20px;
     
 }
+
 
 .form .main-container-forgot-create {
 
@@ -103,11 +123,13 @@
     justify-content: space-between;
     text-align: center;
     margin-top: 50px;
+    color: #f3f6fa;
 }
 
 .form a{
 
     text-decoration: none;
+    color: #f3f6fa;
 }
 
 .form a:hover {
