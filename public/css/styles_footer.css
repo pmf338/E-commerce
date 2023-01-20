@@ -1,8 +1,14 @@
   /*Footer*/
+
+footer {
+
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+}
+
 .footer-copy-redes {
 	width: 100%;
 	background: #0b1320;
-    font: 90% sans-serif;
 }
 .main-copy-redes {
 	width: 98%;
