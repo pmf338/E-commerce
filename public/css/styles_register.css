@@ -94,10 +94,11 @@
 .form .register-button input {
 
     border: #afc1d0;
-    border-radius: 8px;
+    border-radius: 5px;
+    height: 30%;
+    width: 22%;
     color: #f3f6fa; /*CAMBIAR EL COLOR */
-    font-size: 17px;
-    font-weight: 500;
+    font-size: 18px;
     letter-spacing: 1px;
     background-color: #afc1d0;
     cursor: pointer;

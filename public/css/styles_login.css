@@ -98,6 +98,27 @@
     height: 15px;
 }
 
+.form .login-button {
+
+    text-align: center;
+    
+    
+}
+
+.form .login-button input {
+
+    border: #afc1d0;
+    border-radius: 5px;
+    height: 30%;
+    width: 15%;
+    color: #f3f6fa; /*CAMBIAR EL COLOR */
+    font-size: 18px;
+    letter-spacing: 1px;
+    background-color: #afc1d0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
 .form .main-container-access-with {
 
     margin-top: 30px;
@@ -108,7 +129,7 @@
 
 .main-container-access-with .container-access-icons {
 
-    justify-content: space-between;
+    justify-content: space-around;
     margin: auto;
     display: flex;
     width: 40%;
