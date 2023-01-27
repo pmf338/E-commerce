@@ -3,6 +3,7 @@ const app = express();
 const PORT = 3002;
 const path = require('path');
 
+
 app.use(express.static('public'));
 
 
@@ -40,6 +41,6 @@ app.get("/register", (req, res) => {
 app.listen(PORT, () => {
 
     numeroPuerto = PORT;
-    console.log('server listening on ${PORT} cuyo numero es ' + numeroPuerto);
+    console.log('server listening on http://localhost:${PORT} cuyo numero es ' + numeroPuerto);
 
 });
