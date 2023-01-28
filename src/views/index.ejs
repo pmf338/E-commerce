@@ -24,6 +24,7 @@
 
 <body>
     <header>
+        
         <div class="header-top">
             <div class="header-div-logo"> 
                 <a href="/"><img class="img-logo" src="/images/Rocket-Music.svg" alt="imagen-logo"></a>
@@ -64,6 +65,14 @@
         </div>
     </header>
     <main>
+        <ul>
+        <% lista.forEach(producto => { %>
+         <li>   
+            <%= producto.name %>
+        </li>
+       <% }) %>
+    </ul>
+       
         <div class="main-carrousel fotorama" data-transition = "slide" data-clicktransition="crossfade">
             <img src="/images/vinilo1.jpg" alt="">
             <img src="/images/vinilo2.jpg" alt="">

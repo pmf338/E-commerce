@@ -3,15 +3,20 @@ const app = express();
 const PORT = 3002;
 const path = require('path');
 
-app.use(express.static('public'));
+const mainRoutes = require('./routes/mainRoutes');
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine','ejs');
+
+app.use('/', mainRoutes);
+app.use('/login',mainRoutes);
+app.use('/register',mainRoutes);
 
 
-app.get("/", (req, res) => {
+/*
+VIEJO
 
 
-    res.sendFile(path.resolve(__dirname, './views/index.html'));
-
-});
 
 app.get("/login", (req, res) => {
     res.sendFile(path.resolve(__dirname, './views/login.html'));
@@ -36,7 +41,7 @@ app.get("/register", (req, res) => {
 });
 
 
-
+*/
 app.listen(PORT, () => {
 
     numeroPuerto = PORT;
