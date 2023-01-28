@@ -101,7 +101,6 @@
 .form .login-button {
 
     text-align: center;
-    margin-top: 20px;
     
     
 }
@@ -111,18 +110,13 @@
     border: #afc1d0;
     border-radius: 5px;
     height: 30%;
-    max-width: 120vh;
+    width: 15%;
     color: #f3f6fa; /*CAMBIAR EL COLOR */
     font-size: 18px;
     letter-spacing: 1px;
     background-color: #afc1d0;
     cursor: pointer;
     transition: all 0.3s ease;
-}
-
-.login-button input:hover {
-
-    background-color: #00004d;
 }
 
 .form .main-container-access-with {
@@ -135,7 +129,7 @@
 
 .main-container-access-with .container-access-icons {
 
-    justify-content: space-between;
+    justify-content: space-around;
     margin: auto;
     display: flex;
     width: 40%;
@@ -169,7 +163,7 @@
     
     .main-container {
 
-        height: 140vh;
+        height: 130vh;
     }
     
     .form {
