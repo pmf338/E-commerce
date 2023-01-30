@@ -31,7 +31,32 @@ const mainController = {
     index: function (req,res) {
         res.render("index",{lista: productos} );
 
-    }
+    },
+
+    login: function (req,res) {
+        res.render("login");
+
+    },
+
+    productCart: function (req,res) {
+        res.render("productCart");
+
+    },
+
+    productDetail: function (req,res) {
+        res.render("productDetail");
+
+    },
+
+    register: function (req,res) {
+        res.render("register");
+
+    },
+
+    shop: function (req,res) {
+        res.render("shop");
+
+    },
 
 }
 

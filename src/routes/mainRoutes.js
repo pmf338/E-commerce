@@ -9,20 +9,23 @@ const router = express.Router();
 
 const mainController = require('../controllers/mainControllers')
 
+//index
 router.get("/", mainController.index);
 
-router.get("/login", (req, res) => {
+//login
+router.get("/login", mainController.login);
 
-    res.send("Hola mundo");
+//Carrito de compras
+router.get("/productCart", mainController.productCart);
 
-});
+//Detalles del producto
+router.get("/productDetail", mainController.productDetail);
 
-router.get("/register", (req, res) => {
+//Registro
+router.get("/register", mainController.register);
 
-    res.send("Hola mundo");
-
-});
-
+//Tienda
+router.get("/shop", mainController.shop);
 
 
 module.exports = router;
