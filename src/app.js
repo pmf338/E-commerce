@@ -5,12 +5,16 @@ const path = require('path');
 
 const mainRoutes = require('./routes/mainRoutes');
 
+app.use(express.static(__dirname + '../../public'));
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
 
 app.use('/', mainRoutes);
 app.use('/login',mainRoutes);
 app.use('/register',mainRoutes);
+
+
 
 
 /*
