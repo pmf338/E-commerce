@@ -1,26 +1,26 @@
 let productos = [
     {
         id: 1,
-        name: "Vinilo",
+        name: "Vinilo Bowie Vinyl",
         price: "$2.000",
         quantity: 10,
-        image: "",
+        image: "bowie-vinyl.jpeg",
         description:"El mejor vinilo blanco",
     },
     {
         id: 2,
-        name: "Dvd",
+        name: "Dvd Queen",
         price: "$3.000",
         quantity: 20,
-        image: "",
+        image: "dvd.webp",
         description:"El mejor dvd blanco",
     },
     {
         id: 3,
-        name: "camisa",
+        name: "Camisa RadioHead",
         price: "$13.000",
         quantity: 100,
-        image: "",
+        image: "rh-shirt.webp",
         description:"la mejor camisa blanco",
     }
 ];
@@ -54,7 +54,8 @@ const mainController = {
     },
 
     shop: function (req,res) {
-        res.render("shop");
+        let shop = productos.find (producto => producto.id == req.params.id);
+        res.render("shop",{lista: productos} );
 
     },
 

@@ -13,7 +13,9 @@ app.set('view engine','ejs');
 app.use('/', mainRoutes);
 app.use('/login',mainRoutes);
 app.use('/register',mainRoutes);
-
+app.use('/shop', mainRoutes);
+app.use('/shop/:id', mainRoutes);
+app.use('/productDetail', mainRoutes);
 
 
 

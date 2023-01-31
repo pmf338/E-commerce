@@ -9,14 +9,26 @@
 .grid-container {
   display: grid;
   grid-template-columns: 70% 30% ;
-  padding: 10px;
-  margin-top: 25px;
+  padding: 30px;
+  background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg');
+  background-size: cover;
+
 }
 .grid-item {
   border: 1px solid #0b1320;
   padding: 20px;
   font-size: 15px;
   text-align: left;
+  background-color: #fff;
+}
+
+.grid-item-right {
+  border: 1px solid #0b1320;
+  padding: 20px;
+  font-size: 15px;
+  color: #fff;
+  text-align: left;
+  background-color: #0B1320;
 }
 
 @media (max-width: 737px){
@@ -70,8 +82,8 @@
   padding: .5vw;
   font-size: 0;
   display: -ms-flexbox;
-  -ms-flex-wrap: wrap;
-  -ms-flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: column;
   -webkit-flex-flow: row wrap; 
   flex-flow: row wrap; 
   display: -webkit-box;

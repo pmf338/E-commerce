@@ -1,85 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="/css/styles_navbar.css">
-        <link rel="stylesheet" href="/css/styles_footer.css">
-        <!-- jQuery 1.8 or later, 33 KB -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="https://kit.fontawesome.com/14d8ab3f7b.js" crossorigin="anonymous"></script>
-        <!-- Fotorama from CDNJS, 19 KB -->
-        <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
-        <link rel="stylesheet" href="/css/styles_index.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="/css/styles_productDetail.css">
-        <link rel="stylesheet" href="/css/styles_header.css">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-        <title>Document</title>
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles_navbar.css">
+    <link rel="stylesheet" href="/css/styles_footer.css">
+    <!-- jQuery 1.8 or later, 33 KB -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/14d8ab3f7b.js" crossorigin="anonymous"></script>
+    <!-- Fotorama from CDNJS, 19 KB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    <link rel="stylesheet" href="/css/styles_index.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/styles_productDetail.css">
+    <link rel="stylesheet" href="/css/styles_header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
 <body>
     <header>
         <%- include('./partials/head.ejs') %>
     </header>
     <main>
-        <div>
-        <!-- Esto va a ser un GRID -->
-        <!-- LADO IZQUIERDO : fotorama con carrousel -->
-        <!-- LADO DERECHO: Todos los datos se deberan traer de la bd -->
-        <div class="grid-container">
-            <div class="grid-item">
-                <div class="main-carrousel fotorama data-transition="slide" data-clicktransition="crossfade"">
-                    <img src="/images/vinilo1.jpg" alt="">
-                    <img src="/images/vinilo2.jpg" alt="">
-                    <img src="/images/vinilo3.jpg" alt="">
-                </div>  
-            </div>
-            <div class="grid-item">
-                <div class="main-grid-product-detail">      
-                    <h2>Nombre de producto</h2>
-                    <br>
-                    <ul>
-                        <li id="price">Precio <input class="input-data" name="price" id="input-price" placeholder="20 USD" readonly=»readonly» ></li>
-                        <br>
-                        <li id="quantity">Cantidad <input class="input-data" type="number" name="quantity" id="input-quantity" placeholder="Ingrese una cantidad"></li>
-                        <br>
-                        <li id="delivery-date">Fecha estimada de entrega <input class="input-data" name="delivery-date" id="input-delivery-date" placeholder="Junio 2023" readonly=»readonly» ></li>
-                    </ul>
-                </div>
         
-                <div class="line-separator"></div>
-                <div class="main-grid-product-description">
-                    <br>
-                    <p>Descripcion</p> <!-- Se trae de la bd -->
-                    <p>Una descripcion detallada del producto, medidas, peso, color, año, banda, talla, etc.</p>
+
+            <!-- Esto va a ser un GRID -->
+            <!-- LADO IZQUIERDO : fotorama con carrousel -->
+            <!-- LADO DERECHO: Todos los datos se deberan traer de la bd -->
+            <div class="grid-container">
+                <div class="grid-item">
+                    <div class="main-carrousel fotorama data-transition=" slide" data-clicktransition="crossfade"">
+                    <img src="/images/vinilo1.jpg" alt="">
+                        <img src="/images/vinilo2.jpg" alt="">
+                        <img src="/images/vinilo3.jpg" alt="">
+                    </div>
                 </div>
-                <br>
-                <div class="main-grid-product-add">
-                    <button class="submit"><a href=""></a> Agregar al carrito <i class="fa-solid fa-cart-shopping"> </i></button>  <!-- traer el icono -->
+                <div class="grid-item-right">
+                    <div class="main-grid-product-detail">
+                        <h2>Nombre de producto</h2>
+                        <br>
+                        <ul>
+                            <li id="price">Precio <input class="input-data" name="price" id="input-price"
+                                    placeholder="20 USD" readonly=»readonly»></li>
+                            <br>
+                            <li id="quantity">Cantidad <input class="input-data" type="number" name="quantity"
+                                    id="input-quantity" placeholder="Ingrese una cantidad"></li>
+                            <br>
+                            <li id="delivery-date">Fecha estimada de entrega <input class="input-data"
+                                    name="delivery-date" id="input-delivery-date" placeholder="Junio 2023"
+                                    readonly=»readonly»></li>
+                        </ul>
+                    </div>
+
+                    <div class="line-separator"></div>
+                    <div class="main-grid-product-description">
+                        <br>
+                        <p>Descripcion</p> <!-- Se trae de la bd -->
+                        <p>Una descripcion detallada del producto, medidas, peso, color, año, banda, talla, etc.</p>
+                    </div>
+                    <br>
+                    <div class="main-grid-product-add">
+                        <button class="submit"><a href=""></a> Agregar al carrito <i class="fa-solid fa-cart-shopping">
+                            </i></button> <!-- traer el icono -->
+                    </div>
                 </div>
             </div>
-          </div>
 
-        <div class="main-title">
-            <h2>Productos relacionados</h2>
-        </div>
+            <div class="main-title">
+                <h2>Productos relacionados</h2>
+            </div>
 
-          <div class="related-products">
-            <div><img class="zoom" src="/images/the-killers-shirt.webp" alt></div>
-            <div><img class="zoom" src="/images/bowie-vinyl.jpeg" alt></div>
-            <div><img class="zoom" src="/images/signed-cd.webp" alt></div>
-            <div><img class="zoom" src="/images/dvd.webp" alt></div>
-            <div><img class="zoom" src="/images/rh-shirt.webp" alt></div>
-        </div>
+            <div class="related-products">
+                <div><img class="zoom" src="/images/the-killers-shirt.webp" alt></div>
+                <div><img class="zoom" src="/images/bowie-vinyl.jpeg" alt></div>
+                <div><img class="zoom" src="/images/signed-cd.webp" alt></div>
+                <div><img class="zoom" src="/images/dvd.webp" alt></div>
+                <div><img class="zoom" src="/images/rh-shirt.webp" alt></div>
+            </div>
 
 
     </main>
 
     <footer>
         <%- include('./partials/footer.ejs') %>
-    </footer> 
+    </footer>
 </body>
+
 </html>

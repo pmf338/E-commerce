@@ -27,5 +27,7 @@ router.get("/register", mainController.register);
 //Tienda
 router.get("/shop", mainController.shop);
 
+router.get("/shop/:id", mainController.shop);
+
 
 module.exports = router;
