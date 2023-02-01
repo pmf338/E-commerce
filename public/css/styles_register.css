@@ -26,7 +26,6 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-
 .title {
 
     text-align: center;
@@ -35,7 +34,6 @@
     margin-top: 30px;
     color: #f3f6fa;
 }
-
 
 .form .form-register {
 
@@ -48,6 +46,7 @@
     height: 50px;
     width: 100%;
     margin-top: 30px;
+    color: white;
 }
 
 .input-field input{
@@ -60,16 +59,15 @@
     outline: none;
     font-size: 15px;
     transition: all 0.2s ease;
-    
-}
+    }
 
-.input-field i {
-
+.icon-form {
     position: absolute;
     top: 37%;
     left: 15px;
     transform: translateY(-50%);
     font-size: 17px;
+    color:white;
 }
 
 .input-field input:is(:focus){
@@ -79,8 +77,7 @@
 
 /*Faltan los iconos*/
 
-.input-date {
-
+.input-field i{
     color: #f3f6fa;
     margin-top: 20px;
 }
@@ -91,7 +88,7 @@
     text-align: center;
 }
 
-.form .register-button input {
+.form .register-button button {
 
     border: #afc1d0;
     border-radius: 5px;
