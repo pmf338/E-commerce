@@ -29,5 +29,8 @@ router.get("/shop", mainController.shop);
 
 router.get("/shop/:id", mainController.shop);
 
+//Creacion de producto
+router.get("/createProduct", mainController.createproduct);
+
 
 module.exports = router;

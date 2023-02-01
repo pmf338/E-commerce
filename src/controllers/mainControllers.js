@@ -58,6 +58,10 @@ const mainController = {
         res.render("shop",{lista: productos} );
 
     },
+    createproduct: function (req,res) {
+        res.render("createProduct");
+
+    },
 
 }
 

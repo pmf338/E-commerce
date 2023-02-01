@@ -2,29 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles_navbar.css">
-    <link rel="stylesheet" href="/css/styles_footer.css">
-    <!-- jQuery 1.8 or later, 33 KB -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/14d8ab3f7b.js" crossorigin="anonymous"></script>
-    <!-- Fotorama from CDNJS, 19 KB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
-    <link rel="stylesheet" href="/css/styles_index.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <%- include('./partials/head.ejs') %>
     <link rel="stylesheet" href="/css/styles_productDetail.css">
-    <link rel="stylesheet" href="/css/styles_header.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>Detalle de producto</title>
 </head>
 
 <body>
     <header>
-        <%- include('./partials/head.ejs') %>
+        <%- include('./partials/header.ejs') %>
     </header>
     <main>
         
@@ -67,6 +53,9 @@
                     <div class="main-grid-product-add">
                         <button class="submit"><a href=""></a> Agregar al carrito <i class="fa-solid fa-cart-shopping">
                             </i></button> <!-- traer el icono -->
+                            <br>
+                            <button class="submit"><a href=""></a> Editar <i class="fa-solid fa-pen-to-square"></i>
+                        </button> <!-- traer el icono -->
                     </div>
                 </div>
             </div>
