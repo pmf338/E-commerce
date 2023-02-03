@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include('./partials/head.ejs') %>
     <link rel="stylesheet" href="/css/styles_shop.css">
@@ -11,23 +12,26 @@
         <%- include('./partials/header.ejs') %>
     </header>
     <main>
-        
+
+
         <div class="main-title">
             <h1>Tienda</h1>
         </div>
+
         <div class="main-artist-collection">
             <article>
                 <ul>
                     <% lista.forEach(producto => { %>
-                        <li>
-                           <a href="/productDetail"> <img src="images/<%= producto.image %>" alt= "Imagen" class= "product_img" > </a>
-                           <h3 class="name"><%= producto.name %></h3>
-                           <div class="main-article">
+                    <li>
+                        <a href="/productDetail"> <img src="images/<%= producto.image %>" alt="Imagen"
+                                class="product_img"> </a>
+                        <h3 class="name"><%= producto.name %></h3>
+                        <div class="main-article">
                             <p class="price"><%= producto.price %></p>
                             <h4 class="description"><%= producto.description %></h4>
                         </div>
-                       </li>
-                      <% }) %>
+                    </li>
+                    <% }) %>
                 </ul>
             </article>
         </div>
