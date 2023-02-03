@@ -4,70 +4,61 @@
 <head>
     <%- include('./partials/head.ejs') %>
     <link rel="stylesheet" href="/css/styles_register.css">
-    <title>Document</title>
+    <title>Registro cuenta</title>
+
 </head>
 
 <body>
     <header>
         <%- include('./partials/header.ejs') %>
     </header>
-<main>
-    <div class="main-container">
-   
-        <div class="form">
-
-            <h1 class="title">Registro de cuenta</h1>
-
+    <main>
+        <div class="main-container">
             <form class="form-register" action="#" method="post">
+                <h1 class="title">Registro de cuenta</h1>
                 <div class="input-field">
-                    <input type="text" name="user" id="user" placeholder="Nombre de usuario">
-                    <i class="fa-regular fa-user"></i>
+                    <i class="fa-regular fa-user"></i><input type="text" name="user" id="user"
+                        placeholder="Nombre de usuario" required>
                 </div>
-                
+
                 <div class="input-field">
-                    <input type="text" name="email" id="email" placeholder="Email">
-                    <i class="fa-regular fa-envelope"></i>
+                    <i class="fa-regular fa-envelope"></i><input type="email" name="email" id="email"
+                        placeholder="Email" required>
                 </div>
-                
+
                 <div class="input-field">
-                    <input type="password" name="pass" id="pass" placeholder="Contraseña">
-                    <i class="fa-solid fa-lock"></i>
-                    <!--Agregar icono para mostrar/ocultar contraseña-->
+                    <i class="fa-solid fa-lock"></i><input type="password" name="pass" id="pass"
+                        placeholder="Contraseña" minlength="6" required>
                 </div>
-                
+
                 <div class="input-field">
-                    <input type="password" name="repass" id="repass" placeholder="Reingrese la contraseña">
-                    <i class="fa-solid fa-lock"></i>
+                    <i class="fa-solid fa-lock"></i><input type="password" name="repass" id="repass"
+                        placeholder="Reingrese la contraseña" minlength="6" required>
                 </div>
-                
+
                 <div class="input-date">
                     <label for="date">Fecha de nacimiento</label>
-                    <input type="date" id="date" name="date" value="" min="" max="2018-12-31"> <!-- Verificar inicio/tope de fecha -->
+                    <input type="date" id="date" name="date" value="" min="" max="2018-12-31" required>
+                    <!-- Verificar inicio/tope de fecha -->
                 </div>
-                
-                <div class="register-button">
-                    <input type="button" value="Registrarse">
-                </div>
-                
 
-                <div class="already-account">
-                    
-                    <label >¿Ya tienes una cuenta?</label>
-                    <a href="/login">Iniciar sesión</a>
-                
+                <div class="container-buttons">
+                    <button type="submit">Registrarse</button>
+                    <button type="reset">Borrar datos</button>
                 </div>
-           
+
+
+                <div class="container-already-account">
+                    <label>¿Ya tienes una cuenta?</label>
+                    <a href="/login">Iniciar sesión</a>
+                </div>
             </form>
         </div>
-            
- 
-    </div>
-    
-</main>
-    
-<footer>
-    <%- include('./partials/footer.ejs') %>
-</footer> 
+    </main>
+
+    <footer>
+        <%- include('./partials/footer.ejs') %>
+    </footer>
 
 </body>
 

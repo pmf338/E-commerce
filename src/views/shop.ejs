@@ -3,7 +3,7 @@
 
 <head>
     <%- include('./partials/head.ejs') %>
-    <link rel="stylesheet" href="/css/styles_shop.css">
+    <link rel="stylesheet" href="/css/styles_shop_copy.css">
     <title>Tienda</title>
 </head>
 
@@ -12,6 +12,7 @@
         <%- include('./partials/header.ejs') %>
     </header>
     <main>
+<<<<<<< HEAD
 
 
         <div class="main-title">
@@ -34,6 +35,23 @@
                     <% }) %>
                 </ul>
             </article>
+=======
+        <div class="main-title">
+            <h1>Tienda</h1>
+        </div>
+        <div class="container-product-list">
+            <% lista.forEach(producto => { %>
+            <div class="product-item">
+                <a href="/productDetail"> <img src="images/<%= producto.image %>" alt="Imagen" class="product_img"> </a>
+                <h3 class="product-name"><%= producto.name %></h3>
+                <div class="product-values">
+                    <p class="price"><%= producto.price %></p>
+                    <h4 class="description"><%= producto.description %></h4>
+                </div>
+            </div>
+            <% }) %>
+
+>>>>>>> 2917598ede5362c471551bedd70dfed57becf579
         </div>
         <a href="#" class="btn-flotante">Crear Producto</a>
     </main>

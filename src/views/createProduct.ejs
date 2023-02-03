@@ -11,62 +11,59 @@
     <header>
         <%- include('./partials/header.ejs') %>
     </header>
-<main>
-    <div class="main-container">
-   
-        <div class="form">
-            <h1 class="title">Creación de Producto</h1>
-            <form class="form-register" action="#" method="post">
+    <main>
+        <div class="main-container">
+            <form class="form-create-product" action="#" method="post">
+                <h1 class="title">Creación de Producto</h1>
                 <div class="input-field">
                     <label for="product-name">Nombre de producto</label>
-                    <input type="text" name="product-name" id="product-name" minlength="3">
-                    <i class="fa-solid fa-record-vinyl icon-form"></i> <!-- CAMBIAR ICONOS -->
+                    <i class="fa-sharp fa-solid fa-box"></i><input type="text" name="product-name" id="product-name"
+                        minlength="3" required>
                 </div>
-                
+
                 <div class="input-field">
                     <label for="product-price">Precio</label>
-                    <input type="number" name="product-price" id="product-price">
-                    <i class="fa-regular fa-envelope"></i>
+                    <i class="fa-solid fa-dollar-sign"></i><input type="number" name="product-price" id="product-price">
                 </div>
-                
+
                 <div class="input-field">
                     <label for="product-quantity">Cantidad</label>
-                    <input type="number" name="product-quantity" id="product-quantity">
-                    <i class="fa-solid fa-lock"></i>
+                    <i class="fa-solid fa-plus-minus"></i><input type="number" name="product-quantity"
+                        id="product-quantity">
                 </div>
-        
-                <div class="input-date">
-                    <label for="category">Categoria</label>
-                    <select name="color">
+
+                <div class="input-field">
+                    <label>Categoria</label>
+                    <select name="category" class="select-category" required>
                         <option value="cat1">Categoria 1</option>
                         <option value="cat2">Categoria 2</option>
                         <option value="cat3">Categoria 3</option>
                         <option value="cat4">Categoria 4</option>
-                        </select>
+                    </select>
                 </div>
 
-                <div class="input-date">
+                <div class="input-img">
                     <label for="img">Agregar imágenes del producto</label>
-                    <input type="file" name="product-img" accept=".jpg" multiple>
+                    <input type="file" name="product-img" accept=".jpg" multiple class="file-option">
                 </div>
 
-                <div class="input-date">
+                <div class="input-field">
                     <label for="product-description">Descripción del producto</label>
-                    <textarea name="product-description" id="product-description" maxlength="300" placeholder="Escribir la descripción del producto, máximo de 300 caracteres"></textarea>
+                    <textarea name="product-description" id="product-description" maxlength="300"
+                        placeholder="Escribir la descripción del producto, máximo de 300 caracteres"></textarea>
                 </div>
 
-                <div class="register-button">
+                <div class="container-buttons">
                     <button type="submit">CREAR</button>
                     <button type="reset">LIMPIAR</button>
                 </div>
             </form>
         </div>
-    </div>
-</main>
-    
-<footer>
-    <%- include('./partials/footer.ejs') %>
-</footer> 
+    </main>
+
+    <footer>
+        <%- include('./partials/footer.ejs') %>
+    </footer>
 
 </body>
 
