@@ -1,14 +1,12 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
-/*--------------------------------------------------Main------------------------------------------------------*/
-.main-container {
 
-    height: 120vh;
+.main-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,80 +14,112 @@
     background-size: cover;
 }
 
-.form {
-
-    position: relative;
-    max-width: 600px;
-    width: 100%;
-    background: #0b1320;
+/* FORM */
+.form-register,
+.form-create-product {
+    background-color: #0b1320;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 50px 25px;
+    font-size: 15px;
     border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 100%;
 }
-
+.form-register a {
+    text-decoration: none;
+    color: gray;
+}
+.form-register a:hover {
+    text-decoration: underline;
+}
 .title {
-
     text-align: center;
     font-size: 40px;
     font-weight: 600;
-    margin-top: 30px;
+    margin: 30px 0px;
     color: #f3f6fa;
 }
-
-.form .form-register {
-
-    padding: 30px;
+.input-field,
+.input-img {
+    margin: 15px 0px;
+    align-self: center;
 }
-
-.form .input-field {
-
-    position: relative;
-    height: 50px;
-    width: 100%;
-    margin-top: 30px;
+.input-field label,
+.input-img label {
+    display:block;
     color: white;
+    text-align: center;
 }
-
-.input-field input{
-
-    position: absolute;
-    height: 75%;
-    width: 100%;
-    padding: 0 35px;
-    border-radius: 30px;
-    outline: none;
+.input-field input,
+.select-category,
+.input-field textarea,
+.input-img input {
+    margin: 10px 0px 0px 10px;
+    border: solid 0.5px white;
+    border-radius: 5px;
+    height: 35px;
+    max-width: 400px;
+    padding-left: 25px;
     font-size: 15px;
-    transition: all 0.2s ease;
-    }
-
-.icon-form {
-    position: absolute;
-    top: 37%;
-    left: 15px;
-    transform: translateY(-50%);
-    font-size: 17px;
-    color:white;
+    margin-bottom: 20px;
 }
-
-.input-field input:is(:focus){
-
+.input-field input:is(:focus) {
     border-color: yellow;
 }
-
-/*Faltan los iconos*/
-
-.input-field i{
-    color: #f3f6fa;
-    margin-top: 20px;
+.input-field i {
+    font-style: none;
+    height: 25px;
+    position: relative;
+    left : 30px;
+}
+.select-category {
+    padding-left: 0px;
+    width: 165px;
+}
+.input-date {
+    margin: 15px 0px;
+    align-self: center;
+}
+.input-date label,
+.input-img label {
+    color: white;
+}
+.input-date input {
+    margin: 10px 0px 0px 10px;
+    border: solid 0.5px white;
+    border-radius: 5px;
+    height: 35px;
+    max-width: 400px;
+    font-size: 15px;
+    display: block;
+}
+.input-img {
+    border:none;
+}
+.input-img input{
+    border:none;
+}
+.file-option{
+    margin: 10px 0px 0px 10px;
+    width: 160px;
+    font-size: 15px;
+    color:white;
+    border:none;
+}
+.input-field textarea {
+    height: 100px;
+    padding-left: 5px;
 }
 
-.form .register-button {
 
+/* BUTTONS */
+.container-buttons {
     margin-top: 20px;
     text-align: center;
 }
-
-.form .register-button button {
-
+.container-buttons button {
     border: #afc1d0;
     border-radius: 5px;
     height: 30%;
@@ -100,69 +130,64 @@
     background-color: #afc1d0;
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 150px;
+    padding: 5px;
+    margin-top: 10px;
+}
+.container-buttons button:hover {
+    background-color: #00004d;
 }
 
-.register-button input:hover {
-
-        background-color: #00004d;
-}
-
-.form .already-account {
-
-   margin-top: 30px;
-   text-align: center;
-   color: #f3f6fa;
-} 
-
-
-.form a{
-
-    text-decoration: none;
-    color: gray;
-}
-
-.form a:hover {
-
-    text-decoration: underline;
+/* ALREADY ACCOUNT */
+.container-already-account {
+    margin-top: 30px;
+    text-align: center;
+    color: #f3f6fa;
 }
 
 
-@media (max-width: 400px) {
-    
-    .main-container {
 
-        height: 170vh;
-    }
-    
-    .form {
-
-        width: 83%;
-    }
-
-    .input-field {
+/*--- TABLET ---*/
+@media (min-width: 425px) {
+    .form-register,
+    .form-create-product {
+        max-width: 80%;
+        text-align: center;
+        align-items: center;
+        margin: 50px auto;
         display: block;
-        width: 100%;
-        margin-bottom: 20px;
     }
+    .input-field input,
+    .input-field textarea {
+        width: 80%;
+    }
+    .input-date input {
+        display: inline-block;
+    }
+    .file-option {
+        width: 50%;
+    }
+
+
 }
 
-
-@media (min-width: 400px) {
-
-    .main-container {
-
-        height: 130vh;
-    }
-
-    .form {
-
-        width: 83%;
-    }
-}
-
-
+/*--- DESKTOP ---*/
 @media (min-width: 769px) {
-    .form {
-        width: 83%;
+    .form-register,
+    .form-create-product {
+        max-width: 60%;
     }
-} 
+    .title {
+        font-size: 48px;
+    }
+    .input-field input,
+    .input-field textarea {
+        max-width: 600px;
+    }
+    .register-button button {
+        font-size: 24px;
+        padding: 10px;
+        width: 28%;
+        max-width: 200px;
+    }
+}

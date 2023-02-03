@@ -16,17 +16,17 @@
             <h1>Tienda</h1>
         </div>
         <div class="container-product-list">
+            <% lista.forEach(producto => { %>
             <div class="product-item">
-                    <% lista.forEach(producto => { %>
-                        <a href="/productDetail"> <img src="images/<%= producto.image %>" alt="Imagen"
-                                class="product_img"> </a>
-                        <h3 class="product-name"><%= producto.name %></h3>
-                        <div class="product-values">
-                            <p class="price"><%= producto.price %></p>
-                            <h4 class="description"><%= producto.description %></h4>
-                        </div>
-                    <% }) %>
+                <a href="/productDetail"> <img src="images/<%= producto.image %>" alt="Imagen" class="product_img"> </a>
+                <h3 class="product-name"><%= producto.name %></h3>
+                <div class="product-values">
+                    <p class="price"><%= producto.price %></p>
+                    <h4 class="description"><%= producto.description %></h4>
+                </div>
             </div>
+            <% }) %>
+
         </div>
         <a href="#" class="btn-flotante">Crear Producto</a>
     </main>
