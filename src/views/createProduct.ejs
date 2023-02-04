@@ -21,18 +21,18 @@
                         minlength="3" required>
                 </div>
 
-                <div class="input-field">
+                <div class="input-field-small">
                     <label for="product-price">Precio</label>
-                    <i class="fa-solid fa-dollar-sign"></i><input type="number" name="product-price" id="product-price">
+                    <i class="fa-solid fa-dollar-sign"></i><input type="number" name="product-price" id="product-price" required>
                 </div>
 
-                <div class="input-field">
+                <div class="input-field-small">
                     <label for="product-quantity">Cantidad</label>
                     <i class="fa-solid fa-plus-minus"></i><input type="number" name="product-quantity"
-                        id="product-quantity">
+                        id="product-quantity" required>
                 </div>
 
-                <div class="input-field">
+                <div class="input-field-small">
                     <label>Categoria</label>
                     <select name="category" class="select-category" required>
                         <option value="cat1">Categoria 1</option>
@@ -44,13 +44,13 @@
 
                 <div class="input-img">
                     <label for="img">Agregar imágenes del producto</label>
-                    <input type="file" name="product-img" accept=".jpg" multiple class="file-option">
+                    <input type="file" name="product-img" accept=".jpg" multiple class="file-option" required>
                 </div>
 
                 <div class="input-field">
                     <label for="product-description">Descripción del producto</label>
                     <textarea name="product-description" id="product-description" maxlength="300"
-                        placeholder="Escribir la descripción del producto, máximo de 300 caracteres"></textarea>
+                        placeholder="Escribir la descripción del producto, máximo de 300 caracteres" required></textarea>
                 </div>
 
                 <div class="container-buttons">

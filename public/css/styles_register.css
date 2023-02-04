@@ -42,19 +42,25 @@
     color: #f3f6fa;
 }
 .input-field,
+.input-field-small,
+.select-category,
 .input-img {
     margin: 15px 0px;
     align-self: center;
 }
 .input-field label,
+.input-field-small label,
+
 .input-img label {
     display:block;
     color: white;
     text-align: center;
 }
 .input-field input,
+.input-field-small input,
 .select-category,
 .input-field textarea,
+.input-field-small textarea,
 .input-img input {
     margin: 10px 0px 0px 10px;
     border: solid 0.5px white;
@@ -65,8 +71,17 @@
     font-size: 15px;
     margin-bottom: 20px;
 }
+.input-field-small input:is(:focus) {
+    border-color: yellow;
+}
 .input-field input:is(:focus) {
     border-color: yellow;
+}
+.input-field-small i {
+    font-style: none;
+    height: 25px;
+    position: relative;
+    left : 30px;
 }
 .input-field i {
     font-style: none;
@@ -76,7 +91,7 @@
 }
 .select-category {
     padding-left: 0px;
-    width: 165px;
+    width: 176px
 }
 .input-date {
     margin: 15px 0px;
@@ -107,6 +122,10 @@
     font-size: 15px;
     color:white;
     border:none;
+}
+.input-field-small textarea {
+    height: 100px;
+    padding-left: 5px;
 }
 .input-field textarea {
     height: 100px;
@@ -161,6 +180,10 @@
     .input-field textarea {
         width: 80%;
     }
+    .input-field-small textarea
+    {
+        width: 80%;
+    }
     .input-date input {
         display: inline-block;
     }
@@ -183,6 +206,10 @@
     .input-field input,
     .input-field textarea {
         max-width: 600px;
+    }
+    .input-field-small textarea,
+    .select-category {
+        max-width: 400px;
     }
     .register-button button {
         font-size: 24px;
