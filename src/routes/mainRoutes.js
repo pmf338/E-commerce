@@ -32,5 +32,7 @@ router.get("/shop/:id", mainController.shop);
 //Creacion de producto
 router.get("/createProduct", mainController.createproduct);
 
+//Contacto
+router.get("/contact", mainController.contact);
 
 module.exports = router;

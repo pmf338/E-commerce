@@ -63,6 +63,11 @@ const mainController = {
 
     },
 
+    contact: function (req,res) {
+        res.render("contact");
+
+    },
+
 }
 
 module.exports = mainController;

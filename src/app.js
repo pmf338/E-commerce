@@ -16,6 +16,7 @@ app.use('/shop', mainRoutes);
 app.use('/shop/:id', mainRoutes);
 app.use('/productDetail', mainRoutes);
 app.use('/createProduct', mainRoutes);
+app.use('/contact', mainRoutes);
 
 
 app.listen(PORT, () => {

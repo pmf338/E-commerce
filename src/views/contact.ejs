@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="/css/styles_contact.css">
+    <title>Contactanos</title>
+</head>
+
+<body>
+    <header>
+        <%- include('./partials/header.ejs') %>
+    </header>
+
+    <main>
+        <h1>Contactanos</h1>
+
+        <div class="contact-main-container">
+            <p>Podés hacernos llegar tus inquietudes o problemas que hayas tenido completando el formulario al pie de la
+                página
+                , también podés contactarnos por teléfono o email
+            </p>
+
+            <hr>
+
+            <form class="contact-form" action="#" method="post">
+                <h2>Formulario de contacto</h2>
+                <div class="input-field">
+                    <i class="fa-regular fa-user"></i><input type="text" name="contact-name" id="contact-name"
+                        placeholder="Nombre" required>
+                </div>
+
+                <div class="input-field">
+                    <i class="fa-regular fa-envelope"></i><input type="email" name="contact-email" id="contact-email"
+                        placeholder="Email" required>
+                </div>
+
+                <div class="input-field">
+                    <i class="fa-solid fa-phone"></i><input type="tel" id="contact-phone" name="contact-phone"
+                        pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}" maxlength="10" required>
+                </div>
+
+                <div class="contact-text-area col-md-6">
+                    <textarea id="message" name="message" placeholder="Mensaje" cols="30" rows="10"></textarea>
+                </div>
+
+                <div class="container-buttons">
+                    <button type="submit">ENVIAR</button>
+                </div>
+
+            </form>
+
+            <div class="adress col-md-4">
+                <h2>Dirección</h2>
+                <ul class="contact-info">
+                    <li>
+                        <div class="icon-box">
+                            <div class="inner">
+                                <i class="fa fa-map-marker"></i>
+                            </div>
+                        </div>
+                        <div class="content-box">
+                            <h4>Dirección</h4>
+                            <p> Calle Falsa 123 <br> Bs. As. | Argentina </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-box">
+                            <div class="inner">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                        </div>
+                        <div class="content-box">
+                            <h4>Teléfono</h4>
+                            <p>######</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-box">
+                            <div class="inner">
+                                <i class="fa fa-envelope-o"></i>
+                            </div>
+                        </div>
+                        <div class="content-box">
+                            <h4>Email</h4>
+                            <p>info@rocketmusic.com</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <%- include('./partials/footer.ejs') %>
+    </footer>
+</body>
+
+</html>
