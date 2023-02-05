@@ -3,7 +3,7 @@
 
 <head>
     <%- include('./partials/head.ejs') %>
-    <link rel="stylesheet" href="/css/styles_shop_copy.css">
+    <link rel="stylesheet" href="/css/styles_shop.css">
     <title>Tienda</title>
 </head>
 
@@ -12,23 +12,22 @@
         <%- include('./partials/header.ejs') %>
     </header>
     <main>
-        <div class="main-title">
-            <h1>Tienda</h1>
-        </div>
+        <h1>Tienda</h1>
         <div class="container-product-list">
             <% lista.forEach(producto => { %>
             <div class="product-item">
-                <a href="/productDetail"> <img src="images/<%= producto.image %>" alt="Imagen" class="product_img"> </a>
-                <h3 class="product-name"><%= producto.name %></h3>
+                <a href="/productDetail"><img src="images/<%= producto.image %>" alt="Imagen" class="product_img"> </a>
+                <a href="/productDetail"><h3 class="product-name"><%= producto.name %></h3></a>
+                <p class="value-category">CATEGORIA</p> <!--  producto.category %> -->
                 <div class="product-values">
-                    <p class="price"><%= producto.price %></p>
-                    <h4 class="description"><%= producto.description %></h4>
+                    <p class="value-price"><%= producto.price %></p>
+                    <i class="fa-solid fa-cart-arrow-down value-cart"></i> <!--  al presionar deberia sumar al carrito %> -->
                 </div>
             </div>
             <% }) %>
 
         </div>
-        <a href="#" class="btn-flotante">Crear Producto</a>
+        <a href="/createProduct" class="btn-flotante">Crear Producto</a>
     </main>
     <footer>
         <%- include('./partials/footer.ejs') %>

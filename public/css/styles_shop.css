@@ -8,131 +8,54 @@ body{
     font-family: 'Roboto', sans-serif;
     background-color: #ebebeb;
 }
-
-h3{
-    font-size: 24px;
-}
-
-p{
-    font-size: 12px;
-}
-
-div.last-visit,
-div.offers{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.price{
-    font-size: 18px;
-    width: 30%;
-}
-
-.discount{
-    width: 70%;
-}
-
-.discount,
-.description{
-    font-size: 16px;
-    font-weight: normal;
-}
-
-h3,
-.description{
-    color: #0B1320;
-}
-
-.description{
-    display: none;
-    margin-top: 20px;
-}
-
-section.banner img{
-    width: 100%;
-}
-
 main{
-    width: 85%;
-    margin: 0 auto;
+    height: 100vh;
 }
 
-main section article{
-    background-color: #fff;    
-    margin: 10px 0px;
-}
-
-/*Gallery Image Classes*/
-.main-artist-collection { 
-    padding: .5vw;
-    font-size: 0;
-    display: -ms-flexbox;
-    flex-wrap: wrap;
-    flex-direction: column;
-    -webkit-flex-flow: row wrap; 
-    flex-flow: row wrap; 
-    display: -webkit-box;
-    display: flex;
-    background-color: green;
-    max-width: 400px;
-  }
-  .main-artist-collection div { 
-    -webkit-box-flex: auto;
-    -ms-flex: auto;
-    flex: auto; 
-    width: 200px; 
-    margin: .5vw; 
-  }
-  .main-artist-collection div img { 
-    max-width: 400px; 
-    height: auto; 
-  }
-
-.product_img{
-    max-width: 340px;
-}
-
-main section article i,
-.discount{
-    color: #39b54a;
-
-}
-
-main section article:hover .description {
-    display: block;
-}
-
-main section article i{
-    display: block;
-    font-size: 16px;
-    padding: 5px;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #39b54a;
-    background-color: #FFF;
-    border-radius: 50%;
-    position: absolute;
-    right: 20px;
-    top: -15px;
-}
-
-main section h3{
+main h1{
     margin: 20px 0px;
+    text-align: center;
+    font-size: 32px;
 }
 
-article div.main-article{
-    width: 100%;
+/*LIST OF PRODUCTS*/
+.container-product-list{
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
-    border-top: 1px solid #ebebeb;
-    position: relative;
+    justify-content: center;
+}
+.product-item{
+    max-width: 400px;
+    height: 550px;
     padding: 15px;
 }
-
-main section article:hover{
-    box-shadow: 0px 0px 10px rgb(100, 100, 100);
+.product_img{
+    width: 100%;
 }
+.product-name{
+    margin : 20px 0px;
+    text-align : center;
+    font-size : x-large;
+    text-decoration: none;
+    color:black
+}
+.value-category{
+    text-align: left;
+    margin-bottom: 5px;
+}
+.product-values{
+    border-top: solid 2px #00004D;
+    text-align: center;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0px;
+}
+.value-cart:hover{
+    color: greenyellow;
+}
+
+
 
 /*BUTTON NEW PRODUCT*/
 .btn-flotante {
@@ -147,10 +70,11 @@ main section article:hover{
 	padding: 18px 30px; /* Relleno del boton */
 	position: sticky;
     bottom: 115px;
-    left: 1100px;
+    left: 4100px;
 	transition: all 300ms ease 0ms;
 	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 	z-index: 99;
+    margin-right: 15px;
     
 }
 .btn-flotante:hover {
