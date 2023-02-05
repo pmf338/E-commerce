@@ -1,0 +1,25 @@
+*{
+    margin: 0px;
+    padding: 0px;    
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #ebebeb;
+}
+
+main{
+    height: 100vh;
+}
+
+main h1{
+    margin: 20px 0px;
+    text-align: center;
+    font-size: 32px;
+}
+
+.contact-main-container{
+
+    padding: 25px 0 25px;
+}

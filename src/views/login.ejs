@@ -18,19 +18,19 @@
     
                 <form class="form-login" action="#" method="post">
                     <div class="input-field">
-                        <input type="text" name="user" id="user" placeholder="Nombre de usuario">
+                        <input type="text" name="user" id="user" placeholder="Nombre de usuario" required>
                         <i class="fa-regular fa-user"></i>
                     </div>
                     
                     <div class="input-field">
-                        <input type="password" name="pass" id="pass" placeholder="Contraseña">
+                        <input type="password" name="pass" id="pass" placeholder="Contraseña" required>
                         <i class="fa-solid fa-lock"></i>
                         <!--Agregar icono para mostrar/ocultar contraseña-->
                     </div>
 
                     <div class="checkbox-text">
                         <div class="checkbox-content">
-                            <input type="text" id="logcheck">
+                            <input type="checkbox" id="logcheck">
                             <label for="logcheck" class="text">Recuerdame</label>
 
                         </div>
@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="login-button">
-                        <input type="button" value="Ingresar">
+                        <button type="submit">Ingresar</button>
                     </div>
             
             <div class="main-container-access-with">
