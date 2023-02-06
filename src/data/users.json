@@ -1,0 +1,107 @@
+
+[{
+  "id": 1,
+  "user_name": "Thaxter Kurt",
+  "user_email": "tkurt0@latimes.com",
+  "user_password": "CT3aX4",
+  "user_category": "administrador",
+  "user_image": "image_3.jpg"
+}, {
+  "id": 2,
+  "user_name": "Rutter Enefer",
+  "user_email": "renefer1@unc.edu",
+  "user_password": "EjWfQj6",
+  "user_category": "cliente",
+  "user_image": "image_3.jpg"
+}, {
+  "id": 3,
+  "user_name": "Cristine Huskisson",
+  "user_email": "chuskisson2@narod.ru",
+  "user_password": "aPN9ghSHZs7",
+  "user_category": "administrador",
+  "user_image": "image_3.jpg"
+}, {
+  "id": 4,
+  "user_name": "Christan Pohls",
+  "user_email": "cpohls3@pbs.org",
+  "user_password": "l5TaG0KFv",
+  "user_category": "administrador",
+  "user_image": "image_3.jpg"
+}, {
+  "id": 5,
+  "user_name": "Guillermo Pickerell",
+  "user_email": "gpickerell4@tripod.com",
+  "user_password": "GelYZYtuhSmW",
+  "user_category": "cliente",
+  "user_image": "image_2.jpg"
+}, {
+  "id": 6,
+  "user_name": "Ardisj Danhel",
+  "user_email": "adanhel5@mapy.cz",
+  "user_password": "rvfMfbbeSu98",
+  "user_category": "cliente",
+  "user_image": "image_4.jpg"
+}, {
+  "id": 7,
+  "user_name": "Lemuel Brisbane",
+  "user_email": "lbrisbane6@latimes.com",
+  "user_password": "mxRNAxrA",
+  "user_category": "administrador",
+  "user_image": "image_3.jpg"
+}, {
+  "id": 8,
+  "user_name": "Leilah Bonifant",
+  "user_email": "lbonifant7@smh.com.au",
+  "user_password": "8zfXabue6",
+  "user_category": "cliente",
+  "user_image": "image_2.jpg"
+}, {
+  "id": 9,
+  "user_name": "Arda MacGray",
+  "user_email": "amacgray8@purevolume.com",
+  "user_password": "0OZbrDO",
+  "user_category": "cliente",
+  "user_image": "image_3.jpg"
+}, {
+  "id": 10,
+  "user_name": "Anitra Upham",
+  "user_email": "aupham9@google.pl",
+  "user_password": "Wk9NyN4tuVKr",
+  "user_category": "administrador",
+  "user_image": "image_3.jpg"
+}, {
+  "id": 11,
+  "user_name": "Carissa Boustred",
+  "user_email": "cboustreda@sohu.com",
+  "user_password": "soJQ2g",
+  "user_category": "cliente",
+  "user_image": "image_1.jpg"
+}, {
+  "id": 12,
+  "user_name": "Rhodia Mandal",
+  "user_email": "rmandalb@fda.gov",
+  "user_password": "VzalwBRqzF",
+  "user_category": "administrador",
+  "user_image": "image_4.jpg"
+}, {
+  "id": 13,
+  "user_name": "Darin Feetham",
+  "user_email": "dfeethamc@issuu.com",
+  "user_password": "S8MLHwQ",
+  "user_category": "cliente",
+  "user_image": "image_5.jpg"
+}, {
+  "id": 14,
+  "user_name": "Jared Ungerer",
+  "user_email": "jungererd@360.cn",
+  "user_password": "YGCPIO9cvf",
+  "user_category": "administrador",
+  "user_image": "image_5.jpg"
+}, {
+  "id": 15,
+  "user_name": "Mariann Lowder",
+  "user_email": "mlowdere@hao123.com",
+  "user_password": "NTD7Qjvqo",
+  "user_category": "administrador",
+  "user_image": "image_1.jpg"
+}]
