@@ -2,6 +2,7 @@
     margin: 0px;
     padding: 0px;    
     box-sizing: border-box;
+    
 }
 
 body{
@@ -9,7 +10,7 @@ body{
     background-color: #ebebeb;
 }
 main{
-    height: 100vh;
+    min-height: 100vh;
 }
 
 main h1{
