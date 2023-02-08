@@ -27,12 +27,6 @@ let productos = [
 
 
 const mainController = {
-
-    index: function (req,res) {
-        res.render("index",{lista: productos} );
-
-    },
-
     login: function (req,res) {
         res.render("login");
 

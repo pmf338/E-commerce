@@ -3,6 +3,7 @@ const app = express();
 const PORT = 3002;
 const path = require('path');
 const mainRoutes = require('./routes/mainRoutes');
+const productRoutes = require('./routes/productRoutes');
 
 app.use(express.static(__dirname + '../../public'));
 
@@ -17,7 +18,11 @@ app.use('/shop/:id', mainRoutes);
 app.use('/productDetail', mainRoutes);
 app.use('/createProduct', mainRoutes);
 app.use('/contact', mainRoutes);
-
+app.use(function(req,res){
+    res.status(404).render('404',{
+        title : '404'
+    })
+});
 
 app.listen(PORT, () => {
     numeroPuerto = PORT;
