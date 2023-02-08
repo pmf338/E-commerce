@@ -4,6 +4,7 @@ const PORT = 3002;
 const path = require('path');
 const mainRoutes = require('./routes/mainRoutes');
 const productRoutes = require('./routes/productRoutes');
+const usersRoutes = require ('./routes/usersRoutes');
 
 app.use(express.static(__dirname + '../../public'));
 

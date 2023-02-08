@@ -7,7 +7,10 @@ const productController = {
         return JSON.parse(fs.readFileSync(productsPath,'utf-8'));
     },
     home: function (req,res) {
-        res.render("index",{lista: productos});
+        res.render("index",{
+            title : "Listado productos",
+            lista: productController.getProducts()
+        });
     },
     showProduct : function (req,res){
         
