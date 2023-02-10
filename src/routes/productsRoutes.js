@@ -1,10 +1,11 @@
 const express = require ('express');
 const router = express.Router();
 
-const productController = require ('..controller/productController');
+const productController = require ('../controllers/productsController');
 
 //Listado productos
-router.get('/',productController.home);
+router.get('/',productController.index);
+router.get('/shop',productController.shop);
 //Ver productos
 router.get('/:id',productController.showProduct);
 //Creación producto

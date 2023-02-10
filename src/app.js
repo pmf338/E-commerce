@@ -3,18 +3,18 @@ const app = express();
 const PORT = 3002;
 const path = require('path');
 const mainRoutes = require('./routes/mainRoutes');
-const productRoutes = require('./routes/productRoutes');
-const usersRoutes = require ('./routes/usersRoutes');
+const productRoutes = require('./routes/productsRoutes');
+const userRoutes = require ('./routes/usersRoutes');
 
 app.use(express.static(__dirname + '../../public'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
 
-app.use('/', mainRoutes);
+app.use('/', productRoutes);
 app.use('/login',mainRoutes);
 app.use('/register',mainRoutes);
-app.use('/shop', mainRoutes);
+app.use('/shop', productRoutes);
 app.use('/shop/:id', mainRoutes);
 app.use('/productDetail', mainRoutes);
 app.use('/createProduct', mainRoutes);

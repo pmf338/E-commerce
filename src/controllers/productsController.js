@@ -1,15 +1,21 @@
 const fs = require ('fs');
 const path = require ('path');
-const productsPath = path.join(__dirname,"./data/products.json");
+const productsPath = path.join(__dirname,"../data/products.json");
 
-const productController = {
+const productsController = {
     getProducts: function (){
         return JSON.parse(fs.readFileSync(productsPath,'utf-8'));
     },
-    home: function (req,res) {
-        res.render("index",{
+    index: function (req,res) {
+        res.render("products/index",{
             title : "Listado productos",
-            lista: productController.getProducts()
+            lista: productsController.getProducts()
+        });
+    },
+    shop: function (req,res) {
+        res.render("products/shop",{
+            title : "Listado productos",
+            lista: productsController.getProducts()
         });
     },
     showProduct : function (req,res){
@@ -37,4 +43,4 @@ const productController = {
 
 
 
-modelo.exports = productController
+module.exports = productsController
