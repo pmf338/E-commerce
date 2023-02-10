@@ -15,9 +15,9 @@ app.use('/', productRoutes);
 app.use('/login',mainRoutes);
 app.use('/register',mainRoutes);
 app.use('/shop', productRoutes);
-app.use('/shop/:id', mainRoutes);
-app.use('/productDetail', mainRoutes);
-app.use('/createProduct', mainRoutes);
+app.use('/shop/:id', productRoutes);
+app.use('/productDetail', productRoutes);
+app.use('/createProduct', productRoutes);
 app.use('/contact', mainRoutes);
 app.use(function(req,res){
     res.status(404).render('404',{

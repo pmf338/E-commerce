@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-    <%- include('./partials/head.ejs') %>
+    <%- include('../partials/head.ejs') %>
     <link rel="stylesheet" href="/css/styles_productDetail.css">
     <title>Detalle de producto</title>
 </head>
 
 <body>
     <header>
-        <%- include('./partials/header.ejs') %>
+        <%- include('../partials/header.ejs') %>
     </header>
     <main>
         
@@ -27,7 +27,8 @@
                 </div>
                 <div class="grid-item-right">
                     <div class="main-grid-product-detail">
-                        <h2>Nombre de producto</h2>
+                        
+                        <h2><%= product.product_name %></h2>
                         <br>
                         <ul>
                             <li id="price">Precio <input class="input-data" name="price" id="input-price"
@@ -75,7 +76,7 @@
     </main>
 
     <footer>
-        <%- include('./partials/footer.ejs') %>
+        <%- include('../partials/footer.ejs') %>
     </footer>
 </body>
 
