@@ -32,6 +32,9 @@ router.get("/shop/:id", mainController.shop);
 //Creacion de producto
 router.get("/createProduct", mainController.createproduct);
 
+//Edicion de producto
+router.get("/editProduct", mainController.editproduct);
+
 //Contacto
 router.get("/contact", mainController.contact);
 

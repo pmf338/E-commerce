@@ -18,6 +18,7 @@ app.use('/shop', productRoutes);
 app.use('/shop/:id', mainRoutes);
 app.use('/productDetail', mainRoutes);
 app.use('/createProduct', mainRoutes);
+app.use('/editProduct',mainRoutes);
 app.use('/contact', mainRoutes);
 app.use(function(req,res){
     res.status(404).render('404',{

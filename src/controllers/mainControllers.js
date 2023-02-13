@@ -62,6 +62,10 @@ const mainController = {
         res.render("createProduct");
 
     },
+    editproduct: function (req,res) {
+        res.render("editProduct");
+
+    },
 
     contact: function (req,res) {
         res.render("contact");
