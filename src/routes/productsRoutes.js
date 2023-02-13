@@ -6,6 +6,7 @@ const productController = require ('../controllers/productsController');
 //Listado productos
 router.get('/',productController.index);
 router.get('/shop',productController.shop);
+router.get("/productDetail", productController.productDetail);
 //Ver productos
 router.get('/:id',productController.showProduct);
 //Creación producto
@@ -17,6 +18,7 @@ router.put('/editProduct/:id',productController.updateProduct);
 //Eliminación producto
 router.get('/delete/:id',productController.deleteProduct);
 router.delete('/delete/:id',productController.destroyProduct);
+
 
 
 
