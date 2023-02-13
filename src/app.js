@@ -17,7 +17,7 @@ app.use('/register',usersRoutes);
 app.use('/shop', productRoutes);
 app.use('/shop/:id', productRoutes);
 app.use('/productDetail', productRoutes);
-app.use('/shop/createProduct', productRoutes);
+app.use('/createProduct', productRoutes);
 app.use('/editProduct', productRoutes);
 app.use('/contact', usersRoutes);
 app.use(function(req,res){
