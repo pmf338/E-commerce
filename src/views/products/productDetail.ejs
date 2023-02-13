@@ -28,18 +28,20 @@
                 <div class="grid-item-right">
                     <div class="main-grid-product-detail">
                         
-                        <h2><%= product.product_name %></h2>
                         <br>
                         <ul>
-                            <li id="price">Precio <input class="input-data" name="price" id="input-price"
-                                    placeholder="20 USD" readonly=»readonly»></li>
+                            <h2><%= product.product_name %></h2>
+                            <li id="price"><label>Precio</label> 
+                            <br>
+                            <label><%= product.product_price %></label>
+                            </li>
                             <br>
                             <li id="quantity">Cantidad <input class="input-data" type="number" name="quantity"
                                     id="input-quantity" placeholder="Ingrese una cantidad"></li>
                             <br>
                             <li id="delivery-date">Fecha estimada de entrega <input class="input-data"
                                     name="delivery-date" id="input-delivery-date" placeholder="Junio 2023"
-                                    readonly=»readonly»></li>
+                                    readonly=»readonly»></li> <!--CAMBIAR A FUTURO (Código de cáclulo de fecha)-->
                         </ul>
                     </div>
 
@@ -47,14 +49,14 @@
                     <div class="main-grid-product-description">
                         <br>
                         <p>Descripcion</p> <!-- Se trae de la bd -->
-                        <p>Una descripcion detallada del producto, medidas, peso, color, año, banda, talla, etc.</p>
+                        <p><%= product.product_description %></p>
                     </div>
                     <br>
                     <div class="main-grid-product-add">
                         <button class="submit"><a href="#"></a> Agregar al carrito <i class="fa-solid fa-cart-shopping">
                             </i></button> <!-- traer el icono -->
                             <br>
-                            <button class="submit"><a href="/editProduct"></a> Editar <i class="fa-solid fa-pen-to-square"></i>
+                            <button class="submit"><a href="/editProduct/<%= product.id %>">Editar</a><i class="fa-solid fa-pen-to-square"></i>
                         </button> <!-- traer el icono -->
                     </div>
                 </div>

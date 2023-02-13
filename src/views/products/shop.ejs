@@ -14,9 +14,11 @@
     <main>
         <h1>Tienda</h1>
         <div class="container-product-list">
+
+            
             <% lista.forEach(producto => { %>
             <div class="product-item">
-                <a href="/productDetail"><img src="images/<%= producto.product_image %>" alt="Imagen" class="product_img"> </a>
+                <a href="/productDetail/<%= producto.id %>"><img src="images/<%= producto.product_image %>" alt="Imagen" class="product_img"> </a>
                 <a href="/productDetail"><h3 class="product-name"><%= producto.product_name %></h3></a>
                 <p class="value-category">CATEGORIA</p> <!--  producto.category %> -->
                 <div class="product-values">
@@ -27,7 +29,7 @@
             <% }) %>
 
         </div>
-        <a href="/createProduct" class="btn-flotante">Crear Producto</a>
+        <a href="/shop/createProduct" class="btn-flotante">Crear Producto</a>
     </main>
     <footer>
         <%- include('../partials/footer.ejs') %>

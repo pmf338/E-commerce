@@ -1,6 +1,7 @@
 const express = require ('express');
 const router = express.Router();
 
+const userController = require ('../controllers/userController');
 
 /*
 //Listado usuarios
@@ -11,10 +12,13 @@ router.post('/',mainController.index);
 //Modificación usuario
 router.get('/',mainController.index);
 router.put('/',mainController.index);
-//Elimiación usuario
+//Eliminación usuario
 router.get('/',mainController.index);
 router.delete('/',mainController.index);
 */
+router.get('/login',userController.login);
+
+
 
 
 module.exports = router;

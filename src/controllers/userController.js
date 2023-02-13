@@ -1,10 +1,11 @@
 const fs = require ('fs');
-const path = require ('path');
-const userPath = path.join(__dirname,"./data/users.json");
 
 const userController = {
-    home: function (req,res) {
-        res.render("index",{lista: users} );
+    login: function (req,res) {
+        res.render("/users/login",{
+
+            title : "Login"
+        });
     },
     showUser : function (req,res){
         
@@ -31,4 +32,4 @@ const userController = {
 
 
 
-modelo.exports = userController
+module.exports = userController

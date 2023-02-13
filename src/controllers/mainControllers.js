@@ -1,31 +1,3 @@
-let productos = [
-    {
-        id: 1,
-        name: "Vinilo Bowie Vinyl",
-        price: "$2.000",
-        quantity: 10,
-        image: "bowie-vinyl.jpeg",
-        description:"El mejor vinilo blanco",
-    },
-    {
-        id: 2,
-        name: "Dvd Queen",
-        price: "$3.000",
-        quantity: 20,
-        image: "dvd.webp",
-        description:"El mejor dvd blanco",
-    },
-    {
-        id: 3,
-        name: "Camisa RadioHead",
-        price: "$13.000",
-        quantity: 100,
-        image: "rh-shirt.webp",
-        description:"la mejor camisa blanco",
-    }
-];
-
-
 const mainController = {
     index: function (req,res) {
         res.render("index",{

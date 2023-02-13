@@ -18,29 +18,32 @@
                 <div class="input-field">
                     <label for="product-name">Nombre de producto</label>
                     <i class="fa-sharp fa-solid fa-box"></i><input type="text" name="product-name" id="product-name"
-                        minlength="3" required>
+                        minlength="3" placeholder="<%= product.product_name %>" required>
                 </div>
 
                 <div class="input-field-small">
                     <label for="product-price">Precio</label>
-                    <i class="fa-solid fa-dollar-sign"></i><input type="number" name="product-price" id="product-price" required>
+                    <i class="fa-solid fa-dollar-sign"></i><input type="number" name="product-price" id="product-price" placeholder="<%= product.product_price %>" required>
                 </div>
 
                 <div class="input-field-small">
-                    <label for="product-quantity">Cantidad</label>
+                    <label for="product-quantity">Cantidad en stock</label>
                     <i class="fa-solid fa-plus-minus"></i><input type="number" name="product-quantity"
-                        id="product-quantity" required>
+                        id="product-quantity" value="<%= product.product_quantity %>" required> <!--BUSCAR PARA QUE SE BORRE EL VALUE-->
                 </div>
 
                 <div class="input-field-small">
                     <label>Categoria</label>
                     <select name="category" class="select-category" required>
+                        <!--<option value="cat0"><%= product.product_category %></option>--> <!--ESTO DEBERIA PONER LA CATEGORIA QUE TIENE EL PRODUCTO-->
                         <option value="cat1">Categoria 1</option>
                         <option value="cat2">Categoria 2</option>
                         <option value="cat3">Categoria 3</option>
                         <option value="cat4">Categoria 4</option>
                     </select>
                 </div>
+
+                <!--AGREGAR img CON LA IMAGEN QUE YA TIENE EL PRODUCTO-->
 
                 <div class="input-img">
                     <label for="img">Agregar imágenes del producto</label>
@@ -50,7 +53,7 @@
                 <div class="input-field">
                     <label for="product-description">Descripción del producto</label>
                     <textarea name="product-description" id="product-description" maxlength="300"
-                        placeholder="Escribir la descripción del producto, máximo de 300 caracteres" required></textarea>
+                     required><%= product.product_description %></textarea>
                 </div>
 
                 <div class="container-buttons">
