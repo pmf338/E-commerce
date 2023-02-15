@@ -3,7 +3,7 @@
 //Register
 //Index
 
-
+/*
 const express = require('express');
 const router = express.Router();
 
@@ -39,3 +39,4 @@ router.get("/editProduct", mainController.editproduct);
 router.get("/contact", mainController.contact);
 
 module.exports = router;
+*/
