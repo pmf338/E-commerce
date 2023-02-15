@@ -1,5 +1,5 @@
 const express = require ('express');
-const router = express.Router();
+const usersRouter = express.Router();
 
 const userController = require ('../controllers/userController');
 
@@ -16,9 +16,9 @@ router.put('/',mainController.index);
 router.get('/',mainController.index);
 router.delete('/',mainController.index);
 */
-router.get('/login',userController.login);
+usersRouter.get('/login',userController.login);
 
 
 
 
-module.exports = router;
+module.exports = usersRouter;

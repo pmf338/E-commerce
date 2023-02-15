@@ -3,8 +3,8 @@
 //Register
 //Index
 
-/*
-const express = require('express');
+
+/*const express = require('express');
 const router = express.Router();
 
 const mainController = require('../controllers/mainControllers')
@@ -38,5 +38,4 @@ router.get("/editProduct", mainController.editproduct);
 //Contacto
 router.get("/contact", mainController.contact);
 
-module.exports = router;
-*/
+module.exports = router;*/

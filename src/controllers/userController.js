@@ -2,9 +2,8 @@ const fs = require ('fs');
 
 const userController = {
     login: function (req,res) {
-        res.render("/users/login",{
-
-            title : "Login"
+        res.render("users/login",{
+            title: "Login"
         });
     },
     showUser : function (req,res){

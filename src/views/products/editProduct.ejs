@@ -13,23 +13,23 @@
     </header>
     <main>
         <div class="main-container">
-            <form class="form-create-product" action="#" method="post">
+            <form class="form-create-product" method="post" action="/editProduct/<%= product.id %>?_method=PUT">
                 <h1 class="title">Edición de Producto</h1>
                 <div class="input-field">
                     <label for="product-name">Nombre de producto</label>
-                    <i class="fa-sharp fa-solid fa-box"></i><input type="text" name="product-name" id="product-name"
-                        minlength="3" placeholder="<%= product.product_name %>" required>
+                    <i class="fa-sharp fa-solid fa-box"></i><input type="text" name="product_name" id="product_name"
+                        minlength="3" value="<%= product.product_name %>" required>
                 </div>
 
                 <div class="input-field-small">
                     <label for="product-price">Precio</label>
-                    <i class="fa-solid fa-dollar-sign"></i><input type="number" name="product-price" id="product-price" placeholder="<%= product.product_price %>" required>
+                    <i class="fa-solid fa-dollar-sign"></i><input type="number" name="product_price" id="product_price" value="<%= product.product_price %>" required>
                 </div>
 
                 <div class="input-field-small">
                     <label for="product-quantity">Cantidad en stock</label>
-                    <i class="fa-solid fa-plus-minus"></i><input type="number" name="product-quantity"
-                        id="product-quantity" value="<%= product.product_quantity %>" required> <!--BUSCAR PARA QUE SE BORRE EL VALUE-->
+                    <i class="fa-solid fa-plus-minus"></i><input type="number" name="product_quantity"
+                        id="product_quantity" value="<%= product.product_quantity %>" required> <!--BUSCAR PARA QUE SE BORRE EL VALUE-->
                 </div>
 
                 <div class="input-field-small">
@@ -47,12 +47,12 @@
 
                 <div class="input-img">
                     <label for="img">Agregar imágenes del producto</label>
-                    <input type="file" name="product-img" accept=".jpg" multiple class="file-option" required>
+                    <input type="file" name="product_img" accept=".jpg" multiple class="file-option">
                 </div>
 
                 <div class="input-field">
                     <label for="product-description">Descripción del producto</label>
-                    <textarea name="product-description" id="product-description" maxlength="300"
+                    <textarea name="product_description" id="product_description" maxlength="300"
                      required><%= product.product_description %></textarea>
                 </div>
 
