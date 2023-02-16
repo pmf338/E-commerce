@@ -3,6 +3,8 @@ const productsRouter = express.Router();
 
 const productController = require ('../controllers/productsController');
 
+// Artistas
+productsRouter.get('/artist',productController.artist);
 //Listado productos
 productsRouter.get('/',productController.index);
 productsRouter.get('/shop',productController.shop);

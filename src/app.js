@@ -21,6 +21,7 @@ app.use('/login', usersRoutes);
 app.use('/register', usersRoutes);
 app.use('/shop', productRoutes);
 app.use('/shop/:id', productRoutes);
+app.use('/artist', productRoutes);
 app.use('/productDetail', productRoutes);
 app.use('/createProduct', productRoutes);
 app.use('/editProduct', productRoutes);

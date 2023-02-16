@@ -79,8 +79,12 @@ const productsController = {
     destroyProduct: function (req, res) {
 
     },
+    artist: function (req, res) {
+        res.render("products/artist", {
+            title: "Artistas",
+        });
+},
 }
-
 
 
 module.exports = productsController
