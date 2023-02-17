@@ -27,6 +27,7 @@ app.use('/createProduct', productRoutes);
 app.use('/editProduct', productRoutes);
 app.use('/editProduct/:id', productRoutes);
 app.use('/contact', usersRoutes);
+app.use('/deleteProduct/:id',productRoutes);
 
 // Desactivamos el 404 para identificar los errores posibles
 /*app.use(function(req,res){
