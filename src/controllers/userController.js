@@ -5,8 +5,8 @@ const userController = {
         res.render("users/login",{
             title: "Login"
         });
-    },
-    showUser : function (req,res){
+    }
+    /*showUser : function (req,res){
         
     },
     createUser : function (req,res){
@@ -26,9 +26,9 @@ const userController = {
     },
     destroyUser : function (req,res){
         
-    }
+    }*/
 }
 
 
 
-module.exports = userController
+module.exports = userController;

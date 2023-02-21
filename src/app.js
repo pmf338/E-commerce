@@ -5,7 +5,7 @@ const path = require('path');
 
 //const mainRoutes = require('./routes/mainRoutes');
 const productRoutes = require('./routes/productsRoutes');
-const usersRoutes = require ('./routes/usersRoutes');
+const usersRoutes = require('./routes/usersRoutes');
 const methodOverride = require('method-override');
 
 app.use(express.static(__dirname + '../../public'));
@@ -16,16 +16,17 @@ app.use(express.json());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
 
-app.use('/', productRoutes);
 app.use('/login', usersRoutes);
 app.use('/register', usersRoutes);
+app.use('/contact', usersRoutes);
+app.use('/', productRoutes);
 app.use('/shop', productRoutes);
 app.use('/shop/:id', productRoutes);
 app.use('/productDetail', productRoutes);
 app.use('/createProduct', productRoutes);
 app.use('/editProduct', productRoutes);
 app.use('/editProduct/:id', productRoutes);
-app.use('/contact', usersRoutes);
+
 
 // Desactivamos el 404 para identificar los errores posibles
 /*app.use(function(req,res){

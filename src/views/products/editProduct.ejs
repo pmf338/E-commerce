@@ -46,7 +46,9 @@
                 <!--AGREGAR img CON LA IMAGEN QUE YA TIENE EL PRODUCTO-->
 
                 <div class="input-img">
-                    <label for="img">Agregar imágenes del producto</label>
+
+                    <img class="img_product" src="images/<%= product.product_image %>" alt="Imagen" class="product_img">
+                    <label for="img">Cambiar imágenes del producto</label>
                     <input type="file" name="product_img" accept=".jpg" multiple class="file-option">
                 </div>
 

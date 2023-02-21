@@ -57,14 +57,14 @@ const productsController = {
         let products = productsController.getProducts();
         products.forEach(function (_product, index) {
             if (_product.id == productId) {
-                console.log (' _product.product_price ', _product.product_price);
-                console.log (' req.body_price ', req.body.product_price)
                 _product.product_name = req.body.product_name;
                 _product.product_price = req.body.product_price;
                 _product.product_quantity = req.body.product_quantity;
                 _product.product_description = req.body.product_description;
                 /*_product.product_category = req.body.category;*/
-                products[index]=_product;
+                _product.product_image = req.body.product_image;
+                
+                products[index] = _product;
             }
         });
 

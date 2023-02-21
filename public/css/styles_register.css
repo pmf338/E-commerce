@@ -110,6 +110,11 @@
     font-size: 15px;
     display: block;
 }
+
+.img_product{
+    width: 100%;
+}
+
 .input-img {
     border:none;
 }
