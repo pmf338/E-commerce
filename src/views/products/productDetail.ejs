@@ -12,67 +12,70 @@
         <%- include('../partials/header.ejs') %>
     </header>
     <main>
-        
 
-            <!-- Esto va a ser un GRID -->
-            <!-- LADO IZQUIERDO : fotorama con carrousel -->
-            <!-- LADO DERECHO: Todos los datos se deberan traer de la bd -->
-            <div class="grid-container">
-                <div class="grid-item">
-                    <div class="main-carrousel fotorama data-transition=" slide" data-clicktransition="crossfade"">
+
+        <!-- Esto va a ser un GRID -->
+        <!-- LADO IZQUIERDO : fotorama con carrousel -->
+        <!-- LADO DERECHO: Todos los datos se deberan traer de la bd -->
+        <div class="grid-container">
+            <div class="grid-item">
+                <div class="main-carrousel fotorama data-transition=" slide" data-clicktransition="crossfade"">
                     <img src="/images/vinilo1.jpg" alt="">
-                        <img src="/images/vinilo2.jpg" alt="">
-                        <img src="/images/vinilo3.jpg" alt="">
-                    </div>
+                    <img src="/images/vinilo2.jpg" alt="">
+                    <img src="/images/vinilo3.jpg" alt="">
                 </div>
-                <div class="grid-item-right">
-                    <div class="main-grid-product-detail">
-                        
-                        <br>
-                        <ul>
-                            <h2><%= product.product_name %></h2>
-                            <li id="price"><label>Precio</label> 
+            </div>
+            <div class="grid-item-right">
+                <div class="main-grid-product-detail">
+
+                    <br>
+                    <ul>
+                        <h2><%= product.product_name %></h2>
+                        <li id="price"><label>Precio</label>
                             <br>
                             <label><%= product.product_price %></label>
-                            </li>
-                            <br>
-                            <li id="quantity">Cantidad <input class="input-data" type="number" name="quantity"
-                                    id="input-quantity" placeholder="Ingrese una cantidad"></li>
-                            <br>
-                            <li id="delivery-date">Fecha estimada de entrega <input class="input-data"
-                                    name="delivery-date" id="input-delivery-date" placeholder="Junio 2023"
-                                    readonly=»readonly»></li> <!--CAMBIAR A FUTURO (Código de cáclulo de fecha)-->
-                        </ul>
-                    </div>
-
-                    <div class="line-separator"></div>
-                    <div class="main-grid-product-description">
+                        </li>
                         <br>
-                        <p>Descripcion</p> <!-- Se trae de la bd -->
-                        <p><%= product.product_description %></p>
-                    </div>
+                        <li id="quantity">Cantidad <input class="input-data" type="number" name="quantity"
+                                id="input-quantity" placeholder="Ingrese una cantidad"></li>
+                        <br>
+                        <li id="delivery-date">Fecha estimada de entrega <input class="input-data" name="delivery-date"
+                                id="input-delivery-date" placeholder="Junio 2023" readonly=»readonly»></li>
+                        <!--CAMBIAR A FUTURO (Código de cáclulo de fecha)-->
+                    </ul>
+                </div>
+
+                <div class="line-separator"></div>
+                <div class="main-grid-product-description">
                     <br>
-                    <div class="main-grid-product-add">
-                        <button class="submit"><a href="#"></a> Agregar al carrito <i class="fa-solid fa-cart-shopping">
-                            </i></button> <!-- traer el icono -->
-                            <br>
-                            <button class="submit"><a href="/editProduct/<%= product.id %>">Editar</a><i class="fa-solid fa-pen-to-square"></i>
-                        </button> <!-- traer el icono -->
-                    </div>
+                    <p>Descripcion</p> <!-- Se trae de la bd -->
+                    <p><%= product.product_description %></p>
+                </div>
+                <br>
+                <div class="main-grid-product-add">
+                    <button class="submit"><a href="#"></a> Agregar al carrito <i class="fa-solid fa-cart-shopping">
+                        </i></button> <!-- traer el icono -->
+                    <br>
+                    <button class="submit"><a href="/editProduct/<%= product.id %>">Editar</a><i
+                            class="fa-solid fa-pen-to-square"></i>
+                    </button> <!-- traer el icono -->
+                    <br>
+                    <button class="submit delete"><a href="/deleteProduct/<%= product.id %>">Eliminar</a></button>
                 </div>
             </div>
+        </div>
 
-            <div class="main-title">
-                <h2>Productos relacionados</h2>
-            </div>
+        <div class="main-title">
+            <h2>Productos relacionados</h2>
+        </div>
 
-            <div class="related-products">
-                <div><img class="zoom" src="/images/the-killers-shirt.webp" alt></div>
-                <div><img class="zoom" src="/images/bowie-vinyl.jpeg" alt></div>
-                <div><img class="zoom" src="/images/signed-cd.webp" alt></div>
-                <div><img class="zoom" src="/images/dvd.webp" alt></div>
-                <div><img class="zoom" src="/images/rh-shirt.webp" alt></div>
-            </div>
+        <div class="related-products">
+            <div><img class="zoom" src="/images/the-killers-shirt.webp" alt></div>
+            <div><img class="zoom" src="/images/bowie-vinyl.jpeg" alt></div>
+            <div><img class="zoom" src="/images/signed-cd.webp" alt></div>
+            <div><img class="zoom" src="/images/dvd.webp" alt></div>
+            <div><img class="zoom" src="/images/rh-shirt.webp" alt></div>
+        </div>
 
 
     </main>
