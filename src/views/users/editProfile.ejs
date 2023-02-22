@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs') %>
+    <link rel="stylesheet" href="/css/styles_register.css">
+    <title>Perfil de usuario</title>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/header.ejs') %>
+    </header>
+    <main>
+        <div class="main-container">
+            <form class="form-create-product" action="#" method="post">
+                <h1 class="title">Editar perfil de usuario</h1>
+
+                <div class="input-field">
+                <label for="product-name">Foto de perfil</label>
+                    <div class="rounded-image">
+                        <img src="images/profile-default.png"/>
+                     </div>              
+                </div>
+
+
+                <div class="input-img">
+                    <input type="file" name="product-img" accept=".jpg" multiple class="file-option" required>
+                </div>
+
+                <div class="input-field">
+                    <label for="product-name">Nombre</label>
+                    <i class="fa-solid fa-user"></i><input type="text" name="user-name" id="user-name"
+                        minlength="3" required>
+                </div>
+
+                <div class="input-field">
+                    <label for="product-name">Nombre de usuario</label>
+                    <i class="fa-solid fa-user"></i><input type="text" name="username" id="username"
+                        minlength="3" required>
+                </div>
+
+                <div class="input-field">
+                    <label for="product-name">Correo electronico</label>
+                    <i class="fa-solid fa-envelope-circle-check"></i><input type="text" name="user-email" id="user-email"
+                        minlength="3" required>
+                </div>
+
+
+                <div class="input-field">
+                    <label for="product-name">Contraseña</label>
+                    <i class="fa-solid fa-list"></i><input type="password" name="user-category" id="user-category"
+                        minlength="3" required>
+                </div>
+
+                <div class="input-field-small">
+                    <label>Categoria del usuario</label>
+                    <select name="category" class="select-category" required>
+                        <option value="cat1">Administrador</option>
+                        <option value="cat2">Cliente</option>
+                    </select>
+                </div>                
+
+                <div class="container-buttons">
+                    <button type="submit">EDITAR PERFIL</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer.ejs') %>
+    </footer>
+
+</body>
+
+</html>
