@@ -55,7 +55,6 @@
 }
 
 .submit{
-  font: Serif;
   background:#fff;
   font-size: 15px;
   border-radius: 5px;
@@ -63,6 +62,11 @@
   padding: 0.30rem;
   background-color: #AFC1D0;
   margin-top: 10px;
+}
+.delete{
+  background-color: red;
+  color: white;
+  text-decoration: none;
 }
 
 .input-data{

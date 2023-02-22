@@ -17,8 +17,17 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
 
 app.use('/', productRoutes);
-app.use('/', usersRoutes);
-
+app.use('/login', usersRoutes);
+app.use('/register', usersRoutes);
+app.use('/shop', productRoutes);
+app.use('/shop/:id', productRoutes);
+app.use('/artist', productRoutes);
+app.use('/productDetail', productRoutes);
+app.use('/createProduct', productRoutes);
+app.use('/editProduct', productRoutes);
+app.use('/editProduct/:id', productRoutes);
+app.use('/contact', usersRoutes);
+app.use('/deleteProduct/:id',productRoutes);
 
 // Desactivamos el 404 para identificar los errores posibles
 /*app.use(function(req,res){

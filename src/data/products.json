@@ -10,7 +10,7 @@
  },
  {
   "id": 2,
-  "product_name": "Vinilo The Beattles 3",
+  "product_name": "Vinilo The Beattles 4",
   "product_price": "11668",
   "product_quantity": "98",
   "product_category": "Vinilo",
@@ -133,5 +133,23 @@
   "product_category": "Ropa",
   "product_image": "image_5.jpg",
   "product_description": "cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia"
+ },
+ {
+  "id": 43,
+  "product_name": "el loco enmanuel",
+  "product_price": "12345",
+  "product_quantity": "2",
+  "product_category": "cat1",
+  "product_image": "darth-vader-lightsaber-star-wars_3840x2160_xtrafondos.com.jpg",
+  "product_description": "JOJOJJEJEJEJIJIJI"
+ },
+ {
+  "id": 96,
+  "product_name": "soda stereo cd",
+  "product_price": "2356",
+  "product_quantity": "2",
+  "product_category": "cat2",
+  "product_image": "darth-vader-lightsaber-star-wars_3840x2160_xtrafondos.com.jpg",
+  "product_description": "ADASDASD"
  }
 ]
