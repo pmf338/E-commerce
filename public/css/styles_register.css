@@ -89,6 +89,32 @@
     position: relative;
     left : 30px;
 }
+.rounded-image {
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 50%;
+    text-align: center;
+}
+
+
+.rounded-image {
+    display: block;
+    width: 250px;
+    height: 250px;
+    background: #E6E7ED;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+.rounded-image img {
+   max-height: 100%;
+   max-width: 100%;
+}
+
 .select-category {
     padding-left: 0px;
     width: 176px
@@ -189,6 +215,9 @@
     }
     .file-option {
         width: 50%;
+    }
+    .rounded-image {
+        display: inline-block;
     }
 
 

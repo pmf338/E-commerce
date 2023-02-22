@@ -17,8 +17,10 @@ router.get('/',mainController.index);
 router.delete('/',mainController.index);
 */
 usersRouter.get('/login',userController.login);
+usersRouter.get('/contact',userController.contact);
 
-
+usersRouter.get('/editProfile',userController.profile);
+usersRouter.get('/createProfile',userController.createProfile);
 
 
 module.exports = usersRouter;
