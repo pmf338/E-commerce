@@ -13,16 +13,15 @@
     </header>
     <main>
         
-
             <!-- Esto va a ser un GRID -->
             <!-- LADO IZQUIERDO : fotorama con carrousel -->
             <!-- LADO DERECHO: Todos los datos se deberan traer de la bd -->
             <div class="grid-container">
                 <div class="grid-item">
                     <div class="main-carrousel fotorama data-transition=" slide" data-clicktransition="crossfade"">
-                    <img src="/images/vinilo1.jpg" alt="">
-                        <img src="/images/vinilo2.jpg" alt="">
-                        <img src="/images/vinilo3.jpg" alt="">
+                        <img src="/images/<%= product.product_image %>" alt="Imagen" class="product_img">
+                        <img src="/images/<%= product.product_image %>" alt="Imagen" class="product_img">
+                        <img src="/images/<%= product.product_image %>" alt="Imagen" class="product_img">
                     </div>
                 </div>
                 <div class="grid-item-right">
