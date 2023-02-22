@@ -10,7 +10,7 @@ productsRouter.get('/',productController.index);
 productsRouter.get('/shop',productController.shop);
 //Ver producto
 productsRouter.get("/productDetail/:id", productController.productDetail);
-// productsRouter.get('/shop/:id',productController.showProduct); REVISAR A FUTURO
+productsRouter.get('/shop/:id',productController.showProduct);
 //Creación producto
 productsRouter.get('/createProduct',productController.createProduct);
 productsRouter.post('/createProduct',productController.storeProduct);
