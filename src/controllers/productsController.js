@@ -53,7 +53,7 @@ const productsController = {
             "product_image": req.body.product_img,
             "product_description":  req.body.product_description || "sin descripcion",
         }
-        console.log("Aca creo el producto");
+        console.log("Aca creo el producto + ", req.body);
         products.push(newProduct);
         console.log("Aca agrego el producto");
         fs.writeFileSync(productsPath, JSON.stringify(products, null, ' '));
@@ -78,7 +78,9 @@ const productsController = {
                 _product.product_quantity = req.body.product_quantity;
                 _product.product_description = req.body.product_description;
                 /*_product.product_category = req.body.category;*/
-                products[index]=_product;
+                _product.product_image = req.body.product_image;
+                
+                products[index] = _product;
             }
         });
 

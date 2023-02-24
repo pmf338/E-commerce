@@ -13,7 +13,7 @@
     </header>
     <main>
         <div class="main-container">
-            <form class="form-create-product" action="#" method="post">
+            <form class="form-create-product" action="#" method="post" enctype="multipart/form-data">
                 <h1 class="title">Creación de Producto</h1>
                 <div class="input-field">
                     <label for="product_name">Nombre de producto</label>
@@ -44,7 +44,7 @@
 
                 <div class="input-img">
                     <label for="img">Agregar imágenes del producto</label>
-                    <input type="file" name="product_img" accept=".jpg" multiple class="file-option" required>
+                    <input type="file" name="product_img" id="product_img" accept=".jpg" multiple class="file-option">
                 </div>
 
                 <div class="input-field">
