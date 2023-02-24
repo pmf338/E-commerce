@@ -1,6 +1,8 @@
 const express = require ('express');
 const productsRouter = express.Router();
 
+const upload = require('../middlewares/multer');
+
 const productController = require ('../controllers/productsController');
 
 // Artistas
@@ -13,7 +15,7 @@ productsRouter.get("/productDetail/:id", productController.productDetail);
 productsRouter.get('/shop/:id',productController.showProduct);
 //Creación producto
 productsRouter.get('/createProduct',productController.createProduct);
-productsRouter.post('/createProduct',productController.storeProduct);
+productsRouter.post('/createProduct',upload.single('product_img') ,productController.storeProduct);
 //Modificación producto
 productsRouter.get('/editProduct/:id',productController.editProduct);
 productsRouter.put('/editProduct/:id',productController.updateProduct);

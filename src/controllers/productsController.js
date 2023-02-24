@@ -53,7 +53,7 @@ const productsController = {
             "product_image": req.body.product_img,
             "product_description":  req.body.product_description || "sin descripcion",
         }
-        console.log("Aca creo el producto");
+        console.log("Aca creo el producto + ", req.body);
         products.push(newProduct);
         console.log("Aca agrego el producto");
         fs.writeFileSync(productsPath, JSON.stringify(products, null, ' '));
