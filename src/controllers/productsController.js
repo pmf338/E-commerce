@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const productsPath = path.join(__dirname, "../data/products.json");
 
+const {validationResult} = require('express-validator');
+
 
 
 const productsController = {
@@ -42,7 +44,20 @@ const productsController = {
         });
     },
     storeProduct: function (req, res) {
-        let idRandom = Math.floor((Math.random() * 1000) + 21)
+        
+        //Validación de errores
+        let errors = validationResult(req);
+        if(!errors.isEmpty())
+        {
+            return res.render("products/createProduct", {
+                title: "Creación de producto",
+                errors : errors.mapped()
+            });
+
+        };
+
+        //Creación de producto
+        let idRandom = Math.floor((Math.random() * 1000) + 21);
         let products = productsController.getProducts();
         let newProduct = {
             "id": idRandom,  //ESTO SE VA A RESOLVER CUANDO USEMOS BD
