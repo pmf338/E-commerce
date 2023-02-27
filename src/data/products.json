@@ -153,59 +153,45 @@
   "product_description": "ADASDASD"
  },
  {
-  "id": 343,
-  "product_name": "dsadas",
-  "product_price": "500",
-  "product_quantity": "2",
-  "product_category": "cat1",
-  "product_description": "sadadsa"
- },
- {
-  "id": 278,
-  "product_name": "ggdfgdf",
-  "product_price": "500",
-  "product_quantity": "1",
-  "product_category": "cat1",
-  "product_description": "fgdfgdfgdf"
- },
- {
-  "id": 481,
-  "product_name": "sdfsd",
-  "product_price": "12",
-  "product_quantity": "3",
-  "product_category": "cat1",
-  "product_description": "jasdojsaojd"
- },
- {
-  "id": 596,
-  "product_name": "jdasodjsao",
-  "product_price": "400",
-  "product_quantity": "2",
-  "product_category": "cat1",
-  "product_description": "asdasdasdas"
- },
- {
-  "id": 110,
-  "product_name": "kkfsd",
-  "product_price": "550",
-  "product_quantity": "2",
-  "product_category": "cat1",
-  "product_description": "fdsfsfsd"
- },
- {
-  "id": 320,
-  "product_name": "pajsdpojsa",
-  "product_price": "700",
-  "product_quantity": "8",
-  "product_category": "cat1",
-  "product_description": "dasdas"
- },
- {
-  "id": 491,
-  "product_name": "dsadas",
-  "product_price": "54654",
+  "id": 969,
+  "product_name": "dasdsa",
+  "product_price": "6545",
   "product_quantity": "5",
   "product_category": "cat1",
-  "product_description": "dasdasdas"
+  "product_description": "fsasfasf"
+ },
+ {
+  "id": 718,
+  "product_name": "dasdsa",
+  "product_price": "6545",
+  "product_quantity": "5",
+  "product_category": "cat1",
+  "product_description": "fsasfasf"
+ },
+ {
+  "id": 1004,
+  "product_name": "dasdsa",
+  "product_price": "6545",
+  "product_quantity": "5",
+  "product_category": "cat1",
+  "product_description": "fsasfasf"
+ },
+ {
+  "id": 264,
+  "product_name": "fdasdsa",
+  "product_price": "2424",
+  "product_quantity": "22",
+  "product_category": "cat1",
+  "product_image": "product-1677457305203.jpg",
+  "product_description": "fdsfsdfsdfsd"
+ },
+ {
+  "id": 293,
+  "product_name": "fdfsdfsdf",
+  "product_price": "1651",
+  "product_quantity": "8",
+  "product_category": "cat1",
+  "product_image": "product-1677458704548.jpg",
+  "product_description": "dadasdasdasdas"
  }
 ]

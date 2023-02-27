@@ -18,7 +18,7 @@
             
             <% lista.forEach(producto => { %>
             <div class="product-item">
-                <a href="/productDetail/<%= producto.id %>"><img src="images/<%= producto.product_image %>" alt="Imagen" class="product_img"> </a>
+                <a href="/productDetail/<%= producto.id %>"><img src="images/products/<%= producto.product_image %>" alt="Imagen" class="product_img"> </a>
                 <a href="/productDetail"><h3 class="product-name"><%= producto.product_name %></h3></a>
                 <p class="value-category">CATEGORIA</p> <!--  producto.category %> -->
                 <div class="product-values">

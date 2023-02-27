@@ -50,14 +50,14 @@ const productsController = {
             "product_price": req.body.product_price || 0,
             "product_quantity": req.body.product_quantity || 0,
             "product_category": req.body.category,
-            "product_image": req.body.product_img,
+            "product_image": req.file.filename,
             "product_description":  req.body.product_description || "sin descripcion",
         }
-        console.log("Aca creo el producto + ", req.body);
+        //console.log("Aca creo el producto + ", req.body);
         products.push(newProduct);
-        console.log("Aca agrego el producto");
+        //console.log("Aca agrego el producto");
         fs.writeFileSync(productsPath, JSON.stringify(products, null, ' '));
-        console.log("Aca escriubo el producto");
+        //console.log("Aca escriubo el producto");
         res.redirect ('/shop')
     },
     editProduct: function (req, res) {
