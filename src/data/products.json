@@ -151,47 +151,7 @@
   "product_category": "cat2",
   "product_image": "darth-vader-lightsaber-star-wars_3840x2160_xtrafondos.com.jpg",
   "product_description": "ADASDASD"
- },
- {
-  "id": 969,
-  "product_name": "dasdsa",
-  "product_price": "6545",
-  "product_quantity": "5",
-  "product_category": "cat1",
-  "product_description": "fsasfasf"
- },
- {
-  "id": 718,
-  "product_name": "dasdsa",
-  "product_price": "6545",
-  "product_quantity": "5",
-  "product_category": "cat1",
-  "product_description": "fsasfasf"
- },
- {
-  "id": 1004,
-  "product_name": "dasdsa",
-  "product_price": "6545",
-  "product_quantity": "5",
-  "product_category": "cat1",
-  "product_description": "fsasfasf"
- },
- {
-  "id": 264,
-  "product_name": "fdasdsa",
-  "product_price": "2424",
-  "product_quantity": "22",
-  "product_category": "cat1",
-  "product_image": "product-1677457305203.jpg",
-  "product_description": "fdsfsdfsdfsd"
- },
- {
-  "id": 293,
-  "product_name": "fdfsdfsdf",
-  "product_price": "1651",
-  "product_quantity": "8",
-  "product_category": "cat1",
-  "product_image": "product-1677458704548.jpg",
-  "product_description": "dadasdasdasdas"
  }
+ 
+
 ]
