@@ -1,6 +1,7 @@
 const express = require ('express');
 const usersRouter = express.Router();
-
+const guestMiddleware = require('../middlewares/guestMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware');
 const userController = require ('../controllers/userController');
 
 /*
@@ -16,10 +17,16 @@ router.put('/',mainController.index);
 router.get('/',mainController.index);
 router.delete('/',mainController.index);
 */
-usersRouter.get('/login',userController.login);
+
+//vista para el login
+usersRouter.get('/login', authMiddleware, userController.login);
+//metodo post para realizar el login
+usersRouter.post('/login',userController.processLogin);
+
 usersRouter.get('/contact',userController.contact);
 
-usersRouter.get('/editProfile',userController.profile);
+usersRouter.get('/profile', guestMiddleware, userController.profile);
+usersRouter.get('/editProfile',userController.editProfile);
 usersRouter.get('/createProfile',userController.createProfile);
 
 
