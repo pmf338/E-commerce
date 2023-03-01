@@ -12,12 +12,29 @@ const userController = {
         });
 
     },
+    processLogin: function (req,res) {
+        let users = JSON.parse(fs.readFileSync(usersPath, 'utf-8'));
+        let user = users.find(user => user.user_email == req.body.user);
+
+        if (user){
+            req.session.userLogged = user;
+
+            res.redirect('/profile')
+        } 
+
+        res.json({
+            msg: "Respuesta del process Login",
+            data: req.body,
+            user
+        });
+
+    },
     contact: function (req, res) {
         res.render("users/contact", {
             title: "Contact",
         });
     },
-    profile: function (req, res) {
+    editProfile: function (req, res) {
         res.render("users/editProfile", {
             title: "Editar perfil",
             lista: userController.getUsers()
@@ -29,10 +46,15 @@ const userController = {
             lista: userController.getUsers()
         });
     },
-    showUser : function (req,res){
+    profile : function (req,res) {
 
+        res.render('users/profile', {
+            title: 'Profile',
+            user: req.session.userLogged
+        } );
         
     },
+
     createUser : function (req,res){
 
     },
