@@ -7,10 +7,18 @@
             </span>
             <div class="header-user">
                 <ul>
+                <% if (locals.user) { %>
                     <li>
-                    <% if (locals.user) { %>
-                            <p> Hola <%= user.user_name %> </p>    
+                        <p> Hola <%= user.user_name %> </p> 
+                    </li>
+                    <li>
+                       <a href="/logout" id="logout">   
+                        <button>  <i class="fa-solid fa-right-from-bracket"></i>
+                        </button>
+                        </a>
+                    </li>    
                     <% } else {console.log("No hay sesion", locals)} %>
+                    <li>
                         <a href="/login" id="login">
                         <button id="login-signin"><i class="fa-solid fa-user"></i></button>
                         </a>

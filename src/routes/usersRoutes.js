@@ -20,6 +20,7 @@ router.delete('/',mainController.index);
 
 //vista para el login
 usersRouter.get('/login', authMiddleware, userController.login);
+usersRouter.get('/logout', guestMiddleware, userController.logout);
 //metodo post para realizar el login
 usersRouter.post('/login',userController.processLogin);
 
