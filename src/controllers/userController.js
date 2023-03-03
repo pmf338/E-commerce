@@ -14,13 +14,21 @@ const userController = {
     },
     processLogin: function (req,res) {
         let users = JSON.parse(fs.readFileSync(usersPath, 'utf-8'));
-        let user = users.find(user => user.user_email == req.body.user);
+        let user = users.find(user => user.user_email == req.body.user && user.user_password == req.body.pass);
 
         if (user){
             req.session.userLogged = user;
-
+            if (req.body.rememberme) {
+                res.cookie(
+                    'userLogged',
+                    user,
+                    {maxAge: 1000 * 60 * 60 * 24 } //Un dia de Login
+                );
+            }
             res.redirect('/profile')
-        } 
+        }  else {
+            console.log("no se inicio sesion", req.body)
+        }
 
         res.json({
             msg: "Respuesta del process Login",
@@ -55,8 +63,11 @@ const userController = {
         
     },
 
-    createUser : function (req,res){
-
+    logout : function (req,res){
+        console.log("cerrar sesion");
+        req.session.destroy();
+        console.log("retornar");
+        return res.redirect('/');
     },
     storeUser : function (req,res){
         

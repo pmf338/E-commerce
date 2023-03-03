@@ -3,7 +3,7 @@ const app = express();
 const PORT = 3002;
 const path = require('path');
 const session = require('express-session');
-
+const cookieParser = require('cookie-parser');
 const productRoutes = require('./routes/productsRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 const methodOverride = require('method-override');
@@ -16,6 +16,7 @@ app.use(methodOverride('_method'));
 app.use(express.urlencoded({extended: true}));
 app.use(userSessionMiddleware);
 app.use(express.json());
+app.use(cookieParser());
 app.use(session({
     secret: 'secret',
     resave: false,
