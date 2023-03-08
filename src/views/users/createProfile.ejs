@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <%- include('../partials/head.ejs') %>
     <link rel="stylesheet" href="/css/styles_register.css">
     <title>Perfil de usuario</title>
 </head>
-
 <body>
     <header>
         <%- include('../partials/header.ejs') %>
@@ -17,56 +15,55 @@
                 <h1 class="title">Crear perfil de usuario</h1>
 
                 <div class="input-field">
-                <label for="product-name">Foto de perfil</label>
+                <label>Foto de perfil</label>
                     <div class="rounded-image">
                         <img src="images/profile-default.png"/>
                      </div>              
                 </div>
 
-
                 <div class="input-img">
-                    <input type="file" name="product-img" accept=".jpg" multiple class="file-option" required>
+                    <input type="file" name="user-img" accept=".jpg" multiple class="file-option" required>
                 </div>
 
                 <div class="input-field">
-                    <label for="product-name">Nombre</label>
-                    <i class="fa-solid fa-user"></i><input type="text" name="user-name" id="user-name"
+                    <label for="name">Nombre</label>
+                    <i class="fa-solid fa-user"></i><input type="text" name="name" id="name"
                         minlength="3" required>
                 </div>
 
                 <div class="input-field">
-                    <label for="product-name">Nombre de usuario</label>
-                    <i class="fa-solid fa-user"></i><input type="text" name="username" id="username"
+                    <label for="user_name">Nombre de usuario</label>
+                    <i class="fa-solid fa-user"></i><input type="text" name="user_name" id="user_name"
                         minlength="3" required>
                 </div>
 
                 <div class="input-field">
-                    <label for="product-name">Correo electronico</label>
-                    <i class="fa-solid fa-envelope-circle-check"></i><input type="text" name="user-email" id="user-email"
+                    <label for="user_email">Correo electronico</label>
+                    <i class="fa-solid fa-envelope-circle-check"></i><input type="text" name="user_email" id="user_email"
                         minlength="3" required>
                 </div>
 
                 <div class="input-field">
-                    <label for="product-name">Confirmar correo electronico</label>
-                    <i class="fa-solid fa-envelope-circle-check"></i><input type="text" name="user-email" id="user-email"
+                    <label for="user_email_confirm">Confirmar correo electronico</label>
+                    <i class="fa-solid fa-envelope-circle-check"></i><input type="text" name="user_email_confirm" id="user_email_confirm"
                         minlength="3" required>
                 </div>
 
                 <div class="input-field">
-                    <label for="product-name">Contraseña</label>
-                    <i class="fa-solid fa-list"></i><input type="password" name="user-category" id="user-category"
+                    <label for="user_pass">Contraseña</label>
+                    <i class="fa-solid fa-list"></i><input type="password" name="user_pass" id="user_pass"
                         minlength="3" required>
                 </div>
 
                 <div class="input-field">
-                    <label for="product-name">Confirmar contraseña</label>
-                    <i class="fa-solid fa-list"></i><input type="password" name="user-category" id="user-category"
+                    <label for="user_pass_confirm">Confirmar contraseña</label>
+                    <i class="fa-solid fa-list"></i><input type="password" name="user_pass_confirm" id="user_pass_confirm"
                         minlength="3" required>
                 </div>                
 
                 <div class="input-field-small">
                     <label>Categoria del usuario</label>
-                    <select name="category" class="select-category" required>
+                    <select name="user_profile" class="select-category" required>
                         <option value="cat1">Administrador</option>
                         <option value="cat2">Cliente</option>
                     </select>
@@ -78,11 +75,8 @@
             </form>
         </div>
     </main>
-
     <footer>
         <%- include('../partials/footer.ejs') %>
     </footer>
-
 </body>
-
 </html>
