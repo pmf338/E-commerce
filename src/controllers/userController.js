@@ -27,7 +27,7 @@ const userController = {
             }
             res.redirect('/profile')
         }  else {
-            console.log("no se inicio sesion", req.body)
+            /*console.log("no se inicio sesion", req.body)*/
         }
 
         res.json({
@@ -73,17 +73,18 @@ const userController = {
 
     storeUser : function (req,res){
         //Validación de errores
-        let errors = validationResult(req);
+        /*let errors = validationResult(req);
         if(!errors.isEmpty())
         {
             return res.render("users/createProfile", {
                 title: "Creación de usuario",
                 errors : errors.mapped()
             });
-        };
+        };*/
         //Guardado del usuario
         let idRandom = Math.floor((Math.random() * 1000) + 21); //Id random
         let users = userController.getUsers();
+        console.log('user_image',req.file);
         let newUser = {
             "id" : idRandom,
             "user_name" : req.body.user_name,
@@ -91,7 +92,9 @@ const userController = {
             "user_password" : req.body.user_pass,
             "user_category" : req.body.user_category,
             "user_image" : req.file.filename,
+
         }
+        
         console.log("Guardado del usuario : ",req.body.user_name);
         users.push(newUser);
         fs.writeFileSync(usersPath,JSON.stringify(users,null,' '));
