@@ -31,15 +31,14 @@ footer {
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
-.main-copy-redes .footer-redes a {
+.main-copy-redes .footer-redes svg {
 	display: inline-block;
 	text-decoration: none;
 	width: 40px;
 	height: 40px;
 	line-height: 40px;
 	border-radius:50%;
-	background: #fff;
-	color: #000;
+	color:white;
 	text-align: center;
 }
 .main-copy-redes .footer-copy {

@@ -1,39 +1,60 @@
-<div class="header-top">
-            <div class="header-div-logo"> 
-                <a href="/"><img class="img-logo" src="/images/Rocket-Music.svg" alt="imagen-logo"></a>
-            </div>
-            <span>
-                <i class="fa-solid fa-compact-disc"></i>Ponele música a tu vida
-            </span>
-            <div class="header-user">
-                <ul>
-                    <li>
-                        <a href="/login" id="login">
-                        <button id="login-signin"><i class="fa-solid fa-user"></i></button>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/productCart" id="productCart">
-                        <button id="cart"><i class="fa-solid fa-cart-shopping"></i></button>
-                        </a>
-                    </li>
-                    <!-- Este boton se va a modificar con JS para Loguin / Iniciar Sesión -->
-                </ul>
+<div class="container-fluid">
+    <div class="row justify-content-between">
+        <!--Logo + Search Bar-->
+        <div class="col col-lg-3 col-xl-2 d-flex align-items-center order-1 order-lg-1">
+            <a href="#" class="logo me-2">
+                <img class="img-logo" src="/images/products/Rocket_Music_BN.svg" alt="imagen-logo">
+            </a> 
+            <div class="search-bar d-none d-sm-block">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                      </svg>
+                </div>
+                <input type="search" name="search-navbar" id="search-navbar" placeholder="Buscar en la tienda">
             </div>
         </div>
-        <div class="header-bottom">
-            <a href="#" class="bars-button"><i class="fa-solid fa-bars"></i></a>
-            <nav class="header-nav-bar">
-                <ul>
-                    <li><a href="/artist" id="artist">Artistas</a></li>
-                    <li><a href="/shop" id="shop">Tienda</a></li>
-                    <li><a href="/contact" id="contact">Contacto</a></li>
-               </ul>
-            </nav>
-            <ul class="header-search-bar">
-                <li><input type="search" name="search-bar" id="search-bar" placeholder="Buscar en la tienda"></li>
-                <li><button id="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button></li>
-                <!-- Mobile + Tablet : Apretar el boton para aparecer la barra de search -->
-            </ul>
+        <!--Menu Icons-->
+        <div class="col-12 col-xl-6 menu text-center order-3 order-lg-2">
+            <a href="/" class="active">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                    <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
+                  </svg>
+            </a>
+            <a href="/artists">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic" viewBox="0 0 16 16">
+                    <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                    <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                  </svg>
+            </a>
+            <a href="/shop">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shop-window" viewBox="0 0 16 16">
+                    <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h12V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zm2 .5a.5.5 0 0 1 .5.5V13h8V9.5a.5.5 0 0 1 1 0V13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a.5.5 0 0 1 .5-.5z"/>
+                  </svg>
+            </a>
+            <a href="/contact">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                  </svg>
+            </a>
+        </div>
+        <!--Profile + Button-->
+        <nav class="col-auto col-lg-3 col-xl-2 profile-btns text-end d-flex align-items-center justify-content-end order-2 order-lg-3">
+            <!-- completar con una foto perfil pequeña en caso de estar logueado -->
+            <a href="#" class="profile">
+                <img src="https://elnueve-compress.s3-accelerate.amazonaws.com/files/1499630969694Ricardo%20Fort.jpg" alt=""><span class="fw-light d-none d-sm-block">Comandante</span>
+            </a>
+            <a href="/login">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
+                  </svg>
+            </a>
+            <a href="/productCart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                  </svg>
+            </a>
+        </nav>
+    </div>
 </div>
-
