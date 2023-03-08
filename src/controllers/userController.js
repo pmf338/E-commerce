@@ -55,7 +55,7 @@ const userController = {
         });
     },
 
-    profile : function (req,res) {
+    userProfile : function (req,res) {
 
         res.render('users/profile', {
             title: 'Profile',
