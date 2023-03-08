@@ -5,14 +5,14 @@
   "user_email": "tkurt0@latimes.com",
   "user_password": "CT3aX4",
   "user_category": "administrador",
-  "user_image": "image_3.jpg"
+  "user_image": "/products/signed-cd.webp"
 }, {
   "id": 2,
   "user_name": "Rutter Enefer",
   "user_email": "renefer1@unc.edu",
   "user_password": "EjWfQj6",
   "user_category": "cliente",
-  "user_image": "image_3.jpg"
+  "user_image": "/products/signed-cd.webp"
 }, {
   "id": 3,
   "user_name": "Cristine Huskisson",
