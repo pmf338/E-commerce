@@ -65,7 +65,7 @@ const productsController = {
             "product_price": req.body.product_price || 0,
             "product_quantity": req.body.product_quantity || 0,
             "product_category": req.body.category,
-            "product_image": req.file.filename,
+            "product_image":  req.file ? req.file.filename : "404.jpg",
             "product_description":  req.body.product_description || "sin descripcion",
         }
         //console.log("Aca creo el producto + ", req.body);

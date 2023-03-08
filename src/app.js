@@ -8,11 +8,13 @@ const productRoutes = require('./routes/productsRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 const methodOverride = require('method-override');
 
+//Middlewares
 app.use(express.static(__dirname + '../../public'));
 app.use(express.static(path.join(__dirname, '../public')));
-app.use(methodOverride('_method'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+
+app.use(methodOverride('_method'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');

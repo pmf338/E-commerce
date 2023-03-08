@@ -17,7 +17,18 @@ productsRouter.get("/productDetail/:id", productController.productDetail);
 productsRouter.get('/shop/:id',productController.showProduct);
 //Creación producto
 productsRouter.get('/createProduct',productController.createProduct);
-productsRouter.post('/createProduct',upload.single('product_image'),rules,productController.storeProduct);
+productsRouter.post('/createProduct',upload.single('product_image'),rules,productController.storeProduct)
+/*
+(req, res) => {
+    
+    if(req.file.filename){
+
+        upload.single('product_image'),rules,productController.storeProduct;
+    }
+    
+
+});
+*/
 //Modificación producto
 productsRouter.get('/editProduct/:id',productController.editProduct);
 productsRouter.put('/editProduct/:id',productController.updateProduct);

@@ -1,6 +1,8 @@
 const express = require ('express');
 const usersRouter = express.Router();
 
+const uploadUser = require('../middlewares/multerUsers');
+
 const userController = require ('../controllers/userController');
 
 /*
@@ -21,6 +23,7 @@ usersRouter.get('/contact',userController.contact);
 
 usersRouter.get('/editProfile',userController.profile);
 usersRouter.get('/createProfile',userController.createProfile);
+usersRouter.post('/createProfile',uploadUser.any('user_img'),userController.storeUser)
 
 
 

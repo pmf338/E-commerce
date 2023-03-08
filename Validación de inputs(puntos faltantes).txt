@@ -1,0 +1,14 @@
+createProduct:
+
+			-cantidad {min : 0}
+			-descripción {maximo: 300}
+			-imagen (al menos una imagen valida)
+editProduct:
+Misma validacion que createProduct
+
+login:
+Validar que se ingrese al menos un nombre de usuario
+.notEmpty()
+
+createProfile:
+-Que el nombre no este vacio (notEmpty:)

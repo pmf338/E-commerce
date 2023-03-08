@@ -6,7 +6,7 @@ const storage = multer.diskStorage({
 
      destination : function (req, file, cb){
 
-        cb(null, path.join(__dirname, '../../public/images/products'));
+        cb(null, path.join(__dirname, '../../public/images/users'));
 
      },
 
@@ -17,6 +17,6 @@ const storage = multer.diskStorage({
       }
 });
 
-const upload = multer({storage});
+const uploadUser = multer({storage});
 
-module.exports = upload;
+module.exports = uploadUser;
