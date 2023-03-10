@@ -40,37 +40,36 @@ const userController = {
     contact: function (req, res) {
         res.render("users/contact", {
             title: "Contact",
+            user: req.session.userLogged
         });
     },
     editProfile: function (req, res) {
         res.render("users/editProfile", {
             title: "Editar perfil",
-            lista: userController.getUsers()
+            lista: userController.getUsers(),
+            user: req.session.userLogged
         });
     },
     createUser: function (req, res) {
         res.render("users/createProfile", {
             title: "Creación de usuario",
-            lista: userController.getUsers() //EN CASO DE QUE SE QUIERA TRAER ALGUN USUARIO PARA COPIAR SUS PERMISOS
+            lista: userController.getUsers(),
+            user: req.session.userLogged //Siendo Admin puedo crear nuevos usuarios
+            //ToDo : EN CASO DE QUE SE QUIERA TRAER ALGUN USUARIO PARA COPIAR SUS PERMISOS
         });
     },
-
     userProfile : function (req,res) {
-
         res.render('users/profile', {
             title: 'Profile',
             user: req.session.userLogged
         } );
-        
     },
-
     logout : function (req,res){
         console.log("cerrar sesion");
         req.session.destroy();
         console.log("retornar");
         return res.redirect('/');
     },
-
     storeUser : function (req,res){
         //Validación de errores
         let errors = validationResult(req);
@@ -78,7 +77,8 @@ const userController = {
         {
             return res.render("users/createProfile", {
                 title: "Creación de usuario",
-                errors : errors.mapped()
+                errors : errors.mapped(),
+                user: req.session.userLogged
             });
         };
         //Guardado del usuario
@@ -102,7 +102,8 @@ const userController = {
         let _user = userController.getUsers().find(user => user.id == userId);
         res.render("users/editProfile",{
             title: "User",
-            user : _user
+            editing_user : _user,
+            user: req.session.userLogged
         })
     },
     updateUser : function (req,res){
@@ -113,9 +114,7 @@ const userController = {
     },
     destroyUser : function (req,res){
         
-
     },
-
 }
 
 
