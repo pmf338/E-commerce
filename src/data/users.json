@@ -135,18 +135,39 @@
   "user_address": "Calle Falsa 15"
  },
  {
-  "id": 712,
-  "user_name": "dasdas",
-  "user_email": "da@dasd.com",
+  "id": 161,
+  "user_name": "asdas",
+  "user_email": "dasda@gmail.com",
   "user_password": "1111",
-  "user_address": "Calle Falsa 18"
+  "user_category": "Administrador",
+  "user_image": "product-1678421663347.jpg",
+  "user_address": "fsdfsd"
  },
  {
-  "id": 847,
-  "user_name": "sadasda",
-  "user_email": "dasda@gmail.com",
-  "user_password": "2222",
-  "user_category": "cat2",
-  "user_address": "Calle Falsa 19"
+  "id": 552,
+  "user_name": "dhasidh",
+  "user_email": "dasd@dasd.com",
+  "user_password": "1111",
+  "user_category": "Administrador",
+  "user_image": "product-1678422322871.jpg",
+  "user_address": "dasdas"
+ },
+ {
+  "id": 84,
+  "user_name": "dhasidh",
+  "user_email": "dasd@dasd.com",
+  "user_password": "1111",
+  "user_category": "Administrador",
+  "user_image": "product-1678422366780.jpg",
+  "user_address": "dasdas"
+ },
+ {
+  "id": 772,
+  "user_name": "dhasidh",
+  "user_email": "dasd@dasd.com",
+  "user_password": "1111",
+  "user_category": "Administrador",
+  "user_image": "user-1678422610155.jpg",
+  "user_address": "dasdas"
  }
 ]

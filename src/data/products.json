@@ -151,14 +151,5 @@
   "product_category": "cat2",
   "product_image": "tb-vinyl.jpeg",
   "product_description": "ADASDASD"
- },
- {
-  "id": 78,
-  "product_name": "dasdasd",
-  "product_price": "500",
-  "product_quantity": "2",
-  "product_category": "cat1",
-  "product_image": "product-1678244743417.jpg",
-  "product_description": "sdasdasdasda"
  }
 ]

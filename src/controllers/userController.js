@@ -84,7 +84,6 @@ const userController = {
         //Guardado del usuario
         let idRandom = Math.floor((Math.random() * 1000) + 21); //Id random
         let users = userController.getUsers();
-        console.log('user_image',req.file);
         let newUser = {
             "id" : idRandom,
             "user_name" : req.body.user_name,

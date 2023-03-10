@@ -1,15 +1,13 @@
 const express = require ('express');
 const usersRouter = express.Router();
 
-const upload = require('../middlewares/multer');
-const uploadUsers = require('../middlewares/multerUsers');
+const uploadUser = require('../middlewares/multer');
 
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 
 const userController = require ('../controllers/userController');
-const rules = require('../middlewares/validator');
-const rulesUsers = require('../middlewares/validatorUsers');
+//const rulesUsers = require('../middlewares/validatorUsers');
 
 
 //métodos del login
@@ -18,7 +16,7 @@ usersRouter.get('/logout', guestMiddleware, userController.logout);
 usersRouter.post('/login',userController.processLogin);
 //Creación usuario
 usersRouter.get('/createProfile',userController.createUser);
-usersRouter.post('/createProfile',uploadUsers.single('user_image'),userController.storeUser);
+usersRouter.post('/createProfile',uploadUser.single('user_image'),userController.storeUser);
 //Modificación usuario
 usersRouter.get('/editProfile/:id',userController.editUser);
 usersRouter.put('/editProfile/:id',userController.updateUser);
