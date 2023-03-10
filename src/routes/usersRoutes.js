@@ -17,8 +17,8 @@ usersRouter.get('/login', authMiddleware, userController.login);
 usersRouter.get('/logout', guestMiddleware, userController.logout);
 usersRouter.post('/login',userController.processLogin);
 //Creación usuario
-usersRouter.get('/createProfile',uploadUsers.single('user_image'),rulesUsers,userController.createUser);
-usersRouter.post('/createProfile',userController.storeUser);
+usersRouter.get('/createProfile',userController.createUser);
+usersRouter.post('/createProfile',uploadUsers.single('user_image'),userController.storeUser);
 //Modificación usuario
 usersRouter.get('/editProfile/:id',userController.editUser);
 usersRouter.put('/editProfile/:id',userController.updateUser);

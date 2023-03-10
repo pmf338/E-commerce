@@ -2,7 +2,7 @@ const multer = require ('multer');
 const path = require('path');
 
 
-const storage = multer.diskStorage({
+const Userstorage = multer.diskStorage({
 
      destination : function (req, file, cb){
 
@@ -12,11 +12,11 @@ const storage = multer.diskStorage({
 
      filename : function (req, file, cb){
 
-      cb(null, 'product-' + Date.now() + path.extname(file.originalname));
+      cb(null, 'user-' + Date.now() + path.extname(file.originalname));
      
       }
 });
 
-const uploadUser = multer({storage});
+const uploadUser = multer({Userstorage});
 
 module.exports = uploadUser;

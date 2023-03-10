@@ -92,6 +92,7 @@ const userController = {
             "user_password" : req.body.user_pass,
             "user_category" : req.body.user_category,
             "user_image" : req.file.filename,
+            "user_address" : req.body.user_address
 
         }
         
