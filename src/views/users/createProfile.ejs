@@ -11,7 +11,7 @@
     </header>
     <main>
         <div class="main-container">
-            <form class="form-create-product" action="#" method="post">
+            <form class="form-create-product" action="#" method="post" enctype="multipart/form-data">
                 <h1 class="title">Crear perfil de usuario</h1>
 
                 <div class="input-field">
@@ -23,7 +23,8 @@
 
                 <div class="input-img">
 
-                    <input type="file" name="user_img" id="user_img" accept=".jpg" multiple class="file-option" required>
+                    <input type="file" id="user_image" name="user_image" accept=".jpg" multiple class="file-option">
+
 
                 </div>
 
@@ -40,13 +41,13 @@
                 </div>
 
                 <div class="input-field">
-                    <label for="user_email">Correo electronico</label>
+                    <label for="user_email">Correo electrónico</label>
                     <i class="fa-solid fa-envelope-circle-check"></i><input type="text" name="user_email" id="user_email"
                         minlength="3" required>
                 </div>
 
                 <div class="input-field">
-                    <label for="user_email_confirm">Confirmar correo electronico</label>
+                    <label for="user_email_confirm">Confirmar correo electrónico</label>
                     <i class="fa-solid fa-envelope-circle-check"></i><input type="text" name="user_email_confirm" id="user_email_confirm"
                         minlength="3" required>
                 </div>
@@ -61,13 +62,20 @@
                     <label for="user_pass_confirm">Confirmar contraseña</label>
                     <i class="fa-solid fa-list"></i><input type="password" name="user_pass_confirm" id="user_pass_confirm"
                         minlength="3" required>
-                </div>                
+                </div>
+                
+                <div class="input-field">
+                    <label for="user_address">Ingrese la dirección de su domicilio</label>
+                    <i class="fa-solid fa-list"></i><input type="text" name="user_address" id="user_address"
+                        minlength="3">
+                </div> 
 
+                <!--Ocultar cuando ingrese un cliente-->
                 <div class="input-field-small">
                     <label>Categoria del usuario</label>
-                    <select name="user_profile" class="select-category" required>
-                        <option value="cat1">Administrador</option>
-                        <option value="cat2">Cliente</option>
+                    <select name="user_category" class="select-category" required>
+                        <option value="Administrador">Administrador</option>
+                        <option value="Cliente">Cliente</option>
                     </select>
                 </div>                
 

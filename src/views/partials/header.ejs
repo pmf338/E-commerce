@@ -41,11 +41,7 @@
         <!--Profile + Button-->
         <nav class="col-auto col-lg-3 col-xl-2 profile-btns text-end d-flex align-items-center justify-content-end order-2 order-lg-3">
             <!-- completar con una foto perfil pequeña en caso de estar logueado -->
-            <%
-            console.log("userLogged : ",locals.user);
-            if (locals.user){
-                console.log("adentro del if");
-                %>
+            <% if (locals.user) { %>
             <a href="/profile" class="profile">
                 <img src="<%= user.user_image %>" alt=""><span class="fw-light d-none d-sm-block"><%= user.user_name %></span>
             </a>
@@ -55,9 +51,7 @@
                     <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
                   </svg>
             </a>
-            <% } else { 
-                console.log("adentro del else");
-                %>
+            <% } else { %>
             <a href="/login">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-up" viewBox="0 0 16 16">
                     <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>

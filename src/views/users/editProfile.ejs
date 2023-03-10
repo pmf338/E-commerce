@@ -17,7 +17,7 @@
                 <h1 class="title">Editar perfil de usuario</h1>
 
                 <div class="input-field">
-                <label for="product-name">Foto de perfil</label>
+                <label for="rounded-image">Foto de perfil</label>
                     <div class="rounded-image">
                         <img src="images/profile-default.png"/>
                      </div>              
@@ -25,33 +25,39 @@
 
 
                 <div class="input-img">
-                    <input type="file" name="product-img" accept=".jpg" multiple class="file-option" required>
+                    <input type="file" name="user_image_edit" id="user_image_edit" accept=".jpg" multiple class="file-option" required>
                 </div>
 
                 <div class="input-field">
-                    <label for="product-name">Nombre</label>
-                    <i class="fa-solid fa-user"></i><input type="text" name="user-name" id="user-name"
+                    <label for="user_name">Nombre</label>
+                    <i class="fa-solid fa-user"></i><input type="text" name="user_name" id="user_name"
                         minlength="3" required>
                 </div>
 
                 <div class="input-field">
-                    <label for="product-name">Nombre de usuario</label>
-                    <i class="fa-solid fa-user"></i><input type="text" name="username" id="username"
+                    <label for="user_username">Nombre de usuario</label>
+                    <i class="fa-solid fa-user"></i><input type="text" name="user_username" id="user_username"
                         minlength="3" required>
                 </div>
 
                 <div class="input-field">
-                    <label for="product-name">Correo electronico</label>
-                    <i class="fa-solid fa-envelope-circle-check"></i><input type="text" name="user-email" id="user-email"
+                    <label for="user_email">Correo electronico</label>
+                    <i class="fa-solid fa-envelope-circle-check"></i><input type="text" name="user_email" id="user_email"
                         minlength="3" required>
                 </div>
 
 
                 <div class="input-field">
-                    <label for="product-name">Contraseña</label>
-                    <i class="fa-solid fa-list"></i><input type="password" name="user-category" id="user-category"
+                    <label for="user_password">Contraseña</label>
+                    <i class="fa-solid fa-list"></i><input type="password" name="user_password" id="user_password"
                         minlength="3" required>
                 </div>
+
+                <div class="input-field">
+                    <label for="user_address">Ingrese la dirección de su domicilio</label>
+                    <i class="fa-solid fa-list"></i><input type="text" name="user_address" id="user_address"
+                        minlength="3">
+                </div> 
 
                 <div class="input-field-small">
                     <label>Categoria del usuario</label>
