@@ -1,6 +1,8 @@
 const fs = require ('fs');
 const path = require('path');
 const usersPath = path.join(__dirname, "../data/users.json");
+const bcrypt = require('bcryptjs');
+const { nextTick } = require('process');
 
 const userController = {
     getUsers: function () {
@@ -14,7 +16,7 @@ const userController = {
     },
     processLogin: function (req,res) {
         let users = JSON.parse(fs.readFileSync(usersPath, 'utf-8'));
-        let user = users.find(user => user.user_email == req.body.user && user.user_password == req.body.pass);
+        let user = users.find(user => user.user_email == req.body.user && bcrypt.compareSync(req.body.pass, user.user_password));
 
         if (user){
             req.session.userLogged = user;
@@ -88,9 +90,9 @@ const userController = {
             "id" : idRandom,
             "user_name" : req.body.user_name,
             "user_email" : req.body.user_email,
-            "user_password" : req.body.user_pass,
+            "user_password" : bcrypt.hashSync(req.body.user_pass, 10),
             "user_category" : req.body.user_category,
-            "user_image" : req.file.filename,
+            "user_image" : req.file ? req.file.filename : "404.jpg",
             "user_address" : req.body.user_address
 
         }
