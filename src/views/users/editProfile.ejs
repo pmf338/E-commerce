@@ -2,81 +2,113 @@
 <html lang="en">
 
 <head>
-    <%- include('../partials/head.ejs') %>
-    <link rel="stylesheet" href="/css/styles_register.css">
-    <title>Perfil de usuario</title>
+  <%- include('../partials/head.ejs') %>
+  <link rel="stylesheet" href="/css/styles_register.css">
+  <title>Editar perfil de usuario</title>
 </head>
 
 <body>
-    <header>
-        <%- include('../partials/header.ejs') %>
-    </header>
-    <main>
-        <div class="main-container">
-            <form class="form-create-product" action="#" method="post">
-                <h1 class="title">Editar perfil de usuario</h1>
+  <header>
+    <%- include('../partials/header.ejs') %>
+  </header>
+  <main>
+    <section class="vh-100" style="background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg')">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-lg-10 mb-4 mb-lg-0">
+            <form action="#" method="post">
+              <div class="card mb-3" style="border-radius: .5rem; ">
+                <div class="row g-0">
+                  <div class="col-md-4 gradient-custom text-center text-white" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
 
-                <div class="input-field">
-                <label for="rounded-image">Foto de perfil</label>
-                    <div class="rounded-image">
-                        <img src="images/profile-default.png"/>
-                     </div>              
+                    <% if (user.user_image == "404.jpg") { %>
+                    <img src="../../images/avatar.png" alt="Avatar" class="img-fluid my-5" style="width: 150px; border-radius: 40%;" />
+                    <% } else { %>
+                    <img src="../../images/users/<%= user.user_image %>" alt="Avatar" class="img-fluid my-5" style="width: 150px; border-radius: 40%;" />
+                    <% } %>
+                    </br>
+
+                    <button type="button" class="btn btn-dark">
+                      <input type="file" name="user_image_edit" id="user_image_edit" accept=".jpg, .png" multiple>
+                    </button>
+                    </br>
+                    </br>
+                    <a href="/editProfile">
+                      <button type="submit" class="btn btn-success">
+                        Guardar cambios
+                      </button>
+                    </a>
+                    </br>
+                    </br>
+                    <a href="/profile">
+                      <button type="button" class="btn btn-warning">
+                        Cancelar
+                      </button>
+                    </a>
+                    </br>
+                    </br>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body p-4">
+                      <h6>Editar perfil de usuario</h6>
+                      <hr class="mt-0 mb-4">
+                      <div class="row pt-1">
+                        <div class="col-6 mb-3">
+                          <h6>Nombre</h6>
+                          <i class="fa-solid fa-user"></i><input type="text" name="user_name" id="user_name" minlength="3" value=<%= user.user_name %>>
+                        </div>
+                        <div class="col-6 mb-3">
+                          <h6>Apellidos</h6>
+                          <i class="fa-solid fa-user"></i><input type="text" name="user_surname" id="user_surname" minlength="3" value=<%= user.user_surname %>>
+                        </div>
+                        <div class="col-6 mb-3">
+                          <h6>Nombre de usuario</h6>
+                          <i class="fa-solid fa-user"></i><input type="text" name="user_user_name" id="user_user_name" minlength="3" value=<%= user.user_user_name %>>
+                        </div>
+                        <div class="col-6 mb-3">
+                          <h6>Correo electronico</h6>
+                          <i class="fa-solid fa-user"></i><input type="text" name="user_email" id="user_email" minlength="3" value=<%= user.user_email %>>
+                        </div>
+                        <div class="col-6 mb-3">
+                          <h6>Contraseña</h6>
+                          <i class="fa-solid fa-user"></i><input type="password" name="user_password" id="user_password" minlength="3" value=<%= user.user_password %>>
+                        </div>
+                        <div class="col-6 mb-3">
+                          <h6>Repetir contraseña</h6>
+                          <i class="fa-solid fa-user"></i><input type="password" name="user_password" id="user_password" minlength="3" value="">
+                        </div>
+                        <div class="col-6 mb-3">
+                          <h6>Dirección de envios</h6>
+                          <i class="fa-solid fa-user"></i><input type="text" name="user_address" id="user_address" minlength="3" value=<%= user.user_address %>>
+                        </div>
+                        <div class="col-6 mb-3">
+                          <h6>Categoria</h6>
+                          <i class="fa-solid fa-user"></i><input type="text" name="user_category" id="user_category" minlength="3" value=<%= user.user_category %>>
+                        </div>
+                        <div class="col-6 mb-3">
+                        </div>
+                        <div class="col-6 mb-3">
+                          <a href="/editProfile">
+                            <button type="submit" class="btn btn-danger">
+                              Eliminar perfil
+                            </button>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-
-
-                <div class="input-img">
-                    <input type="file" name="user_image_edit" id="user_image_edit" accept=".jpg" multiple class="file-option" required>
-                </div>
-
-                <div class="input-field">
-                    <label for="user_name">Nombre</label>
-                    <i class="fa-solid fa-user"></i><input type="text" name="user_name" id="user_name"
-                        minlength="3" required>
-                </div>
-
-                <div class="input-field">
-                    <label for="user_username">Nombre de usuario</label>
-                    <i class="fa-solid fa-user"></i><input type="text" name="user_username" id="user_username"
-                        minlength="3" required>
-                </div>
-
-                <div class="input-field">
-                    <label for="user_email">Correo electronico</label>
-                    <i class="fa-solid fa-envelope-circle-check"></i><input type="text" name="user_email" id="user_email"
-                        minlength="3" required>
-                </div>
-
-
-                <div class="input-field">
-                    <label for="user_password">Contraseña</label>
-                    <i class="fa-solid fa-list"></i><input type="password" name="user_password" id="user_password"
-                        minlength="3" required>
-                </div>
-
-                <div class="input-field">
-                    <label for="user_address">Ingrese la dirección de su domicilio</label>
-                    <i class="fa-solid fa-list"></i><input type="text" name="user_address" id="user_address"
-                        minlength="3">
-                </div> 
-
-                <div class="input-field-small">
-                    <label>Categoria del usuario</label>
-                    <select name="category" class="select-category" required>
-                        <option value="cat1">Administrador</option>
-                        <option value="cat2">Cliente</option>
-                    </select>
-                </div>                
-
-                <div class="container-buttons">
-                    <button type="submit">EDITAR PERFIL</button>
-                </div>
+              </div>
             </form>
+          </div>
         </div>
-    </main>
+      </div>
+    </section>
+  </main>
 
-    <footer>
-        <%- include('../partials/footer.ejs') %>
-    </footer>
+  <footer>
+    <%- include('../partials/footer.ejs') %>
+  </footer>
 
 </body>
 

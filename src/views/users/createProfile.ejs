@@ -1,92 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <%- include('../partials/head.ejs') %>
-    <link rel="stylesheet" href="/css/styles_register.css">
-    <title>Perfil de usuario</title>
+  <%- include('../partials/head.ejs') %>
+  <link rel="stylesheet" href="/css/styles_register.css">
+  <title>Perfil de usuario</title>
 </head>
+
 <body>
-    <header>
-        <%- include('../partials/header.ejs') %>
-    </header>
-    <main>
-        <div class="main-container">
-            <form class="form-create-product" action="#" method="post" enctype="multipart/form-data">
-                <h1 class="title">Crear perfil de usuario</h1>
+  <header>
+    <%- include('../partials/header.ejs') %>
+  </header>
+  <main>
+    <div class="main-container">
+      <form class="form-create-product" action="#" method="post" enctype="multipart/form-data">
+        <h1 class="title">Crear perfil de usuario</h1>
 
-                <div class="input-field">
-                <label>Foto de perfil</label>
-                    <div class="rounded-image">
-                        <img src="images/profile-default.png"/>
-                     </div>              
-                </div>
-
-                <div class="input-img">
-
-                    <input type="file" id="user_image" name="user_image" accept=".jpg" multiple class="file-option">
-
-
-                </div>
-
-                <div class="input-field">
-                    <label for="name">Nombre</label>
-                    <i class="fa-solid fa-user"></i><input type="text" name="name" id="name"
-                        minlength="3" required>
-                </div>
-
-                <div class="input-field">
-                    <label for="user_name">Nombre de usuario</label>
-                    <i class="fa-solid fa-user"></i><input type="text" name="user_name" id="user_name"
-                        minlength="3" required>
-                </div>
-
-                <div class="input-field">
-                    <label for="user_email">Correo electrónico</label>
-                    <i class="fa-solid fa-envelope-circle-check"></i><input type="text" name="user_email" id="user_email"
-                        minlength="3" required>
-                </div>
-
-                <div class="input-field">
-                    <label for="user_email_confirm">Confirmar correo electrónico</label>
-                    <i class="fa-solid fa-envelope-circle-check"></i><input type="text" name="user_email_confirm" id="user_email_confirm"
-                        minlength="3" required>
-                </div>
-
-                <div class="input-field">
-                    <label for="user_pass">Contraseña</label>
-                    <i class="fa-solid fa-list"></i><input type="password" name="user_pass" id="user_pass"
-                        minlength="3" required>
-                </div>
-
-                <div class="input-field">
-                    <label for="user_pass_confirm">Confirmar contraseña</label>
-                    <i class="fa-solid fa-list"></i><input type="password" name="user_pass_confirm" id="user_pass_confirm"
-                        minlength="3" required>
-                </div>
-                
-                <div class="input-field">
-                    <label for="user_address">Ingrese la dirección de su domicilio</label>
-                    <i class="fa-solid fa-list"></i><input type="text" name="user_address" id="user_address"
-                        minlength="3">
-                </div> 
-
-                <!--Ocultar cuando ingrese un cliente-->
-                <div class="input-field-small">
-                    <label>Categoria del usuario</label>
-                    <select name="user_category" class="select-category" required>
-                        <option value="Administrador">Administrador</option>
-                        <option value="Cliente">Cliente</option>
-                    </select>
-                </div>                
-
-                <div class="container-buttons">
-                    <button type="submit">CREAR PERFIL</button>
-                </div>
-            </form>
+        <div class="input-field">
+          <label>Foto de perfil</label>
+          <div class="rounded-image">
+            <img src="images/profile-default.png" />
+          </div>
         </div>
-    </main>
-    <footer>
-        <%- include('../partials/footer.ejs') %>
-    </footer>
+
+        <div class="input-img">
+          <input type="file" id="user_image" name="user_image" accept=".jpg" multiple class="file-option">
+        </div>
+
+        <div class="input-field">
+          <label for="name">Nombre(s)</label>
+          <i class="fa-solid fa-user"></i><input type="text" name="user_name" id="user_name" minlength="3" required>
+        </div>
+
+        <div class="input-field">
+          <label for="name">Apellido(s)</label>
+          <i class="fa-solid fa-user"></i><input type="text" name="user_surname" id="user_surname" minlength="3" required>
+        </div>
+
+        <div class="input-field">
+          <label for="user_name">Nombre de usuario</label>
+          <i class="fa-solid fa-user"></i><input type="text" name="user_user_name" id="user_user_name" minlength="3" required>
+        </div>
+
+        <div class="input-field">
+          <label for="user_email">Correo electrónico</label>
+          <i class="fa-solid fa-envelope-circle-check"></i><input type="text" name="user_email" id="user_email" minlength="3" required>
+        </div>
+
+        <div class="input-field">
+          <label for="user_email_confirm">Confirmar correo electrónico</label>
+          <i class="fa-solid fa-envelope-circle-check"></i><input type="text" name="user_email_confirm" id="user_email_confirm" minlength="3" required>
+        </div>
+
+        <div class="input-field">
+          <label for="user_pass">Contraseña</label>
+          <i class="fa-solid fa-list"></i><input type="password" name="user_pass" id="user_pass" minlength="3" required>
+        </div>
+
+        <div class="input-field">
+          <label for="user_pass_confirm">Confirmar contraseña</label>
+          <i class="fa-solid fa-list"></i><input type="password" name="user_pass_confirm" id="user_pass_confirm" minlength="3" required>
+        </div>
+
+        <div class="input-field">
+          <label for="user_address">Ingrese la dirección de su domicilio</label>
+          <i class="fa-solid fa-list"></i><input type="text" name="user_address" id="user_address" minlength="3">
+        </div>
+        <!--Ocultar cuando ingrese un cliente-->
+        <div class="input-field-small">
+          <label>Categoria del usuario</label>
+          <select name="user_category" class="select-category" required>
+            <option value="Administrador">Administrador</option>
+            <option value="Cliente">Cliente</option>
+          </select>
+        </div>
+        <div class="container-buttons">
+          <button type="submit">CREAR PERFIL</button>
+        </div>
+      </form>
+    </div>
+  </main>
+  <footer>
+    <%- include('../partials/footer.ejs') %>
+  </footer>
 </body>
+
 </html>
