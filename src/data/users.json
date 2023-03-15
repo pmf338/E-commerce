@@ -1,7 +1,9 @@
 [
  {
   "id": 925,
-  "user_name": "juanUser4",
+  "user_name": "Juan",
+  "user_user_name": "juanUser4",
+  "user_surname": "Lopez",
   "user_email": "juan4@example.com",
   "user_password": "$2a$10$YJXOfPj1u2qTXhHX9MueFuPdCxxc/wuP2EXodees0D4ea9dgnx2W6",
   "user_category": "Administrador",
@@ -10,11 +12,24 @@
  },
  {
   "id": 907,
-  "user_name": "Pedro1",
+  "user_name": "Pedro",
+  "user_user_name": "Pedro1",
+  "user_surname": "Lopez",
   "user_email": "pedro1@example.com",
   "user_password": "$2a$10$N17ZF4gB.dXgKWkJixmk8eGM9GdZTPHtjd2GQaXXnqgabpW64Bs4K",
   "user_category": "Cliente",
   "user_image": "404.jpg",
+  "user_address": "calle falsa 123"
+ },
+ {
+  "id": 131,
+  "user_name": "ana",
+  "user_surname": "ana",
+  "user_user_name": "ana1",
+  "user_email": "aadsa@example.com",
+  "user_password": "$2a$10$DEUf.2G38mcfFi.h4Suzi.8wJfxHRNWT7QiWhwjg/q/tH.u3HtrNS",
+  "user_category": "Administrador",
+  "user_image": "user-1678844006232.jpeg",
   "user_address": "calle falsa 123"
  }
 ]

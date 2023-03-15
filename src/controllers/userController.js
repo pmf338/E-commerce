@@ -89,6 +89,8 @@ const userController = {
         let newUser = {
             "id" : idRandom,
             "user_name" : req.body.user_name,
+            "user_surname": req.body.user_surname,
+            "user_user_name": req.body.user_user_name,
             "user_email" : req.body.user_email,
             "user_password" : bcrypt.hashSync(req.body.user_pass, 10),
             "user_category" : req.body.user_category,
