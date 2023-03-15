@@ -104,12 +104,9 @@ header .profile-btns .profile img{
 }
 
 /*-- index.ejs --*/
-.shop-container{
-    margin: 50px 0px 50px 0px;
-}
-.shop div{
-    background-color: #F3F6FA;
-    padding: 30px;
+.shop-container, 
+.artists-container{
+    margin-top: 220px;
 }
 .new-product{
     width: 20rem;
