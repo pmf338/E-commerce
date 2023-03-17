@@ -13,23 +13,30 @@
     </header>
     <main>
         <div class="main-container">
-            <form class="form-create-product" action="#" method="post">
+            <form class="form-create-product" action="#" method="post" enctype="multipart/form-data">
                 <h1 class="title">Creación de Producto</h1>
                 <div class="input-field">
                     <label for="product_name">Nombre de producto</label>
-                    <i class="fa-sharp fa-solid fa-box"></i><input type="text" name="product_name" id="product_name"
-                        minlength="3" required>
+                    <i class="fa-sharp fa-solid fa-box"></i><input type="text" name="product_name" id="product_name">
+                    <% if(locals.errors && locals.errors.product_name){ %>
+                        <p><%= errors.product_name.msg %></p>
+
+                   <% } %>
                 </div>
 
                 <div class="input-field-small">
                     <label for="product_price">Precio</label>
-                    <i class="fa-solid fa-dollar-sign"></i><input type="number" name="product_price" id="product_price" required>
+                    <i class="fa-solid fa-dollar-sign"></i><input type="number" name="product_price" id="product_price">
+                    <% if(locals.errors && locals.errors.product_price){ %>
+                        <p><%= errors.product_price.msg %></p>
+
+                   <% } %>
                 </div>
 
                 <div class="input-field-small">
                     <label for="product_quantity">Cantidad</label>
                     <i class="fa-solid fa-plus-minus"></i><input type="number" name="product_quantity"
-                        id="product_quantity" required>
+                        id="product_quantity" >
                 </div>
 
                 <div class="input-field-small">
@@ -43,14 +50,14 @@
                 </div>
 
                 <div class="input-img">
-                    <label for="img">Agregar imágenes del producto</label>
-                    <input type="file" name="product_img" accept=".jpg" multiple class="file-option" required>
+                    <label for="product_image">Agregar imágenes del producto</label>
+                    <input type="file" name="product_image" id="product_image" accept=".jpg" multiple class="file-option">
                 </div>
 
                 <div class="input-field">
                     <label for="product_description">Descripción del producto</label>
-                    <textarea name="product_description" id="product_description" maxlength="300"
-                        placeholder="Escribir la descripción del producto, máximo de 300 caracteres" required></textarea>
+                    <textarea name="product_description" id="product_description" 
+                        placeholder="Escribir la descripción del producto, máximo de 300 caracteres"></textarea>
                 </div>
 
                 <div class="container-buttons">

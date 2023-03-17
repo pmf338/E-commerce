@@ -2,32 +2,37 @@ const express = require('express');
 const app = express();
 const PORT = 3002;
 const path = require('path');
-
-//const mainRoutes = require('./routes/mainRoutes');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const productRoutes = require('./routes/productsRoutes');
-const usersRoutes = require ('./routes/usersRoutes');
+const usersRoutes = require('./routes/usersRoutes');
 const methodOverride = require('method-override');
+const userSessionMiddleware = require('./middlewares/userSessionMiddleware');
+
+
+//Middlewares
 
 app.use(express.static(__dirname + '../../public'));
-app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({extended: true}));
+app.use(userSessionMiddleware);
 app.use(express.json());
+app.use(cookieParser());
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true,
+    //cookie: { maxAge: 60000 } //60 segundos cookie de express session diferente a cookie parser, borrar luego al hacer cookie parser
+}));
+
+app.use(methodOverride('_method'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
 
 app.use('/', productRoutes);
-app.use('/login', usersRoutes);
-app.use('/register', usersRoutes);
-app.use('/shop', productRoutes);
-app.use('/shop/:id', productRoutes);
-app.use('/artist', productRoutes);
-app.use('/productDetail', productRoutes);
-app.use('/createProduct', productRoutes);
-app.use('/editProduct', productRoutes);
-app.use('/editProduct/:id', productRoutes);
-app.use('/contact', usersRoutes);
-app.use('/deleteProduct/:id',productRoutes);
+app.use('/', usersRoutes);
+
 
 // Desactivamos el 404 para identificar los errores posibles
 /*app.use(function(req,res){
