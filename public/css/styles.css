@@ -16,7 +16,7 @@ a{
     text-decoration: none;
 }
 
-/*-- header.ejs --*/
+/*---------------------------------------- header.ejs ---------------------------------------------------------*/
 header {
     background-color: #0B1320;
 }
@@ -103,7 +103,7 @@ header .profile-btns .profile img{
     }
 }
 
-/*-- index.ejs --*/
+/*----------------------------------------index.ejs---------------------------------------------------------*/
 .shop-container, 
 .artists-container{
     margin-top: 220px;
@@ -132,10 +132,44 @@ header .profile-btns .profile img{
     display: block;
 }
 
-/*index.ejs*/
+/*----------------------------------------login.ejs---------------------------------------------------------*/
+
+.input-field-login {
+    position: relative;
+}
+
+.input-field-login input {
+    padding-left: 30px;
+    margin-bottom: 30px;
+}
+
+.input-field-login i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
 
 
-/*index.ejs*/
+/*----------------------------------------register.ejs---------------------------------------------------------*/
+.input-field-register {
+    position: relative;
+}
+
+.input-field-register input {
+    padding-left: 30px;
+    margin-bottom: 30px;
+}
+
+.input-field-register i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
 
 
-/*index.ejs*/
+/*----------------------------------------index.ejs---------------------------------------------------------*/
+

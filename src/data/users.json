@@ -42,5 +42,26 @@
   "user_category": "Administrador",
   "user_image": "user-1679189655113.jpeg",
   "user_address": "calle falsa 123"
+ },
+ {
+  "id": 608,
+  "user_name": "dada",
+  "user_surname": "dada",
+  "user_user_name": "gdfgdf",
+  "user_email": "zzzz@gmail.com",
+  "user_password": "$2a$10$KCzFw1n2ZU3UuA9LBwO4q.9WQpG.labX5HC5Gx0V5qjQwToP3ZqkS",
+  "user_category": "Administrador",
+  "user_image": "user-1679252593997.jpg",
+  "user_address": "hhhh"
+ },
+ {
+  "id": 879,
+  "user_name": "pepe",
+  "user_surname": "papa",
+  "user_user_name": "ququ",
+  "user_email": "juhi@gmail.com",
+  "user_password": "$2a$10$/nv4WMs/aqVZGI8JZ3Uh9ePV/VgFr4phvv2tAW/zklgJkTy/9drkS",
+  "user_image": "user-1679269406896.jpg",
+  "user_address": "dasdas"
  }
 ]
