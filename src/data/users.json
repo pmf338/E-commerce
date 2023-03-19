@@ -31,5 +31,16 @@
   "user_category": "Administrador",
   "user_image": "user-1678844006232.jpeg",
   "user_address": "calle falsa 123"
+ },
+ {
+  "id": 384,
+  "user_name": "asd",
+  "user_surname": "asd",
+  "user_user_name": "pepe2",
+  "user_email": "pap@gpa.com",
+  "user_password": "$2a$10$g4IUU4hrXQYHeTT5r9FQtO7tZr.1LfKIPMv4CXY0.hYuiat9Nw88y",
+  "user_category": "Administrador",
+  "user_image": "404.jpg",
+  "user_address": ""
  }
 ]
