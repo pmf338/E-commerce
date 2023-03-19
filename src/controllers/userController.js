@@ -29,14 +29,14 @@ const userController = {
             }
             res.redirect('/profile')
         }  else {
-            /*console.log("no se inicio sesion", req.body)*/
+            console.log("no se inicio sesion, correo o contraseña incorrectos", req.body)
         }
 
-        res.json({
+        /*res.json({
             msg: "Respuesta del process Login",
             data: req.body,
             user
-        });
+        });*/
 
     },
     contact: function (req, res) {
