@@ -31,5 +31,16 @@
   "user_category": "Administrador",
   "user_image": "user-1678844006232.jpeg",
   "user_address": "calle falsa 123"
+ },
+ {
+  "id": 350,
+  "user_name": "Test",
+  "user_surname": "Test",
+  "user_user_name": "Test1",
+  "user_email": "test1@example.com",
+  "user_password": "$2a$10$Qg/MJDA3EVyGsWcEmkmOVOKLzCNKMINUFcbRp.g1XsyISFxYlFZmi",
+  "user_category": "Administrador",
+  "user_image": "user-1679189655113.jpeg",
+  "user_address": "calle falsa 123"
  }
 ]
