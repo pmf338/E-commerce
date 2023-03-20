@@ -33,14 +33,35 @@
   "user_address": "calle falsa 123"
  },
  {
-  "id": 384,
-  "user_name": "asd",
-  "user_surname": "asd",
-  "user_user_name": "pepe2",
-  "user_email": "pap@gpa.com",
-  "user_password": "$2a$10$g4IUU4hrXQYHeTT5r9FQtO7tZr.1LfKIPMv4CXY0.hYuiat9Nw88y",
+  "id": 350,
+  "user_name": "Test",
+  "user_surname": "Test",
+  "user_user_name": "Test1",
+  "user_email": "test1@example.com",
+  "user_password": "$2a$10$Qg/MJDA3EVyGsWcEmkmOVOKLzCNKMINUFcbRp.g1XsyISFxYlFZmi",
   "user_category": "Administrador",
-  "user_image": "404.jpg",
-  "user_address": ""
+  "user_image": "user-1679189655113.jpeg",
+  "user_address": "calle falsa 123"
+ },
+ {
+  "id": 608,
+  "user_name": "dada",
+  "user_surname": "dada",
+  "user_user_name": "gdfgdf",
+  "user_email": "zzzz@gmail.com",
+  "user_password": "$2a$10$KCzFw1n2ZU3UuA9LBwO4q.9WQpG.labX5HC5Gx0V5qjQwToP3ZqkS",
+  "user_category": "Administrador",
+  "user_image": "user-1679252593997.jpg",
+  "user_address": "hhhh"
+ },
+ {
+  "id": 879,
+  "user_name": "pepe",
+  "user_surname": "papa",
+  "user_user_name": "ququ",
+  "user_email": "juhi@gmail.com",
+  "user_password": "$2a$10$/nv4WMs/aqVZGI8JZ3Uh9ePV/VgFr4phvv2tAW/zklgJkTy/9drkS",
+  "user_image": "user-1679269406896.jpg",
+  "user_address": "dasdas"
  }
 ]
