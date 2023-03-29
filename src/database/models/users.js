@@ -6,7 +6,7 @@ module.exports = (sequelize, dataTypes) => {
         
         id: {
             type: dataTypes.INTEGER,
-            primarykey: true,
+            primaryKey: true,
             allowNull: false,
             autoIncrement: true
 
@@ -14,42 +14,42 @@ module.exports = (sequelize, dataTypes) => {
 
         names: {
 
-            type: dataTypes.VARCHAR(45),
+            type: dataTypes.STRING(45),
             allowNull: true
         },
 
         surname: {
 
-            type: dataTypes.VARCHAR(45),
+            type: dataTypes.STRING(45),
             allowNull: true
         },
 
         userName: {
 
-            type: dataTypes.VARCHAR(45),
+            type: dataTypes.STRING(45),
             allowNull: true
         },
 
         email: {
 
-            type: dataTypes.VARCHAR(45),
+            type: dataTypes.STRING(45),
             allowNull: true
         },
 
         password: {
 
-            type: dataTypes.VARCHAR(45),
+            type: dataTypes.STRING(45),
             allowNull: true
         },
 
         address: {
 
-            type: dataTypes.VARCHAR(45),
+            type: dataTypes.STRING(45),
             allowNull: true
         },
 
         imageUrl: {
-            type: dataTypes.VARCHAR(45),
+            type: dataTypes.STRING(45),
             allowNull: true
 
         },
@@ -70,7 +70,7 @@ module.exports = (sequelize, dataTypes) => {
         timeStamps: false
     };
 
-    const user = sequelize.defined(alias, cols, config);
+    const user = sequelize.define(alias, cols, config);
 
     return user;
 }
