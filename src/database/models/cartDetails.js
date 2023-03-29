@@ -6,7 +6,7 @@ module.exports = (sequelize, dataTypes) => {
         
         id: {
             type: dataTypes.INTEGER,
-            primarykey: true,
+            primaryKey: true,
             allowNull: false,
             autoIncrement: true
 
@@ -22,7 +22,7 @@ module.exports = (sequelize, dataTypes) => {
         timeStamps: false
     };
 
-    const cartDetails = sequelize.defined(alias, cols, config);
+    const cartDetails = sequelize.define(alias, cols, config);
 
     return cartDetails;
 }

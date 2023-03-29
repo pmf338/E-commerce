@@ -6,7 +6,7 @@ module.exports = (sequelize, dataTypes) => {
         
         id: {
             type: dataTypes.INTEGER,
-            primarykey: true,
+            primaryKey: true,
             allowNull: false,
             autoIncrement: true
 
@@ -14,7 +14,7 @@ module.exports = (sequelize, dataTypes) => {
 
         name: {
 
-            type: dataTypes.VARCHAR(45),
+            type: dataTypes.STRING(45),
             allowNull: true
         }
 
@@ -28,7 +28,7 @@ module.exports = (sequelize, dataTypes) => {
         timeStamps: false
     };
 
-    const genre = sequelize.defined(alias, cols, config);
+    const genre = sequelize.define(alias, cols, config);
 
     return genre;
 }
