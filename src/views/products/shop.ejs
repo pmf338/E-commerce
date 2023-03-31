@@ -14,26 +14,24 @@
     <main>
         <h1>Tienda</h1>
         <div class="container-product-list">
-
-
-            <% lista.forEach(producto => { %>
+            <!-- 
+                RE HACER LA LOGICA DE ESTA GARCHA
+                Si la lista trae al menos un valor, se recorre todo el listado
+                En caso contrario, se muestra un único producto (variable product)
+            -->
+            <% if list[0] {
+                 list.forEach(product => { %>
             <div class="product-item">
-                <% if(producto.product_image){ %>
-                <% if(Array.isArray(producto.product_image)) { %>
-                <% producto.product_image.forEach(image => { %>
-
+                <% if(product.imageUrl){ %>
+                <% if(Array.isArray(product.imageUrl)) { %>
+                <% product.imageUrl.forEach(image => { %>
                 <a href="/productDetail/<%= producto.id %>"><img src="/images/products/<%= image.name %>"
                         alt="<%= image.name %>" class="product_img"> </a>
                 <% }) %>
-
                 <% } else { %>
-                    <a href="/productDetail/<%= producto.id %>"><img src="/images/products/<%= producto.product_image %>"
-                    alt="<%= producto.product_image %>" class="product_img"> </a>
-            <% } %>
-
-                <%  } %>
-
-                
+                <a href="/productDetail/<%= producto.id %>"><img src="/images/products/<%= producto.product_image %>"
+                        alt="<%= producto.product_image %>" class="product_img"> </a>
+                <% } %>
 
                 <a href="/productDetail">
                     <h3 class="product-name"><%= producto.product_name %></h3>
@@ -46,6 +44,7 @@
                 </div>
             </div>
             <% }) %>
+            <%  } %>
 
         </div>
         <a href="/createProduct" class="btn-flotante">Crear Producto</a>

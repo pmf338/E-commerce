@@ -1,35 +1,42 @@
 const fs = require('fs');
 const path = require('path');
 const productsPath = path.join(__dirname, "../data/products.json");
-
 const {validationResult} = require('express-validator');
+const {Product} = require('../database/models');
 
 
 const productsController = {
-    getProducts: function () {
-        return JSON.parse(fs.readFileSync(productsPath, 'utf-8'));
-    },
     index: function (req, res) {
-        res.render("products/index", {
-            title: "Listado productos",
-            lista: productsController.getProducts(),
-            user: req.session.userLogged
+        Product.findAll()
+        .then(productList => {
+            res.render("products/index", {
+                list : productList,
+                title : "Inicio",
+                user: req.session.userLogged
+            })
         });
     },
     shop: function (req, res) {
-        res.render("products/shop", {
-            title: "Listado productos",
-            lista: productsController.getProducts(),
-            user: req.session.userLogged
+        Product.findAll()
+        .then(productList => {
+            res.render("products/shop", {
+                list : productList,
+                title : "Tienda",
+                user: req.session.userLogged
+            })
         });
     },
     showProduct: function (req, res) {
         let productId = req.params.id;
-        let _product = productsController.getProducts().find(product => product.id == productId);
-        res.render("products/shop", {
-            title: "Producto",
-            product: _product,
-            user: req.session.userLogged
+        let emptyList = [];
+        Product.findByPk(id)
+        .then(producto => {
+            res.render("products/shop",{
+                title: "Tienda",
+                user: req.session.userLogged,
+                product : producto,
+                list : emptyList
+            })
         });
     },
     productDetail: function (req, res) {
@@ -128,12 +135,12 @@ const productsController = {
         res.redirect ('/shop')
     },
     artist: function (req, res) {
-        res.render("products/artist", {
+        res.render("products/artists", {
             title: "Artistas",
             user: req.session.userLogged
         });
 },
 }
 
-
+  
 module.exports = productsController

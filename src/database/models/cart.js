@@ -6,7 +6,7 @@ module.exports = (sequelize, dataTypes) => {
         
         id: {
             type: dataTypes.INTEGER,
-            primarykey: true,
+            primaryKey: true,
             allowNull: false,
             autoIncrement: true
 
@@ -14,7 +14,7 @@ module.exports = (sequelize, dataTypes) => {
 
         status: {
 
-            type: dataTypes.VARCHAR(45),
+            type: dataTypes.STRING(45),
             allowNull: true
         },
 
@@ -32,7 +32,7 @@ module.exports = (sequelize, dataTypes) => {
 
         cartCol: {
 
-            type: dataTypes.VARCHAR(45),
+            type: dataTypes.STRING(45),
             allowNull: true
         },
 
@@ -49,7 +49,7 @@ module.exports = (sequelize, dataTypes) => {
         },
 
         dateRequest: {
-            type: dataTypes.DATETIME,
+            type: dataTypes.DATE,
             allowNull: true
 
         },
@@ -70,7 +70,7 @@ module.exports = (sequelize, dataTypes) => {
         timeStamps: false
     };
 
-    const cart = sequelize.defined(alias, cols, config);
+    const cart = sequelize.define(alias, cols, config);
 
     return cart;
 }

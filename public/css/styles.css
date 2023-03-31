@@ -71,7 +71,6 @@ header .profile-btns a svg{
     width: 30px;
     height: 30px;
 }
-
 header .profile-btns a:hover{
     background: #4b4d4e;
     color: #F3F6FA;
@@ -105,13 +104,13 @@ header .profile-btns .profile img{
 
 /*----------------------------------------index.ejs---------------------------------------------------------*/
 .shop-container, 
-.artists-container{
+.index-container-artists{
     margin-top: 220px;
 }
 .new-product{
     width: 20rem;
 }
-.artist-container{
+.index-container-artists{
     display: flex;
     position: relative;
     margin:0px;
@@ -151,7 +150,6 @@ header .profile-btns .profile img{
     font-size: 20px;
 }
 
-
 /*----------------------------------------register.ejs---------------------------------------------------------*/
 .input-field-register {
     position: relative;
@@ -170,6 +168,14 @@ header .profile-btns .profile img{
     font-size: 20px;
 }
 
+/*----------------------------------------artists.ejs---------------------------------------------------------*/
+.artists-container img{
+    height: 150px;
+    width: 150px;
+}
+
+
 
 /*----------------------------------------index.ejs---------------------------------------------------------*/
 
+/*----------------------------------------index.ejs---------------------------------------------------------*/

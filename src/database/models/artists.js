@@ -6,26 +6,24 @@ module.exports = (sequelize, dataTypes) => {
         
         id: {
             type: dataTypes.INTEGER,
-            primarykey: true,
+            primaryKey: true,
             allowNull: false,
             autoIncrement: true
-
         },
 
         name: {
-            type: dataTypes.VARCHAR(45),
+            type: dataTypes.STRING(45),
             allowNull: true
         },
 
         description: {
-
-            type: dataTypes.VARCHAR(45),
+            type: dataTypes.STRING(45),
             allowNull: true
         },
 
         imagesUrl: {
 
-            type: dataTypes.VARCHAR(45),
+            type: dataTypes.STRING(45),
             allowNull: true
         },
 
@@ -39,7 +37,7 @@ module.exports = (sequelize, dataTypes) => {
         timeStamps: false
     };
 
-    const artist = sequelize.defined(alias, cols, config);
+    const artist = sequelize.define(alias, cols, config);
 
     return artist;
 }
