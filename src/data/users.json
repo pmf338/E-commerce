@@ -63,5 +63,15 @@
   "user_password": "$2a$10$/nv4WMs/aqVZGI8JZ3Uh9ePV/VgFr4phvv2tAW/zklgJkTy/9drkS",
   "user_image": "user-1679269406896.jpg",
   "user_address": "dasdas"
+ },
+ {
+  "id": 853,
+  "user_name": "Ejemplo",
+  "user_surname": "Ejemplo",
+  "user_user_name": "Ejemplo1",
+  "user_email": "ejemplo@example.com",
+  "user_password": "$2a$10$J7FsACgQ6pkEdYCh83YnQOwOndvnTR.aADsYG2n67jR9qM8ZfUBk6",
+  "user_image": "user-1680047206393.jpeg",
+  "user_address": "calle falsa 123"
  }
 ]
