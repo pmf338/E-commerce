@@ -70,7 +70,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: true
         },
 
-        is_active: {
+        isActive: {
 
             type: dataTypes.TINYINT,
             allowNull: true
