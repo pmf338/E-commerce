@@ -73,5 +73,15 @@
   "user_password": "$2a$10$J7FsACgQ6pkEdYCh83YnQOwOndvnTR.aADsYG2n67jR9qM8ZfUBk6",
   "user_image": "user-1680047206393.jpeg",
   "user_address": "calle falsa 123"
+ },
+ {
+  "id": 432,
+  "user_name": "dadsa",
+  "user_surname": "dasd",
+  "user_user_name": "asdasd",
+  "user_email": "asd@gmail.com",
+  "user_password": "$2a$10$VgVNTo5go2ATeIfEYidGa.UF/ohBlKOlRt.CFJRFSse7fBdG12mtC",
+  "user_image": "user-1680455931983.jpg",
+  "user_address": "dasdas"
  }
 ]
