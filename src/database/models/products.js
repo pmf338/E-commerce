@@ -1,7 +1,8 @@
-module.exports = (sequelize, dataTypes) => {
+const { Sequelize } = require(".");
+const artists = require("./artists");
 
+module.exports = (sequelize, dataTypes) => {
     let alias = "Product";
-    
     let cols = {
         
         id: {
@@ -9,87 +10,82 @@ module.exports = (sequelize, dataTypes) => {
             primaryKey: true,
             allowNull: false,
             autoIncrement: true
-
         },
-
         sku: {
-            type: dataTypes.STRING(45),
-            allowNull: true
+            type: dataTypes.INTEGER,
+            allowNull: false
         },
-
         name: {
-
-            type: dataTypes.STRING(45),
+            type: dataTypes.STRING(150),
             allowNull: true
         },
-
         price: {
-            type: dataTypes.DECIMAL(6, 2),
+            type: dataTypes.DECIMAL(6,2),
             allowNull: true
         },
-
         quantity: {
-
             type: dataTypes.INTEGER,
             allowNull: true
         },
-
         description: {
-
-            type: dataTypes.STRING(250),
+            type: dataTypes.STRING(450),
             allowNull: true
         },
-
-        imagesUrl: {
-
-            type: dataTypes.STRING(350),
+        size: {
+            type: dataTypes.STRING(5),
             allowNull: true
         },
-
-        color: {
+        format: {
             type: dataTypes.STRING(45),
             allowNull: true
-
         },
-
-        size: {
-
-            type: dataTypes.STRING(5),
-            allowNull: true
-        },
-
-        format: {
-
-            type: dataTypes.STRING(5),
-            allowNull: true
-        },
-
         isActive: {
-
             type: dataTypes.TINYINT,
             allowNull: true
         },
-
         createdAt : {
             type : dataTypes.DATE,
             allowNull: false
         },
-
         updatedAt : {
             type : dataTypes.DATE,
             allowNull: false
+        },
+        imagePrimary : {
+            type: dataTypes.STRING(150),
+            allowNull: true
+        },
+        imageSecond : {
+            type: dataTypes.STRING(150),
+            allowNull: true
+        },
+        imageThird : {
+            type: dataTypes.STRING(150),
+            allowNull: true
         }
-
     };
 
     let config = {
-
         tableName: 'products',
         underScored: true,
         timeStamps: false
     };
 
     const product = sequelize.define(alias, cols, config);
+
+    Product.associate = (models) => {
+        Product.belongsTo (models.Artist, {
+            as : '_artist',
+            foreignKey : 'artist_id'
+        })
+    };
+    Product.associate = (models) => {
+        Product.belongsTo (models.Category, {
+            as : '_category',
+            foreignKey : 'categories_id'
+        })
+    };
+
 
     return product;
 }
