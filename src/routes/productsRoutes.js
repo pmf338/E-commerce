@@ -9,6 +9,7 @@ const productController = require ('../controllers/productsController');
 
 // Artistas
 productsRouter.get('/artists',productController.artist);
+productsRouter.get('/artistDetail/:id',productController.artistDetail);
 //Listado productos
 productsRouter.get('/',productController.index);
 productsRouter.get('/shop',productController.shop);
