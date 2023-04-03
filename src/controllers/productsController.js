@@ -139,7 +139,13 @@ const productsController = {
             title: "Artistas",
             user: req.session.userLogged
         });
-},
+    },
+    artistDetail : function (req,res) {
+        res.render("products/artistDetail", {
+            title: "Artista",
+            user: req.session.userLogged
+        });
+    }
 }
 
   
