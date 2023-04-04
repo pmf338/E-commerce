@@ -48,7 +48,7 @@
 
         <!-- 
             traer los productos de la tabla db.fmrock.products
-            obtener un valor random de aquellos que tengan la fecha de creación más reciente
+            obtener un valor random de aquellos que tengan la fecha de update más reciente
             !-->
         <div class="container shop-container">
             <div class="row">
@@ -66,25 +66,6 @@
                         </div>
                       </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-4 p-0 mb-0">
-                    <div class="card text-center border-dark p-3 index-new-product">
-                        <img src="/images/products/<%=list[0].imagesUrl %>" class="card-img-top" alt="imagen-producto">
-                        <div class="card-body index-new-product-details p-0">
-                          <h4 class="card-text"><%= list[0].name %></h4>
-                          <a href="/productDetail/<%= list[0].id %>" class="btn btn-success btn-lg">LO QUIERO!</a>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 p-0 mb-0">
-                    <div class="card text-center border-dark p-3 index-new-product">
-                        <img src="/images/products/<%=list[0].imagesUrl %>" class="card-img-top" alt="imagen-producto">
-                        <div class="card-body index-index-new-product-details p-0">
-                          <h4 class="card-text"><%= list[0].name %></h4> 
-                          <a href="/productDetail/<%= list[0].id %>" class="btn btn-success btn-lg">LO QUIERO!</a>
-                        </div>
-                      </div>
-                </div>
-            
             </div>
         </div>
         <!-- 
