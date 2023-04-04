@@ -86,5 +86,9 @@ module.exports = (sequelize, dataTypes) => {
         })
     };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e64d2e774b021ec58f1e3ae124cf875acae139a3
     return Product;
 }
