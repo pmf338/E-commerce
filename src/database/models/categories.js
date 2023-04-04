@@ -1,3 +1,6 @@
+const { Sequelize } = require(".");
+const products = require('./products');
+
 module.exports = (sequelize, dataTypes) => {
 
     let alias = "Category";
@@ -14,7 +17,7 @@ module.exports = (sequelize, dataTypes) => {
 
         description: {
 
-            type: dataTypes.STRING(45),
+            type: dataTypes.STRING(50),
             allowNull: true
         }
 
@@ -28,7 +31,14 @@ module.exports = (sequelize, dataTypes) => {
         timeStamps: false
     };
 
-    const categories = sequelize.define(alias, cols, config);
+    const Categories = sequelize.define(alias, cols, config);
 
-    return categories;
+    Categories.associate = (models) => {
+        Categories.hasMany (models.Product, {
+            as : '_products',
+            foreignKey : 'categories_id'
+        });
+    };
+
+    return Categories;
 }
