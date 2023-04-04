@@ -1,43 +1,50 @@
 module.exports = (sequelize, dataTypes) => {
-
     let alias = "Artist";
-    
     let cols = {
         
-        id: {
+        id : {
             type: dataTypes.INTEGER,
             primaryKey: true,
             allowNull: false,
             autoIncrement: true
         },
-
-        name: {
+        name : {
             type: dataTypes.STRING(45),
             allowNull: true
         },
-
-        description: {
-            type: dataTypes.STRING(45),
+        description : {
+            type: dataTypes.STRING(350),
             allowNull: true
         },
-
-        imagesUrl: {
-
-            type: dataTypes.STRING(45),
+        logo : {
+            type: dataTypes.STRING(150),
             allowNull: true
         },
-
+        banner : {
+            type: dataTypes.STRING(150),
+            allowNull: true            
+        },
+        subscribers : {
+            type: dataTypes.STRING(20),
+            allowNull: true    
+        }
         
     };
 
     let config = {
-
         tableName: 'artists',
         underScored: true,
         timeStamps: false
     };
 
-    const artist = sequelize.define(alias, cols, config);
+    const Artist = sequelize.define(alias, cols, config);
 
-    return artist;
+    Artist.associate = (models) => {
+        Artist.hasMany (models.Product, {
+            as : '_products',
+            foreignKey : 'artist_id'
+        })
+    };
+
+    return Artist;
 }

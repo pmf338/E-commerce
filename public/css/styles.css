@@ -107,7 +107,7 @@ header .profile-btns .profile img{
 .index-container-artists{
     margin-top: 220px;
 }
-.new-product{
+.index-new-product{
     width: 20rem;
 }
 .index-container-artists{
@@ -173,9 +173,26 @@ header .profile-btns .profile img{
     height: 150px;
     width: 150px;
 }
+.artists-card span{
+    display: none;
+}
+.artists-card img:hover{
+    border-radius: 200px;
+}
+.artists-card:hover span{
+    display: block;
+}
 
 
+/*----------------------------------------artistDetail.ejs---------------------------------------------------------*/
+.artistDetail-banner{
+    height: 250px ;
+    background-color: linear-gradient(
+            to bottom,
+            hsla(0, 0%, 0%, 0),
+            hsla(263, 80%, 20%, 0.5)
+          );
+}
 
-/*----------------------------------------index.ejs---------------------------------------------------------*/
 
 /*----------------------------------------index.ejs---------------------------------------------------------*/
