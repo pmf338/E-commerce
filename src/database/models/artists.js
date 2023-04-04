@@ -1,5 +1,6 @@
 const { Sequelize } = require(".");
 const products = require("./products");
+const genres = require('./genres');
 
 module.exports = (sequelize, dataTypes) => {
     let alias = "Artist";
@@ -46,7 +47,9 @@ module.exports = (sequelize, dataTypes) => {
         Artist.hasMany (models.Product, {
             as : '_products',
             foreignKey : 'artist_id'
-        })
+        });
+
+
     };
     Artist.associate = (models) => {
         Artist.belongsTo (models.Genre, {
@@ -56,5 +59,12 @@ module.exports = (sequelize, dataTypes) => {
     };
 
 
+    Artist.associate = (models) => {
+        Artist.belongsTo (models.Genre, {
+            as : '_genre',
+            foreignKey : 'genre_id'
+        })
+    };
+    
     return Artist;
 }
