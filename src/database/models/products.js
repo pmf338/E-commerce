@@ -39,7 +39,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(45),
             allowNull: true
         },
-        isActive: {
+        is_active: {
             type: dataTypes.TINYINT,
             allowNull: true
         },
@@ -71,7 +71,7 @@ module.exports = (sequelize, dataTypes) => {
         timeStamps: false
     };
 
-    const product = sequelize.define(alias, cols, config);
+    const Product = sequelize.define(alias, cols, config);
 
     Product.associate = (models) => {
         Product.belongsTo (models.Artist, {
@@ -87,5 +87,5 @@ module.exports = (sequelize, dataTypes) => {
     };
 
 
-    return product;
+    return Product;
 }
