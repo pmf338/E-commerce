@@ -31,7 +31,15 @@ module.exports = (sequelize, dataTypes) => {
         subscribers : {
             type: dataTypes.STRING(20),
             allowNull: true    
-        }
+        },
+        createdAt : {
+            type: dataTypes.DATE,
+            allowNull: true    
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+            allowNull: true    
+        },
         
     };
 

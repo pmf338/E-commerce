@@ -83,5 +83,45 @@
   "user_password": "$2a$10$VgVNTo5go2ATeIfEYidGa.UF/ohBlKOlRt.CFJRFSse7fBdG12mtC",
   "user_image": "user-1680455931983.jpg",
   "user_address": "dasdas"
+ },
+ {
+  "id": 481,
+  "user_name": "ejemplo5",
+  "user_surname": "ejemplo",
+  "user_user_name": "ejemplo5",
+  "user_email": "ejemplo5@example.com",
+  "user_password": "$2a$10$dAfYHiQ8k8Qou0KmQn9Yt.QpPumgweAHOwhs5eQ1jVyGBmAzmtEh6",
+  "user_image": "404.jpg",
+  "user_address": "calle falsa 123"
+ },
+ {
+  "id": 656,
+  "user_name": "ejemplo6",
+  "user_surname": "ejemplo",
+  "user_user_name": "ejemplo6",
+  "user_email": "ejemplo6@example.com",
+  "user_password": "$2a$10$VV9CVRUUd93fESHMpwTkIOG9np1cSHv6WRuG8pvqTvpPROmZqhQKW",
+  "user_image": "404.jpg",
+  "user_address": "calle falsa 123"
+ },
+ {
+  "id": 865,
+  "user_name": "ejemplo7",
+  "user_surname": "ejemplo",
+  "user_user_name": "ejemplo7",
+  "user_email": "ejemplo7@example.com",
+  "user_password": "$2a$10$Kt2zHO/wZNjFPFyNZ9q3legSXunZ7JzvRfJ5RTONoop/3cnn28V9S",
+  "user_image": "404.jpg",
+  "user_address": "calle falsa 123"
+ },
+ {
+  "id": 452,
+  "user_name": "ejemplo8",
+  "user_surname": "ejemplo",
+  "user_user_name": "ejemplo8",
+  "user_email": "ejemplo8@example.com",
+  "user_password": "$2a$10$aQCMWdr9vyGBoe2nZJ5op.2Lougp8Nht4YwMCutRhqKXleMdjQVSS",
+  "user_image": "404.jpg",
+  "user_address": "calle falsa 123"
  }
 ]

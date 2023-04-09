@@ -28,10 +28,12 @@
                     <% } %>
                     </br>
 
-                    <button type="button" class="btn btn-dark">
-                      <input type="file" name="user_image_edit" id="user_image_edit" accept=".jpg, .png" multiple>
-                    </button>
-                    </br>
+                    <div class="d-flex justify-content-center">
+                      <div class="btn btn-primary btn-rounded">
+                        <label class="form-label text-white m-1" for="customFile1">Seleccionar nueva imagen</label>
+                        <input type="file" id="user_image_edit" name="user_image_edit" accept=".jpg, .png, .jpeg" class="form-control d-none" id="customFile1" />
+                      </div>
+                    </div>
                     </br>
                     <a href="/editProfile">
                       <button type="submit" class="btn btn-success">
