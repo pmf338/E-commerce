@@ -12,9 +12,9 @@ module.exports = (sequelize, dataTypes) => {
 
         },
 
-        name: {
+        description: {
 
-            type: dataTypes.STRING(45),
+            type: dataTypes.STRING(100),
             allowNull: true
         }
 
@@ -28,7 +28,14 @@ module.exports = (sequelize, dataTypes) => {
         timeStamps: false
     };
 
-    const role = sequelize.define(alias, cols, config);
+    const Rol = sequelize.define(alias, cols, config);
 
-    return role;
+    Rol.associate = (models) => {
+        Rol.hasMany (models.User, {
+            as : '_users',
+            foreignKey : 'roles_id'
+        });
+    };
+
+    return Rol;
 }
