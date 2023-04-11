@@ -1,6 +1,4 @@
 const fs = require('fs');
-const path = require('path');
-const productsPath = path.join(__dirname, "../data/products.json");
 const {validationResult} = require('express-validator');
 const {Product} = require('../database/models');
 
@@ -29,7 +27,7 @@ const productsController = {
     showProduct: function (req, res) {
         let productId = req.params.id;
         let emptyList = [];
-        Product.findByPk(id)
+        Product.findByPk(productId)
         .then(producto => {
             res.render("products/shop",{
                 title: "Tienda",

@@ -13,7 +13,7 @@ module.exports = (sequelize, dataTypes) => {
         },
 
         quantity: {
-            type: dataTypes.STRING(45),
+            type: dataTypes.INTEGER,
             allowNull: true
         },
 
@@ -21,15 +21,7 @@ module.exports = (sequelize, dataTypes) => {
 
             type: dataTypes.DECIMAL(6, 2),
             allowNull: true
-        },
-
-        detailsCol: {
-
-            type: dataTypes.STRING(45),
-            allowNull: true
-        },
-
-        
+        }, 
     };
 
     let config = {
@@ -39,7 +31,9 @@ module.exports = (sequelize, dataTypes) => {
         timeStamps: false
     };
 
-    const detail = sequelize.define(alias, cols, config);
+    const Detail = sequelize.define(alias, cols, config);
 
-    return detail;
-}
+    return Detail;
+};
+
+    
