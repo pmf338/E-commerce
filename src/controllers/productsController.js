@@ -39,13 +39,20 @@ const productsController = {
     },
     productDetail: function (req, res) {
         let productId = req.params.id;
-        let _product = productsController.getProducts().find(product => product.id == productId);
-        res.render("products/productDetail", {
-            title: "Producto",
-            product: _product,
-            user: req.session.userLogged
-        });
+        Product.findByPk(productId)
+            .then( _product => {
+                res.render("products/productDetail", {
+                    title: "Producto",
+                    product: _product,
+                    user: req.session.userLogged
+                })
+                .catch (function (error) {
+                    console.log("error artist controler -", error)
+                }) 
+            }
+            )
     },
+
     createProduct: function (req, res) {
         res.render("products/createProduct", {
             title: "Creación de producto",
@@ -84,14 +91,21 @@ const productsController = {
         //console.log("Aca escriubo el producto");
         res.redirect ('/shop')
     },
+
     editProduct: function (req, res) {
         let productId = req.params.id;
-        let _product = productsController.getProducts().find(product => product.id == productId);
-        res.render("products/editProduct", {
-            title: "Producto",
-            product: _product,
-            user: req.session.userLogged
-        });
+        Product.findByPk(productId)
+            .then( _product => {
+                res.render("products/editProduct", {
+                    title: "Producto",
+                    product: _product,
+                    user: req.session.userLogged
+                })
+                .catch (function (error) {
+                    console.log("error artist controler -", error)
+                }) 
+            }
+            )
     },
     updateProduct: function (req, res) {
         let productId = req.params.id;
