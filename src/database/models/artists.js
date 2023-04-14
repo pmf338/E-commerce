@@ -6,33 +6,40 @@ module.exports = (sequelize, dataTypes) => {
     let alias = "Artist";
     let cols = {
         
-        id: {
+        id : {
             type: dataTypes.INTEGER,
             primaryKey: true,
             allowNull: false,
             autoIncrement: true
         },
-        name: {
+        name : {
             type: dataTypes.STRING(45),
             allowNull: true
         },
-        description: {
+        description : {
             type: dataTypes.STRING(350),
             allowNull: true
         },
-        logo: {
+        logo : {
             type: dataTypes.STRING(150),
             allowNull: true
         },
-        banner: {
+        banner : {
             type: dataTypes.STRING(150),
             allowNull: true            
         },
-        subscribers: {
+        subscribers : {
             type: dataTypes.STRING(20),
             allowNull: true    
-        }
-        
+        },
+        createdAt : {
+            type: dataTypes.DATE,
+            allowNull: true    
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+            allowNull: true    
+        },
     };
 
     let config = {
@@ -48,16 +55,7 @@ module.exports = (sequelize, dataTypes) => {
             as : '_products',
             foreignKey : 'artist_id'
         });
-
-
     };
-    Artist.associate = (models) => {
-        Artist.belongsTo (models.Genre, {
-            as : '_genre',
-            foreignKey : 'genre_id'
-        })
-    };
-
 
     Artist.associate = (models) => {
         Artist.belongsTo (models.Genre, {

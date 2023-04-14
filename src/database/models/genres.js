@@ -2,7 +2,6 @@ const { Sequelize } = require(".");
 const artists = require("./artists");
 
 module.exports = (sequelize, dataTypes) => {
-
     let alias = "Genre";
     let cols = {
         
@@ -12,21 +11,34 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false,
             autoIncrement: true
         },
-
-        name: {
-
-            type: dataTypes.STRING(45),
+        description: {
+            type: dataTypes.STRING(50),
             allowNull: true
-        }
+        },
+        createdAt : {
+            type: dataTypes.DATE,
+            allowNull: true    
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+            allowNull: true    
+        },
     };
 
     let config = {
-        tableName: 'genre',
+        tableName: 'genres',
         underScored: true,
         timeStamps: false
     };
 
-    const genre = sequelize.define(alias, cols, config);
+    const Genre = sequelize.define(alias, cols, config);
 
-    return genre;
+    Genre.associate = (models) => {
+        Genre.hasMany (models.Artist, {
+            as : '_artist',
+            foreignKey : 'genre_id'
+        })
+    };
+
+    return Genre;
 }
