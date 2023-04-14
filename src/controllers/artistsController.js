@@ -2,6 +2,7 @@ const path = require('path');
 const {validationResult} = require('express-validator');
 const {Artist} = require('../database/models');
 const {Product} = require('../database/models');
+const { where } = require('sequelize');
 
 const artistController = {
     artists : async function (req,res){
@@ -21,9 +22,20 @@ const artistController = {
                     association : "_genre"
                 }]
             });
+            let artist_products = await Product.findAll({
+                where: {
+                    artist_id :  artistId
+                }
+            },{
+                include : [{
+                    order: [['updatedAt','ASC']],
+                    limit : 3,
+                }]
+            })
             res.render("products/artistDetail",{
                 artist,
                 artist_genre,
+                artist_products,
                 title: "Artista",
                 user: req.session.userLogged});
         }catch(error){

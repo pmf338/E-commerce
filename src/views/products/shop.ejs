@@ -23,7 +23,7 @@
                 <div class="card h-100 shop-products-card">
                     <img src="/images/products/<%- product.imagePrimary %>" class="card-img-top shop-card-img border-1 border" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title text-center fs-4 mb-4"><%- product.name %></h5>
+                    <a href="/productdetail/<%- product.id %>"><h5 class="card-title text-center fs-4 mb-4"><%- product.name %></h5></a>
                     <div class="position-relative fs-5 pb-4">
                         <span class="card-text position-absolute top-50 start-0 translate-middle-y">$ <%- product.price %></span>
                         <span class="position-absolute top-50 end-0 translate-middle-y">
@@ -33,20 +33,15 @@
                               </svg>
                         </span>
                     </div>
-
-                    
                 </div>
                 <div class="card-footer shop-products-card-footer">
-                    <p class="fs-6 text-center mb-0">AGREGAR AL CARRITO</p>
+                    <p class="fs-6 text-center mb-0">AGREGADO</p>
                 </div>
               </div>
             </div>
             <% }); %>
-          </div>
-
-
-
-        <a href="/createProduct" class="btn-flotante">Crear Producto</a>
+        </div>
+        <a href="/createProduct" class="shop-btn-flotante btn-secondary border-success">Agregar Producto</a>
     </main>
     <footer>
         <%- include('../partials/footer.ejs') %>
