@@ -3,7 +3,10 @@ const db = require('../database/models');
 const sequelize = db.sequelize;
 const {validationResult} = require('express-validator');
 
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const jwtSecret = process.env.TOKEN_SECRET;
+const jwtExpirySeconds = process.env.TOKEN_EXPIRY_SECONDS || 300;
 const { nextTick } = require('process');
 
 const {User} = require('../database/models');
@@ -18,9 +21,70 @@ const userController = {
         });
 
     },
-    processLogin: function (req,res) {
-        let users = JSON.parse(fs.readFileSync(usersPath, 'utf-8'));
-        let user = users.find(user => user.user_email == req.body.user && bcrypt.compareSync(req.body.pass, user.user_password));
+    processLogin: async (req,res) => {
+            try {
+                
+                const errors = validationResult(req);
+                if (!errors.isEmpty()) {
+                    return res.status(400).json({
+                        success: false,
+                        errors: errors.array()
+                    });
+                }
+                
+                const { email } = req.body;
+                const user = await User.findOne({ where: { email } });
+
+                //console.log("body",user);
+
+                if (!user) {
+                    return res.status(400).json({
+                        success: false,
+                        message: 'User not found'
+                    });
+                }
+                
+                //console.log("password y email",password + ' ' +  email);
+                const validPassword = await bcrypt.compare(req.body.pass, user.dataValues.password);
+
+                if (!validPassword) {
+                    return res.status(400).json({
+                        success: false,
+                        message: 'Credentials are not valid'
+                    });
+                }
+    
+                const payload = {
+                    id: user.id,
+                    email: user.email,
+                    name: user.name,
+                    role_id: user.roles_id
+                };
+
+                /*
+                const token = jwt.sign(payload, jwtSecret, {
+                    algorithm: 'HS256',
+                    expiresIn: jwtExpirySeconds
+                });
+                
+                
+                res.cookie('token', token, { maxAge: jwtExpirySeconds * 1000 });
+                
+                res.status(200).json({ message: 'Login successful', token });
+                
+                console.log("cookie", res.cookie('token', token, { maxAge: jwtExpirySeconds * 1000 }));
+                */
+
+                res.redirect('/');
+
+            } catch(error) {
+                console.log("error user controler -", error)
+            }
+        },
+        
+        /*
+        let users = JSON.pa=rse(fs.readFileSync(usersPath, 'utf-8'));
+        let user = users.find(user => user.user_email = req.body.user && bcrypt.compareSync(req.body.pass, user.user_password));
 
         if (user){
             req.session.userLogged = user;
@@ -35,14 +99,8 @@ const userController = {
         }  else {
             console.log("no se inicio sesion, correo o contraseña incorrectos", req.body)
         }
-
-        /*res.json({
-            msg: "Respuesta del process Login",
-            data: req.body,
-            user
-        });*/
-
-    },
+        
+        */
     contact: function (req, res) {
         res.render("users/contact", {
             title: "Contact",
@@ -83,9 +141,8 @@ const userController = {
         });
     },
     logout : function (req,res){
-        console.log("cerrar sesion");
-        req.session.destroy();
-        console.log("retornar");
+        res.clearCookie('token');
+        res.status(200).json({ message: 'Logout successful' });
         return res.redirect('/');
     },
     storeUser : function (req,res){

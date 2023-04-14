@@ -9,7 +9,6 @@ const { artistDetail } = require('./productsController');
 
 const artistController = {
     artist: function (req, res) {
-    console.log("artist controler");
        Artist.findAll()
             .then(artistList => {
                 res.render("products/artists", {

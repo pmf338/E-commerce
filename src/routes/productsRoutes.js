@@ -9,7 +9,6 @@ const artistController = require ('../controllers/artistController');
 
 
 // Artistas
-console.log("ruta artist")
 productsRouter.get('/artists',artistController.artist);
 productsRouter.get('/artistDetail/:id',artistController.artistDetail);
 //Listado productos
