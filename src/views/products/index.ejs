@@ -3,7 +3,6 @@
 
 <head>
     <%- include('../partials/head.ejs') %>
-    <title>Home</title>
 </head>
 
 <body>
@@ -11,9 +10,7 @@
         <%- include('../partials/header.ejs') %>
     </header>
     <main>
-        <!-- 
-            traer imagenes en referencias a banners/highlights de la carpeta ../images/banners
-            !-->
+        <!-- Banner -->
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -45,90 +42,52 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-
-        <!-- 
-            traer los productos de la tabla db.fmrock.products
-            obtener un valor random de aquellos que tengan la fecha de creación más reciente
-            !-->
-        <div class="container shop-container">
-            <div class="row">
-                <h1 class="display-2 text-center px-3 py-4">Nuevos Productos</h1>
-            </div>
-            <!-- Se debería enviar una lista que ya tenga estos 3 productos, hacerlo desde sequalize
-                 !-->
-            <div class="row justify-content-between px-3">
-                <div class="col-12 col-md-6 col-lg-4 p-0 mb-0">
-                    <div class="card text-center border-dark p-3 index-new-product">
-                        <img src="/images/products/<%=list[0].imagesUrl %>" class="card-img-top" alt="imagen-producto">
-                        <div class="card-body index-new-product-details p-0">
-                          <h4 class="card-text"><%= list[0].name %></h4>
-                          <a href="/productDetail/<%= list[0].id %>" class="btn btn-success btn-lg">LO QUIERO!</a>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 p-0 mb-0">
-                    <div class="card text-center border-dark p-3 index-new-product">
-                        <img src="/images/products/<%=list[0].imagesUrl %>" class="card-img-top" alt="imagen-producto">
-                        <div class="card-body index-new-product-details p-0">
-                          <h4 class="card-text"><%= list[0].name %></h4>
-                          <a href="/productDetail/<%= list[0].id %>" class="btn btn-success btn-lg">LO QUIERO!</a>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 p-0 mb-0">
-                    <div class="card text-center border-dark p-3 index-new-product">
-                        <img src="/images/products/<%=list[0].imagesUrl %>" class="card-img-top" alt="imagen-producto">
-                        <div class="card-body index-index-new-product-details p-0">
-                          <h4 class="card-text"><%= list[0].name %></h4> 
-                          <a href="/productDetail/<%= list[0].id %>" class="btn btn-success btn-lg">LO QUIERO!</a>
-                        </div>
-                      </div>
-                </div>
-            
-            </div>
+        
+        <!-- New Products -->    
+        <div>
+            <h1 class="display-2 text-center px-3 py-4">Nuevos Productos</h1>
         </div>
-        <!-- 
-            traer los artistas de la tabla db.fmrock.artists
-            recorrer el array y asignar los valores correspondientes a mostrar en el grid
-            !-->
-        <div class="container-fluid text-center index-container-artists">
-            <h2 class="display-2 text-center px-3 py-4">Artistas</h2>
-            <div class="row row-cols-3">
-                <div class="col-12 col-md-4 col-lg9">
-                    <img class="img-fluid artist-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-1.jpg"
-                        alt>
-                </div>
-                <div class="col-12 col-md-4 col-lg9 artist-container">
-                    <img class="img-fluid artist-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-3.jpg"
-                        alt>
-                    <div class="display-6 artist-name">
-                        <p>Nombre XXX</p>
+        <div>
+            <div class="container text-center">
+                <div class="row">
+                    <% productsList.forEach(product => { %>
+                    <div class="col col-12 col-md-4 border p-4">
+                        <img src="/images/products/<%- product.imagePrimary %>" class="card-img-top index-products-img" alt="imagen-producto">
+                        <p class="m-4 fs-4 text" style="height: 6rem;"><%- product.name %></p>
+                        <a href="http://" class="btn btn-lg btn-dark d-block mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-cart-plus m-2" viewBox="0 0 16 16">
+                                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                              </svg>
+                            ¡Lo Quiero!</a>
                     </div>
+                <% }); %>
                 </div>
-                <div class="col-12 col-md-4 col-lg9">
-                    <img class="img-fluid artist-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-4.jpg"
-                        alt>
-                </div>
-                <div class="col-12 col-md-4 col-lg9">
-                    <img class="img-fluid artist-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-5.jpg"
-                        alt>
-                </div>
-                <div class="col-12 col-md-4 col-lg9">
-                    <img class="img-fluid artist-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-4.jpg"
-                        alt>
-                </div>
-                <div class="col-12 col-md-4 col-lg9">
-                    <img class="img-fluid artist-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/jeremiah-wilson-5.jpg"
-                        alt>
-                </div>
+            <a href="/shop" class="fs-4 my-2">Ir a Tienda</a>
             </div>
         </div>
 
+        <!-- Artists --> 
+        <h2 class="display-2 text-center px-5 my-5 ">Artistas</h2>
+        <div class="container text-center my-5">
+            <div class="row row-cols-1 row-cols-md-3 g-2 g-lg-3 justify-content-center">
+            <% artistsList.forEach(artist => { %>
+              <div class="col">
+                <div class="card border-0" >
+                  <a href="/artistDetail/<%- artist.id %>">
+                    <img src="/images/artists/<%- artist.logo %>" class="card-img-top" alt="...">
+                  </a>   
+                </div>
+              </div>
+              <% }); %>
+            </div>
+            <a href="/artists" class="fs-4 my-2">Ir a Artistas</a>
+        </div>
+            
     </main>
     <footer>
         <%- include('../partials/footer.ejs') %>
     </footer>
     <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

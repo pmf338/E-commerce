@@ -41,25 +41,25 @@ module.exports = (sequelize, dataTypes) => {
         },
         is_active: {
             type: dataTypes.TINYINT,
-            allowNull: true
+            allowNull: false
         },
-        createdAt : {
+        createdAt: {
             type : dataTypes.DATE,
             allowNull: false
         },
-        updatedAt : {
+        updatedAt: {
             type : dataTypes.DATE,
             allowNull: false
         },
-        imagePrimary : {
+        imagePrimary: {
             type: dataTypes.STRING(150),
             allowNull: true
         },
-        imageSecond : {
+        imageSecond: {
             type: dataTypes.STRING(150),
             allowNull: true
         },
-        imageThird : {
+        imageThird: {
             type: dataTypes.STRING(150),
             allowNull: true
         }
