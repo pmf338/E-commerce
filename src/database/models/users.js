@@ -12,54 +12,57 @@ module.exports = (sequelize, dataTypes) => {
 
         },
 
-        names: {
+        name: {
 
-            type: dataTypes.STRING(45),
+            type: dataTypes.STRING(150),
             allowNull: true
         },
 
         surname: {
 
-            type: dataTypes.STRING(45),
+            type: dataTypes.STRING(100),
             allowNull: true
         },
 
         userName: {
 
-            type: dataTypes.STRING(45),
-            allowNull: true
+            type: dataTypes.STRING(100),
+            allowNull: false
         },
 
         email: {
 
-            type: dataTypes.STRING(45),
-            allowNull: true
+            type: dataTypes.STRING(100),
+            allowNull: false
         },
 
         password: {
 
-            type: dataTypes.STRING(45),
-            allowNull: true
+            type: dataTypes.STRING(100),
+            allowNull: false
         },
 
         address: {
 
-            type: dataTypes.STRING(45),
+            type: dataTypes.STRING(100),
             allowNull: true
         },
 
-        imageUrl: {
-            type: dataTypes.STRING(45),
+        imageProfile: {
+            type: dataTypes.STRING(150),
             allowNull: true
 
         },
 
-        roles_id: {
-
-            type: dataTypes.INTEGER,
-            allowNull: false
+        createdAt: {
+            type: dataTypes.DATE,
+            allowNull: true
         },
 
+        updatedAt: {
+            type: dataTypes.DATE,
+            allowNull: true
+        }
 
     };
 
@@ -70,7 +73,14 @@ module.exports = (sequelize, dataTypes) => {
         timeStamps: false
     };
 
-    const user = sequelize.define(alias, cols, config);
+    const User = sequelize.define(alias, cols, config);
 
-    return user;
+    User.associate = (models) => {
+        User.belongsTo (models.Rol, {
+            as : '_rol',
+            foreignKey : 'roles_id'
+        })
+    };
+
+    return User;
 }

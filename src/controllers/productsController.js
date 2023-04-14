@@ -1,6 +1,4 @@
 const fs = require('fs');
-const path = require('path');
-const productsPath = path.join(__dirname, "../data/products.json");
 const {validationResult} = require('express-validator');
 const {Product} = require('../database/models');
 const {Artist} = require('../database/models');
@@ -53,17 +51,14 @@ const productsController = {
     },
     productDetail : async function (req,res){
         let productId = req.params.id;
-        try{
-            let product = await Product.findByPk(productId);
-            res.render("products/productDetail",{
-                product,
-                title: "Producto",
-                user: req.session.userLogged}
-            );
-        }catch(error){
-            res.send("error in productsController-productDetail : ",error)
-        }
+        let _product = productsController.getProducts().find(product => product.id == productId);
+        res.render("products/productDetail", {
+            title: "Producto",
+            product: _product,
+            user: req.session.userLogged
+        });
     },
+
     createProduct: function (req, res) {
         res.render("products/createProduct", {
             title: "Creación de producto",
@@ -102,18 +97,14 @@ const productsController = {
         //console.log("Aca escriubo el producto");
         res.redirect ('/shop')
     },
-    editProduct : async function (req,res){
+    editProduct: function (req, res) {
         let productId = req.params.id;
-        try{
-            let product = await Product.findByPk(productId);
-            res.render("products/editProduct",{
-                product,
-                title: "Editar Producto",
-                user: req.session.userLogged}
-            );
-        }catch(error){
-            res.send("error in productsController-productDetail : ",error)
-        }
+        let _product = productsController.getProducts().find(product => product.id == productId);
+        res.render("products/editProduct", {
+            title: "Producto",
+            product: _product,
+            user: req.session.userLogged
+        });
     },
     updateProduct: function (req, res) {
         let productId = req.params.id;
