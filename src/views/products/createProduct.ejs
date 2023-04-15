@@ -73,23 +73,23 @@
 
                           <div class="col-6 mb-3">
                             <h6>Color / Colores del producto</h6>
-                            <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="product_color" id="product_color" minlength="1">
+                            <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="artist_id" id="artist_id" minlength="1" required>
                           </div>
 
                           <div class="col-6 mb-3">
                             <h6>Talla</h6>
-                            <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="product_size" id="product_size" minlength="1">
+                            <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="artist_id" id="artist_id" minlength="1" required>
                           </div>
 
                           <div class="col-6 mb-3">
                             <h6>Formato</h6>
-                            <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="product_format" id="product_format" minlength="1" required>
+                            <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="artist_id" id="artist_id" minlength="1" required>
                           </div>
 
 
                           <div class="col-6 mb-3">
                             <h6>Categoria del producto</h6>
-                            <select class="form-select col-6 mb-3" name="product_category" id="product_category">
+                            <select class="form-select col-6 mb-3">
                               <option selected>Seleccionar</option>
                               <option value="1">Vinilo</option>
                               <option value="2">CD</option>
@@ -114,6 +114,59 @@
         </div>
       </section>
     </form>
+
+    <div class="main-container">
+      <form class="form-create-product" action="#" method="post" enctype="multipart/form-data">
+        <h1 class="title">Creación de Producto</h1>
+        <div class="input-field">
+          <label for="product_name">Nombre de producto</label>
+          <i class="fa-sharp fa-solid fa-box"></i><input type="text" name="product_name" id="product_name">
+          <% if(locals.errors && locals.errors.product_name){ %>
+          <p><%= errors.product_name.msg %></p>
+
+          <% } %>
+        </div>
+
+        <div class="input-field-small">
+          <label for="product_price">Precio</label>
+          <i class="fa-solid fa-dollar-sign"></i><input type="number" name="product_price" id="product_price">
+          <% if(locals.errors && locals.errors.product_price){ %>
+          <p><%= errors.product_price.msg %></p>
+
+          <% } %>
+        </div>
+
+        <div class="input-field-small">
+          <label for="product_quantity">Cantidad</label>
+          <i class="fa-solid fa-plus-minus"></i><input type="number" name="product_quantity" id="product_quantity">
+        </div>
+
+        <div class="input-field-small">
+          <label>Categoria</label>
+          <select name="category" class="select-category" required>
+            <option value="cat1">Categoria 1</option>
+            <option value="cat2">Categoria 2</option>
+            <option value="cat3">Categoria 3</option>
+            <option value="cat4">Categoria 4</option>
+          </select>
+        </div>
+
+        <div class="input-img">
+          <label for="product_image">Agregar imágenes del producto</label>
+          <input type="file" name="product_image" id="product_image" accept=".jpg" multiple class="file-option">
+        </div>
+
+        <div class="input-field">
+          <label for="product_description">Descripción del producto</label>
+          <textarea name="product_description" id="product_description" placeholder="Escribir la descripción del producto, máximo de 300 caracteres"></textarea>
+        </div>
+
+        <div class="container-buttons">
+          <button type="submit">CREAR</button>
+          <button type="reset">LIMPIAR</button>
+        </div>
+      </form>
+    </div>
   </main>
 
   <footer>
