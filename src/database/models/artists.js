@@ -40,7 +40,6 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.DATE,
             allowNull: true    
         },
-        
     };
 
     let config = {
@@ -56,8 +55,6 @@ module.exports = (sequelize, dataTypes) => {
             as : '_products',
             foreignKey : 'artist_id'
         });
-
-
     };
 
     Artist.associate = (models) => {
