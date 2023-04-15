@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const jwtSecret = process.env.TOKEN_SECRET;
 const jwtExpirySeconds = process.env.TOKEN_EXPIRY_SECONDS || 300;
+require("dotenv").config();
 const { nextTick } = require('process');
 
 const {User} = require('../database/models');
@@ -21,39 +22,44 @@ const userController = {
         });
 
     },
-    processLogin: async (req,res) => {
-            try {
-                
-                const errors = validationResult(req);
-                if (!errors.isEmpty()) {
-                    return res.status(400).json({
-                        success: false,
-                        errors: errors.array()
-                    });
-                }
-                
-                const { email } = req.body;
-                const user = await User.findOne({ where: { email } });
+    processLogin: function (req,res) {
+        User.findAll()
+        .then((users) => {		
+          
+          let errors = validationResult(req);
+          
+          let usuarioLogueado = [];
+          
+          if(req.body.email != '' && req.body.pass != ''){
+            usuarioLogueado = users.filter(function (user) {
+              return user.email === req.body.email  
+            });
+            
+            if(bcrypt.compareSync(req.body.pass,usuarioLogueado[0].password)=== false){
+              usuarioLogueado = [];
+            }
+          }
+          
+          if (usuarioLogueado.length === 0) {
+            return res.render(path.resolve(__dirname, '../views/users/login'),{ errors: [{ msg: "Credenciales invalidas" }] });
+          } else {
+            
+            req.session.usuario = usuarioLogueado[0];
+          }
+          
+          if(req.body.remember_me){
+            res.cookie('email',usuarioLogueado[0].email,{maxAge: 1000 * 60 * 60 * 24})
+          }
+          
+          //res.status(200).json({ message: 'Login successful', usuarioLogueado });
 
-                //console.log("body",user);
-
-                if (!user) {
-                    return res.status(400).json({
-                        success: false,
-                        message: 'User not found'
-                    });
-                }
-                
-                //console.log("password y email",password + ' ' +  email);
-                const validPassword = await bcrypt.compare(req.body.pass, user.dataValues.password);
-
-                if (!validPassword) {
-                    return res.status(400).json({
-                        success: false,
-                        message: 'Credentials are not valid'
-                    });
-                }
+          return res.redirect('/');   
+  
+        }).catch (function (error) {
+            console.log("error user controler - login", error)
+        });
     
+                /*
                 const payload = {
                     id: user.id,
                     email: user.email,
@@ -61,26 +67,22 @@ const userController = {
                     role_id: user.roles_id
                 };
 
-                /*
+                
                 const token = jwt.sign(payload, jwtSecret, {
                     algorithm: 'HS256',
                     expiresIn: jwtExpirySeconds
                 });
                 
                 
-                res.cookie('token', token, { maxAge: jwtExpirySeconds * 1000 });
+                res.cookie('token', token, { maxAge: jwtExpirySeconds * 10000 });
                 
-                res.status(200).json({ message: 'Login successful', token });
-                
-                console.log("cookie", res.cookie('token', token, { maxAge: jwtExpirySeconds * 1000 }));
                 */
-
-                res.redirect('/');
-
-            } catch(error) {
-                console.log("error user controler -", error)
-            }
+            
+            
         },
+        
+
+        //METODO UTILIZANDO JSON
         
         /*
         let users = JSON.pa=rse(fs.readFileSync(usersPath, 'utf-8'));
@@ -108,11 +110,17 @@ const userController = {
         });
     },
     editProfile: function (req, res) {
-        res.render("users/editProfile", {
-            title: "Editar perfil",
-            lista: userController.getUsers(),
-            user: req.session.userLogged
-        });
+        let userId = req.params.id;
+        User.findByPk(userId)
+            .then( _user => {
+                res.render("users/editProfile", {
+                    title: "Edición de perfil",
+                    usuario: _user,
+                    user: req.session.userLogged
+                })
+            }).catch (function (error) {
+                console.log("error user controler - editProfile", error)
+            }) 
     },
     createUser: function (req, res) {
         res.render("users/createProfile", {
@@ -127,23 +135,23 @@ const userController = {
     userProfile : function (req,res) {
         
         let userId = req.params.id;
-        User.findByPk(userId);
-        then(usuario => {
+        User.findByPk(userId)
+        .then(usuario => {
 
             res.render('users/profile', {
                 title: 'Perfil',
                 user: req.session.userLogged
             
-        }).catch (function (error) {
-            console.log("error user controler -", error)
         })
+            }).catch (function (error) {
+                console.log("error user controler -", error)
 
         });
     },
     logout : function (req,res){
-        res.clearCookie('token');
-        res.status(200).json({ message: 'Logout successful' });
-        return res.redirect('/');
+        req.session.destroy();
+        res.cookie('email',null,{maxAge: -1});
+        res.redirect('/')
     },
     storeUser : function (req,res){
         
@@ -172,8 +180,11 @@ const userController = {
 
 
         
-        //Guardado del usuario
-        /*let idRandom = Math.floor((Math.random() * 1000) + 21); //Id random
+        //METODO UTILIZANDO JSON
+
+        
+        /*
+        let idRandom = Math.floor((Math.random() * 1000) + 21); //Id random
         let users = userController.getUsers();
         let newUser = {
             "id" : idRandom,
@@ -197,8 +208,8 @@ const userController = {
     },
     editUser : function (req,res){
         let userId = req.params.id;
-        User.findByPk(userId);
-        then(usuario => {
+        User.findByPk(userId)
+        .then(usuario => {
             
             res.render("users/editProfile",{usuario:{
 

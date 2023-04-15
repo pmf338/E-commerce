@@ -4,55 +4,36 @@ const path = require('path');
 const {User} = require('../database/models');
 
 
-module.exports = (req, res, next) => {
+const userSessionMiddleware = (req,res,next) =>{
     
-    res.locals.user = false;
-
-    if(req.session.user){
-
-        res.locals.user = req.session.user;
+    
+    res.locals.usuario = false;
+    
+    if(req.session.usuario){
+        res.locals.usuario = req.session.usuario;
         return next();
-    
     }else if(req.cookies.email){
-
         User.findOne({
-
-            where : {
-
-                email: req.cookies.email
+            where: {
+               email: req.cookies.email
             }
         })
         .then(user =>{
-
-            req.session.user = user;
-            req.local.user = user;
-
+            req.session.usuario = user;
+            res.locals.usuario = user;
+            
             return next();
-        
-        }).catch (function (error) {
-            console.log("error userSession middleware -", error)
-        })
-    }
-
-}
-
-
-/*
-const userSessionMiddleware = (req,res,next) => {
-
-    if (req.cookies && req.cookies.userLogged) {
-        res.locals.userLogged = req.cookies.userLogged; //cookie importado de libreria ..?
-    } 
-
-    if (req.session && req.session.userLogged) {
-        res.locals.userLogged = req.session.userLogged;
-    } 
     
-    next();
-
+        })
+                
+    }else{
+        return next();
+    }
 }
+
 
 module.exports = userSessionMiddleware;
- */  
+
+
 
 

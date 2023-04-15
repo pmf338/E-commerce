@@ -1,6 +1,6 @@
 const guestMiddleware = (req, res, next) => {
 
-    if (!req.session.userLogged && !req.cookies.userLogged) {
+    if (!req.cookies.email && !req.session.usuario) {
         return res.redirect('/login');
     } 
     next();

@@ -29,12 +29,22 @@
                                         <input type="text" name="email" id="email" class="form-control"
                                             placeholder="Correo electronico" required>
                                         <i class="fa-regular fa-user"></i>
+                                        <% if(typeof(errors) != 'undefined'){%>
+                                            <span class="text-danger">
+                                              <%= errors[0].msg %>
+                                            </span>
+                                         <%}%>
                                     </div>
                                     <div class="form-group input-field-login">
                                         <input type="password" name="pass" id="pass" class="form-control"
                                             placeholder="Contraseña" minlength="3" required>
                                         <i class="fa-solid fa-lock"></i>
                                         <!--Agregar icono para mostrar/ocultar contraseña-->
+                                        <% if(typeof(errors) != 'undefined' ){%>
+                                            <span class="text-danger">
+                                              <%= errors[0].msg %>
+                                            </span>
+                                         <%}%>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-check">
