@@ -12,26 +12,29 @@ const userSessionMiddleware = require('./middlewares/userSessionMiddleware');
 
 //Middlewares
 
-app.use(express.static(__dirname + '../../public'));
-app.use(express.static(path.join(__dirname, '../public')));
-app.use(express.urlencoded({extended: true}));
-app.use(userSessionMiddleware);
-app.use(express.json());
-app.use(cookieParser());
 app.use(session({
     secret: 'secret',
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     //cookie: { maxAge: 60000 } //60 segundos cookie de express session diferente a cookie parser, borrar luego al hacer cookie parser
 }));
 
-app.use(methodOverride('_method'));
+app.use(express.static(__dirname + '../../public'));
+app.use(express.static(path.join(__dirname, '../public')));
+app.use(cookieParser());
+app.use(express.urlencoded({extended: true})); //Para que nos pueda llegar la información desde el formulario al req.body
+app.use(express.json());
+app.use(methodOverride('_method')); //Middleware de aplicación el cual se encargue de controlar la posibilidad de usar otros métodos diferentes al GET y al POST, en nuestros formularios
+
+app.use(userSessionMiddleware); //Para verificar si el usuario esta o no logeado
+
+app.use('/', productRoutes);
+app.use('/', usersRoutes);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
 
-app.use('/', productRoutes);
-app.use('/', usersRoutes);
+
 
 
 // Desactivamos el 404 para identificar los errores posibles
