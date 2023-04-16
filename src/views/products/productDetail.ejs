@@ -80,11 +80,15 @@
 
                       </div>
                       </br>
-                      <a href="/editProduct/<%= product.id %>">
-                        <button type="button" class="btn btn-warning">
-                          Editar producto
-                        </button>
-                      </a>
+                      <% if (locals.usuario) { %>
+                        <% if (locals.usuario.roles_id == 1) { %>
+                          <a href="/editProduct/<%= product.id %>">
+                            <button type="button" class="btn btn-warning">
+                              Editar producto
+                            </button>
+                          </a>
+                        <% } %>
+                        <% } %>
                       </br>
                       </br>
                       <a href="/shop">
@@ -94,16 +98,18 @@
                       </a>
                       </br>
                       </br>
-                      <a href="">
-                        <button type="button" class="btn btn-danger">
-                          Eliminar producto
-                        </button>
-                      </a>
+                      <% if (locals.usuario) { %>
+                        <% if (locals.usuario.roles_id == 1) { %>
+                          <a href="">
+                            <button type="button" class="btn btn-danger">
+                              Eliminar producto
+                            </button>
+                          </a>
+                        <% } %>
+                        <% } %>
                       </br>
                       </br>
                     </div>
-
-
                     <div class="col-md-8">
                       <div class="card-body p-4">
                         <h6><%= product.dataValues.name %></h6>
