@@ -16,84 +16,117 @@
   <main>
     <section class="vh-250"
       style="background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg'); background-size: cover;">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-6" style="margin-bottom: 20px;">
-            <div class="card mt-4">
-              <div class="card-body" style="background-color: #0b1320;">
-                <h1 class="display-4 card-title text-center text-white">Crear perfil de usuario</h1>
-                <form class="form-create-product" action="#" method="post" enctype="multipart/form-data">
 
-                  <div class="form-group input-field-register row">
-                    <label for="user_image" class="text-center text-white">Foto de perfil</label>
-                    <div class="rounded-image text-center">
-                      <img src="images/avatar.png" class="img-fluid w-50 p-5" />
-                    </div>
+      <form class="form-create-product" action="#" method="post" enctype="multipart/form-data">
+        <section class="vh-100"
+          style="background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg')">
+          <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col col-lg-9 mb-4 mb-lg-0">
+                <div class="card mb-3" style="border-radius: .5rem; ">
+                  </br>
+                  <div class="row g-0">
+                    <h3 class="display-6 card-title text-center text-gray">Crear perfil de usuario</h1>
 
+                      <div class="col-md-4 gradient-custom text-center text-gray"
+                        style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                        <div class="form-group input-field-register row">
+                          <label for="user_image" class="text-center text-white">Foto de perfil</label>
+                          <div class="rounded-image text-center">
+                            <img src="images/users/avatar.png" class="img-fluid w-90 p-5" />
+                          </div>
+                          <div class="d-flex justify-content-center">
+                            <div class="btn btn-light btn-rounded" style="padding: 5px">
+                              <label class="form-label text-black m-1" for="customFile1">Seleccionar foto de
+                                perdil</label>
+                              <input type="file" class="form-control" id="user_image" name="user_image"
+                                accept=".jpg, .png, .jpeg" />
+                            </div>
+                          </div>
 
-                    <div class="input-img input-field-register text-white">
-                      <input type="file" id="user_image" name="user_image" accept=".jpg" multiple
-                        class="form-control-file mt-3">
-                    </div>
+                        </div>
+
+                        </br>
+                        <button type="submit" class="btn btn-success">
+                          Guardar cambios
+                        </button>
+                        </br>
+                        </br>
+                        <a href="/login">
+                          <button type="button" class="btn btn-warning">
+                            Cancelar
+                          </button>
+                        </a>
+                        </br>
+                        </br>
+
+                      </div>
+
+                      <div class="col-md-8">
+                        <div class="card-body p-4">
+                          <h6>Crear perfil de usuario</h6>
+                          <hr class="mt-0 mb-4">
+                          <div class="row pt-1">
+
+                            <div class="col-6 mb-3">
+                              <h6>Nombre/s </h6>
+                              <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="user_name"
+                                id="user_name" minlength="1" required>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                              <h6>Apellido/s </h6>
+                              <i class="fa-solid fa-user"></i><input type="text" class="form-control"
+                                name="user_surname" id="user_surname" minlength="1" required>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                              <h6>Nombre de usuario</h6>
+                              <i class="fa-solid fa-user"></i><input type="text" class="form-control"
+                                name="user_user_name" id="user_user_name" minlength="1" required>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                              <h6>Correo electronico</h6>
+                              <i class="fa-solid fa-user"></i><input type="email" class="form-control" name="user_email"
+                                id="user_email" minlength="1" required>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                              <h6>Confirmar correo electronico</h6>
+                              <i class="fa-solid fa-user"></i><input type="email" class="form-control"
+                                name="user_email_confirm" id="user_email_confirm" minlength="1" required>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                              <h6>Contraseña</h6>
+                              <i class="fa-solid fa-user"></i><input type="password" class="form-control"
+                                name="user_pass" id="user_pass" minlength="1" required>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                              <h6>Confirmar contraseña</h6>
+                              <i class="fa-solid fa-user"></i><input type="password" class="form-control"
+                                name="user_pass_confirm" id="user_pass_confirm" minlength="1" required>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                              <h6>Dirección para envios</h6>
+                              <i class="fa-solid fa-user"></i><input type="text" class="form-control"
+                                name="user_address" id="user_address" minlength="1" required>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
                   </div>
-
-                  <div class="form-group input-field-register">
-                    <input type="text" name="user_name" id="user_name" minlength="3" placeholder="Nombre"
-                      class="form-control" required>
-                    <i class="fa-solid fa-user"></i>
-                  </div>
-
-                  <div class="form-group input-field-register">
-                    <input type="text" name="user_surname" id="user_surname" minlength="3" placeholder="Apellido"
-                       class="form-control" required>
-                    <i class="fa-solid fa-user"></i>
-                  </div>
-
-                  <div class="form-group input-field-register">
-                    <input type="text" name="user_user_name" id="user_user_name" minlength="3" placeholder="Usuario"
-                       class="form-control" required>
-                    <i class="fa-solid fa-user"></i>
-                  </div>
-
-                  <div class="form-group input-field-register">
-                    <input type="text" name="user_email" id="user_email" minlength="3" placeholder="Correo Electrónico"
-                       class="form-control" required>
-                    <i class="fa-solid fa-envelope-circle-check"></i>
-                  </div>
-
-                  <div class="form-group input-field-register">
-                    <input type="text" name="user_email_confirm" id="user_email_confirm" minlength="3"
-                      placeholder="Confirmar correo electrónico"  class="form-control" required>
-                    <i class="fa-solid fa-envelope-circle-check"></i>
-                  </div>
-
-                  <div class="form-group input-field-register">
-                    <input type="password" name="user_pass" id="user_pass" minlength="3" placeholder="Contraseña"
-                       class="form-control" required>
-                    <i class="fa-solid fa-list"></i>
-                  </div>
-
-                  <div class="form-group input-field-register">
-                    <input type="password" name="user_pass_confirm" id="user_pass_confirm" minlength="3"
-                      placeholder="Confirmar contraseña"  class="form-control" required>
-                    <i class="fa-solid fa-list"></i>
-                  </div>
-
-                  <div class="form-group input-field-register">
-                    <input type="text" name="user_address" id="user_address" minlength="3"
-                      placeholder="Dirección del domicilio"  class="form-control" required>
-                    <i class="fa-solid fa-list"></i>
-                  </div>
-
-                  <div class="form-group text-center input-field-register">
-                    <button type="submit" class="btn btn-primary">CREAR PERFIL</button>
-                  </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </form>
     </section>
   </main>
 
