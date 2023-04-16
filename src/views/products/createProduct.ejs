@@ -14,7 +14,8 @@
   <main>
 
     <form class="form-create-product" action="#" method="post" enctype="multipart/form-data">
-      <section class="vh-100" style="background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg')">
+      <section class="vh-100"
+        style="background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg')">
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-9 mb-4 mb-lg-0">
@@ -23,16 +24,19 @@
                 <div class="row g-0">
                   <h3 class="display-6 card-title text-center text-gray">Crear producto</h1>
 
-                    <div class="col-md-4 gradient-custom text-center text-gray" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                    <div class="col-md-4 gradient-custom text-center text-gray"
+                      style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                       <div class="form-group input-field-register row">
                         <label for="user_image" class="text-center text-white">Foto de perfil</label>
                         <div class="rounded-image text-center">
                           <img src="images/products/avatar.png" class="img-fluid w-50 p-5" />
                         </div>
                         <div class="d-flex justify-content-center">
-                          <div class="btn btn-primary btn-rounded">
-                            <label class="form-label text-white m-1" for="customFile1">Seleccionar nuevas imagenes</label>
-                            <input type="file" id="product_image" name="product_image" accept=".jpg, .png, .jpeg" class="form-control d-none" id="customFile1" />
+                          <div class="btn btn-light btn-rounded" style="padding: 5px">
+                            <label class="form-label text-black m-1" for="customFile1">Seleccionar nuevas
+                              imagenes</label>
+                            <input type="file" class="form-control" id="product_image" name="product_image"
+                              accept=".jpg, .png, .jpeg" />
                           </div>
                         </div>
 
@@ -42,7 +46,15 @@
                       <button type="submit" class="btn btn-success">
                         Guardar cambios
                       </button>
-
+                      </br>
+                      </br>
+                      <a href="/">
+                        <button type="button" class="btn btn-warning">
+                          Cancelar
+                        </button>
+                      </a>
+                      </br>
+                      </br>
                     </div>
 
                     <div class="col-md-8">
@@ -53,37 +65,44 @@
 
                           <div class="col-6 mb-3">
                             <h6>Nombre del producto</h6>
-                            <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="product_name" id="product_name" minlength="1" required>
+                            <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="product_name"
+                              id="product_name" minlength="1" required>
                           </div>
 
                           <div class="col-6 mb-3">
                             <h6>Precio unitario</h6>
-                            <i class="fa-solid fa-user"></i><input type="number" class="form-control" name="product_price" id="product_price" minlength="1" required>
+                            <i class="fa-solid fa-user"></i><input type="number" class="form-control"
+                              name="product_price" id="product_price" minlength="1" required>
                           </div>
 
                           <div class="col-6 mb-3">
                             <h6>Cantidad a ingresar a invetario</h6>
-                            <i class="fa-solid fa-user"></i><input type="number" class="form-control" name="product_quantity" id="product_quantity" minlength="1" required>
+                            <i class="fa-solid fa-user"></i><input type="number" class="form-control"
+                              name="product_quantity" id="product_quantity" minlength="1" required>
                           </div>
 
                           <div class="col-6 mb-3">
                             <h6>Artista vinculado</h6>
-                            <i class="fa-solid fa-user"></i><input type="number" class="form-control" name="artist_id" id="artist_id" minlength="1" required>
+                            <i class="fa-solid fa-user"></i><input type="number" class="form-control" name="artist_id"
+                              id="artist_id" minlength="1" required>
                           </div>
 
                           <div class="col-6 mb-3">
                             <h6>Color / Colores del producto</h6>
-                            <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="artist_id" id="artist_id" minlength="1" required>
+                            <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="artist_id"
+                              id="artist_id" minlength="1" required>
                           </div>
 
                           <div class="col-6 mb-3">
                             <h6>Talla</h6>
-                            <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="artist_id" id="artist_id" minlength="1" required>
+                            <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="artist_id"
+                              id="artist_id" minlength="1" required>
                           </div>
 
                           <div class="col-6 mb-3">
                             <h6>Formato</h6>
-                            <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="artist_id" id="artist_id" minlength="1" required>
+                            <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="artist_id"
+                              id="artist_id" minlength="1" required>
                           </div>
 
 
@@ -100,7 +119,8 @@
 
                           <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-                            <textarea class="form-control" name="product_description" id="product_description" rows="3" required>Escriba la descripcion del producto aquí</textarea>
+                            <textarea class="form-control" name="product_description" id="product_description" rows="3"
+                              required>Escriba la descripcion del producto aquí</textarea>
                           </div>
 
                         </div>
@@ -114,59 +134,6 @@
         </div>
       </section>
     </form>
-
-    <div class="main-container">
-      <form class="form-create-product" action="#" method="post" enctype="multipart/form-data">
-        <h1 class="title">Creación de Producto</h1>
-        <div class="input-field">
-          <label for="product_name">Nombre de producto</label>
-          <i class="fa-sharp fa-solid fa-box"></i><input type="text" name="product_name" id="product_name">
-          <% if(locals.errors && locals.errors.product_name){ %>
-          <p><%= errors.product_name.msg %></p>
-
-          <% } %>
-        </div>
-
-        <div class="input-field-small">
-          <label for="product_price">Precio</label>
-          <i class="fa-solid fa-dollar-sign"></i><input type="number" name="product_price" id="product_price">
-          <% if(locals.errors && locals.errors.product_price){ %>
-          <p><%= errors.product_price.msg %></p>
-
-          <% } %>
-        </div>
-
-        <div class="input-field-small">
-          <label for="product_quantity">Cantidad</label>
-          <i class="fa-solid fa-plus-minus"></i><input type="number" name="product_quantity" id="product_quantity">
-        </div>
-
-        <div class="input-field-small">
-          <label>Categoria</label>
-          <select name="category" class="select-category" required>
-            <option value="cat1">Categoria 1</option>
-            <option value="cat2">Categoria 2</option>
-            <option value="cat3">Categoria 3</option>
-            <option value="cat4">Categoria 4</option>
-          </select>
-        </div>
-
-        <div class="input-img">
-          <label for="product_image">Agregar imágenes del producto</label>
-          <input type="file" name="product_image" id="product_image" accept=".jpg" multiple class="file-option">
-        </div>
-
-        <div class="input-field">
-          <label for="product_description">Descripción del producto</label>
-          <textarea name="product_description" id="product_description" placeholder="Escribir la descripción del producto, máximo de 300 caracteres"></textarea>
-        </div>
-
-        <div class="container-buttons">
-          <button type="submit">CREAR</button>
-          <button type="reset">LIMPIAR</button>
-        </div>
-      </form>
-    </div>
   </main>
 
   <footer>
