@@ -19,10 +19,12 @@ const productsController = {
                 productsList,
                 artistsList,
                 title: "Inicio",
-                user: req.session.userLogged}
-            );
+                user: req.session.userLogged
+            });
+            
+
         }catch(error){
-            res.send("error in productsController-index : ",error)
+            res.status(400).json(error);
         }
     },
     shop : async function (req,res){

@@ -66,7 +66,7 @@ const userController = {
 
                 //res.status(200).json({ message: 'Login successful', usuarioLogueado });
 
-                return res.redirect('/');
+                return res.redirect('/contact');
 
             }).catch(function (error) {
                 console.log("error user controler - login", error)
