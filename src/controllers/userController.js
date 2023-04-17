@@ -179,7 +179,7 @@ const userController = {
             password: bcrypt.hashSync(req.body.user_pass, 10),
             address: req.body.user_address,
             imageProfile: req.file ? req.file.filename : "404.jpg",
-            roles_id: 2
+            roles_id: req.body.roles_id ? req.body.roles_id : 2
         }
 
         console.log("newUser = ", newUser);

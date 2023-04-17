@@ -12,79 +12,176 @@
     <%- include('../partials/header.ejs') %>
   </header>
   <main>
+    <%= console.log("Deatlles del producto", product.dataValues) %>
+    <form class="form-create-product" method="post" action="/editProduct/<%= product.id %>?_method=PUT">
+      <section class="vh-100"
+        style="background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg')">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-9 mb-9 mb-lg-9">
+              <div class="card mb-3" style="border-radius: .5rem; ">
+                </br>
+                <div class="row g-0">
+                  <h3 class="display-6 card-title text-center text-gray">Detalles del producto</h1>
 
-    <div class="container text-center">
+                    <div class="col-md-4 gradient-custom text-center text-gray"
+                      style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                      </br>
+                      </br>
+                      <div class="form-group input-field-register row">
+                        <label for="user_image" class="text-center text-gray">Imagenes del producto</label>
 
-      <h3><%= product.dataValues.name %></h3>
-      <h3><%= product.dataValues.description %></h3>
-      <%= product.dataValues.imagePrimary %>
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                          <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                              class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                              aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                              aria-label="Slide 3"></button>
+                          </div>
+                          <div class="carousel-inner">
+                            <div class="carousel-item active">
+                              <% if (product.dataValues.imagePrimary != null) { %>
+                              <img src="../../images/products/<%= product.dataValues.imagePrimary %>"
+                                class="d-block w-100" alt="Avatar" />
+                              <% } else { %>
+                              <img src="../../images/products/avatar.jpeg" alt="Avatar" class="d-block w-100" />
+                              <% } %>
+                            </div>
+                            <div class="carousel-item">
+                              <% if (product.dataValues.imageSecond != null) { %>
+                              <img src="../../images/products/<%= product.dataValues.imageSecond %>"
+                                class="d-block w-100" alt="Avatar" />
+                              <% } else { %>
+                              <img src="../../images/products/avatar.jpeg" class="d-block w-100" />
+                              <% } %>
+                            </div>
+                            <div class="carousel-item">
+                              <% if (product.dataValues.imageThird != null) { %>
+                              <img src="../../images/products/<%= product.dataValues.imageThird %>"
+                                class="d-block w-100" />
+                              <% } else { %>
+                              <img src="../../images/products/avatar.jpeg" class="d-block w-100" />
+                              <% } %>
+                            </div>
+                          </div>
+                          <button class="carousel-control-prev" type="button"
+                            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                          </button>
+                          <button class="carousel-control-next" type="button"
+                            data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                          </button>
+                        </div>
 
-    </div>
+                      </div>
+                      </br>
+                      <% if (locals.usuario) { %>
+                        <% if (locals.usuario.roles_id == 1) { %>
+                          <a href="/editProduct/<%= product.id %>">
+                            <button type="button" class="btn btn-warning">
+                              Editar producto
+                            </button>
+                          </a>
+                        <% } %>
+                        <% } %>
+                      </br>
+                      </br>
+                      <a href="/shop">
+                        <button type="button" class="btn btn-warning">
+                          Cancelar
+                        </button>
+                      </a>
+                      </br>
+                      </br>
+                      <% if (locals.usuario) { %>
+                        <% if (locals.usuario.roles_id == 1) { %>
+                          <a href="">
+                            <button type="button" class="btn btn-danger">
+                              Eliminar producto
+                            </button>
+                          </a>
+                        <% } %>
+                        <% } %>
+                      </br>
+                      </br>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body p-4">
+                        <h6><%= product.dataValues.name %></h6>
+                        <hr class="mt-0 mb-4">
+                        <div class="row pt-1">
 
-    <!-- Esto va a ser un GRID -->
-    <!-- LADO IZQUIERDO : fotorama con carrousel -->
-    <!-- LADO DERECHO: Todos los datos se deberan traer de la bd -->
-    <div class="grid-container">
-      <div class="grid-item">
-        <div class="main-carrousel fotorama data-transition=" slide" data-clicktransition="crossfade"">
-            <img src=" ../../images/products/<%= product.dataValues.imagePrimary %>"  class="img-fluid w-100 p-5" alt="">
+                          <div class="col-6 mb-3">
+                            <h6>Nombre del producto</h6>
+                            <p class="text-muted"><%= product.dataValues.name %></p>
+                          </div>
+
+                          <div class="col-6 mb-3">
+                            <h6>Precio unitario</h6>
+                            <p class="text-muted"><%= product.dataValues.price %></p>
+                          </div>
+
+                          <div class="col-6 mb-3">
+                            <h6>Cantidad en inventario</h6>
+                            <p class="text-muted"><%= product.dataValues.quantity %></p>
+                          </div>
+
+                          <div class="col-6 mb-3">
+                            <h6>Artista vinculado</h6>
+                            <p class="text-muted"><%= product.dataValues.artist_id %></p>
+                          </div>
+
+                          <div class="col-6 mb-3">
+                            <h6>Color / Colores del producto</h6>
+                            <p class="text-muted">
+                              <%= product.dataValues.color ? product.dataValues.color : "No aplica" %></p>
+                          </div>
+
+                          <div class="col-6 mb-3">
+                            <h6>Talla</h6>
+                            <p class="text-muted"><%= product.dataValues.size ? product.dataValues.size : "No aplica" %>
+                            </p>
+                          </div>
+
+                          <div class="col-6 mb-3">
+                            <h6>Formato</h6>
+                            <p class="text-muted"><%= product.dataValues.format %></p>
+                          </div>
+
+
+                          <div class="col-6 mb-3">
+                            <h6>Categoria del producto</h6>
+                            <p class="text-muted"><%= product.dataValues.categories_id %></p>
+                          </div>
+
+                          <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+                            <p class="text-muted"></p><%= product.dataValues.description %></p>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="grid-item-right">
-        <div class="main-grid-product-detail">
-
-          <br>
-          <ul>
-            <h2><%= product.product_name %></h2>
-            <li id="price"><label>Precio</label>
-              <br>
-              <label><%= product.product_price %></label>
-            </li>
-            <br>
-            <li id="quantity">Cantidad <input class="input-data" type="number" name="quantity" id="input-quantity" placeholder="Ingrese una cantidad"></li>
-            <br>
-            <li id="delivery-date">Fecha estimada de entrega <input class="input-data" name="delivery-date" id="input-delivery-date" placeholder="Junio 2023" readonly=»readonly»></li>
-            <!--CAMBIAR A FUTURO (Código de cáclulo de fecha)-->
-          </ul>
-        </div>
-
-        <div class="line-separator"></div>
-        <div class="main-grid-product-description">
-          <br>
-          <p>Descripcion</p> <!-- Se trae de la bd -->
-          <p><%= product.product_description %></p>
-        </div>
-        <br>
-        <div class="main-grid-product-add">
-          <button class="submit"><a href="#"></a> Agregar al carrito <i class="fa-solid fa-cart-shopping">
-            </i></button> <!-- traer el icono -->
-          <br>
-          <button class="submit"><a href="/editProduct/<%= product.id %>">Editar</a><i class="fa-solid fa-pen-to-square"></i>
-          </button> <!-- traer el icono -->
-          <br>
-          <button class="submit delete"><a href="/deleteProduct/<%= product.id %>">Eliminar</a></button>
-        </div>
-      </div>
-    </div>
-
-    <div class="main-title">
-      <h2>Productos relacionados</h2>
-    </div>
-
-    <div class="related-products">
-      <div><img class="zoom" src="/images/the-killers-shirt.webp" alt></div>
-      <div><img class="zoom" src="/images/bowie-vinyl.jpeg" alt></div>
-      <div><img class="zoom" src="/images/signed-cd.webp" alt></div>
-      <div><img class="zoom" src="/images/dvd.webp" alt></div>
-      <div><img class="zoom" src="/images/rh-shirt.webp" alt></div>
-    </div>
-
-
+      </section>
+    </form>
+    </form>
   </main>
 
   <footer>
     <%- include('../partials/footer.ejs') %>
   </footer>
+  <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
