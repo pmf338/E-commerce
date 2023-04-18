@@ -5,11 +5,12 @@ const upload = require('../middlewares/multer');
 const rules = require('../middlewares/validator');
 
 const productController = require ('../controllers/productsController');
+const artistsController = require ('../controllers/artistsController');
 
 
 // Artistas
-productsRouter.get('/artists',productController.artist);
-productsRouter.get('/artistDetail/:id',productController.artistDetail);
+productsRouter.get('/artists',artistsController.artists);
+productsRouter.get('/artistDetail/:id',artistsController.artistDetail);
 //Listado productos
 productsRouter.get('/',productController.index);
 productsRouter.get('/shop',productController.shop);

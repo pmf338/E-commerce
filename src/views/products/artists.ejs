@@ -11,50 +11,21 @@
         <%- include('../partials/header.ejs') %>
     </header>
     <main>
-        <h1 class="display-2 text-center px-3 py-4">Artistas</h1>
-        <!-- 
-            Acá se van a traer los artistas desde la tabla db.artists
-        -->
-          <div class="container text-center">
+        <h1 class="display-2 text-center">Artistas</h1>
+        <h2 class="text-center">Encontrá a todos tus artistas preferidos</h2>
+        <!-- List of Artists -->
+          <div class="container text-center bg-light mt-5">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-4 g-2 g-lg-3 justify-content-center">
+            <% artistsList.forEach(artist => { %>
               <div class="col">
-                <div class="card artists-card border-0" style="width: 15rem;">
-                    <img src="/images/artists/logo-bizarrap.jpg" class="card-img-top" alt="..."><span class="fs-4">NOMBRE ARTISTA</span>
+                <div class="card artists-card border-0 m-4 bg-light" style="width: 15rem;">
+                  <a href="/artistDetail/<%- artist.id %>">
+                    <img src="/images/artists/<%- artist.logo %>" class="card-img-top" alt="...">
+                    <span class="fs-4"><%- artist.name %></span>
+                  </a>   
                 </div>
               </div>
-              <div class="col">
-                <div class="card artists-card border-0" style="width: 15rem;">
-                  <img src="/images/artists/logo-bizarrap.jpg" class="card-img-top" alt="..."><span class="fs-4">NOMBRE ARTISTA</span>
-              </div>
-
-              </div>
-              <div class="col">
-                <div class="card artists-card border-0" style="width: 15rem;">
-                  <img src="/images/artists/logo-bizarrap.jpg" class="card-img-top" alt="..."><span class="fs-4">NOMBRE ARTISTA</span>
-              </div>
-
-              </div>
-              <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
-              </div>
-              <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
-              </div>
-              <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
-              </div>
-              <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
-              </div>
-              <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
-              </div>
-              <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
-              </div>
-              <div class="col">
-                <div class="p-3 border bg-light">Row column</div>
-              </div>
+              <% }); %>
             </div>
           </div>
     </main>
