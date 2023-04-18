@@ -9,8 +9,8 @@ const artistController = {
         try{
             let artistsList = await Artist.findAll();
             res.render("products/artists", {artistsList, title: "Artistas", user: req.session.userLogged})
-        }catch(error){
-            res.send("error in artistsController-artists : ",error)
+        }catch(status){
+            res.status(400).json(status);
         }
     },
     artistDetail : async function (req,res) {

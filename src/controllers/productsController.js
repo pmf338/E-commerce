@@ -23,8 +23,8 @@ const productsController = {
             });
             
 
-        }catch(error){
-            res.status(400).json(error);
+        }catch(status){
+            res.status(400).json(status);
         }
     },
     shop : async function (req,res){
