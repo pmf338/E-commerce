@@ -4,6 +4,7 @@ const productsRouter = express.Router();
 const upload = require('../middlewares/multer');
 const rules = require('../middlewares/validator');
 const guestMiddleware = require('../middlewares/guestMiddleware');
+const guestMiddlewareAdmin = require('../middlewares/guestMiddlewareAdmin');
 const productController = require ('../controllers/productsController');
 const artistsController = require ('../controllers/artistsController');
 
@@ -18,13 +19,13 @@ productsRouter.get('/shop',productController.shop);
 productsRouter.get("/productDetail/:id", productController.productDetail);
 productsRouter.get('/shop/:id',productController.showProduct);
 //Creación producto
-productsRouter.get('/createProduct', guestMiddleware, productController.createProduct);
+productsRouter.get('/createProduct', guestMiddlewareAdmin, productController.createProduct);
 productsRouter.post('/createProduct',upload.single('product_image'),rules,productController.storeProduct)
 //Modificación producto
-productsRouter.get('/editProduct/:id', guestMiddleware, productController.editProduct);
+productsRouter.get('/editProduct/:id', guestMiddlewareAdmin, productController.editProduct);
 productsRouter.put('/editProduct/:id',productController.updateProduct);
 //Eliminación producto
-productsRouter.get('/deleteProduct/:id', guestMiddleware, productController.deleteProduct);
+productsRouter.get('/deleteProduct/:id', guestMiddlewareAdmin, productController.deleteProduct);
 productsRouter.delete('/deleteProduct/:id',productController.destroyProduct);
 
 
