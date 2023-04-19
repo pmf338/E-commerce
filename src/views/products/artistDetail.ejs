@@ -8,19 +8,19 @@
         <%- include('../partials/header.ejs') %>
     </header>
     <main>
-        <!-- Banner -->
-        <div class="border-1 border-light artistDetail-banner" style="background-image : url('https://www.el1digital.com.ar/wp-content/uploads/2022/03/Bizarrap-Lollapalooza.jpg');"></div>
+      <!-- Banner #toDo -->
+      <div class="border-1 border-light artistDetail-banner" style="background-image : url('https://www.el1digital.com.ar/wp-content/uploads/2022/03/Bizarrap-Lollapalooza.jpg');"></div>
 
-        <!-- Artist Description-->
-        <div class="container text-center m-5">
-            <div class="row align-items-center">
+      <!-- Artist Description-->
+      <div class="container text-center mb-5">
+            <div class="row pt-5">
                 <div class="col">
-                    <div class="card-body text-center border bg-light border-dark rounded">
+                    <div class="card-body text-center border border-dark rounded">
                         <img src="/images/artists/<%- artist.logo %>"
                             alt="avatar" class="rounded-circle img-fluid mt-2" style="width: 150px;">
                         <p class="my-3 fs-3"><%- artist.name %></p>
-                        <p class="text-muted mb-1 fs-5"><%- artist_genre.dataValues._genre.dataValues.description %></p>
-                        <p class="text-muted mb-5">
+                        <p class="mb-1 fs-5"><%- artist_genre.dataValues._genre.dataValues.description %></p>
+                        <p class="mb-5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-headphones" viewBox="0 0 16 16">
                                 <path d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5z"/>
                               </svg>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="border p-3 text-start bg-light border-dark rounded fs-5"><%- artist.description %></div>
+                    <div class="border p-3 text-start border-dark rounded fs-5"><%- artist.description %></div>
                     <div class="d-flex justify-content-center align-items-start mb-2 p-4">
                         <button type="button" class="btn btn-outline-success m-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
@@ -50,54 +50,29 @@
                     </div>
                 </div>
             </div>
-        </div>
+      </div>
 
-        <!-- Artist / Products -->
-        <div class="row row-cols-1 row-cols-xl-4 g-4 m-5 border-top justify-content-center">
-            <div class="card mb-3 bg-secondary m-2" style="max-width: 540px;">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="..." class="img-fluid rounded-start" alt="...">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                  </div>
-                </div>
+      <!-- Artist / Products -->
+      <p class="display-2 text-center mx-5 pt-4">Productos Relacionados</p>
+      <div class="card mb-3 border-0" style="max-width: 540px; margin: auto;">
+        <% artist_products.forEach(product => { %>
+        <div class="row g-0 my-2 border p-3 rounded-3 border-dark-subtle">
+          <div class="col-md-4">
+            <img src="/images/products/<%- product.imagePrimary %>" class="img-fluid rounded-start artist-products-card-img" alt="...">
+          </div>
+          <div class="col-md-8 text-center">
+            <div class="card-body ">
+              <h5 class="card-title display-6"><%- product.name %></h5>
+              <p>
+                <a href="/productdetail/<%- product.id %>">
+                  <button type="button" class="btn btn-primary btn-lg">Ver Detalles</button>
+                </a>
+              </p>
             </div>
-            <div class="card mb-3 bg-secondary m-2" style="max-width: 540px;">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="..." class="img-fluid rounded-start" alt="...">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                  </div>
-                </div>
-            </div>
-            <div class="card mb-3 bg-secondary m-2" style="max-width: 540px;">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="..." class="img-fluid rounded-start" alt="...">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                  </div>
-                </div>
-            </div>
+          </div>
         </div>
-        
-        <%- console.log("listado prods : ", artist_products); %>
+        <% }); %>
+      </div>
 
     </main>
     <footer>
