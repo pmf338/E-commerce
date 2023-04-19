@@ -57,7 +57,7 @@
 
         <% if (locals.usuario.imageProfile == "404.jpg") { %>
         <img src="../../images/users/avatar.png" alt="Avatar" /> <span
-          class="fw-light d-none d-sm-block"><%= user.user_name %></span>
+          class="fw-light d-none d-sm-block"><%= locals.usuario.userName %></span>
         <% } else { %>
         <img src="../../images/users/<%= locals.usuario.imageProfile %>" alt="Avatar"  /> <span
           class="fw-light d-none d-sm-block"><%= locals.usuario.userName%></span>

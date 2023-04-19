@@ -20,7 +20,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: true
         },
         price: {
-            type: dataTypes.DECIMAL(6,2),
+            type: dataTypes.DECIMAL(10,2),
             allowNull: true
         },
         quantity: {
@@ -33,6 +33,10 @@ module.exports = (sequelize, dataTypes) => {
         },
         size: {
             type: dataTypes.STRING(5),
+            allowNull: true
+        },
+        color:{
+            type: dataTypes.STRING(45),
             allowNull: true
         },
         format: {

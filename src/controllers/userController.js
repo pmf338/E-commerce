@@ -1,6 +1,7 @@
 const fs = require('fs');
 const db = require('../database/models');
 const sequelize = db.sequelize;
+const path = require('path');
 const {
     validationResult
 } = require('express-validator');
@@ -19,9 +20,6 @@ const {
 } = require('../database/models');
 
 const userController = {
-    getUsers: function () {
-        return JSON.parse(fs.readFileSync(usersPath, 'utf-8'));
-    },
     login: function (req, res) {
         res.render("users/login", {
             title: "Login"
@@ -230,10 +228,11 @@ const userController = {
                     usuario: {
 
                         ...usuario.dataValues
+                        
 
                     }
+                    
                 })
-
 
 
                 /*{   title: "Edición de usuario",
@@ -248,15 +247,15 @@ const userController = {
 
         User.update({
 
-                user_name_edit: req.body.user_name,
-                user_surname_edit: req.body.user_surname,
-                user_user_name_edit: req.body.user_user_name,
-                user_email_edit: req.body.user_email,
-                user_password_edit: bcrypt.hashSync(req.body.user_pass, 10),
-                user_address_edit: req.body.user_address,
-                user_image_edit: req.file ? req.file.filename : "404.jpg",
-                user_category_edit: req.body.user_category_edit,
-                roles_id: 2
+                name: req.body.user_name_edit,
+                surname: req.body.user_surname_edit,
+                userName: req.body.user_user_name_edit,
+                email: req.body.user_email_edit,
+                password: bcrypt.hashSync(req.body.user_password_edit, 10),
+                address: req.body.user_address_edit,
+                imageProfile: req.file ? req.file.filename : "404.jpg",
+                roles_id: req.body.user_category_edit,
+                
             }, {
                 where: {
 
@@ -268,7 +267,7 @@ const userController = {
                 res.redirect('/profile');
             })
             .catch(function (error) {
-                console.log("error user controler -", error)
+                console.log("error user controler - updateUser", error)
             })
     },
     deleteUser: function (req, res) {
