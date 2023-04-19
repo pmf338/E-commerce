@@ -28,7 +28,6 @@ const artistController = {
                 }
             },{
                 include : [{
-                    order: [['updatedAt','ASC']],
                     limit : 3,
                 }]
             })
