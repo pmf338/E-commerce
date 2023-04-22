@@ -1,3 +1,4 @@
+
 CREATE DATABASE rocket_music;
 
 USE rocket_music;
