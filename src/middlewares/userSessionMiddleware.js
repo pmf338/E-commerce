@@ -1,13 +1,39 @@
-const userSessionMiddleware = (req, res, next) => {
-    if (req.cookies && req.cookies.userLogged) {
-        res.locals.userLogged = req.cookies.userLogged; //cookie importado de libreria ..?
-    } 
+const db = require('../database/models');
+const path = require('path');
 
-    if (req.session && req.session.userLogged) {
-        res.locals.userLogged = req.session.userLogged;
-    } 
+const {User} = require('../database/models');
+
+
+const userSessionMiddleware = (req,res,next) =>{
     
-    next();
-};
+    
+    res.locals.usuario = false;
+    
+    if(req.session.usuario){
+        res.locals.usuario = req.session.usuario;
+        return next();
+    }else if(req.cookies.email){
+        User.findOne({
+            where: {
+               email: req.cookies.email
+            }
+        })
+        .then(user =>{
+            req.session.usuario = user;
+            res.locals.usuario = user;
+            
+            return next();
+    
+        })
+                
+    }else{
+        return next();
+    }
+}
+
 
 module.exports = userSessionMiddleware;
+
+
+
+

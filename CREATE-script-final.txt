@@ -1,3 +1,4 @@
+
 CREATE DATABASE rocket_music;
 
 USE rocket_music;
@@ -5,8 +6,6 @@ USE rocket_music;
 CREATE TABLE genres (
 	id INT AUTO_INCREMENT NOT NULL,
 	description VARCHAR(50),
-	createdAt DATETIME NOT NULL,
-	updatedAt DATETIME NOT NULL,
 	PRIMARY KEY (id)
 );
 
@@ -22,11 +21,8 @@ CREATE TABLE artists (
 	description VARCHAR(350),
 	logo VARCHAR(150),
 	genre_id INT,
-	product_id INT,
 	banner VARCHAR(150),
 	subscribers VARCHAR(20),
-	createdAt DATETIME NOT NULL,
-	updatedAt DATETIME NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (genre_id) REFERENCES genres (id)
 );
@@ -35,7 +31,7 @@ CREATE TABLE products (
 	id INT AUTO_INCREMENT NOT NULL,
 	sku INT NOT NULL,
 	name VARCHAR(150),
-	price DECIMAL(10,2),
+	price DECIMAL(6,2),
 	quantity INT,
 	description VARCHAR(450),
 	artist_id INT NOT NULL,
@@ -80,8 +76,8 @@ CREATE TABLE cart (
 	id INT AUTO_INCREMENT NOT NULL,
 	status VARCHAR(50),
 	billCode INT,
-	totalPrice DECIMAL(10,2) NOT NULL,
-	subTotalPrice DECIMAL(10,2) NOT NULL,
+	totalPrice DECIMAL(6,2) NOT NULL,
+	subTotalPrice DECIMAL(6,2) NOT NULL,
 	users_id INT NOT NULL,
 	deliveryDate DATETIME,
 	createdAt DATETIME NOT NULL,
@@ -94,7 +90,7 @@ CREATE TABLE details (
 	id INT AUTO_INCREMENT NOT NULL,
 	quantity INT NOT NULL,
 	products_id INT NOT NULL,
-	price DECIMAL (10,2),
+	price DECIMAL (6,2),
 	PRIMARY KEY (id),
 	FOREIGN KEY (products_id) REFERENCES products (id)
 );
@@ -106,6 +102,4 @@ CREATE TABLE cartDetails(
 	PRIMARY KEY (id),
 	FOREIGN KEY (cart_id) REFERENCES cart (id),
 	FOREIGN KEY (details_id) REFERENCES details (id)	
-)
- 
-
+);

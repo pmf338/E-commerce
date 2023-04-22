@@ -1,47 +1,73 @@
 const fs = require('fs');
 const path = require('path');
 const productsPath = path.join(__dirname, "../data/products.json");
-
 const {validationResult} = require('express-validator');
-
+const {Product} = require('../database/models');
+const {Artist} = require('../database/models');
 
 const productsController = {
-    getProducts: function () {
-        return JSON.parse(fs.readFileSync(productsPath, 'utf-8'));
+    index : async function (req,res){
+        try{
+            let productsList = await Product.findAll({
+                order: [['updatedAt','ASC']],
+                limit: 3     
+            });
+            let artistsList = await Artist.findAll({
+                limit:6
+            });
+            res.render("products/index", {
+                productsList,
+                artistsList,
+                title: "Inicio",
+                user: req.session.userLogged}
+            );
+        }catch(result){
+            res.status(400).json(result);
+            //res.send("error in productsController-index : ",error)
+        }
     },
-    index: function (req, res) {
-        res.render("products/index", {
-            title: "Listado productos",
-            lista: productsController.getProducts(),
-            user: req.session.userLogged
-        });
+    shop : async function (req,res){
+        try{
+            let productsList = await Product.findAll();
+            res.render("products/shop", {
+                productsList,
+                title : "Tienda",
+                user: req.session.userLogged}
+            );
+        }catch(error){
+            res.send("error in productsController-shop : ",error)
+        }
     },
-    shop: function (req, res) {
-        res.render("products/shop", {
-            title: "Listado productos",
-            lista: productsController.getProducts(),
-            user: req.session.userLogged
-        });
-    },
-    showProduct: function (req, res) {
+    showProduct : async function (req,res){
         let productId = req.params.id;
-        let _product = productsController.getProducts().find(product => product.id == productId);
-        res.render("products/shop", {
-            title: "Producto",
-            product: _product,
-            user: req.session.userLogged
-        });
+        try{
+            let productsList = [];
+            productsList = await Product.findByPk(productId);
+            res.render("products/shop",{
+                productsList,
+                title : "Tienda",
+                user: req.session.userLogged}
+            );
+        }catch(error){
+            res.send("error in productsController-showProduct : ",error)
+        }
     },
-    productDetail: function (req, res) {
+    productDetail : async function (req,res){
         let productId = req.params.id;
-        let _product = productsController.getProducts().find(product => product.id == productId);
-        res.render("products/productDetail", {
-            title: "Producto",
-            product: _product,
-            user: req.session.userLogged
-        });
+        try{
+            let product = await Product.findByPk(productId);
+            res.render("products/productDetail",{
+                product,
+                title: "Producto",
+                user: req.session.userLogged}
+            );
+        }catch(error){
+            res.send("error in productsController-productDetail : ",error)
+        }
     },
     createProduct: function (req, res) {
+
+        
         res.render("products/createProduct", {
             title: "Creación de producto",
             user: req.session.userLogged
@@ -79,14 +105,18 @@ const productsController = {
         //console.log("Aca escriubo el producto");
         res.redirect ('/shop')
     },
-    editProduct: function (req, res) {
+    editProduct : async function (req,res){
         let productId = req.params.id;
-        let _product = productsController.getProducts().find(product => product.id == productId);
-        res.render("products/editProduct", {
-            title: "Producto",
-            product: _product,
-            user: req.session.userLogged
-        });
+        try{
+            let product = await Product.findByPk(productId);
+            res.render("products/editProduct",{
+                product,
+                title: "Editar Producto",
+                user: req.session.userLogged}
+            );
+        }catch(error){
+            res.send("error in productsController-productDetail : ",error)
+        }
     },
     updateProduct: function (req, res) {
         let productId = req.params.id;
@@ -110,14 +140,18 @@ const productsController = {
         res.redirect ('/shop')
 
     },
-    deleteProduct: function (req, res) {
+    deleteProduct : async function (req,res){
         let productId = req.params.id;
-        let _product = productsController.getProducts().find(product => product.id == productId);
-        res.render("products/deleteProduct", {
-            title: "Delete Producto",
-            product: _product,
-            user: req.session.userLogged
-        });
+        try{
+            let product = await Product.findByPk(productId);
+            res.render("products/deleteProduct",{
+                product,
+                title: "Borrar Producto",
+                user: req.session.userLogged}
+            );
+        }catch(error){
+            res.send("error in productsController-productDetail : ",error)
+        }
     },
     destroyProduct: function (req, res) {
         let productId = req.params.id;
@@ -126,14 +160,7 @@ const productsController = {
         let user_logged = req.session.userLogged;
         fs.writeFileSync(productsPath, JSON.stringify(newProducts, null, ' '));
         res.redirect ('/shop')
-    },
-    artist: function (req, res) {
-        res.render("products/artist", {
-            title: "Artistas",
-            user: req.session.userLogged
-        });
-},
+    }
 }
-
 
 module.exports = productsController
