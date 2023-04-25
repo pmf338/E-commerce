@@ -61,59 +61,11 @@ const userController = {
                         maxAge: 1000 * 60 * 60 * 24
                     })
                 }
-
-                //res.status(200).json({ message: 'Login successful', usuarioLogueado });
-
                 return res.redirect('/');
-
             }).catch(function (error) {
                 console.log("error user controler - login", error)
             });
-
-        /*
-        const payload = {
-            id: user.id,
-            email: user.email,
-            name: user.name,
-            role_id: user.roles_id
-        };
-
-        
-        const token = jwt.sign(payload, jwtSecret, {
-            algorithm: 'HS256',
-            expiresIn: jwtExpirySeconds
-        });
-        
-        
-        res.cookie('token', token, { maxAge: jwtExpirySeconds * 10000 });
-        
-        */
-
-
     },
-
-
-    //METODO UTILIZANDO JSON
-
-    /*
-    let users = JSON.pa=rse(fs.readFileSync(usersPath, 'utf-8'));
-    let user = users.find(user => user.user_email = req.body.user && bcrypt.compareSync(req.body.pass, user.user_password));
-
-    if (user){
-        req.session.userLogged = user;
-        if (req.body.rememberme) {
-            res.cookie(
-                'userLogged',
-                user,
-                {maxAge: 1000 * 60 * 60 * 24 } //Un dia de Login
-            );
-        }
-        res.redirect('/profile')
-    }  else {
-        console.log("no se inicio sesion, correo o contraseña incorrectos", req.body)
-    }
-    
-    */
     contact: function (req, res) {
         res.render("users/contact", {
             title: "Contact",
@@ -156,7 +108,6 @@ const userController = {
                 })
             }).catch(function (error) {
                 console.log("error user controler -", error)
-
             });
     },
     logout: function (req, res) {
@@ -166,64 +117,29 @@ const userController = {
         });
         res.redirect('/')
     },
-    storeUser: function (req, res) {
-
-        const newUser = {
-
-            name: req.body.user_name,
-            surname: req.body.user_surname,
-            userName: req.body.user_user_name,
-            email: req.body.user_email,
-            password: bcrypt.hashSync(req.body.user_pass, 10),
-            address: req.body.user_address,
-            imageProfile: req.file ? req.file.filename : "404.jpg",
-            roles_id: req.body.roles_id ? req.body.roles_id : 2
+    storeUser: async function (req, res) {
+        try{
+            User.create({
+                name: req.body.user_name,
+                surname: req.body.user_surname,
+                userName: req.body.user_user_name,
+                email: req.body.user_email,
+                password: bcrypt.hashSync(req.body.user_pass, 10),
+                address: req.body.user_address,
+                imageProfile: req.file ? req.file.filename : "404.jpg",
+                roles_id: req.body.roles_id ? req.body.roles_id : 2
+            });
+            res.redirect('/');
+        }catch(result){
+            res.status(400).json(result);
         }
-
-        console.log("newUser = ", newUser);
-
-        User.create(newUser)
-            .then(() => {
-
-                res.redirect('/');
-            })
-            .catch(function (error) {
-                console.log("error user controler -", error)
-            })
-
-
-
-        //METODO UTILIZANDO JSON
-
-
-        /*
-        let idRandom = Math.floor((Math.random() * 1000) + 21); //Id random
-        let users = userController.getUsers();
-        let newUser = {
-            "id" : idRandom,
-            "user_name" : req.body.user_name,
-            "user_surname": req.body.user_surname,
-            "user_user_name": req.body.user_user_name,
-            "user_email" : req.body.user_email,
-            "user_password" : bcrypt.hashSync(req.body.user_pass, 10),
-            "user_category" : req.body.user_category,
-            "user_image" : req.file ? req.file.filename : "404.jpg",
-            "user_address" : req.body.user_address
-
-        }
-        
-        
-        users.push(newUser);
-        fs.writeFileSync(usersPath,JSON.stringify(users,null,' '));
-        res.redirect('/');
-        */
-
     },
     editUser: function (req, res) {
         let userId = req.params.id;
+        
         User.findByPk(userId)
             .then(usuario => {
-
+                
                 res.render("users/editProfile", {
                     usuario: {
 

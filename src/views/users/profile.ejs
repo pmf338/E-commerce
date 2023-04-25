@@ -32,6 +32,17 @@
                       Editar perfil
                     </button>
                   </a>
+
+                  <% if (locals.usuario) { %>
+                    <% if (locals.usuario.roles_id == 1) { %>
+                      <a href="/createProfile">
+                        <button type="button" class="btn btn-warning">
+                          Crear usuario
+                        </button>
+                      </a>
+                    <% } %>
+                  <% } %>
+
                 </div>
                 <div class="col-md-8">
                   <div class="card-body p-4">
