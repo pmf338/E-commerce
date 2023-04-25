@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <%- include('../partials/head.ejs') %>
-  <link rel="stylesheet" href="/css/styles_register.css">
-  <title>Edición de Producto</title>
+  <title><%= title %></title>
 </head>
 
 <body>
@@ -19,61 +17,51 @@
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-9 mb-4 mb-lg-0">
-              <div class="card mb-3" style="border-radius: .5rem; ">
+              <div class="card mb-3" style="border-radius: .5rem;">
                 </br>
                 <div class="row g-0">
-                  <h3 class="display-6 card-title text-center text-gray">Editar producto</h1>
-
-                    <div class="col-md-4 gradient-custom text-center text-gray"
-                      style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                      </br>
-                      </br>
+                  <h3 class="display-6 card-title text-center text-gray">EDITAR PRODUCTO</h3>
+                  
+                  <!-- LEFT SECTION -->
+                  <div class="col-md-4 gradient-custom text-center text-gray" style="border-top-left-radius: .5rem;border-bottom-left-radius: .5rem;">
+                      </br></br>
+                      <!-- CAROUSEL IMGS -->
                       <div class="form-group input-field-register row">
                         <label for="user_image" class="text-center text-gray">Imagenes del producto</label>
-
-
                         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                          <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                              class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                              aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                              aria-label="Slide 3"></button>
+                          <div class="carousel-indicators ">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                           </div>
                           <div class="carousel-inner">
                             <div class="carousel-item active">
                               <% if (product.dataValues.imageSecond != null) { %>
-                              <img src="../../images/products/<%= product.dataValues.imagePrimary %>"
-                                class="d-block w-100" alt="Avatar" />
+                              <img src="../../images/products/<%= product.dataValues.imagePrimary %>" class="d-block w-100" alt="Avatar"/>
                               <% } else { %>
-                              <img src="../../images/products/avatar.jpeg" alt="Avatar" class="d-block w-100" />
+                              <img src="../../images/products/avatar.jpeg" alt="Avatar" class="d-block w-100"/>
                               <% } %>
                             </div>
                             <div class="carousel-item">
                               <% if (product.dataValues.imageSecond != null) { %>
-                              <img src="../../images/products/<%= product.dataValues.imageSecond %>"
-                                class="d-block w-100" alt="Avatar" />
+                              <img src="../../images/products/<%= product.dataValues.imageSecond %>" class="d-block w-100" alt="Avatar" />
                               <% } else { %>
-                              <img src="../../images/products/avatar.jpeg" class="d-block w-100" />
+                              <img src="../../images/products/avatar.jpeg" class="d-block w-100"/>
                               <% } %>
                             </div>
                             <div class="carousel-item">
                               <% if (product.dataValues.imageThird != null) { %>
-                              <img src="../../images/products/<%= product.dataValues.imageThird %>"
-                                class="d-block w-100" />
+                              <img src="../../images/products/<%= product.dataValues.imageThird %>" class="d-block w-100" />
                               <% } else { %>
                               <img src="../../images/products/avatar.jpeg" class="d-block w-100" />
                               <% } %>
                             </div>
                           </div>
-                          <button class="carousel-control-prev" type="button"
-                            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                           </button>
-                          <button class="carousel-control-next" type="button"
-                            data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                           </button>
@@ -90,26 +78,7 @@
                         </div>
 
                       </div>
-                      </br>
-                      <button type="submit" class="btn btn-success">
-                        Guardar cambios
-                      </button>
-
-                      </br>
-                      </br>
-                      <button type="submit" class="btn btn-danger">
-                        Eliminar producto
-                      </button>
-
-                      </br>
-                      </br>
-                      <a href="/productDetail/<%= product.id %>">
-                        <button type="button" class="btn btn-warning">
-                          Cancelar
-                        </button>
-                      </a>
-                      </br>
-                      </br>
+                  
                     </div>
 
 
@@ -186,6 +155,24 @@
                         </div>
                       </div>
                     </div>
+
+                      <!-- BUTTONS SECTION -->
+                      <br><br><br>
+                      <div class="container text-center my-3">
+                        <div class="row gx-5">
+                          <div class="col">
+                            <button type="submit" class="btn btn-success"> GUARDAR</button>
+                          </div>
+                          <div class="col">
+                            <button type="submit" class="btn btn-danger">ELIMINAR</button>
+                          </div>
+                          <div class="col">
+                            <a href="/productDetail/<%= product.id %>">
+                              <button type="button" class="btn btn-dark">CANCELAR</button>
+                          </div>
+                        </div>
+                      </div>
+
 
                 </div>
               </div>

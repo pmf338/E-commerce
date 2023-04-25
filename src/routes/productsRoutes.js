@@ -20,7 +20,7 @@ productsRouter.get("/productDetail/:id", productController.productDetail);
 productsRouter.get('/shop/:id',productController.showProduct);
 //Creación producto
 productsRouter.get('/createProduct', guestMiddlewareAdmin, productController.createProduct);
-productsRouter.post('/createProduct',upload.single('product_image'),rules,productController.storeProduct)
+productsRouter.post('/createProduct',upload.array('product_image'),rules,productController.storeProduct)
 //Modificación producto
 productsRouter.get('/editProduct/:id', guestMiddlewareAdmin, productController.editProduct);
 productsRouter.put('/editProduct/:id',productController.updateProduct);

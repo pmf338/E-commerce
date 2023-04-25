@@ -3,7 +3,6 @@
 
 <head>
   <%- include('../partials/head.ejs') %>
-  <link rel="stylesheet" href="/css/styles_register.css">
   <title>Editar perfil de usuario</title>
 </head>
 
@@ -12,7 +11,6 @@
     <%- include('../partials/header.ejs') %>
   </header>
   <main>
-    <% console.log("usuario editar", locals._locals.usuario) %>
     <section class="vh-100"
       style="background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg')">
       <div class="container py-5 h-100">
@@ -97,7 +95,6 @@
                         </div>
 
                         <div class="col-6 mb-3">
-                          <% console.log("userValues",locals._locals.usuario) %>
                           <% if (locals._locals.usuario) { %>
                           <% if (locals._locals.usuario.roles_id == 1) { %>
                           <h6>Categoria del usuario</h6>
