@@ -61,21 +61,11 @@ const userController = {
                         maxAge: 1000 * 60 * 60 * 24
                     })
                 }
-
-
                 return res.redirect('/');
-
             }).catch(function (error) {
                 console.log("error user controler - login", error)
             });
-
-
-
-
     },
-
-
-
     contact: function (req, res) {
         res.render("users/contact", {
             title: "Contact",
@@ -97,6 +87,10 @@ const userController = {
     },
     createUser: function (req, res) {
         res.render("users/createProfile", {
+            /*title: "Creación de usuario",
+            lista: userController.getUsers(),
+            user: req.session.userLogged //Siendo Admin puedo crear nuevos usuarios
+            //ToDo : EN CASO DE QUE SE QUIERA TRAER ALGUN USUARIO PARA COPIAR SUS PERMISOS*/
 
 
         });
@@ -114,7 +108,6 @@ const userController = {
                 })
             }).catch(function (error) {
                 console.log("error user controler -", error)
-
             });
     },
     logout: function (req, res) {
@@ -124,53 +117,45 @@ const userController = {
         });
         res.redirect('/')
     },
-    storeUser: function (req, res) {
-
-        const newUser = {
-
-            name: req.body.user_name,
-            surname: req.body.user_surname,
-            userName: req.body.user_user_name,
-            email: req.body.user_email,
-            password: bcrypt.hashSync(req.body.user_pass, 10),
-            address: req.body.user_address,
-            imageProfile: req.file ? req.file.filename : "404.jpg",
-            roles_id: req.body.roles_id ? req.body.roles_id : 2
+    storeUser: async function (req, res) {
+        try{
+            User.create({
+                name: req.body.user_name,
+                surname: req.body.user_surname,
+                userName: req.body.user_user_name,
+                email: req.body.user_email,
+                password: bcrypt.hashSync(req.body.user_pass, 10),
+                address: req.body.user_address,
+                imageProfile: req.file ? req.file.filename : "404.jpg",
+                roles_id: req.body.roles_id ? req.body.roles_id : 2
+            });
+            res.redirect('/');
+        }catch(result){
+            res.status(400).json(result);
         }
-
-        console.log("newUser = ", newUser);
-
-        User.create(newUser)
-            .then(() => {
-
-                res.redirect('/');
-            })
-            .catch(function (error) {
-                console.log("error user controler -", error)
-            })
-
-
-
-
-
     },
     editUser: function (req, res) {
         let userId = req.params.id;
+        
         User.findByPk(userId)
             .then(usuario => {
-
+                
                 res.render("users/editProfile", {
                     usuario: {
 
                         ...usuario.dataValues
-
+                        
 
                     }
-
+                    
                 })
 
 
-
+                /*{   title: "Edición de usuario",
+                    editing_user : usuario,
+                    user: req.session.userLogged
+                })
+                */
             })
 
     },
@@ -186,7 +171,7 @@ const userController = {
                 address: req.body.user_address_edit,
                 imageProfile: req.file ? req.file.filename : "404.jpg",
                 roles_id: req.body.user_category_edit,
-
+                
             }, {
                 where: {
 

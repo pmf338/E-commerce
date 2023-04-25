@@ -12,7 +12,9 @@ CREATE TABLE genres (
 CREATE TABLE categories (
 	id INT AUTO_INCREMENT NOT NULL,
 	description VARCHAR(50),
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	createdAt DATETIME NOT NULL,
+	updateAt DATETIME NOT NULL
 );
 
 CREATE TABLE artists (
@@ -23,6 +25,8 @@ CREATE TABLE artists (
 	genre_id INT,
 	banner VARCHAR(150),
 	subscribers VARCHAR(20),
+    createdAt DATETIME NOT NULL,
+	updatedAt DATETIME NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (genre_id) REFERENCES genres (id)
 );
@@ -67,7 +71,7 @@ CREATE TABLE users (
 	imageProfile VARCHAR (150),
 	roles_id INT NOT NULL,
 	createdAt DATETIME NOT NULL,
-	updateAt DATETIME NOT NULL,
+	updatedAt DATETIME NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (roles_id) REFERENCES roles (id)
 );
