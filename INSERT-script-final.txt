@@ -9,12 +9,12 @@ VALUES
 
 
 INSERT INTO `rocket_music`.`categories`
-(`description`)
+(`description`,`createdAt`,`updatedAt`)
 VALUES
-('Ropa'),
-('Accesorios'),
-('Instrumentos'),
-('Discos/Vinilos');
+('Ropa',NOW(), NOW()),
+('Accesorios',NOW(), NOW()),
+('Instrumentos',NOW(), NOW()),
+('Discos/Vinilos',NOW(), NOW());
 
 
 INSERT INTO `rocket_music`.`artists`
@@ -36,10 +36,10 @@ VALUES
 INSERT INTO `rocket_music`.`products`
 (`sku`, `name`, `price`, `quantity`, `description`, `artist_id`, `categories_id`, `size`, `color`, `format`, `is_active`, `createdAt`, `updatedAt`, `imagePrimary`, `imageSecond`, `imageThird`)
 VALUES
-(65732, 'Patricio Rey Un Baion Para El Ojo Idiota Vinilo', 1250, 3, 'Patricio Rey un baion para el ojo idiota Vinilo + tapa vg', 5, 4, null, null, 'format', 1, NOW(), NOW(), 'los-redondos_vinilo-ojo-idiota-1', 'los-redondos_vinilo-ojo-idiota-2', 'los-redondos_vinilo-ojo-idiota-3.webp'),
+(65732, 'Patricio Rey Un Baion Para El Ojo Idiota Vinilo', 1250, 3, 'Patricio Rey un baion para el ojo idiota Vinilo + tapa vg', 5, 4, null, null, 'format', 1, NOW(), NOW(), 'los-redondos_vinilo-ojo-idiota-1.webp', 'los-redondos_vinilo-ojo-idiota-2.webp', 'los-redondos_vinilo-ojo-idiota-3.webp'),
 (65112, 'Indio Solari Gorra Trucker Indio Patricio Rey', 4500, 12, 'Decile adiós a las gorras de cotillón, nuestras gorras son geniales por donde las mires, trabajamos únicamente gorras de primera calidad, gorras de vestir, con excelente calce y terminación', 5, 1, null, 'blanco/negro', 'format', 1, NOW(), NOW(), 'los-redondos_gorra.webp', null, null),
 (65851, 'Gorra Bzrp Bizarrap Logo Dorado', 7000, 10, 'Gorra BZRP Trap - Logo Dorado - Cierre Ajustale/Regulable - Doble broche plástico', 4, 1, null, null, null, 1, NOW(), NOW(), 'bizarrap_gorra-1.webp', 'bizarrap_gorra-2.webp', null),
-(65016, 'Remera The Killers', 3600, 50, 'Remera tour Sams town', 3, 1, 'L', 'Blanco', 'format', 1, NOW(), NOW(), 'the-killers_tour-Sams-town', null, null),
+(65016, 'Remera The Killers', 3600, 50, 'Remera tour Sams town', 3, 1, 'L', 'Blanco', 'format', 1, NOW(), NOW(), 'the-killers_tour-Sams-town.webp', null, null),
 (65954, 'Remera The Killers Modelo 3', 3600, 50, 'Remera Imploding The Mirage Tour 2022', 3, 1, 'M', 'Blanco', 'format', 1, NOW(), NOW(), 'the-killers_imploding_mirage.webp', null, null),
 (65499, 'CD Firmado Taylor Swift Evermore', 2500, 20, 'Taylor Swift ha anunciado su noveno álbum de estudio, evermore; disco hermano del folclore. Estas canciones fueron creadas con Aaron Dessner, Jack Antonoff, WB y Justin Vernon. La edición física de lujo incluirá dos bonus tracks', 6, 4, null, null, 'CD', 1, NOW(), NOW(), 'taylor-swift_evermore.jpg', null, null),
 (65927, 'CD Firmado Taylor Swift Folklore', 2500, 20, 'CD Taylor Swift Folklore - Edición limitada exclusiva firmada en el CD', 6, 4, null, null, 'CD', 1, NOW(), NOW(), 'taylor-swift_folklore.jpg', null, null),
@@ -52,7 +52,7 @@ VALUES
 (65993, 'Mochila Rata Blanca', 9000, 20, 'Mochila negra con logo de la banda', 7, 2, null, 'Negro', 'format', 1, NOW(), NOW(), 'rata-blanca_mochila.jpg', null, null),
 (65803, 'Remera de Rata Blanca', 3600, 25, 'Remera de algodón Rata Blanca', 7, 1, 'S', 'Negro', 'format', 1, NOW(), NOW(), 'rata-blanca_remera_1.jpg', null, null),
 (65778, 'Remera de Rata Blanca modelo 2', 3600, 12, 'Remera de algodón Rata Blanca', 7, 1, 'M', 'Blanco', 'format', 1, NOW(), NOW(), 'rata-blanca_remera_2.webp', null, null),
-(65833, 'Taza de Serú Girán', 700, 32, 'Taza con el logo de Serú Girán', 8, 2, null, 'Blanco', 'format', 1, NOW(), NOW(), 'seru-giran_taza', null, null),
+(65833, 'Taza de Serú Girán', 700, 32, 'Taza con el logo de Serú Girán', 8, 2, null, 'Blanco', 'format', 1, NOW(), NOW(), 'seru-giran_taza.jpg', null, null),
 (65703, 'Remera de Serú Girán modelo 2', 3600, 18, 'Remera azul marino de Serú Girán', 8, 1, 'L', 'Azul Marino', 'format', 1, NOW(), NOW(), 'seru-giran_remera_2.jpg', null, null),
 (65282, 'Remera de Serú Girán', 3600, 8, 'Remera gris de Serú Girán', 8, 1, 'M', 'Gris', 'format', 1, NOW(), NOW(), 'seru-giran_remera_1.jpg', null, null);
 
