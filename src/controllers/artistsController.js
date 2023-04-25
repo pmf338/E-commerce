@@ -37,8 +37,9 @@ const artistController = {
                 artist_products,
                 title: "Artista",
                 user: req.session.userLogged});
-        }catch(error){
-            res.send("error in artistsController-artists : ",error)
+        }catch(result){
+            res.status(400).json(result);
+            //res.send("error in productsController-index : ",error)
         }
     }
 }
