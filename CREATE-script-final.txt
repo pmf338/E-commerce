@@ -12,7 +12,9 @@ CREATE TABLE genres (
 CREATE TABLE categories (
 	id INT AUTO_INCREMENT NOT NULL,
 	description VARCHAR(50),
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	createdAt DATETIME NOT NULL,
+	updateAt DATETIME NOT NULL
 );
 
 CREATE TABLE artists (
