@@ -1,4 +1,3 @@
-
 CREATE DATABASE rocket_music;
 
 USE rocket_music;
@@ -6,15 +5,17 @@ USE rocket_music;
 CREATE TABLE genres (
 	id INT AUTO_INCREMENT NOT NULL,
 	description VARCHAR(50),
+    createdAt DATETIME NOT NULL,
+	updatedAt DATETIME NOT NULL,
 	PRIMARY KEY (id)
 );
 
 CREATE TABLE categories (
 	id INT AUTO_INCREMENT NOT NULL,
 	description VARCHAR(50),
-	PRIMARY KEY (id),
-	createdAt DATETIME NOT NULL,
-	updateAt DATETIME NOT NULL
+    createdAt DATETIME NOT NULL,
+	updatedAt DATETIME NOT NULL,
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE artists (
