@@ -4,6 +4,7 @@ const productsPath = path.join(__dirname, "../data/products.json");
 const {validationResult} = require('express-validator');
 const {Product} = require('../database/models');
 const {Artist} = require('../database/models');
+const {Category} = require('../database/models');
 
 const productsController = {
     index : async function (req,res){
@@ -21,8 +22,8 @@ const productsController = {
                 title: "Inicio",
                 user: req.session.userLogged}
             );
-        }catch(error){
-            res.send("error in productsController-index : ",error)
+        }catch(result){
+            res.status(400).json(result);
         }
     },
     shop : async function (req,res){
@@ -64,43 +65,47 @@ const productsController = {
             res.send("error in productsController-productDetail : ",error)
         }
     },
-    createProduct: function (req, res) {
-        res.render("products/createProduct", {
-            title: "Creación de producto",
-            user: req.session.userLogged
-        });
-    },
-    storeProduct: function (req, res) {
-        //Validación de errores
-        let errors = validationResult(req);
-        if(!errors.isEmpty())
-        {
-            return res.render("products/createProduct", {
-                title: "Creación de producto",
-                errors : errors.mapped(),
+    createProduct: async function (req, res) {
+        try{
+            let artistList = await Artist.findAll();
+            let categoriesList = await Category.findAll();
+            res.render("products/createProduct", {
+                artistList,
+                categoriesList,
+                title: "Creación producto",
                 user: req.session.userLogged
             });
-
-        };
-
-        //Creación de producto
-        let idRandom = Math.floor((Math.random() * 1000) + 21);
-        let products = productsController.getProducts();
-        let newProduct = {
-            "id": idRandom,  //ESTO SE VA A RESOLVER CUANDO USEMOS BD
-            "product_name": req.body.product_name || "sin nombre",
-            "product_price": req.body.product_price || 0,
-            "product_quantity": req.body.product_quantity || 0,
-            "product_category": req.body.category,
-            "product_image":  req.file ? req.file.filename : "404.jpg",
-            "product_description":  req.body.product_description || "sin descripcion",
+        }catch(result){
+            //res.send("error in productsController-createProduct : ",error)
+            res.status(400).json(result);
         }
-        //console.log("Aca creo el producto + ", req.body);
-        products.push(newProduct);
-        //console.log("Aca agrego el producto");
-        fs.writeFileSync(productsPath, JSON.stringify(products, null, ' '));
-        //console.log("Aca escriubo el producto");
-        res.redirect ('/shop')
+    },
+    storeProduct: async function (req, res) {
+        try{
+            console.log("VALOR : ",req.body.product_category)
+            Product.create({
+                sku :  req.body.product_sku,
+                name : req.body.product_name || null,
+                price : req.body.product_price || 0,
+                quantity : req.body.product_quantity || 0,
+                artist_id : req.body.product_artist,
+                categories_id : req.body.product_category,
+                size : req.body.product_size || null,
+                format : req.body.product_format || null,
+                color : req.body.product_color || null,
+                is_active : 1,
+                description : req.body.product_description || "sin descripcion",
+                createdAt : Date.now(),
+                updatedAt : Date.now(),
+                imagePrimary : req.files[0] ? req.files[0].filename : "avatar.jpeg",
+                imageSecond : req.files[1] ? req.files[1].filename : "avatar.jpeg",
+                imageThird : req.files[2] ? req.files[2].filename : "avatar.jpeg",
+            });
+            res.redirect ('/shop');
+        }catch(result){
+            console.log("ERROR ", result);
+            res.status(400).json(result);
+        }
     },
     editProduct : async function (req,res){
         let productId = req.params.id;
@@ -115,27 +120,33 @@ const productsController = {
             res.send("error in productsController-productDetail : ",error)
         }
     },
-    updateProduct: function (req, res) {
-        let productId = req.params.id;
-        let products = productsController.getProducts();
-        let user_logged = req.session.userLogged;
-        products.forEach(function (_product, index) {
-            if (_product.id == productId) {
-                _product.product_name = req.body.product_name;
-                _product.product_price = req.body.product_price;
-                _product.product_quantity = req.body.product_quantity;
-                _product.product_description = req.body.product_description;
-                /*_product.product_category = req.body.category;*/
-                _product.product_image = req.body.product_image;
-                
-                products[index] = _product;
-            }
-        });
-
-        fs.writeFileSync(productsPath, JSON.stringify(products, null, ' '));
-
-        res.redirect ('/shop')
-
+    updateProduct: async function (req, res) {
+        try{
+            Product.update({
+                sku : 1234,
+                name : req.body.product_name || "sin nombre",
+                price : req.body.product_price || 0,
+                quantity : req.body.product_quantity || 0,
+                description : req.body.product_description || "sin descripcion",
+                artist_id : 1,
+                size : req.body.product_size || null,
+                color : req.body.product_color || null,
+                format : req.body.product_color || null,
+                is_active : req.body.product_color || false,
+                createdAt : Date.now(),
+                updatedAt : Date.now(),
+                imagePrimary : req.file ? req.file.filename : "404.jpg",
+                categories_id : 2,
+            },{
+                where : {
+                    id : req.params.id
+                }
+            })
+            res.redirect ('/productDetail/'+req.params.id);
+        }catch(error){
+            res.send("error in productsController-updateProduct : ",error)
+        }
+        
     },
     deleteProduct : async function (req,res){
         let productId = req.params.id;
@@ -151,11 +162,15 @@ const productsController = {
         }
     },
     destroyProduct: function (req, res) {
-        let productId = req.params.id;
-        let products = productsController.getProducts();
-        let newProducts = products.filter(product => product.id != productId);
-        let user_logged = req.session.userLogged;
-        fs.writeFileSync(productsPath, JSON.stringify(newProducts, null, ' '));
+        try{
+            Product.destroy({
+                where : {
+                    id : req.params.id
+                }
+            })
+        }catch(error){
+            res.send("error in productsController-destroyProduct : ",error)
+        }
         res.redirect ('/shop')
     }
 }

@@ -3,7 +3,6 @@
 
 <head>
   <%- include('../partials/head.ejs') %>
-  <link rel="stylesheet" href="/css/styles_register.css">
   <title>Editar perfil de usuario</title>
 </head>
 
@@ -12,26 +11,30 @@
     <%- include('../partials/header.ejs') %>
   </header>
   <main>
-    <% console.log("usuario editar", locals._locals.usuario) %>
-    <section class="vh-100" style="background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg')">
+    <section class="vh-100"
+      style="background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg')">
       <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col col-lg-10 mb-4 mb-lg-0">
             <form action="/editProfile/<%= locals._locals.usuario.id %>?_method=put" method="post">
               <div class="card mb-3" style="border-radius: .5rem; ">
                 <div class="row g-0">
-                  <div class="col-md-4 gradient-custom text-center text-white" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                  <div class="col-md-4 gradient-custom text-center text-white"
+                    style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                     <% if (locals._locals.usuario.imageProfile   == "404.jpg") { %>
-                      <img src="../../images/users/avatar.png" alt="Avatar" class="img-fluid my-5" style="width: 150px; border-radius: 40%;" />
-                      <% } else { %>
-                      <img src="../../images/users/<%= locals._locals.usuario.imageProfile %>" alt="Avatar" class="img-fluid my-5" style="width: 150px; border-radius: 40%;" />
-                      <% } %>
+                    <img src="../../images/users/avatar.png" alt="Avatar" class="img-fluid my-5"
+                      style="width: 150px; border-radius: 40%;" />
+                    <% } else { %>
+                    <img src="../../images/users/<%= locals._locals.usuario.imageProfile %>" alt="Avatar"
+                      class="img-fluid my-5" style="width: 150px; border-radius: 40%;" />
+                    <% } %>
                     </br>
 
                     <div class="d-flex justify-content-center">
                       <div class="btn btn-light btn-rounded" style="padding: 3px">
                         <label class="form-label text-black m-1" for="customFile1">Seleccionar nueva imagen</label>
-                        <input type="file" class="form-control" id="user_image_edit" name="user_image_edit" accept=".jpg, .png, .jpeg" />
+                        <input type="file" class="form-control" id="user_image_edit" name="user_image_edit"
+                          accept=".jpg, .png, .jpeg" />
                       </div>
                     </div>
                     </br>
@@ -57,37 +60,58 @@
                       <div class="row pt-1">
                         <div class="col-6 mb-3">
                           <h6>Nombre</h6>
-                          <i class="fa-solid fa-user"></i><input type="text" name="user_name_edit" id="user_name_edit" minlength="3" value=<%= locals._locals.usuario.name %>>
+                          <i class="fa-solid fa-user"></i><input type="text" name="user_name_edit" id="user_name_edit"
+                            minlength="3" value=<%= locals._locals.usuario.name %>>
                         </div>
                         <div class="col-6 mb-3">
                           <h6>Apellidos</h6>
-                          <i class="fa-solid fa-user"></i><input type="text" name="user_surname_edit" id="user_surname_edit" minlength="3" value=<%= locals._locals.usuario.surname %>>
+                          <i class="fa-solid fa-user"></i><input type="text" name="user_surname_edit"
+                            id="user_surname_edit" minlength="3" value=<%= locals._locals.usuario.surname %>>
                         </div>
                         <div class="col-6 mb-3">
                           <h6>Nombre de usuario</h6>
-                          <i class="fa-solid fa-user"></i><input type="text" name="user_user_name_edit" id="user_user_name_edit" minlength="3" value=<%= locals._locals.usuario.userName %>>
+                          <i class="fa-solid fa-user"></i><input type="text" name="user_user_name_edit"
+                            id="user_user_name_edit" minlength="3" value=<%= locals._locals.usuario.userName %>>
                         </div>
                         <div class="col-6 mb-3">
                           <h6>Correo electronico</h6>
-                          <i class="fa-solid fa-user"></i><input type="text" name="user_email_edit" id="user_email_edit" minlength="3" value=<%= locals._locals.usuario.email %>>
+                          <i class="fa-solid fa-user"></i><input type="text" name="user_email_edit" id="user_email_edit"
+                            minlength="3" value=<%= locals._locals.usuario.email %>>
                         </div>
                         <div class="col-6 mb-3">
                           <h6>Contraseña</h6>
-                          <i class="fa-solid fa-user"></i><input type="password" name="user_password_edit" id="user_password_edit" minlength="3" value=<%= locals._locals.usuario.password %>>
+                          <i class="fa-solid fa-user"></i><input type="password" name="user_password_old"
+                            id="user_password_old" minlength="3" value=<%= locals._locals.usuario.password %>>
                         </div>
                         <div class="col-6 mb-3">
                           <h6>Repetir contraseña</h6>
-                          <i class="fa-solid fa-user"></i><input type="password" name="user_password_edit" id="user_password_edit" minlength="3" value="">
+                          <i class="fa-solid fa-user"></i><input type="password" name="user_password_edit"
+                            id="user_password_edit" minlength="3" value="">
                         </div>
                         <div class="col-6 mb-3">
                           <h6>Dirección de envios</h6>
-                          <i class="fa-solid fa-user"></i><input type="text" name="user_address_edit" id="user_address_edit" minlength="3" value=<%= locals._locals.usuario.address %>>
+                          <i class="fa-solid fa-user"></i><input type="text" name="user_address_edit"
+                            id="user_address_edit" minlength="3" value=<%= locals._locals.usuario.address %>>
                         </div>
+
                         <div class="col-6 mb-3">
-                          <h6>Categoria</h6>
-                          <i class="fa-solid fa-user"></i><input type="text" name="user_category_edit" id="user_category_edit" minlength="3" value=<%= locals._locals.usuario.roles_id %>>
-                        </div>
-                        <div class="col-6 mb-3">
+                          <% if (locals._locals.usuario) { %>
+                          <% if (locals._locals.usuario.roles_id == 1) { %>
+                          <h6>Categoria del usuario</h6>
+                          <select class="form-select col-6 mb-3"  name="roles_id" id="roles_id">
+                            <option selected>
+                              <%if(locals._locals.usuario.roles_id == 1){ %>
+                               Administrador
+                              <% }else if(locals._locals.usuario.roles_id == 2){ %>
+                                 Cliente
+                                <% } %>
+                            </option>
+                            <option value="1">Administrador</option>
+                            <option value="2">Cliente</option>
+                          </select>
+
+                          <% } %>
+                          <% } %>
                         </div>
                         <div class="col-6 mb-3">
                           <a href="/editProfile">

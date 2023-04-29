@@ -12,7 +12,6 @@
     <%- include('../partials/header.ejs') %>
   </header>
   <main>
-    <%= console.log("Deatlles del producto", product.dataValues) %>
     <form class="form-create-product" method="post" action="/editProduct/<%= product.id %>?_method=PUT">
       <section class="vh-100"
         style="background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg')">

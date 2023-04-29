@@ -32,6 +32,17 @@
                       Editar perfil
                     </button>
                   </a>
+
+                  <% if (locals.usuario) { %>
+                    <% if (locals.usuario.roles_id == 1) { %>
+                      <a href="/createProfile">
+                        <button type="button" class="btn btn-warning">
+                          Crear usuario
+                        </button>
+                      </a>
+                    <% } %>
+                  <% } %>
+
                 </div>
                 <div class="col-md-8">
                   <div class="card-body p-4">
@@ -60,7 +71,12 @@
                       </div>
                       <div class="col-6 mb-3">
                         <h6>Categoria</h6>
-                        <p class="text-muted"><%= locals.usuario.roles_id %></p>
+                        <p class="text-muted"><%if(locals.usuario.roles_id == 1){ %>
+                        Administrador
+                        <% }else if(locals.usuario.roles_id == 2){ %>
+                        Cliente
+                        <% } %>
+                        </p>
                       </div>
                     </div>
                   </div>

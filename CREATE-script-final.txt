@@ -1,0 +1,110 @@
+CREATE DATABASE rocket_music;
+
+USE rocket_music;
+
+CREATE TABLE genres (
+	id INT AUTO_INCREMENT NOT NULL,
+	description VARCHAR(50),
+    createdAt DATETIME NOT NULL,
+	updatedAt DATETIME NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE categories (
+	id INT AUTO_INCREMENT NOT NULL,
+	description VARCHAR(50),
+    createdAt DATETIME NOT NULL,
+	updatedAt DATETIME NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE artists (
+	id INT AUTO_INCREMENT NOT NULL,
+	name VARCHAR(45),
+	description VARCHAR(350),
+	logo VARCHAR(150),
+	genre_id INT,
+	banner VARCHAR(150),
+	subscribers VARCHAR(20),
+    createdAt DATETIME NOT NULL,
+	updatedAt DATETIME NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (genre_id) REFERENCES genres (id)
+);
+
+CREATE TABLE products (
+	id INT AUTO_INCREMENT NOT NULL,
+	sku INT NOT NULL,
+	name VARCHAR(150),
+	price DECIMAL(6,2),
+	quantity INT,
+	description VARCHAR(450),
+	artist_id INT NOT NULL,
+	categories_id INT NOT NULL,
+	size VARCHAR(5),
+	color VARCHAR(45),
+	format VARCHAR(45),
+	is_active TINYINT NOT NULL,
+	createdAt DATETIME NOT NULL,
+	updatedAt DATETIME NOT NULL,
+	imagePrimary VARCHAR(150),
+	imageSecond VARCHAR(150),
+	imageThird VARCHAR(150),
+	PRIMARY KEY (id),
+	FOREIGN KEY (artist_id) REFERENCES artists (id),
+	FOREIGN KEY (categories_id) REFERENCES categories (id)
+);
+
+CREATE TABLE roles (
+	id INT AUTO_INCREMENT NOT NULL,
+	description VARCHAR(100),
+	PRIMARY KEY (id)	
+);
+
+CREATE TABLE users (
+	id INT AUTO_INCREMENT NOT NULL,
+	name VARCHAR(150),
+	surname VARCHAR(100),
+	userName VARCHAR (100) NOT NULL,
+	email VARCHAR (100) NOT NULL,
+	password VARCHAR (100) NOT NULL,
+	address VARCHAR (100),
+	imageProfile VARCHAR (150),
+	roles_id INT NOT NULL,
+	createdAt DATETIME NOT NULL,
+	updatedAt DATETIME NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (roles_id) REFERENCES roles (id)
+);
+
+CREATE TABLE cart (
+	id INT AUTO_INCREMENT NOT NULL,
+	status VARCHAR(50),
+	billCode INT,
+	totalPrice DECIMAL(6,2) NOT NULL,
+	subTotalPrice DECIMAL(6,2) NOT NULL,
+	users_id INT NOT NULL,
+	deliveryDate DATETIME,
+	createdAt DATETIME NOT NULL,
+	updateAt DATETIME NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (users_id) REFERENCES users (id)
+);
+
+CREATE TABLE details (
+	id INT AUTO_INCREMENT NOT NULL,
+	quantity INT NOT NULL,
+	products_id INT NOT NULL,
+	price DECIMAL (6,2),
+	PRIMARY KEY (id),
+	FOREIGN KEY (products_id) REFERENCES products (id)
+);
+
+CREATE TABLE cartDetails(
+	id INT AUTO_INCREMENT NOT NULL,
+	cart_id INT NOT NULL,
+	details_id INT NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (cart_id) REFERENCES cart (id),
+	FOREIGN KEY (details_id) REFERENCES details (id)	
+);
