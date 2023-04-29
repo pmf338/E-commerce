@@ -87,12 +87,6 @@ const userController = {
     },
     createUser: function (req, res) {
         res.render("users/createProfile", {
-            /*title: "Creación de usuario",
-            lista: userController.getUsers(),
-            user: req.session.userLogged //Siendo Admin puedo crear nuevos usuarios
-            //ToDo : EN CASO DE QUE SE QUIERA TRAER ALGUN USUARIO PARA COPIAR SUS PERMISOS*/
-
-
         });
     },
     userProfile: function (req, res) {
