@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const productsPath = path.join(__dirname, "../data/products.json");
 const {validationResult} = require('express-validator');
 const {Product} = require('../database/models');
 const {Artist} = require('../database/models');
@@ -82,7 +81,6 @@ const productsController = {
     },
     storeProduct: async function (req, res) {
         try{
-            console.log("VALOR : ",req.body.product_category)
             Product.create({
                 sku :  req.body.product_sku,
                 name : req.body.product_name || null,

@@ -6,6 +6,7 @@ const uploadUser = require('../middlewares/multer');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 const userSessionMiddleware = require('../middlewares/userSessionMiddleware');
+const guestMiddlewareAdmin = require('../middlewares/guestMiddlewareAdmin');
 
 const userController = require ('../controllers/userController');
 //const rulesUsers = require('../middlewares/validatorUsers');
@@ -19,11 +20,14 @@ usersRouter.post('/login',userController.processLogin);
 usersRouter.get('/createProfile',userController.createUser);
 usersRouter.post('/createProfile',uploadUser.single('user_image'),userController.storeUser);
 //Modificación usuario
-usersRouter.get('/editProfile/:id',userController.editUser);
+usersRouter.get('/editProfile/:id',userController.editProfile);
 usersRouter.put('/editProfile/:id',userController.updateUser);
 //Entrar a la página de perfil del usuario
-usersRouter.get('/profile', guestMiddleware, userController.userProfile);
-usersRouter.get('/editProfile',userController.editProfile);
+usersRouter.get('/profile/:id', guestMiddleware, userController.userProfile);
+//Eliminación usuario
+usersRouter.get('/deleteUser/:id', guestMiddlewareAdmin, userController.deleteUser);
+usersRouter.delete('/deleteUser/:id',userController.destroyUser);
+
 
 
 usersRouter.get('/contact',userController.contact);

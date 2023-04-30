@@ -52,7 +52,7 @@
     <nav class="profile-btns col-auto col-lg-3 col-xl-2 text-end d-flex align-items-center justify-content-end order-2 order-lg-3">
       <!--user logged, validation-->
       <% if (locals.usuario) { %>
-        <a href="/profile" class="profile">
+        <a href="/profile/<%= locals.usuario.id %>" class="profile">
           <% if (locals.usuario.imageProfile == "404.jpg") { %>
             <!--user logged , no profile img -->
             <img src="../../images/users/avatar.png" alt="Avatar"/> <span
