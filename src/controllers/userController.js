@@ -169,7 +169,7 @@ const userController = {
                     id: req.params.id
                 }
             })
-            res.redirect('/profile');
+            res.redirect('/profile/'+ req.params.id);
             
         }catch(error){
             res.send("error in userController-updateUser : ",error)

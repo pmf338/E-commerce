@@ -31,6 +31,10 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(450),
             allowNull: true
         },
+        artist_id: {
+            type: dataTypes.INTEGER,
+            allowNull: false            
+        },
         size: {
             type: dataTypes.STRING(5),
             allowNull: true
