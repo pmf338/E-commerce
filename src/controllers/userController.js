@@ -177,9 +177,9 @@ const userController = {
             res.send("error in userController-editUser : ",error)
         }
     },
-    updateUser: function (req, res) {
-
-        User.update({
+    updateUser: async function (req, res) {
+        try{
+        await User.update({
 
                 name: req.body.user_name_edit,
                 surname: req.body.user_surname_edit,
