@@ -1,13 +1,10 @@
 const express = require ('express');
 const usersRouter = express.Router();
-
 const uploadUser = require('../middlewares/multer');
-
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 const userSessionMiddleware = require('../middlewares/userSessionMiddleware');
 const guestMiddlewareAdmin = require('../middlewares/guestMiddlewareAdmin');
-
 const userController = require ('../controllers/userController');
 //const rulesUsers = require('../middlewares/validatorUsers');
 
@@ -27,6 +24,8 @@ usersRouter.get('/profile/:id', guestMiddleware, userController.userProfile);
 //Eliminación usuario
 usersRouter.get('/deleteUser/:id', guestMiddlewareAdmin, userController.deleteUser);
 usersRouter.delete('/deleteUser/:id',userController.destroyUser);
+//Entrar al listado de administrar usuarios
+usersRouter.get('/users', guestMiddlewareAdmin, userController.userList);
 
 
 

@@ -122,6 +122,18 @@ const userController = {
                 res.send("error in userController-userProfile : ",error)
             }
     },
+    userList: async function (req, res) {
+        try{
+            let usersList = await User.findAll();
+            res.render("users/Users", {
+                usersList,
+                title : "Usuarios",
+                user: req.session.userLogged}
+            );
+        }catch(error){
+            res.send("error in productsController-shop : ",error)
+        }
+    },
     logout: async function (req, res) {
         try{
         req.session.destroy();
@@ -150,9 +162,24 @@ const userController = {
             res.status(400).json(result);
         }
     },
-    updateUser: async function (req, res) {
+    editUser: async function (req, res) {
+        let userId = req.params.id;
         try{
-       await User.update({
+            let usuario = await User.findByPk(userId);
+            res.render("users/editProfile",{
+                usuario: {
+                    ...usuario.dataValues
+                },
+                title: "Edición de usuario",
+                user: req.session.userLogged}
+            );
+        }catch(error){
+            res.send("error in userController-editUser : ",error)
+        }
+    },
+    updateUser: function (req, res) {
+
+        User.update({
 
                 name: req.body.user_name_edit,
                 surname: req.body.user_surname_edit,
