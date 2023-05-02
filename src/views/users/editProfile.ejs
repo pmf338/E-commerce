@@ -16,7 +16,7 @@
       <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col col-lg-10 mb-4 mb-lg-0">
-            <form action="/editProfile/<%= usuario.id %>?_method=put" method="post">
+            <form action="/editProfile/<%= usuario.id %>?_method=PUT" method="post" enctype="multipart/form-data">
               <div class="card mb-3" style="border-radius: .5rem; ">
                 <div class="row g-0">
                   <div class="col-md-4 gradient-custom text-center text-white"
@@ -32,9 +32,10 @@
 
                     <div class="d-flex justify-content-center">
                       <div class="btn btn-light btn-rounded" style="padding: 3px">
-                        <label class="form-label text-black m-1" for="customFile1">Seleccionar nueva imagen</label>
+                        <label class="form-label text-black m-1" for="customFile1">Seleccionar foto de
+                          perfil</label>
                         <input type="file" class="form-control" id="user_image_edit" name="user_image_edit"
-                          accept=".jpg, .png, .jpeg" />
+                          accept=".jpg, .png, .jpeg, .webp" />
                       </div>
                     </div>
                     </br>
