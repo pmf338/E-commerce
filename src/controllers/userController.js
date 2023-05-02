@@ -110,9 +110,9 @@ const userController = {
     userProfile: async function (req, res) {
         let userId = req.params.id;
         try{
-        let usuario = await User.findByPk(userId)
+        let usuarioLogueado = await User.findByPk(userId)
                 res.render('users/profile', {
-                    usuario,
+                    usuarioLogueado,
                     title: 'Perfil',
                     user: req.session.userLogged
 
@@ -196,7 +196,7 @@ const userController = {
                     id: req.params.id
                 }
             })
-            res.redirect('/profile/'+ req.params.id);
+            res.redirect('/profile')
             
         }catch(error){
             res.send("error in userController-updateUser : ",error)
