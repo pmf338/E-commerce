@@ -182,8 +182,8 @@ const userController = {
             res.render("users/deleteUser",{
                 usuario,
                 title: "Borrar usuario",
-                user: req.session.userLogged}
-            );
+                user: req.session.userLogged
+            });
         }catch(error){
             res.send("error in userController-deleteUser : ",error)
         }

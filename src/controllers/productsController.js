@@ -101,7 +101,6 @@ const productsController = {
             });
             res.redirect ('/shop');
         }catch(result){
-            console.log("ERROR ", result);
             res.status(400).json(result);
         }
     },

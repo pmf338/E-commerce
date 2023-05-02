@@ -9,6 +9,9 @@ const usersRoutes = require('./routes/usersRoutes');
 const methodOverride = require('method-override');
 const userSessionMiddleware = require('./middlewares/userSessionMiddleware');
 
+//Rutas de las API
+const apiArtistsRoutes = require('../src/routes/api/apiArtistsRoutes');
+const apiProductsRoutes = require('../src/routes/api/apiProductsRoutes');
 
 //Middlewares
 
@@ -30,6 +33,8 @@ app.use(userSessionMiddleware); //Para verificar si el usuario esta o no logeado
 
 app.use('/', productRoutes);
 app.use('/', usersRoutes);
+app.use(apiArtistsRoutes);
+app.use(apiProductsRoutes);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');

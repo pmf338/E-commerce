@@ -116,7 +116,7 @@
                         <div class="col-6 mb-3">
                           <% if (locals.usuario) { %>
                             <% if (locals.usuario.roles_id == 1) { %>
-                              <a href="">
+                                <a href="/deleteUser/<%= locals._locals.usuario.id %> ">
                                 <button type="button" class="btn btn-danger">
                                   Eliminar usuario
                                 </button>
