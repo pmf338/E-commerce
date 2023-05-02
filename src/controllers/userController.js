@@ -20,14 +20,22 @@ const {
 } = require('../database/models');
 
 const userController = {
-    login: function (req, res) {
+    
+    login: async function (req, res) {
+        
+        try{ 
         res.render("users/login", {
             title: "Login"
-        });
-
-    },
-    processLogin: function (req, res) {
-        User.findAll()
+        })
+    
+    }catch(error){
+        res.send("error in userController-login : ",error)
+    }
+        },
+        
+    processLogin: async function (req, res) {
+        try{
+        await User.findAll()
             .then((users) => {
 
                 let errors = validationResult(req);
@@ -62,64 +70,84 @@ const userController = {
                     })
                 }
                 return res.redirect('/');
-            }).catch(function (error) {
-                console.log("error user controler - login", error)
-            });
-    },
-    contact: function (req, res) {
+            })}catch(error){
+                res.send("error in userController-processLogin : ",error)
+            }
+    
+        },
+    contact: async function (req, res) {
+        try{
         res.render("users/contact", {
             title: "Contact",
             user: req.session.userLogged
-        });
+        }
+        )}catch(error){
+            res.send("error in userController-contact : ",error)
+        }
     },
-    editProfile: function (req, res) {
+    editProfile: async function (req, res) {
         let userId = req.params.id;
-        User.findByPk(userId)
-            .then(_user => {
+        try{
+        let usuario = await User.findByPk(userId)
                 res.render("users/editProfile", {
+                    usuario,
                     title: "Edición de perfil",
-                    usuario: _user,
                     user: req.session.userLogged
                 })
-            }).catch(function (error) {
-                console.log("error user controler - editProfile", error)
-            })
+            }catch(error){
+                res.send("error in userController-editProfile : ",error)
+            }
     },
-    createUser: function (req, res) {
+    createUser: async function (req, res) {
+        try{
         res.render("users/createProfile", {
-            /*title: "Creación de usuario",
-            lista: userController.getUsers(),
-            user: req.session.userLogged //Siendo Admin puedo crear nuevos usuarios
-            //ToDo : EN CASO DE QUE SE QUIERA TRAER ALGUN USUARIO PARA COPIAR SUS PERMISOS*/
-
-
-        });
+            
+        })
+    }catch(error){
+        res.send("error in userController-createUser : ",error)
+    }
     },
-    userProfile: function (req, res) {
-
+    userProfile: async function (req, res) {
         let userId = req.params.id;
-        User.findByPk(userId)
-            .then(usuario => {
-
+        try{
+        let usuarioLogueado = await User.findByPk(userId)
                 res.render('users/profile', {
+                    usuarioLogueado,
                     title: 'Perfil',
                     user: req.session.userLogged
 
                 })
-            }).catch(function (error) {
-                console.log("error user controler -", error)
-            });
+            
+            }catch(error){
+                res.send("error in userController-userProfile : ",error)
+            }
     },
-    logout: function (req, res) {
+    userList: async function (req, res) {
+        try{
+            let usersList = await User.findAll();
+            res.render("users/Users", {
+                usersList,
+                title : "Usuarios",
+                user: req.session.userLogged}
+            );
+        }catch(error){
+            res.send("error in productsController-shop : ",error)
+        }
+    },
+    logout: async function (req, res) {
+        try{
         req.session.destroy();
         res.cookie('email', null, {
             maxAge: -1
-        });
+        })
+        }catch(error){
+            res.send("error in userController-logout : ",error)
+        }
         res.redirect('/')
     },
     storeUser: async function (req, res) {
         try{
-            User.create({
+            await User.create({
                 name: req.body.user_name,
                 surname: req.body.user_surname,
                 userName: req.body.user_user_name,
@@ -134,34 +162,24 @@ const userController = {
             res.status(400).json(result);
         }
     },
-    editUser: function (req, res) {
+    editUser: async function (req, res) {
         let userId = req.params.id;
-        
-        User.findByPk(userId)
-            .then(usuario => {
-                
-                res.render("users/editProfile", {
-                    usuario: {
-
-                        ...usuario.dataValues
-                        
-
-                    }
-                    
-                })
-
-
-                /*{   title: "Edición de usuario",
-                    editing_user : usuario,
-                    user: req.session.userLogged
-                })
-                */
-            })
-
+        try{
+            let usuario = await User.findByPk(userId);
+            res.render("users/editProfile",{
+                usuario: {
+                    ...usuario.dataValues
+                },
+                title: "Edición de usuario",
+                user: req.session.userLogged}
+            );
+        }catch(error){
+            res.send("error in userController-editUser : ",error)
+        }
     },
-    updateUser: function (req, res) {
-
-        User.update({
+    updateUser: async function (req, res) {
+        try{
+        await User.update({
 
                 name: req.body.user_name_edit,
                 surname: req.body.user_surname_edit,
@@ -178,20 +196,37 @@ const userController = {
                     id: req.params.id
                 }
             })
-            .then(() => {
-
-                res.redirect('/profile');
+            res.redirect('/profile')
+            
+        }catch(error){
+            res.send("error in userController-updateUser : ",error)
+        }
+    },
+    deleteUser: async function (req, res) {
+        let userId = req.params.id;
+        try{
+            let usuario = await User.findByPk(userId);
+            res.render("users/deleteUser",{
+                usuario,
+                title: "Borrar usuario",
+                user: req.session.userLogged
+            });
+        }catch(error){
+            res.send("error in userController-deleteUser : ",error)
+        }
+    },
+    destroyUser: async function (req, res) {
+        try{
+            await User.destroy({
+                where : {
+                    id : req.params.id
+                }
             })
-            .catch(function (error) {
-                console.log("error user controler - updateUser", error)
-            })
-    },
-    deleteUser: function (req, res) {
-
-    },
-    destroyUser: function (req, res) {
-
-    },
+        }catch(error){
+            res.send("error in userController-destroyUser : ",error)
+        }
+        res.redirect ('/')
+    }
 }
 
 
