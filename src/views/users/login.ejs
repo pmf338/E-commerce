@@ -21,32 +21,16 @@
                                 <h1 class="display-5 card-title text-center text-white">INGRESAR DATOS</h1>
                                 <form class="form-login" action="/login" method="post">
                                     <div class="form-group input-field-login">
-                                        <input type="text" name="email" id="email" class="form-control"
-                                            placeholder="Correo electronico" required>
-                                        <i class="fa-regular fa-user"></i>
-                                        <% if(typeof(errors) != 'undefined'){%>
-                                            <span class="text-danger">
-                                              <%= errors[0].msg %>
-                                            </span>
-                                         <%}%>
-                                    </div>
-                                    <div class="form-group input-field-login">
-                                        <input type="password" name="pass" id="pass" class="form-control"
-                                            placeholder="Contraseña" minlength="3">
-                                        <i class="fa-solid fa-lock"></i>
-                                        <!--Agregar icono para mostrar/ocultar contraseña-->
-                                        <% if(typeof(errors) != 'undefined' ){%>
-                                            <span class="text-danger">
-                                              <%= errors[0].msg %>
-                                            </span>
-                                         <%}%>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="remember_me"
-                                                name="remember_me">
-                                            <label class="form-check-label text-white"
-                                                for="remember_me">Recuerdame</label>
+                                        <div class="row pt-1">
+                                            <div class="form-floating mb-3 col">
+                                                <input type="text" name="email" id="email" class="form-control">
+                                                <label for="email">CORREO ELECTRONICO</label>
+                                                <% if(typeof(errors) != 'undefined'){%>
+                                                    <span class="text-danger">
+                                                      <%= errors[0].msg %>
+                                                    </span>
+                                                <%}%>
+                                            </div> 
                                         </div>
                                         <div class="row pt-1">
                                             <div class="form-floating mb-3 col">
