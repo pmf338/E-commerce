@@ -161,7 +161,7 @@
                           <% if (locals.usuario) { %>
                             <% if (locals.usuario.roles_id == 1) { %>
                               <a href="/editProduct/<%= product.id %>">
-                                <button type="button" class="btn btn-primary">
+                                <button type="button" class="btn btn-primary btn-lg">
                                   EDITAR
                                 </button>
                               </a>
@@ -169,8 +169,15 @@
                           <% } %>
                       </div>
                       <div class="col">
+                        <a href="/">
+                          <button type="button" class="btn btn-success btn-lg">
+                            AÑADIR AL CARRITO
+                          </button>
+                        </a>
+                      </div>
+                      <div class="col">
                           <a href="/shop">
-                            <button type="button" class="btn btn-warning">
+                            <button type="button" class="btn btn-warning btn-lg">
                               SALIR
                             </button>
                           </a>

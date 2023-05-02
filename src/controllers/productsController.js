@@ -86,7 +86,13 @@ const productsController = {
     },
     storeProduct: async function (req, res) {
         try{
-            console.log("VALOR : ",req.body.product_category)
+            let active_value;
+            console.log("VALOR : ",req.body.product_is_active)
+            if (req.body.product_is_active == true){
+                active_value = 1;
+            }else{
+                active_value = 2;
+            }
             Product.create({
                 sku :  req.body.product_sku,
                 name : req.body.product_name || null,
@@ -97,7 +103,7 @@ const productsController = {
                 size : req.body.product_size || null,
                 format : req.body.product_format || null,
                 color : req.body.product_color || null,
-                is_active : 1,
+                is_active : active_value,
                 description : req.body.product_description || "sin descripcion",
                 createdAt : Date.now(),
                 updatedAt : Date.now(),
