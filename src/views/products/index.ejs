@@ -10,7 +10,7 @@
         <%- include('../partials/header.ejs') %>
     </header>
     <main>
-        <!-- Banner -->
+        <!-- BANNER -->
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -43,16 +43,16 @@
             </button>
         </div>
         
-        <!-- New Products -->    
+        <!-- NEW PRODUCTS -->    
         <div>
-            <h1 class="display-2 text-center px-3 py-4">Nuevos Productos</h1>
+            <h1 class="display-2 text-center px-3 py-4">NOVEDADES</h1>
         </div>
         <div>
             <div class="container text-center">
-                <div class="row">
+                <div class="row justify-content-center">
                     <% productsList.forEach(product => { %>
                     <div class="col col-12 col-md-4 border p-4">
-                        <img src="/images/products/<%- product.imagePrimary %>" class="card-img-top index-products-img" alt="imagen-producto">
+                        <img src="/images/products/<%- product.imagePrimary %>" class="card-img-top index-products-img d-block" alt="imagen-producto">
                         <p class="m-4 fs-4 text" style="height: 6rem;"><%- product.name %></p>
                         <a href="/productdetail/<%- product.id %>" class="btn btn-lg btn-dark d-block mx-auto">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-cart-plus m-2" viewBox="0 0 16 16">
@@ -68,7 +68,7 @@
         </div>
 
         <!-- Artists --> 
-        <h2 class="display-2 text-center px-5 my-5 ">Artistas</h2>
+        <h2 class="display-2 text-center px-5 my-5 ">ARTISTAS</h2>
         <div class="container text-center my-5">
             <div class="row row-cols-1 row-cols-md-3 g-2 g-lg-3 justify-content-center">
             <% artistsList.forEach(artist => { %>
