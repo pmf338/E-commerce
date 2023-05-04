@@ -127,6 +127,7 @@
                           </div>
                           <div class="form-floating m-auto col">
                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                              <% console.log("VALOR EN HTML : ", product.is_active) %>
                               <% if (product.is_active == 1){ %>
                               <input type="radio" class="btn-check" name="product_is_active" id="btnradio1" autocomplete="off" checked disabled>
                               <label class="btn btn-outline-dark" for="btnradio1">ACTIVO</label>
@@ -145,8 +146,7 @@
                         </div>
                         <div class="row pt-1">
                           <div class="form-floating mb-3 col">
-                            <textarea class="form-control" name="product_description" id="product_description" rows="3"
-                              required value="<%- product.description %>" disabled>Escriba la descripcion del producto aquí</textarea>
+                            <textarea class="form-control" name="product_description" id="product_description" rows="3" disabled><%- product.description %></textarea>
                             <label for="product_description">DESCRIPCION</label>
                           </div>
                         </div>
@@ -154,14 +154,17 @@
                   </div>
 
                   <!-- BUTTONS SECTION -->
-                  <br><br><br>
                   <div class="container text-center py-3 bg-dark rounded">
                     <div class="row gx-5">
                       <div class="col">
                           <% if (locals.usuario) { %>
                             <% if (locals.usuario.roles_id == 1) { %>
                               <a href="/editProduct/<%= product.id %>">
-                                <button type="button" class="btn btn-primary btn-lg">
+                                <button type="button" class="btn btn-primary">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                  </svg>
                                   EDITAR
                                 </button>
                               </a>
@@ -170,14 +173,22 @@
                       </div>
                       <div class="col">
                         <a href="/">
-                          <button type="button" class="btn btn-success btn-lg">
-                            AÑADIR AL CARRITO
+                          <button type="button" class="btn btn-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                              <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                            </svg>
+                            AGREGAR
                           </button>
                         </a>
                       </div>
                       <div class="col">
                           <a href="/shop">
-                            <button type="button" class="btn btn-warning btn-lg">
+                            <button type="button" class="btn btn-warning">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-backspace" viewBox="0 0 16 16">
+                                <path d="M5.83 5.146a.5.5 0 0 0 0 .708L7.975 8l-2.147 2.146a.5.5 0 0 0 .707.708l2.147-2.147 2.146 2.147a.5.5 0 0 0 .707-.708L9.39 8l2.146-2.146a.5.5 0 0 0-.707-.708L8.683 7.293 6.536 5.146a.5.5 0 0 0-.707 0z"/>
+                                <path d="M13.683 1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-7.08a2 2 0 0 1-1.519-.698L.241 8.65a1 1 0 0 1 0-1.302L5.084 1.7A2 2 0 0 1 6.603 1h7.08zm-7.08 1a1 1 0 0 0-.76.35L1 8l4.844 5.65a1 1 0 0 0 .759.35h7.08a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-7.08z"/>
+                              </svg>
                               SALIR
                             </button>
                           </a>
