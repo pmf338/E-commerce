@@ -10,7 +10,7 @@
     <%- include('../partials/header.ejs') %>
   </header>
   <main>
-    <form class="form-create-product" method="post" action="/editProduct/<%= product.id %>?_method=PUT">
+    <form class="form-create-product" method="post" action="/editProduct/<%= product.id %>?_method=PUT" enctype="multipart/form-data">
       <section style="min-height: 100vh;">
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">

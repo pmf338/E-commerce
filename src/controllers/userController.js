@@ -179,7 +179,7 @@ const userController = {
     },
     updateUser: async function (req, res) {
         try{
-        await User.update({
+            await User.update({
 
                 name: req.body.user_name_edit,
                 surname: req.body.user_surname_edit,
@@ -194,11 +194,11 @@ const userController = {
 
                     id: req.params.id
                 }
-            })
+            });
             res.redirect('/profile')
             
-        }catch(error){
-            res.send("error in userController-updateUser : ",error)
+        }catch(result){
+            res.status(400).json(result);
         }
     },
     deleteUser: async function (req, res) {
