@@ -164,8 +164,7 @@ const productsController = {
         }catch(result){
             console.log("ERROR ", result);
             res.status(400).json(result);
-        }
-        
+        }     
     },
     deleteProduct : async function (req,res){
         let productId = req.params.id;
