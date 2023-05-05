@@ -6,7 +6,7 @@ const form = document.getElementById('form_create_product')
 document.addEventListener('DOMContentLoaded', inicioApp);
 //funciones
 function inicioApp() {
-    console.log("ok se cargo el documento");
+    console.log("ok se cargo el documento" );
     form.addEventListener('submit', crearProducto);
     form.product_sku.addEventListener('blur', validarFormulario);
 }
@@ -24,3 +24,24 @@ function validarFormulario(evt) {
         }
     }
 }
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+        'use strict'
+  
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+  
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            console.log("evt target", forms );
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+  
+            form.classList.add('was-validated')
+          }, false)
+        })
+      })()

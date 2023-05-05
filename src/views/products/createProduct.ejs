@@ -33,8 +33,11 @@
                       <div class="btn btn-light btn-rounded" style="padding: 5px">
                         <label class="form-label text-black m-1" for="customFile1">Seleccionar nuevas
                             imagenes</label>
-                          <input type="file" class="form-control" id="product_image" name="product_image" multiple="multiple" accept=".jpg, .png, .jpeg" />
-                      </div>
+                          <input type="file" class="form-control" id="product_image" name="product_image" multiple="multiple" accept=".jpg, .png, .jpeg" required/>
+                          <div class="invalid-feedback">
+                            Al menos una imagen del producto es requerida.
+                          </div>
+                        </div>
                     </div>
                     </div>
                   </div>
@@ -46,15 +49,18 @@
                         <hr class="mt-0 mb-4">
                         <div class="row pt-1">
                           <div class="form-floating mb-3 col">
-                              <input type="number" name="product_sku" id="product_sku" class="form-control">
+                              <input type="number" name="product_sku" id="product_sku" class="form-control" required>
                               <label for="product_sku">SKU</label>
-                          </div>
-                          <div class="invalid-feedback">
-                            Please select a valid state.
+                              <div class="invalid-feedback">
+                                El SKU es requerido.
+                              </div>
                           </div>
                           <div class="form-floating mb-3 col">
-                              <input type="text" name="product_name" id="product_name" class="form-control">
+                              <input type="text" name="product_name" id="product_name" class="form-control" required>
                               <label for="product_name">NOMBRE</label>
+                              <div class="invalid-feedback">
+                                El nombre del producto es requerido.
+                              </div>
                           </div>
                         </div>
                         <div class="row pt-1">
@@ -62,32 +68,41 @@
                             <input type="number" name="product_price" id="product_price" class="form-control" minlength="1" required>
                             <label for="product_price">PRECIO UNITARIO</label>
                             <div class="invalid-feedback">
-                              Please select a valid state.
+                              El precio unitario es requerido.
                             </div>
                           </div>
                           <div class="form-floating mb-3 col">
                             <input type="number" name="product_quantity" id="product_quantity" class="form-control" minlength="1" required>
                             <label for="product_quantity">CANTIDAD STOCK</label>
+                            <div class="invalid-feedback">
+                              La cantidad en stock es requerida.
+                            </div>
                           </div>
                         </div>
                         <div class="row pt-1">
                           <div class="form-floating mb-3 col">
-                            <select class="form-select" name="product_artist" id="product_artist" aria-label="Default select example">
+                            <select class="form-select" name="product_artist" id="product_artist" aria-label="Default select example" required>
                               <option selected>Seleccionar</option>
                               <% artistList.forEach(artist => { %>
                               <option value="<%- artist.id %>"><%- artist.name %></option>
                               <% }); %>
                             </select>
                             <label for="product_artist">ARTISTA</label>
+                            <div class="invalid-feedback">
+                              El artista asociado es requerido.
+                            </div>
                           </div>
                           <div class="form-floating mb-3 col">
-                            <select class="form-select" name="product_category" id="product_category" aria-label="Default select example">
+                            <select class="form-select" name="product_category" id="product_category" aria-label="Default select example" required>
                               <option selected>Seleccionar</option>
                               <% categoriesList.forEach(category => { %>
                               <option value="<%- category.id %>"><%- category.description %></option>
                               <% }); %>
                             </select>
                             <label for="product_artist">CATEGORIA</label>
+                            <div class="invalid-feedback">
+                              La categoria es requerida.
+                            </div>
                           </div>
                         </div>
                         <div class="row pt-1">
@@ -117,9 +132,12 @@
                         </div>
                         <div class="row pt-1">
                           <div class="form-floating mb-3 col">
-                            <textarea class="form-control" name="product_description" id="product_description" rows="3"
-                              required>Escriba la descripcion del producto aquí</textarea>
+                            <textarea class="form-control" name="product_description" id="product_description" rows="3" required>
+                              Escriba la descripcion del producto aquí</textarea>
                             <label for="product_description">DESCRIPCION</label>
+                          </div>
+                          <div class="invalid-feedback">
+                            La descripción es requerida.
                           </div>
                         </div>
                       </div>
@@ -153,28 +171,6 @@
   <footer>
     <%- include('../partials/footer.ejs') %>
   </footer>
-
-  <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (() => {
-      'use strict'
-
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      const forms = document.querySelectorAll('.needs-validation')
-
-      // Loop over them and prevent submission
-      Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-
-          form.classList.add('was-validated')
-        }, false)
-      })
-    })()
-  </script>
 
 </body>
 
