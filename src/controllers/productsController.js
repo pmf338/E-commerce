@@ -86,7 +86,6 @@ const productsController = {
     storeProduct: async function (req, res) {
         try{
             let active_value;
-            console.log("VALOR : ",req.body.product_is_active)
             if (req.body.product_is_active == true){
                 active_value = 1;
             }else{
@@ -138,6 +137,12 @@ const productsController = {
     },
     updateProduct: async function (req, res) {
         try{
+            let active_value;
+            if (req.body.product_is_active == "true"){
+                active_value = 1;
+            }else{
+                active_value = 2;
+            }
             Product.update({
                 sku : req.body.product_sku,
                 name : req.body.product_name || null,
@@ -149,7 +154,7 @@ const productsController = {
                 description : req.body.product_description || "sin descripcion",
                 format : req.body.product_format || null,
                 color : req.body.product_color || null,
-                is_active : 1,
+                is_active : active_value,
                 description : req.body.product_description || "sin descripcion",
                 updatedAt : Date.now(),
                 imagePrimary : req.files[0] ? req.files[0].filename : "avatar.jpeg",
@@ -162,11 +167,11 @@ const productsController = {
             })
             res.redirect ('/productDetail/'+req.params.id);
         }catch(result){
-            console.log("ERROR ", result);
             res.status(400).json(result);
-        }
-        
+        }     
     },
+    /*
+    --- MÉTODO ANTERIOR ---
     deleteProduct : async function (req,res){
         let productId = req.params.id;
         try{
@@ -179,12 +184,24 @@ const productsController = {
         }catch(error){
             res.send("error in productsController-productDetail : ",error)
         }
+    },*/
+    deleteProduct: async function (req,res){
+        try {
+            Product.destroy({
+                where: {
+                    id: req.params.id
+                }
+            })
+        }catch(result){
+            res.status(400).json(result);
+        }
+        res.redirect ('/shop')
     },
-    destroyProduct: function (req, res) {
+    destroyProduct: async function (req, res) {
         try{
             Product.destroy({
-                where : {
-                    id : req.params.id
+                where: {
+                    id: req.params.id
                 }
             })
         }catch(error){

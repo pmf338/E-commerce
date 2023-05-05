@@ -17,7 +17,7 @@
     <section class="vh-250"
       style="background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg'); background-size: cover;">
 
-      <form class="form-create-product" action="#" method="post" enctype="multipart/form-data">
+      <form class="form-create-product" id="form" action="#" method="post" enctype="multipart/form-data">
         <section class="vh-100"
           style="background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg')">
           <div class="container py-5 h-100">
@@ -45,7 +45,11 @@
                           </div>
 
                         </div>
-
+                      </br>
+                      <button class="btn btn-primary" onclick="resetForm()">
+                        Limpiar formulario
+                      </button>
+                      </br>
                         </br>
                         <button type="submit" class="btn btn-success">
                           Guardar cambios
@@ -59,7 +63,6 @@
                         </a>
                         </br>
                         </br>
-
                       </div>
 
                       <div class="col-md-8">
@@ -145,6 +148,8 @@
   <footer>
     <%- include('../partials/footer.ejs') %>
   </footer>
+
+  <script src="/js/validatorUsers.js"></script>
 </body>
 
 </html>
