@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
                
                cb(null, path.join(__dirname, '../../public/images/products'));
             
-            }else if(file.fieldname == "user_image_edit"){
+            }else if(file.fieldname == "user_image_edit" || file.fieldname == "user_image"){
       
                cb(null, path.join(__dirname, '../../public/images/users'));
             }
