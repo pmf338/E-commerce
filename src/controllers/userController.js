@@ -74,7 +74,7 @@ const userController = {
                 res.send("error in userController-processLogin : ",error)
             }
     
-        },
+    },
     contact: async function (req, res) {
         try{
         res.render("users/contact", {
@@ -189,7 +189,6 @@ const userController = {
                 address: req.body.user_address_edit,
                 imageProfile: req.file ? req.file.filename : "404.jpg",
                 roles_id: req.body.user_category_edit,
-                
             }, {
                 where: {
 
