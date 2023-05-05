@@ -3,6 +3,7 @@
 
 <head>
   <%- include('../partials/head.ejs') %>
+  <link rel="stylesheet" href="/css/styles.css">
   <title>Editar perfil de usuario</title>
 </head>
 
@@ -38,12 +39,17 @@
                           accept=".jpg, .png, .jpeg, .webp" />
                       </div>
                     </div>
+                  </br>
+                  <button type="button" class="btn btn-primary btn-lg" id="changePass" name="changePass" onclick="cambiarPassword()">
+                    Cambiar contraseña
+                  </button>
+                    </br>
                     </br>
                       <button type="submit" class="btn btn-success">
                         Guardar cambios
                       </button>
                     </br>
-                    </br>
+                  </br>
                     <a href="/profile">
                       <button type="button" class="btn btn-warning">
                         Cancelar
@@ -60,32 +66,34 @@
                         <div class="col-6 mb-3">
                           <h6>Nombre</h6>
                           <i class="fa-solid fa-user"></i><input type="text" name="user_name_edit" id="user_name_edit"
-                            minlength="3" value=<%= usuario.name %>>
+                            minlength="3" value=<%= usuario.name %> required>
                         </div>
                         <div class="col-6 mb-3">
                           <h6>Apellidos</h6>
                           <i class="fa-solid fa-user"></i><input type="text" name="user_surname_edit"
-                            id="user_surname_edit" minlength="3" value=<%= usuario.surname %>>
+                            id="user_surname_edit" minlength="3" value=<%= usuario.surname %> required>
                         </div>
                         <div class="col-6 mb-3">
                           <h6>Nombre de usuario</h6>
                           <i class="fa-solid fa-user"></i><input type="text" name="user_user_name_edit"
-                            id="user_user_name_edit" minlength="3" value=<%= usuario.userName %>>
+                            id="user_user_name_edit" minlength="3" value=<%= usuario.userName %> required>
                         </div>
                         <div class="col-6 mb-3">
                           <h6>Correo electronico</h6>
                           <i class="fa-solid fa-user"></i><input type="text" name="user_email_edit" id="user_email_edit"
-                            minlength="3" value=<%= usuario.email %>>
+                            minlength="3" value=<%= usuario.email %> required>
                         </div>
                         <div class="col-6 mb-3">
-                          <h6>Contraseña</h6>
-                          <i class="fa-solid fa-user"></i><input type="password" name="user_password_old"
-                            id="user_password_old" minlength="3" value=<%= usuario.password %>>
+                          <i class="fa-solid fa-user"></i><input type="password" name="user_password_old" placeholder="Ingresar contraseña actual"
+                            id="user_password_old" minlength="3">
                         </div>
                         <div class="col-6 mb-3">
-                          <h6>Repetir contraseña</h6>
-                          <i class="fa-solid fa-user"></i><input type="password" name="user_password_edit"
-                            id="user_password_edit" minlength="3" value="">
+                          <i class="fa-solid fa-user"></i><input type="password" name="user_password_edit" placeholder="Ingresar nueva contraseña"
+                            id="user_password_edit" minlength="3">
+                        </div>
+                        <div class="col-6 mb-3">
+                          <i class="fa-solid fa-user"></i><input type="password" name="user_password_repeat" placeholder="Repetir contraseña nueva"
+                            id="user_password_repeat" minlength="3">
                         </div>
                         <div class="col-6 mb-3">
                           <h6>Dirección de envios</h6>
@@ -108,9 +116,13 @@
                             <option value="1">Administrador</option>
                             <option value="2">Cliente</option>
                           </select>
-
                           <% } %>
                           <% } %>
+                        </br>
+                        <button type="button" class="btn btn-warning" id="back" name="back" onclick="atras()">
+                          Atrás
+                        </button>
+                          </br>
                         </div>
                         <div class="col-6 mb-3">
                           <% if (locals.usuario) { %>
@@ -139,6 +151,7 @@
     <%- include('../partials/footer.ejs') %>
   </footer>
 
+  <script src="/js/validatorUsers.js"></script>
 </body>
 
 </html>

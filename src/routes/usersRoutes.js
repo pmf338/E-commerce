@@ -17,7 +17,7 @@ usersRouter.post('/login',userController.processLogin);
 usersRouter.get('/createProfile',userController.createUser);
 usersRouter.post('/createProfile',uploadUser.single('user_image'),userController.storeUser);
 //Modificación usuario
-usersRouter.get('/editProfile/:id',userController.editProfile);
+usersRouter.get('/editProfile/:id',userController.editUser);
 usersRouter.put('/editProfile/:id',uploadUser.single('user_image_edit'),userController.updateUser);
 //Entrar a la página de perfil del usuario
 usersRouter.get('/profile', guestMiddleware, userController.userProfile);

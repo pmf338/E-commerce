@@ -28,9 +28,9 @@ const userController = {
             title: "Login"
         })
     
-    }catch(error){
-        res.send("error in userController-login : ",error)
-    }
+        }catch(result){
+        res.status(400).json(result);
+        }
         },
         
     processLogin: async function (req, res) {
@@ -70,9 +70,10 @@ const userController = {
                     })
                 }
                 return res.redirect('/');
-            })}catch(error){
-                res.send("error in userController-processLogin : ",error)
-            }
+            })
+        }catch(result){
+            res.status(400).json(result);
+        }
     
         },
     contact: async function (req, res) {
@@ -81,30 +82,17 @@ const userController = {
             title: "Contact",
             user: req.session.userLogged
         }
-        )}catch(error){
-            res.send("error in userController-contact : ",error)
-        }
-    },
-    editProfile: async function (req, res) {
-        let userId = req.params.id;
-        try{
-        let usuario = await User.findByPk(userId)
-                res.render("users/editProfile", {
-                    usuario,
-                    title: "Edición de perfil",
-                    user: req.session.userLogged
-                })
-            }catch(error){
-                res.send("error in userController-editProfile : ",error)
-            }
+        )}catch(result){
+        res.status(400).json(result);
+    }
     },
     createUser: async function (req, res) {
         try{
         res.render("users/createProfile", {
             
         })
-    }catch(error){
-        res.send("error in userController-createUser : ",error)
+    }catch(result){
+        res.status(400).json(result);
     }
     },
     userProfile: async function (req, res) {
@@ -118,8 +106,8 @@ const userController = {
 
                 })
             
-            }catch(error){
-                res.send("error in userController-userProfile : ",error)
+            }catch(result){
+                res.status(400).json(result);
             }
     },
     userList: async function (req, res) {
@@ -130,8 +118,8 @@ const userController = {
                 title : "Usuarios",
                 user: req.session.userLogged}
             );
-        }catch(error){
-            res.send("error in productsController-shop : ",error)
+        }catch(result){
+            res.status(400).json(result);
         }
     },
     logout: async function (req, res) {
@@ -140,8 +128,8 @@ const userController = {
         res.cookie('email', null, {
             maxAge: -1
         })
-        }catch(error){
-            res.send("error in userController-logout : ",error)
+        }catch(result){
+        res.status(400).json(result);
         }
         res.redirect('/')
     },
@@ -173,11 +161,14 @@ const userController = {
                 title: "Edición de usuario",
                 user: req.session.userLogged}
             );
-        }catch(error){
-            res.send("error in userController-editUser : ",error)
+        }catch(result){
+            res.status(400).json(result);
         }
     },
     updateUser: async function (req, res) {
+        let userId = req.params.id;
+        let usuario = await User.findByPk(userId);
+        let newPass = req.body.user_password_edit;
         try{
             await User.update({
 
@@ -185,9 +176,9 @@ const userController = {
                 surname: req.body.user_surname_edit,
                 userName: req.body.user_user_name_edit,
                 email: req.body.user_email_edit,
-                password: bcrypt.hashSync(req.body.user_password_edit, 10),
+                password: req.body.user_password_edit ? bcrypt.hashSync(req.body.user_password_edit, 10) : usuario.dataValues.password,
                 address: req.body.user_address_edit,
-                imageProfile: req.file ? req.file.filename : "404.jpg",
+                imageProfile: req.file ? req.file.filename : usuario.dataValues.imageProfile,
                 roles_id: req.body.user_category_edit,
                 
             }, {
@@ -211,8 +202,8 @@ const userController = {
                 title: "Borrar usuario",
                 user: req.session.userLogged
             });
-        }catch(error){
-            res.send("error in userController-deleteUser : ",error)
+        }catch(result){
+            res.status(400).json(result);
         }
     },
     destroyUser: async function (req, res) {
@@ -222,8 +213,8 @@ const userController = {
                     id : req.params.id
                 }
             })
-        }catch(error){
-            res.send("error in userController-destroyUser : ",error)
+        }catch(result){
+            res.status(400).json(result);
         }
         res.redirect ('/')
     }
