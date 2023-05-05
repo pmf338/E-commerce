@@ -137,6 +137,9 @@ const productsController = {
         }
     },
     updateProduct: async function (req, res) {
+        let productId = req.params.id;
+        let product = await Product.findByPk(productId);
+        console.log("producto",product)
         try{
             let active_value;
             console.log("VALOR : ",req.body.product_is_active)
@@ -159,9 +162,9 @@ const productsController = {
                 is_active : active_value,
                 description : req.body.product_description || "sin descripcion",
                 updatedAt : Date.now(),
-                imagePrimary : req.files[0] ? req.files[0].filename : "avatar.jpeg",
-                imageSecond : req.files[1] ? req.files[1].filename : "avatar.jpeg",
-                imageThird : req.files[2] ? req.files[2].filename : "avatar.jpeg",
+                imagePrimary : req.files[0] ? req.files[0].filename : product.dataValues.imagePrimary,
+                imageSecond : req.files[1] ? req.files[1].filename : product.dataValues.imageSecond,
+                imageThird : req.files[2] ? req.files[2].filename : product.dataValues.imageThird,
             },{
                 where : {
                     id : req.params.id

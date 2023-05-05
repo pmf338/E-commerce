@@ -180,6 +180,15 @@ header .profile-btns div{
     font-size: 20px;
 }
 
+/*----------------------------------------editProfile.ejs---------------------------------------------------------*/
+#user_password_old, 
+#user_password_edit,
+#user_password_repeat,
+#back{
+
+    display: none;
+}
+
 /*----------------------------------------artists.ejs---------------------------------------------------------*/
 .artists-container img{
     height: 150px;
