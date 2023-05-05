@@ -6,7 +6,6 @@ const form = document.getElementById('form_create_product')
 document.addEventListener('DOMContentLoaded', inicioApp);
 //funciones
 function inicioApp() {
-    console.log("ok se cargo el documento" );
     form.addEventListener('submit', crearProducto);
     form.product_sku.addEventListener('blur', validarFormulario);
 }
@@ -35,7 +34,6 @@ function validarFormulario(evt) {
         // Loop over them and prevent submission
         Array.from(forms).forEach(form => {
           form.addEventListener('submit', event => {
-            console.log("evt target", forms );
             if (!form.checkValidity()) {
               event.preventDefault()
               event.stopPropagation()

@@ -86,7 +86,6 @@ const productsController = {
     storeProduct: async function (req, res) {
         try{
             let active_value;
-            console.log("VALOR : ",req.body.product_is_active)
             if (req.body.product_is_active == true){
                 active_value = 1;
             }else{
@@ -137,12 +136,8 @@ const productsController = {
         }
     },
     updateProduct: async function (req, res) {
-        let productId = req.params.id;
-        let product = await Product.findByPk(productId);
-        console.log("producto",product)
         try{
             let active_value;
-            console.log("VALOR : ",req.body.product_is_active)
             if (req.body.product_is_active == "true"){
                 active_value = 1;
             }else{
@@ -162,9 +157,9 @@ const productsController = {
                 is_active : active_value,
                 description : req.body.product_description || "sin descripcion",
                 updatedAt : Date.now(),
-                imagePrimary : req.files[0] ? req.files[0].filename : product.dataValues.imagePrimary,
-                imageSecond : req.files[1] ? req.files[1].filename : product.dataValues.imageSecond,
-                imageThird : req.files[2] ? req.files[2].filename : product.dataValues.imageThird,
+                imagePrimary : req.files[0] ? req.files[0].filename : "avatar.jpeg",
+                imageSecond : req.files[1] ? req.files[1].filename : "avatar.jpeg",
+                imageThird : req.files[2] ? req.files[2].filename : "avatar.jpeg",
             },{
                 where : {
                     id : req.params.id
@@ -172,7 +167,6 @@ const productsController = {
             })
             res.redirect ('/productDetail/'+req.params.id);
         }catch(result){
-            console.log("ERROR ", result);
             res.status(400).json(result);
         }     
     },
