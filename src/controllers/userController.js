@@ -137,16 +137,16 @@ const userController = {
     },
     storeUser: async function (req, res) {
         try{
-            /*
+            
             const { email } = req.body;
             const user = await User.findOne({ where: { email } });
-            */
+            
             let errors = validationResult(req);
-        /*
+        
         if (user) {
             return res.status(400).json({ message: 'User already exists' });
         }
-          */  
+         
         if (!errors.isEmpty()) {
                 return res.render("users/createProfile", {
                     success: false,

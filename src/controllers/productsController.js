@@ -163,7 +163,7 @@ const productsController = {
             let categoriesList = await Category.findAll();
             let productArtist = await Artist.findByPk(product.artist_id);
             let productCategory = await Category.findByPk(product.categories_id)
-            res.render("products/editProduct",{
+            return res.render("products/editProduct",{
                 product,
                 artistList,
                 errors: errors.mapped(),
