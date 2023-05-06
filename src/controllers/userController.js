@@ -187,7 +187,7 @@ const userController = {
                 email: req.body.user_email_edit,
                 password: bcrypt.hashSync(req.body.user_password_edit, 10),
                 address: req.body.user_address_edit,
-                imageProfile: req.file ? req.file.filename : "404.jpg",
+                imageProfile: req.body.user_image_edit ? req.body.user_image_edit : "404.jpg",
                 roles_id: req.body.user_category_edit,
                 
             }, {
