@@ -84,6 +84,23 @@ const productsController = {
         }
     },
     storeProduct: async function (req, res) {
+        let errors = validationResult(req);
+        console.log("validacion en guardar producto", errors);
+
+        if(!errors.isEmpty()){
+            let artistList = await Artist.findAll();
+            let categoriesList = await Category.findAll();
+           return res.render("products/createProduct", {
+                artistList,
+                categoriesList,
+                title: "Creación producto",
+                errors: errors.mapped(),
+                oldBody: req.body,
+                user: req.session.userLogged
+            });
+        }
+
+
         try{
             let active_value;
             if (req.body.product_is_active == true){
@@ -136,6 +153,28 @@ const productsController = {
         }
     },
     updateProduct: async function (req, res) {
+
+        let errors = validationResult(req);
+        console.log("validacion en editar producto", errors);
+        let productId = req.params.id;
+        if(!errors.isEmpty()){
+            let product = await Product.findByPk(productId);
+            let artistList = await Artist.findAll();
+            let categoriesList = await Category.findAll();
+            let productArtist = await Artist.findByPk(product.artist_id);
+            let productCategory = await Category.findByPk(product.categories_id)
+            res.render("products/editProduct",{
+                product,
+                artistList,
+                errors: errors.mapped(),
+                categoriesList,
+                productCategory,
+                productArtist,
+                title: "Editar Producto",
+                user: req.session.userLogged}
+            );
+        }
+
         try{
             let active_value;
             if (req.body.product_is_active == "true"){
