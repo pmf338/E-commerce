@@ -73,14 +73,15 @@
 
                             <div class="col-6 mb-3">
                               <h6>Nombre/s </h6>
+                              <% console.log("datos validos",locals.validData) %>
                               <i class="fa-solid fa-user"></i><input type="text" class="form-control" name="user_name"
-                                id="user_name" minlength="1" required>
+                                id="user_name" value="<%= locals.validData ? locals.validData.name : '' %>" minlength="2" required>
                             </div>
 
                             <div class="col-6 mb-3">
                               <h6>Apellido/s </h6>
                               <i class="fa-solid fa-user"></i><input type="text" class="form-control"
-                                name="user_surname" id="user_surname" minlength="1" required>
+                                name="user_surname" id="user_surname" minlength="2" required>
                             </div>
 
                             <div class="col-6 mb-3">
@@ -104,13 +105,13 @@
                             <div class="col-6 mb-3">
                               <h6>Contraseña</h6>
                               <i class="fa-solid fa-user"></i><input type="password" class="form-control"
-                                name="user_pass" id="user_pass" minlength="1" required>
+                                name="user_pass" id="user_pass" minlength="8" required>
                             </div>
 
                             <div class="col-6 mb-3">
                               <h6>Confirmar contraseña</h6>
                               <i class="fa-solid fa-user"></i><input type="password" class="form-control"
-                                name="user_pass_confirm" id="user_pass_confirm" minlength="1" required>
+                                name="user_pass_confirm" id="user_pass_confirm" minlength="8" required>
                             </div>
 
                             <div class="col-6 mb-3">

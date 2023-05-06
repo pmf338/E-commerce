@@ -9,9 +9,6 @@ var titulos = document.querySelectorAll('h6');
 var searchBar = document.getElementById('search-navbar');
 var mostrar = [oldPass,newPass,repeatPass,back];
 
-document.addEventListener('DOMContentLoaded', inicioApp);
-
-
 /*----------------------------------------------------editProfile.ejs----------------------------------------------*/
 
 //Sacar el required de las contraseñas cuando estas no se esten mostrando

@@ -38,8 +38,6 @@ const userController = {
         await User.findAll()
             .then((users) => {
 
-                let errors = validationResult(req);
-
                 let usuarioLogueado = [];
 
                 if (req.body.email != '' && req.body.pass != '') {
@@ -135,7 +133,22 @@ const userController = {
     },
     storeUser: async function (req, res) {
         try{
-            await User.create({
+            const { email } = req.body;
+            const user = await User.findOne({ where: { email } });
+            const errors = validationResult(req);
+        
+        if (user) {
+            return res.status(400).json({ message: 'User already exists' });
+        }
+            
+        if (!errors.isEmpty()) {
+                res.render("users/createProfile", {
+                    success: false,
+                    errors: errors.array(),
+                    validData: req.body
+                })
+            }else{
+                await User.create({
                 name: req.body.user_name,
                 surname: req.body.user_surname,
                 userName: req.body.user_user_name,
@@ -146,6 +159,8 @@ const userController = {
                 roles_id: req.body.roles_id ? req.body.roles_id : 2
             });
             res.redirect('/');
+        }
+
         }catch(result){
             res.status(400).json(result);
         }
@@ -193,17 +208,16 @@ const userController = {
         }
     },
     deleteUser: async function (req, res) {
-        let userId = req.params.id;
         try{
-            let usuario = await User.findByPk(userId);
-            res.render("users/deleteUser",{
-                usuario,
-                title: "Borrar usuario",
-                user: req.session.userLogged
-            });
+            await User.destroy({
+                where : {
+                    id : req.params.id
+                }
+            })
         }catch(result){
             res.status(400).json(result);
         }
+        res.redirect ('/')
     },
     destroyUser: async function (req, res) {
         try{
