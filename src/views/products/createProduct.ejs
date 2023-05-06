@@ -93,7 +93,7 @@
                         <div class="form-floating mb-3 col">
                           <select class="form-select" name="product_artist" id="product_artist"
                             aria-label="Default select example" required>
-                            <option selected>Seleccionar</option>
+                            <option selected></option>
                             <% artistList.forEach(artist => { %>
                             <option value="<%- artist.id %>"><%- artist.name %></option>
                             <% }); %>
@@ -106,7 +106,7 @@
                         <div class="form-floating mb-3 col">
                           <select class="form-select" name="product_category" id="product_category"
                             aria-label="Default select example" onchange="specialInputsSelect()" required>
-                            <option selected>Seleccionar</option>
+                            <option selected></option>
                             <% categoriesList.forEach(category => { %>
                             <option value="<%- category.id %>"><%- category.description %></option>
                             <% }); %>

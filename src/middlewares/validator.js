@@ -30,8 +30,8 @@ const rules = [
     }).withMessage('Ingrese una artista vinculdo valido'),
     body('product_description')
     .isLength({
-        min: 2
-    }).withMessage('Ingrese una descripcion valida'),
+        min: 20
+    }).withMessage('Ingrese una descripcion valida o Minimo de 20 caracteres'),
 ];
 
 module.exports = rules;

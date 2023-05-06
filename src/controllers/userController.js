@@ -72,7 +72,11 @@ const userController = {
                 return res.redirect('/');
             })
         }catch(result){
-            res.status(400).json(result);
+            return res.render(path.resolve(__dirname, '../views/users/login'), {
+                errors: [{
+                    msg: "Credenciales invalidas"
+                }]
+            });
         }
     
     },
