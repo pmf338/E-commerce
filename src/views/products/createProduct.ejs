@@ -64,7 +64,7 @@
                         </div>
                         <div class="form-floating mb-3 col">
                           <input type="text" name="product_name" id="product_name" class="form-control"
-                            value="<%- locals.oldBody ? locals.oldBody.product_name : "" %>" required>
+                            value="<%- locals.oldBody ? locals.oldBody.product_name : "" %>" required minlength="5">
                           <label for="product_name">NOMBRE</label>
                           <div class="invalid-feedback">
                             El nombre del producto es requerido.
@@ -136,7 +136,7 @@
                       <div class="row pt-1">
                         <div class="form-floating mb-3 col">
                           <textarea class="form-control" name="product_description" id="product_description" rows="3"
-                            value="<%- locals.oldBody ? locals.oldBody.product_quantity : "" %>" required></textarea>
+                            value="<%- locals.oldBody ? locals.oldBody.product_quantity : "" %>" required minlength="20"></textarea>
                           <label for="product_description">DESCRIPCION</label>
                           <div class="invalid-feedback">
                             La descripción es requerida.

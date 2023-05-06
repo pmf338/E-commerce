@@ -14,10 +14,11 @@ const userRules = [
     body('user_pass')
     .isLength({min: 8}).withMessage('Ingrese una contraseña de al menos 8 caracteres')
     .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,}$/)
-    .withMessage('La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un caracter especial'),
-    /*.custom((value, {req}) => {
+    .withMessage('La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un caracter especial')
+    /*
+    .custom((value, {req}) => {
       if (value !== req.body.user_pass_confirm) {
-        throw new Error('Passwords do not match');
+        throw new Error('Las contraseñas no coinciden');
       }
       return true;
     }),

@@ -6,8 +6,8 @@ const {
 const rules = [
     body('product_name')
     .isLength({
-        min: 2
-    }).withMessage('Nombre de producto debe tener al menos dos caracteres'),
+        min: 5
+    }).withMessage('Nombre de producto debe tener al menos cinco caracteres'),
     body('product_sku')
     .isLength({
         min: 1
