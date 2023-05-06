@@ -9,10 +9,9 @@ var titulos = document.querySelectorAll('h6');
 var searchBar = document.getElementById('search-navbar');
 var mostrar = [oldPass,newPass,repeatPass,back];
 
-document.addEventListener('DOMContentLoaded', inicioApp);
-
-
 /*----------------------------------------------------editProfile.ejs----------------------------------------------*/
+
+
 
 //Sacar el required de las contraseñas cuando estas no se esten mostrando
 function cambiarPassword(){
@@ -36,76 +35,25 @@ function atras(){
     
 }
 
-/*-----------------------------------------------createProfile.ejs -------------------------------*/
-/*
-function inicioApp() {
-    form.user_name.addEventListener('blur', validarFormulario);
-    form.user_surname.addEventListener('blur', validarFormulario);
-    form.user_user_name.addEventListener('blur', validarFormulario);
-    form.user_email.addEventListener('blur', validarFormulario);
-    form.user_email_confirm.addEventListener('blur', validarFormulario);
-    form.user_pass.addEventListener('blur', validarFormulario);
-    form.user_pass_confirm.addEventListener('blur', validarFormulario);
-    form.user_address.addEventListener('blur', validarFormulario);
-    
-    form.addEventListener('submit', registrarUsuario);
-}
-
-function registrarUsuario(evt) {
-    evt.preventDefault();
-    
-    if (form.user_name.value == "") {
-        alert("Debes ingresar tu nombre");
-    }
-
-    if (form.user_surname.value == "") {
-        alert("Debes ingresar tu apellido");
-    }
-
-    if (form.user_user_name.value == "") {
-        alert("Debes ingresar tu nombre de usuario");
-    }
-    
-    if (form.user_email.value == "") {
-        alert("Debes ingresar tu email");
-    }
-
-    if (form.user_email_confirm.value == "") {
-        alert("Debes ingresar nuevamente tu email");
-    }
-    
-    if (form.user_pass.value == "") {
-        alert("Debes ingresar tu password");
-    }
-    
-    if (form.user_pass_confirm.value == "") {
-        alert("Debes ingresar nuevamente tu password");
-    }
-
-    if (form.user_address.value == "") {
-        alert("Debes ingresar nuevamente tu password");
-    }
-}
-
-function resetForm() {
-    form.reset();
-}
-
-function validarFormulario(evt) {
-    let input = evt.target;
-    if (input.tagName == 'INPUT') {
-        // validar el error
-        if (!input.value.length) {
-            input.style.borderColor = 'red';
-            input.style.color = 'red';
-            
-        } else {
-            input.style.borderColor = 'green';
-            input.style.color = 'black';
-        }
-    }
-}
-*/
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+        'use strict'
+  
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+  
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+  
+            form.classList.add('was-validated')
+          }, false)
+        })
+      })()
 
 
 

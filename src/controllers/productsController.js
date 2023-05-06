@@ -209,21 +209,6 @@ const productsController = {
             res.status(400).json(result);
         }     
     },
-    /*
-    --- MÉTODO ANTERIOR ---
-    deleteProduct : async function (req,res){
-        let productId = req.params.id;
-        try{
-            let product = await Product.findByPk(productId);
-            res.render("products/deleteProduct",{
-                product,
-                title: "Borrar Producto",
-                user: req.session.userLogged}
-            );
-        }catch(error){
-            res.send("error in productsController-productDetail : ",error)
-        }
-    },*/
     deleteProduct: async function (req,res){
         try {
             Product.destroy({
