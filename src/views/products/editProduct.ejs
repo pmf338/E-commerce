@@ -10,6 +10,7 @@
     <%- include('../partials/header.ejs') %>
   </header>
   <main>
+    <%- locals.errors ? console.log("error al crear producto dentro de editar", errors) : "" %>
     <form class="form-create-product" method="post" action="/editProduct/<%= product.id %>?_method=PUT" enctype="multipart/form-data">
       <section style="min-height: 100vh;">
         <div class="container py-5 h-100">
