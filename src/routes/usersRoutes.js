@@ -6,7 +6,7 @@ const authMiddleware = require('../middlewares/authMiddleware');
 const userSessionMiddleware = require('../middlewares/userSessionMiddleware');
 const guestMiddlewareAdmin = require('../middlewares/guestMiddlewareAdmin');
 const userController = require ('../controllers/userController');
-//const rulesUsers = require('../middlewares/validatorUsers');
+const rulesUsers = require('../middlewares/validatorUsers');
 
 
 //métodos del login
@@ -15,7 +15,7 @@ usersRouter.get('/logout', guestMiddleware, userController.logout);
 usersRouter.post('/login',userController.processLogin);
 //Creación usuario
 usersRouter.get('/createProfile',userController.createUser);
-usersRouter.post('/createProfile',uploadUser.single('user_image'),userController.storeUser);
+usersRouter.post('/createProfile',uploadUser.single('user_image'),rulesUsers,userController.storeUser);
 //Modificación usuario
 usersRouter.get('/editProfile/:id',userController.editUser);
 usersRouter.put('/editProfile/:id',uploadUser.single('user_image_edit'),userController.updateUser);
