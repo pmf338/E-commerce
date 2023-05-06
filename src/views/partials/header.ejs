@@ -53,14 +53,14 @@
       <!--user logged, validation-->
       <% if (locals.usuario) { %>
         <a href="/profile" class="profile">
-          <% if (locals.usuario.imageProfile == "404.jpg") { %>
+          <% if (locals._locals.usuario.imageProfile == "404.jpg") { %>
             <!--user logged , no profile img -->
             <img src="../../images/users/avatar.png" alt="Avatar"/> <span
-            class="fw-light d-none d-sm-block"><%= locals.usuario.userName %></span>
+            class="fw-light d-none d-sm-block"><%= locals._locals.usuario.userName %></span>
           <% } else { %>
             <!--user logged , with profile img -->
-            <img src="../../images/users/<%= locals.usuario.imageProfile %>" alt="Avatar" width="16" height="16"/> <span
-            class="fw-light d-none d-sm-block"><%= locals.usuario.userName%></span>
+            <img src="../../images/users/<%= locals._locals.usuario.imageProfile %>" alt="Avatar" width="16" height="16"/> <span
+            class="fw-light d-none d-sm-block"><%= locals._locals.usuario.userName%></span>
           <% } %>
         </a>
         <a href="/logout" id="logout">

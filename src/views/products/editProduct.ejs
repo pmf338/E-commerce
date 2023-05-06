@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <%- include('../partials/head.ejs') %>
   <title><%= title %></title>
 </head>
 
-<body>
+<body onload="specialInputs()">
   <header>
     <%- include('../partials/header.ejs') %>
   </header>
   <main>
-
-    <form class="form-create-product" method="post" action="/editProduct/<%= product.id %>?_method=PUT">
-      <section class="vh-100"
-        style="background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg')">
+    <%- locals.errors ? console.log("error al crear producto dentro de editar", errors) : "" %>
+    <form class="form-create-product" method="post" action="/editProduct/<%= product.id %>?_method=PUT"
+      enctype="multipart/form-data">
+      <section style="min-height: 100vh;">
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-9 mb-4 mb-lg-0">
@@ -21,159 +22,283 @@
                 </br>
                 <div class="row g-0">
                   <h3 class="display-6 card-title text-center text-gray">EDITAR PRODUCTO</h3>
-                  
+
                   <!-- LEFT SECTION -->
-                  <div class="col-md-4 gradient-custom text-center text-gray" style="border-top-left-radius: .5rem;border-bottom-left-radius: .5rem;">
-                      </br></br>
-                      <!-- CAROUSEL IMGS -->
-                      <div class="form-group input-field-register row">
-                        <label for="user_image" class="text-center text-gray">Imagenes del producto</label>
-                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                          <div class="carousel-indicators ">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                          </div>
-                          <div class="carousel-inner">
-                            <div class="carousel-item active">
-                              <% if (product.dataValues.imageSecond != null) { %>
-                              <img src="../../images/products/<%= product.dataValues.imagePrimary %>" class="d-block w-100" alt="Avatar"/>
-                              <% } else { %>
-                              <img src="../../images/products/avatar.jpeg" alt="Avatar" class="d-block w-100"/>
-                              <% } %>
-                            </div>
-                            <div class="carousel-item">
-                              <% if (product.dataValues.imageSecond != null) { %>
-                              <img src="../../images/products/<%= product.dataValues.imageSecond %>" class="d-block w-100" alt="Avatar" />
-                              <% } else { %>
-                              <img src="../../images/products/avatar.jpeg" class="d-block w-100"/>
-                              <% } %>
-                            </div>
-                            <div class="carousel-item">
-                              <% if (product.dataValues.imageThird != null) { %>
-                              <img src="../../images/products/<%= product.dataValues.imageThird %>" class="d-block w-100" />
-                              <% } else { %>
-                              <img src="../../images/products/avatar.jpeg" class="d-block w-100" />
-                              <% } %>
-                            </div>
-                          </div>
-                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                          </button>
-                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                          </button>
+                  <div class="col-md-4 gradient-custom text-center text-gray"
+                    style="border-top-left-radius: .5rem;border-bottom-left-radius: .5rem;">
+                    </br></br>
+
+                    <!-- CAROUSEL IMGS -->
+                    <div class="form-group input-field-register row">
+                      <label for="user_image" class="text-center text-gray fs-5 mt-3">Imagenes del producto</label>
+                      <div id="carouselExampleIndicators" class="carousel slide p-3" data-bs-ride="true">
+                        <div class="carousel-indicators ">
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
                         </div>
-
-
-                        <div class="d-flex justify-content-center">
-                          <div class="btn btn-light btn-rounded" style="padding: 5px">
-                            <label class="form-label text-black m-1" for="customFile1">Seleccionar nuevas
-                              imagenes</label>
-                            <input type="file" class="form-control" id="product_image" name="product_image"
-                              accept=".jpg, .png, .jpeg" />
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <% if (product.dataValues.imagePrimary != null) { %>
+                            <img src="../../images/products/<%= product.dataValues.imagePrimary %>"
+                              class="d-block w-100" alt="Avatar" />
+                            <% } else { %>
+                            <img src="../../images/products/avatar.jpeg" alt="Avatar" class="d-block w-100" />
+                            <% } %>
+                          </div>
+                          <div class="carousel-item">
+                            <% if (product.dataValues.imageSecond != null) { %>
+                            <img src="../../images/products/<%= product.dataValues.imageSecond %>" class="d-block w-100"
+                              alt="Avatar" />
+                            <% } else { %>
+                            <img src="../../images/products/avatar.jpeg" class="d-block w-100" />
+                            <% } %>
+                          </div>
+                          <div class="carousel-item">
+                            <% if (product.dataValues.imageThird != null) { %>
+                            <img src="../../images/products/<%= product.dataValues.imageThird %>"
+                              class="d-block w-100" />
+                            <% } else { %>
+                            <img src="../../images/products/avatar.jpeg" class="d-block w-100" />
+                            <% } %>
                           </div>
                         </div>
-
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                          data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                          data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
                       </div>
-                  
+
+
+                      <div class="d-flex justify-content-center">
+                        <div class="btn btn-light btn-rounded mb-3" style="padding: 5px">
+                          <label class="form-label text-black m-1" for="customFile1">Seleccionar nuevas
+                            imagenes</label>
+                          <input type="file" class="form-control" id="product_image" name="product_image"
+                            accept=".jpg, .png, .jpeg" required />
+                          <div class="invalid-feedback">
+                            Al menos una imagen del producto es requerida.
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
 
+                  </div>
 
-                    <div class="col-md-8">
-                      <div class="card-body p-4">
-                        <h6>Crear un nuevo producto</h6>
-                        <hr class="mt-0 mb-4">
-                        <div class="row pt-1">
-
-                          <div class="col-6 mb-3">
-                            <h6>Nombre del producto</h6>
-                            <i class="fa-solid fa-user"></i><input type="text" value="<%= product.dataValues.name %>"
-                              class="form-control" name="product_name" id="product_name" minlength="1">
+                  <!-- PRODUCTS DETAILS -->
+                  <div class="col-md-8">
+                    <div class="card-body p-4 container">
+                      <h6 class="text-center fs-5">Detalles Producto</h6>
+                      <hr class="mt-0 mb-4">
+                      <div class="row pt-1">
+                        <div class="form-floating mb-3 col">
+                          <input type="number" name="product_sku" id="product_sku" class="form-control"
+                            value="<%- product.sku %>" required>
+                          <label for="product_sku">SKU</label>
+                          <div class="invalid-feedback">
+                            El SKU es requerido.
                           </div>
-
-                          <div class="col-6 mb-3">
-                            <h6>Precio unitario</h6>
-                            <i class="fa-solid fa-user"></i><input type="number" value="<%= product.dataValues.price %>"
-                              class="form-control" name="product_price" id="product_price" minlength="1">
+                        </div>
+                        <div class="form-floating mb-3 col">
+                          <input type="text" name="product_name" id="product_name" class="form-control"
+                            value="<%- product.name %>" required>
+                          <label for="product_name">NOMBRE</label>
+                          <div class="invalid-feedback">
+                            El nombre del producto es requerido.
                           </div>
-
-                          <div class="col-6 mb-3">
-                            <h6>Cantidad en inventario</h6>
-                            <i class="fa-solid fa-user"></i><input type="number"
-                              value="<%= product.dataValues.quantity %>" class="form-control" name="product_quantity"
-                              id="product_quantity" minlength="1">
-                          </div>
-
-                          <div class="col-6 mb-3">
-                            <h6>Artista vinculado</h6>
-                            <i class="fa-solid fa-user"></i><input type="number"
-                              value="<%= product.dataValues.artist_id %>" class="form-control" name="artist_id"
-                              id="artist_id" minlength="1">
-                          </div>
-
-                          <div class="col-6 mb-3">
-                            <h6>Color / Colores del producto</h6>
-                            <i class="fa-solid fa-user"></i><input type="text"
-                              value="<%= product.dataValues.color ? product.dataValues.color : "No aplica" %>"
-                              class="form-control" name="artist_id" id="artist_id" minlength="1">
-                          </div>
-
-                          <div class="col-6 mb-3">
-                            <h6>Talla</h6>
-                            <i class="fa-solid fa-user"></i><input type="text"
-                              value="<%= product.dataValues.size ? product.dataValues.size : "No aplica" %>"
-                              class="form-control" name="artist_id" id="artist_id" minlength="1">
-                          </div>
-
-                          <div class="col-6 mb-3">
-                            <h6>Formato</h6>
-                            <i class="fa-solid fa-user"></i><input type="text" value="<%= product.dataValues.format %>"
-                              class="form-control" name="artist_id" id="artist_id" minlength="1">
-                          </div>
-
-
-                          <div class="col-6 mb-3">
-                            <h6>Categoria del producto</h6>
-                            <select class="form-select col-6 mb-3">
-                              <option selected>Seleccionar</option>
-                              <option value="1">Vinilo</option>
-                              <option value="2">CD</option>
-                              <option value="3">DVD - Peliculas</option>
-                              <option value="3">Ropa</option>
-                            </select>
-                          </div>
-
-                          <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-                            <textarea class="form-control" name="product_description" id="product_description"
-                              rows="3"><%= product.dataValues.description %></textarea>
-                          </div>
-
                         </div>
                       </div>
+                      <div class="row pt-1">
+                        <div class="form-floating mb-3 col">
+                          <input type="number" name="product_price" id="product_price" class="form-control"
+                            minlength="1" required value="<%- product.price %>">
+                          <label for="product_price">PRECIO UNITARIO</label>
+                          <div class="invalid-feedback">
+                            El precio unitario es requerido.
+                          </div>
+                        </div>
+                        <div class="form-floating mb-3 col">
+                          <input type="number" name="product_quantity" id="product_quantity" class="form-control"
+                            minlength="1" required value="<%- product.quantity %>">
+                          <label for="product_quantity">CANTIDAD STOCK</label>
+                          <div class="invalid-feedback">
+                            La cantidad en stock es requerida.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row pt-1">
+                        <div class="form-floating mb-3 col">
+                          <select class="form-select" name="product_artist" id="product_artist"
+                            aria-label="Default select example" required>
+                            <option selected value="<%- productArtist.id %>"><%- productArtist.name %></option>
+                            <% artistList.forEach(artist => { %>
+                            <% if (productArtist.id !== artist.id){ %>
+                            <option value="<%- artist.id %>"><%- artist.name %></option>
+                            <% }; %>
+                            <% }); %>
+                          </select>
+                          <label for="product_artist">ARTISTA</label>
+                        </div>
+                        <div class="form-floating mb-3 col">
+                          <select class="form-select" name="product_category" id="product_category"
+                            aria-label="Default select example" onchange="specialInputsSelect()" required>
+                            <option selected value="<%- productCategory.id %>"><%- productCategory.description %>
+                            </option>
+                            <% categoriesList.forEach(category => { %>
+                            <% if (productCategory.id !== category.id){ %>
+                            <option value="<%- category.id %>"><%- category.description %></option>
+                            <% }; %>
+                            <% }); %>
+                          </select>
+                          <label for="product_category">CATEGORIA</label>
+                        </div>
+                      </div>
+                      <div class="row pt-1">
+                        <div id="product_size"  class="form-floating mb-3 col">
+                          <input type="text" name="product_size" id="product_size" class="form-control"
+                            value="<%- product.size %>">
+                          <label for="product_size">TALLE</label>
+                        </div>
+                        <div id="product_format" class="form-floating mb-3 col">
+                          <input type="text" name="product_format" id="product_format" class="form-control"
+                            value="<%- product.size %>">
+                          <label for="product_format">FORMATO</label>
+                        </div>
+                      </div>
+                      <div id="product_color" class="row pt-1">
+                        <div class="form-floating mb-3 col">
+                          <input type="text" name="product_color" id="product_color" class="form-control"
+                            value="<%- product.color %>">
+                          <label for="product_color">COLOR</label>
+                        </div>
+                      </div>
+                      <div class="row pt-1">
+                        <div class="form-floating mb-3 col">
+                          <textarea class="form-control" name="product_description" id="product_description" rows="3"
+                            required><%- product.description %></textarea>
+                          <label for="product_description">DESCRIPCION</label>
+                          <div class="invalid-feedback">
+                            La descripción es requerida.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row pt-1">
+                        <div class="form-floating m-auto col">
+                          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <% if (product.is_active == 1){ %>
+                            <input type="radio" class="btn-check" name="product_is_active" id="btnradio1" value="true"
+                              autocomplete="off" checked>
+                            <label class="btn btn-outline-dark" for="btnradio1">ACTIVO</label>
+
+                            <input type="radio" class="btn-check" name="product_is_active" id="btnradio2" value="false"
+                              autocomplete="off">
+                            <label class="btn btn-outline-dark" for="btnradio2">NO ACTIVO</label>
+                            <% }else{ %>
+                            <input type="radio" class="btn-check" name="product_is_active" id="btnradio1" value="true"
+                              autocomplete="off">
+                            <label class="btn btn-outline-dark" for="btnradio1">ACTIVO</label>
+
+                            <input type="radio" class="btn-check" name="product_is_active" id="btnradio2" value="false"
+                              autocomplete="off" checked>
+                            <label class="btn btn-outline-dark" for="btnradio2">NO ACTIVO</label>
+                            <% }; %>
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
 
-                      <!-- BUTTONS SECTION -->
-                      <br><br><br>
-                      <div class="container text-center my-3">
-                        <div class="row gx-5">
-                          <div class="col">
-                            <button type="submit" class="btn btn-success"> GUARDAR</button>
-                          </div>
-                          <div class="col">
-                            <button type="submit" class="btn btn-danger">ELIMINAR</button>
-                          </div>
-                          <div class="col">
-                            <a href="/productDetail/<%= product.id %>">
-                              <button type="button" class="btn btn-dark">CANCELAR</button>
+                    <% if( locals.errors) { %>
+                    <p>Se presentaron errores en la creación del producto:</p>
+                    <p style="color: red"><%- errors.product_name ? errors.product_name.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_sku ? errors.product_sku.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_price ? errors.product_price.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_quantity ? errors.product_quantity.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_artist ? errors.product_artist.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_category ? errors.product_category.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_description ? errors.product_description.msg : "" %></p>
+                    <% } %>
+
+                  </div>
+
+                  <!-- BUTTONS SECTION -->
+                  <div class="container text-center py-3 bg-dark rounded">
+                    <div class="row gx-5">
+                      <div class="col">
+                        <button type="submit" class="btn btn-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-box-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                              d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z" />
+                            <path fill-rule="evenodd"
+                              d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z" />
+                          </svg>
+                          GUARDAR
+                        </button>
+                      </div>
+                      <div class="col">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                          data-bs-target="#exampleModal">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-trash" viewBox="0 0 16 16">
+                            <path
+                              d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                            <path
+                              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                          </svg>
+                          ELIMINAR
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                          aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">ELIMINAR PRODUCTO</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                  aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                Estás seguro que desea eliminar el producto?
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                  data-bs-dismiss="modal">CANCELAR</button>
+                                <a href="/deleteProduct/<%= product.id %>">
+                                  <button type="button" class="btn btn-danger">ELIMINAR</button>
+                                </a>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
-
-
+                      <div class="col">
+                        <a href="/productDetail/<%= product.id %>">
+                          <button type="button" class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                              class="bi bi-x-square" viewBox="0 0 16 16">
+                              <path
+                                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                              <path
+                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                            CANCELAR
+                          </button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -181,6 +306,7 @@
         </div>
       </section>
     </form>
+    <script type="application/javascript" src="/js/validationCreate.js"></script>
   </main>
   <footer>
     <%- include('../partials/footer.ejs') %>

@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const productsPath = path.join(__dirname, "../data/products.json");
 const {validationResult} = require('express-validator');
 const {Product} = require('../database/models');
 const {Artist} = require('../database/models');
@@ -56,9 +55,13 @@ const productsController = {
         let productId = req.params.id;
         try{
             let product = await Product.findByPk(productId);
+            let productArtist = await Artist.findByPk(product.artist_id);
+            let productCategory = await Category.findByPk(product.categories_id)
             res.render("products/productDetail",{
                 product,
-                title: "Producto",
+                productArtist,
+                productCategory,
+                title: "Detalle Producto",
                 user: req.session.userLogged}
             );
         }catch(error){
@@ -81,8 +84,30 @@ const productsController = {
         }
     },
     storeProduct: async function (req, res) {
+        let errors = validationResult(req);
+        console.log("validacion en guardar producto", errors);
+
+        if(!errors.isEmpty()){
+            let artistList = await Artist.findAll();
+            let categoriesList = await Category.findAll();
+           return res.render("products/createProduct", {
+                artistList,
+                categoriesList,
+                title: "Creación producto",
+                errors: errors.mapped(),
+                oldBody: req.body,
+                user: req.session.userLogged
+            });
+        }
+
+
         try{
-            console.log("VALOR : ",req.body.product_category)
+            let active_value;
+            if (req.body.product_is_active == true){
+                active_value = 1;
+            }else{
+                active_value = 2;
+            }
             Product.create({
                 sku :  req.body.product_sku,
                 name : req.body.product_name || null,
@@ -93,7 +118,7 @@ const productsController = {
                 size : req.body.product_size || null,
                 format : req.body.product_format || null,
                 color : req.body.product_color || null,
-                is_active : 1,
+                is_active : active_value,
                 description : req.body.product_description || "sin descripcion",
                 createdAt : Date.now(),
                 updatedAt : Date.now(),
@@ -103,7 +128,6 @@ const productsController = {
             });
             res.redirect ('/shop');
         }catch(result){
-            console.log("ERROR ", result);
             res.status(400).json(result);
         }
     },
@@ -111,8 +135,16 @@ const productsController = {
         let productId = req.params.id;
         try{
             let product = await Product.findByPk(productId);
+            let artistList = await Artist.findAll();
+            let categoriesList = await Category.findAll();
+            let productArtist = await Artist.findByPk(product.artist_id);
+            let productCategory = await Category.findByPk(product.categories_id)
             res.render("products/editProduct",{
                 product,
+                artistList,
+                categoriesList,
+                productCategory,
+                productArtist,
                 title: "Editar Producto",
                 user: req.session.userLogged}
             );
@@ -121,33 +153,64 @@ const productsController = {
         }
     },
     updateProduct: async function (req, res) {
+
+        let errors = validationResult(req);
+        console.log("validacion en editar producto", errors);
+        let productId = req.params.id;
+        if(!errors.isEmpty()){
+            let product = await Product.findByPk(productId);
+            let artistList = await Artist.findAll();
+            let categoriesList = await Category.findAll();
+            let productArtist = await Artist.findByPk(product.artist_id);
+            let productCategory = await Category.findByPk(product.categories_id)
+            res.render("products/editProduct",{
+                product,
+                artistList,
+                errors: errors.mapped(),
+                categoriesList,
+                productCategory,
+                productArtist,
+                title: "Editar Producto",
+                user: req.session.userLogged}
+            );
+        }
+
         try{
+            let active_value;
+            if (req.body.product_is_active == "true"){
+                active_value = 1;
+            }else{
+                active_value = 2;
+            }
             Product.update({
-                sku : 1234,
-                name : req.body.product_name || "sin nombre",
+                sku : req.body.product_sku,
+                name : req.body.product_name || null,
                 price : req.body.product_price || 0,
                 quantity : req.body.product_quantity || 0,
-                description : req.body.product_description || "sin descripcion",
-                artist_id : 1,
+                artist_id : req.body.product_artist,
+                categories_id : req.body.product_category,
                 size : req.body.product_size || null,
+                description : req.body.product_description || "sin descripcion",
+                format : req.body.product_format || null,
                 color : req.body.product_color || null,
-                format : req.body.product_color || null,
-                is_active : req.body.product_color || false,
-                createdAt : Date.now(),
+                is_active : active_value,
+                description : req.body.product_description || "sin descripcion",
                 updatedAt : Date.now(),
-                imagePrimary : req.file ? req.file.filename : "404.jpg",
-                categories_id : 2,
+                imagePrimary : req.files[0] ? req.files[0].filename : "avatar.jpeg",
+                imageSecond : req.files[1] ? req.files[1].filename : "avatar.jpeg",
+                imageThird : req.files[2] ? req.files[2].filename : "avatar.jpeg",
             },{
                 where : {
                     id : req.params.id
                 }
             })
             res.redirect ('/productDetail/'+req.params.id);
-        }catch(error){
-            res.send("error in productsController-updateProduct : ",error)
-        }
-        
+        }catch(result){
+            res.status(400).json(result);
+        }     
     },
+    /*
+    --- MÉTODO ANTERIOR ---
     deleteProduct : async function (req,res){
         let productId = req.params.id;
         try{
@@ -160,12 +223,24 @@ const productsController = {
         }catch(error){
             res.send("error in productsController-productDetail : ",error)
         }
+    },*/
+    deleteProduct: async function (req,res){
+        try {
+            Product.destroy({
+                where: {
+                    id: req.params.id
+                }
+            })
+        }catch(result){
+            res.status(400).json(result);
+        }
+        res.redirect ('/shop')
     },
-    destroyProduct: function (req, res) {
+    destroyProduct: async function (req, res) {
         try{
             Product.destroy({
-                where : {
-                    id : req.params.id
+                where: {
+                    id: req.params.id
                 }
             })
         }catch(error){
