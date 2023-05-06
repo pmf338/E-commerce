@@ -137,21 +137,23 @@ const userController = {
     },
     storeUser: async function (req, res) {
         try{
+            /*
             const { email } = req.body;
             const user = await User.findOne({ where: { email } });
-            const errors = validationResult(req);
-        
+            */
+            let errors = validationResult(req);
+        /*
         if (user) {
             return res.status(400).json({ message: 'User already exists' });
         }
-            
+          */  
         if (!errors.isEmpty()) {
-                res.render("users/createProfile", {
+                return res.render("users/createProfile", {
                     success: false,
-                    errors: errors.array(),
+                    errors: errors.mapped(),
                     validData: req.body
                 })
-            }else{
+            }
                 await User.create({
                 name: req.body.user_name,
                 surname: req.body.user_surname,
@@ -163,8 +165,6 @@ const userController = {
                 roles_id: req.body.roles_id ? req.body.roles_id : 2
             });
             res.redirect('/');
-        }
-
         }catch(result){
             res.status(400).json(result);
         }
