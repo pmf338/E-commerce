@@ -6,7 +6,7 @@
   <title><%= title %></title>
 </head>
 
-<body>
+<body onload="specialInputs()">
   <header>
     <%- include('../partials/header.ejs') %>
   </header>
@@ -55,7 +55,8 @@
                       <hr class="mt-0 mb-4">
                       <div class="row pt-1">
                         <div class="form-floating mb-3 col">
-                          <input type="number" name="product_sku" id="product_sku" class="form-control" value="<%- locals.oldBody ? locals.oldBody.product_sku : "" %>" required>
+                          <input type="number" name="product_sku" id="product_sku" class="form-control"
+                            value="<%- locals.oldBody ? locals.oldBody.product_sku : "" %>" required>
                           <label for="product_sku">SKU</label>
                           <div class="invalid-feedback">
                             El SKU es requerido.
@@ -104,43 +105,32 @@
                         </div>
                         <div class="form-floating mb-3 col">
                           <select class="form-select" name="product_category" id="product_category"
-                            aria-label="Default select example" required>
+                            aria-label="Default select example" onchange="specialInputsSelect()" required>
                             <option selected>Seleccionar</option>
                             <% categoriesList.forEach(category => { %>
                             <option value="<%- category.id %>"><%- category.description %></option>
                             <% }); %>
                           </select>
-                          <label for="product_artist">CATEGORIA</label>
+                          <label for="product_category">CATEGORIA</label>
                           <div class="invalid-feedback">
                             La categoria es requerida.
                           </div>
                         </div>
                       </div>
                       <div class="row pt-1">
-                        <div class="form-floating mb-3 col">
+                        <div id="product_size" class="form-floating mb-3 col">
                           <input type="text" name="product_size" id="product_size" class="form-control">
                           <label for="product_size">TALLE</label>
                         </div>
-                        <div class="form-floating mb-3 col">
+                        <div id="product_format" class="form-floating mb-3 col">
                           <input type="text" name="product_format" id="product_format" class="form-control">
                           <label for="product_format">FORMATO</label>
                         </div>
                       </div>
-                      <div class="row pt-1">
+                      <div id="product_color" class="row pt-1">
                         <div class="form-floating mb-3 col">
                           <input type="text" name="product_color" id="product_color" class="form-control">
                           <label for="product_color">COLOR</label>
-                        </div>
-                        <div class="form-floating m-auto col">
-                          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="product_is_active" id="btnradio1"
-                              autocomplete="off" checked>
-                            <label class="btn btn-outline-dark" for="btnradio1">ACTIVO</label>
-
-                            <input type="radio" class="btn-check" name="product_is_active" id="btnradio2"
-                              autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btnradio2">NO ACTIVO</label>
-                          </div>
                         </div>
                       </div>
                       <div class="row pt-1">
@@ -153,18 +143,31 @@
                           </div>
                         </div>
                       </div>
+                      <div class="row pt-1">
+                        <div class="form-floating m-auto col">
+                          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="product_is_active" id="btnradio1"
+                              autocomplete="off" checked>
+                            <label class="btn btn-outline-dark" for="btnradio1">ACTIVO</label>
+
+                            <input type="radio" class="btn-check" name="product_is_active" id="btnradio2"
+                              autocomplete="off">
+                            <label class="btn btn-outline-dark" for="btnradio2">NO ACTIVO</label>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
                     <% if( locals.errors) { %>
-                      <p>Se presentaron errores en la creación del producto:</p>
-                      <p style="color: red"><%- errors.product_name ? errors.product_name.msg : "" %></p>
-                      <p style="color: red"><%- errors.product_sku ? errors.product_sku.msg : "" %></p>
-                      <p style="color: red"><%- errors.product_price ? errors.product_price.msg : "" %></p>
-                      <p style="color: red"><%- errors.product_quantity ? errors.product_quantity.msg : "" %></p>
-                      <p style="color: red"><%- errors.product_artist ? errors.product_artist.msg : "" %></p>
-                      <p style="color: red"><%- errors.product_category ? errors.product_category.msg : "" %></p>
-                      <p style="color: red"><%- errors.product_description ? errors.product_description.msg : "" %></p>
-                     <% } %>
+                    <p>Se presentaron errores en la creación del producto:</p>
+                    <p style="color: red"><%- errors.product_name ? errors.product_name.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_sku ? errors.product_sku.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_price ? errors.product_price.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_quantity ? errors.product_quantity.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_artist ? errors.product_artist.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_category ? errors.product_category.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_description ? errors.product_description.msg : "" %></p>
+                    <% } %>
 
                   </div>
 
