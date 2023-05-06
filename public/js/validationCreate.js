@@ -1,10 +1,54 @@
 //capturar los elementos
 
 const form = document.getElementById('form_create_product')
+var category = document.getElementById('product_category');
+var size = document.getElementById('product_size');
+var color = document.getElementById('product_color');
+var format = document.getElementById('product_format');
+
+
 
 // espera a que se cargue el dom con todo los elementos
 document.addEventListener('DOMContentLoaded', inicioApp);
 //funciones
+
+function specialInputs() {
+  if (category.value == 1){
+    size.style.display = "block"
+    color.style.display = "block"
+    format.style.display = "block"
+  } else {
+    size.style.display = "none"
+    color.style.display = "none"
+    format.style.display = "none"
+  }
+}
+
+function specialInputsDetails() {
+  if (category.value == "Ropa"){
+    size.style.display = "block"
+    color.style.display = "block"
+    format.style.display = "block"
+  } else {
+    size.style.display = "none"
+    color.style.display = "none"
+    format.style.display = "none"
+  }
+}
+
+function specialInputsSelect() {
+  console.log("categoria", category)
+  if (category.value == 1){
+    size.style.display = "block"
+    color.style.display = "block"
+    format.style.display = "block"
+  } else {
+    size.style.display = "none"
+    color.style.display = "none"
+    format.style.display = "none"
+  }
+}
+
 function inicioApp() {
     form.addEventListener('submit', crearProducto);
     form.product_sku.addEventListener('blur', validarFormulario);
