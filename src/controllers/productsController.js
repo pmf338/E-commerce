@@ -73,12 +73,14 @@ const productsController = {
             let artistList = await Artist.findAll();
             let categoriesList = await Category.findAll();
             let existingProduct = false
+            let existingProductbyName = false
             res.render("products/createProduct", {
                 artistList,
                 categoriesList,
                 title: "Creación producto",
                 user: req.session.userLogged,
-                existingProduct : existingProduct
+                existingProduct : existingProduct,
+                existingProductbyName: existingProductbyName
             });
         }catch(result){
             res.status(400).json(result);
@@ -102,18 +104,49 @@ const productsController = {
 
         
         const foundExistingProduct = await Product.findOne({ where: { sku: req.body.product_sku } });
+        const foundExistingProductbyName = await Product.findOne({ where: { name: req.body.product_name } });
 
-        if (foundExistingProduct ){
+        if (foundExistingProduct && foundExistingProductbyName){
             let artistList = await Artist.findAll();
             let categoriesList = await Category.findAll();
-            let existingProduct = true
+            let existingProduct = true;
+            let existingProductbyName = true
            return res.render("products/createProduct", {
                 artistList,
                 categoriesList,
                 title: "Creación producto",
                 oldBody: req.body,
                 user: req.session.userLogged,
-                existingProduct : existingProduct
+                existingProduct : existingProduct,
+                existingProductbyName: existingProductbyName
+            });
+        } else if (foundExistingProduct) {
+            let artistList = await Artist.findAll();
+            let categoriesList = await Category.findAll();
+            let existingProduct = true;
+            let existingProductbyName = false
+           return res.render("products/createProduct", {
+                artistList,
+                categoriesList,
+                title: "Creación producto",
+                oldBody: req.body,
+                user: req.session.userLogged,
+                existingProduct : existingProduct,
+                existingProductbyName: existingProductbyName
+            });
+        } else if (foundExistingProductbyName) {
+            let artistList = await Artist.findAll();
+            let categoriesList = await Category.findAll();
+            let existingProduct = false;
+            let existingProductbyName = true
+           return res.render("products/createProduct", {
+                artistList,
+                categoriesList,
+                title: "Creación producto",
+                oldBody: req.body,
+                user: req.session.userLogged,
+                existingProduct : existingProduct,
+                existingProductbyName: existingProductbyName
             });
         }
 
