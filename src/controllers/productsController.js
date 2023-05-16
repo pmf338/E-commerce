@@ -81,14 +81,11 @@ const productsController = {
                 existingProduct : existingProduct
             });
         }catch(result){
-            //res.send("error in productsController-createProduct : ",error)
-            //res.status(400).json(result);
-            res.send("error in productsController-createProduct : ",error)
+            res.status(400).json(result);
         }
     },
     storeProduct: async function (req, res) {
         let errors = validationResult(req);
-        console.log("validacion en guardar producto", errors);
 
         if(!errors.isEmpty()){
             let artistList = await Artist.findAll();
@@ -176,7 +173,6 @@ const productsController = {
     updateProduct: async function (req, res) {
 
         let errors = validationResult(req);
-        console.log("validacion en editar producto", errors);
         let productId = req.params.id;
         if(!errors.isEmpty()){
             let product = await Product.findByPk(productId);
