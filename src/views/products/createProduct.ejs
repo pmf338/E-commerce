@@ -13,7 +13,6 @@
   </header>
 
   <main>
-    <%- existingProduct ? console.log("Se encontro algo en productos existentes", existingProduct) : "" %>
     <form class="form-create-product needs-validation" action="#" method="post" enctype="multipart/form-data"
       novalidate>
       <section style="min-height: 100vh;">
@@ -55,20 +54,22 @@
                       <h6 class="text-center fs-5">Detalles Producto</h6>
                       <hr class="mt-0 mb-4">
                       <div class="row pt-1">
-
-                        <% if(existingProduct) { %>
-                        
+                        <% if(existingProduct ||  existingProductbyName) { %>
                         <div id="alert_sku_existent" class="alert alert-danger d-flex align-items-center" role="alert">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
                             <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                           </svg>
                           <div>
-                              Parece que este producto (SKU) ya existe en base de datos, vuelve a intentar con datos diferentes.
+                            <% if(existingProduct == true && existingProductbyName == true ) { %>
+                                Parece que este producto (SKU) y (NOMBRE) ya existe en base de datos, vuelve a intentar con datos diferentes.
+                              <% } else if (existingProduct == true && existingProductbyName == false) { %>
+                                  Parece que este producto (SKU) ya existe en base de datos, vuelve a intentar con datos diferentes.
+                              <% } else { %>
+                                    Parece que este producto (NOMBRE) ya existe en base de datos, vuelve a intentar con datos diferentes.
+                                <% } ; %>   
                           </div>
                         </div>
-                        <% }; %>
-
-
+                        <% } ; %>
                         <div class="form-floating mb-3 col">
                           <input type="number" name="product_sku" id="product_sku" class="form-control"
                             value="<%- locals.oldBody ? locals.oldBody.product_sku : "" %>" required>
