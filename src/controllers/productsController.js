@@ -72,15 +72,18 @@ const productsController = {
         try{
             let artistList = await Artist.findAll();
             let categoriesList = await Category.findAll();
+            let existingProduct = false
             res.render("products/createProduct", {
                 artistList,
                 categoriesList,
                 title: "Creación producto",
-                user: req.session.userLogged
+                user: req.session.userLogged,
+                existingProduct : existingProduct
             });
         }catch(result){
             //res.send("error in productsController-createProduct : ",error)
-            res.status(400).json(result);
+            //res.status(400).json(result);
+            res.send("error in productsController-createProduct : ",error)
         }
     },
     storeProduct: async function (req, res) {
@@ -100,7 +103,24 @@ const productsController = {
             });
         }
 
+        
+        const foundExistingProduct = await Product.findOne({ where: { sku: req.body.product_sku } });
 
+        if (foundExistingProduct ){
+            let artistList = await Artist.findAll();
+            let categoriesList = await Category.findAll();
+            let existingProduct = true
+           return res.render("products/createProduct", {
+                artistList,
+                categoriesList,
+                title: "Creación producto",
+                oldBody: req.body,
+                user: req.session.userLogged,
+                existingProduct : existingProduct
+            });
+        }
+
+        
         try{
             let active_value;
             if (req.body.product_is_active == true){
@@ -128,9 +148,10 @@ const productsController = {
             });
             res.redirect ('/shop');
         }catch(result){
-            res.status(400).json(result);
-        }
+            res.send("error in productsController-createProduct : ",error)
+        } 
     },
+
     editProduct : async function (req,res){
         let productId = req.params.id;
         try{
