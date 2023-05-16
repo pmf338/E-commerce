@@ -5,12 +5,25 @@ var category = document.getElementById('product_category');
 var size = document.getElementById('product_size');
 var color = document.getElementById('product_color');
 var format = document.getElementById('product_format');
+var alert_sku = document.getElementById('alert_sku_existent')
 
 
 
 // espera a que se cargue el dom con todo los elementos
 document.addEventListener('DOMContentLoaded', inicioApp);
 //funciones
+
+function specialInputs() {
+  if (category.value == 1){
+    size.style.display = "block"
+    color.style.display = "block"
+    format.style.display = "block"
+  } else {
+    size.style.display = "none"
+    color.style.display = "none"
+    format.style.display = "none"
+  }
+}
 
 function specialInputs() {
   if (category.value == 1){
@@ -37,7 +50,6 @@ function specialInputsDetails() {
 }
 
 function specialInputsSelect() {
-  console.log("categoria", category)
   if (category.value == 1){
     size.style.display = "block"
     color.style.display = "block"
@@ -67,6 +79,12 @@ function validarFormulario(evt) {
         }
     }
 }
+
+
+function changeState(existingProduct) {
+   console.log("EXISTE EL PRODUCTO?", existingProduct)
+ }
+
 
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (() => {
