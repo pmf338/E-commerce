@@ -7,22 +7,22 @@ const userRules = [
 
     body('user_surname')
     .isLength({min: 2}).withMessage('Ingrese al menos tres caracteres'),
-
+    
     body('user_email')
     .isEmail().withMessage('Ingrese un email válido'),
-
-    body('user_pass')
-    .isLength({min: 8}).withMessage('Ingrese una contraseña de al menos 8 caracteres')
-    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,}$/)
-    .withMessage('La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un caracter especial')
-    /*
-    .custom((value, {req}) => {
-      if (value !== req.body.user_pass_confirm) {
-        throw new Error('Las contraseñas no coinciden');
+    /*.custom(async (value) => {
+      const user = await User.findOne({ where: { email: value } });
+      if (user) {
+        return Promise.reject('El mail ingresado ya posee una cuenta');
       }
-      return true;
     }),
     */
+    body('user_pass')
+    .isLength({min: 8}).withMessage('Ingrese una contraseña de al menos 8 caracteres')
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[&@#$%/]).{8,}$/).withMessage('La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un caracter especial'),
+    
+    
+    
 ];
 
 module.exports = userRules;

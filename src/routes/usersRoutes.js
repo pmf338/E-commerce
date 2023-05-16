@@ -22,7 +22,7 @@ usersRouter.put('/editProfile/:id',uploadUser.single('user_image_edit'),userCont
 //Entrar a la página de perfil del usuario
 usersRouter.get('/profile', guestMiddleware, userController.userProfile);
 //Eliminación usuario
-usersRouter.get('/deleteUser/:id', guestMiddlewareAdmin, userController.deleteUser);
+usersRouter.get('/deleteUser/:id', guestMiddlewareAdmin, userController.destroyUser);
 usersRouter.delete('/deleteUser/:id',userController.destroyUser);
 //Entrar al listado de administrar usuarios
 usersRouter.get('/users', guestMiddlewareAdmin, userController.userList);
