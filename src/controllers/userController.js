@@ -91,8 +91,10 @@ const userController = {
     },
     createUser: async function (req, res) {
         try {
+            let existingUser = false;
             res.render("users/createProfile", {
-
+                title: "Registro de usuario",
+                existingUser: existingUser
             })
         } catch (result) {
             res.status(400).json(result);
@@ -142,14 +144,13 @@ const userController = {
             if (!errors.isEmpty()) {
                 return res.render("users/createProfile", {
                     success: false,
+                    title: "Registro de usuario",
                     errors: errors.mapped(),
                     validData: req.body
                 })
             }
-        
-        try {
 
-    const existingUser = await User.findOne({
+    const foundExistingUser = await User.findOne({
         where: {
             [Op.or]: [
               {
@@ -167,14 +168,22 @@ const userController = {
     });  
          
   
-      if (existingUser) {
+      if (foundExistingUser) {
         
+        let existingUser = true
         return res.render("users/createProfile", {
-            success: false,
-            errors: errors.mapped(),
-            validData: req.body
-        })
+            title: "Registro de usuario",
+            validData: req.body,
+            existingUser: existingUser
+        });
       }
+      try {
+            let active_value;
+            if (req.body.user_is_active == true){
+                active_value = 1;
+            }else{
+                active_value = 2;
+            }
 
             await User.create({
                 name: req.body.user_name,
@@ -184,7 +193,10 @@ const userController = {
                 password: bcrypt.hashSync(req.body.user_pass, 10),
                 address: req.body.user_address,
                 imageProfile: req.file ? req.file.filename : "404.jpg",
-                roles_id: req.body.roles_id ? req.body.roles_id : 2
+                roles_id: req.body.roles_id ? req.body.roles_id : 2,
+                is_active : active_value,
+                createdAt : Date.now(),
+                updatedAt : Date.now()
             });
             res.redirect('/');
         } catch (result) {
@@ -235,6 +247,7 @@ const userController = {
     },
     destroyUser: async function (req, res) {
         try {
+            console.log("FUNCIONA")
             let usuario = await User.findOne({
                 where: {id: req.params.id}
             });
@@ -242,6 +255,7 @@ const userController = {
             if(usuario)
             {
                 await usuario.destroy();
+                this.logout();
                 res.redirect('/')
             }
             

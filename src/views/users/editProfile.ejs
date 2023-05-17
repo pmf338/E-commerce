@@ -4,7 +4,7 @@
 <head>
   <%- include('../partials/head.ejs') %>
   <link rel="stylesheet" href="/css/styles.css">
-  <title>Editar perfil de usuario</title>
+  <title><%= title %></title>
 </head>
 
 <body>
@@ -155,10 +155,8 @@
                       </a>
                     </div>
                     <div class="col">
-                      <% if (locals.usuario) { %>
-                      <% if (locals.usuario.roles_id == 1) { %>
-                      <a href="/deleteUser/<%= locals._locals.usuario.id %> ">
-                        <button type="button" class="btn btn-danger">
+                      <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                          data-bs-target="#exampleModal">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-trash" viewBox="0 0 16 16">
                             <path
@@ -168,9 +166,32 @@
                           </svg>
                           ELIMINAR
                         </button>
-                      </a>
-                      <% } %>
-                      <% } %>
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">ELIMINAR USUARIO</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                              aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            ¿Estás seguro que desea eliminar el usuario?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                              data-bs-dismiss="modal">CANCELAR</button>
+                              <% console.log("usuario1",locals._locals.usuario); %>
+                              <% console.log("usuario2",usuario); %>
+
+                              <a href="/deleteUser/<%= locals._locals.usuario.id %> ">
+                              <button type="button" class="btn btn-danger">ELIMINAR</button>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -188,6 +209,7 @@
   </footer>
 
   <script src="/js/validatorUsers.js"></script>
+  <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

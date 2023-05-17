@@ -9,7 +9,7 @@ const productsController = {
     index : async function (req,res){
         try{
             let productsList = await Product.findAll({
-                order: [['updatedAt','ASC']],
+                order: [['updatedAt','DESC']],
                 limit: 3     
             });
             let artistsList = await Artist.findAll({
@@ -174,6 +174,8 @@ const productsController = {
 
         let errors = validationResult(req);
         let productId = req.params.id;
+        let productImage = await Product.findByPk(productId);
+        console.log("producto",productImage);
         if(!errors.isEmpty()){
             let product = await Product.findByPk(productId);
             let artistList = await Artist.findAll();
@@ -213,9 +215,9 @@ const productsController = {
                 is_active : active_value,
                 description : req.body.product_description || "sin descripcion",
                 updatedAt : Date.now(),
-                imagePrimary : req.files[0] ? req.files[0].filename : "avatar.jpeg",
-                imageSecond : req.files[1] ? req.files[1].filename : "avatar.jpeg",
-                imageThird : req.files[2] ? req.files[2].filename : "avatar.jpeg",
+                imagePrimary : req.files[0] ? req.files[0].filename : productImage.dataValues.imagePrimary,
+                imageSecond : req.files[1] ? req.files[1].filename : productImage.dataValues.imageSecond,
+                imageThird : req.files[2] ? req.files[2].filename : productImage.dataValues.imageThird,
             },{
                 where : {
                     id : req.params.id
@@ -226,29 +228,22 @@ const productsController = {
             res.status(400).json(result);
         }     
     },
-    deleteProduct: async function (req,res){
+    destroyProduct: async function (req, res) {
         try {
-            Product.destroy({
-                where: {
-                    id: req.params.id
-                }
-            })
-        }catch(result){
+            let producto = await Product.findOne({
+                where: {id: req.params.id}
+            });
+            
+            if(producto)
+            {
+                await producto.destroy();
+                res.redirect('/')
+            }
+            
+        } catch (result) {
             res.status(400).json(result);
         }
-        res.redirect ('/shop')
-    },
-    destroyProduct: async function (req, res) {
-        try{
-            Product.destroy({
-                where: {
-                    id: req.params.id
-                }
-            })
-        }catch(error){
-            res.send("error in productsController-destroyProduct : ",error)
-        }
-        res.redirect ('/shop')
+        
     }
 }
 
