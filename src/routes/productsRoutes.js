@@ -23,7 +23,7 @@ productsRouter.get('/createProduct', guestMiddlewareAdmin, productController.cre
 productsRouter.post('/createProduct',upload.array('product_image'),rules,productController.storeProduct)
 //Modificación producto
 productsRouter.get('/editProduct/:id', guestMiddlewareAdmin, productController.editProduct);
-productsRouter.put('/editProduct/:id',productController.updateProduct);
+productsRouter.put('/editProduct/:id',upload.array('product_image'),rules,productController.updateProduct);
 //Eliminación producto
 productsRouter.get('/deleteProduct/:id', guestMiddlewareAdmin, productController.deleteProduct);
 productsRouter.delete('/deleteProduct/:id',productController.destroyProduct);

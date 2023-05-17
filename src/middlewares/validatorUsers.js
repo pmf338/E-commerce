@@ -1,10 +1,28 @@
-const {body} = require('express-validator');
+const {body, check} = require('express-validator');
 
-const rules = [
+const userRules = [
     body('user_name')
 
-    .isLength({min: 3}).withMessage('Ingrese al menos tres caracteres'),
+    .isLength({min: 2}).withMessage('Ingrese al menos tres caracteres en el campó Nombre'),
 
+    body('user_surname')
+    .isLength({min: 2}).withMessage('Ingrese al menos tres caracteres'),
+    
+    body('user_email')
+    .isEmail().withMessage('Ingrese un email válido'),
+    /*.custom(async (value) => {
+      const user = await User.findOne({ where: { email: value } });
+      if (user) {
+        return Promise.reject('El mail ingresado ya posee una cuenta');
+      }
+    }),
+    */
+    body('user_pass')
+    .isLength({min: 8}).withMessage('Ingrese una contraseña de al menos 8 caracteres')
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[&@#$%/]).{8,}$/).withMessage('La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un caracter especial'),
+    
+    
+    
 ];
 
-module.exports = rules;
+module.exports = userRules;

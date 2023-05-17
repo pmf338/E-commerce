@@ -1,144 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <%- include('../partials/head.ejs') %>
   <title><%= title %></title>
 </head>
 
-<body>
+<body onload="specialInputs()">
   <header>
     <%- include('../partials/header.ejs') %>
+    <% var funciona = false %>
   </header>
 
   <main>
-    <form class="form-create-product needs-validation" action="#" method="post" enctype="multipart/form-data" novalidate>
+    <form class="form-create-product needs-validation" action="#" method="post" enctype="multipart/form-data"
+      novalidate>
       <section style="min-height: 100vh;">
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-9 mb-4 mb-lg-0">
               <div class="card mb-3" style="border-radius: .5rem; ">
-                </br>      
+                </br>
                 <div class="row g-0">
                   <h3 class="display-6 card-title text-center text-gray mt-4">CREAR NUEVO PRODUCTO</h3>
                   <!-- LEFT SECTION -->
-                  <div class="col-md-4 gradient-custom text-center text-gray" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                  <div class="col-md-4 gradient-custom text-center text-gray"
+                    style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                     </br></br>
                     <!-- CAROUSEL IMGS -->
                     <div class="form-group input-field-register row">
-                    <label for="user_image" class="text-center text-white">Foto de perfil</label>
-                    <div class="rounded-image text-center">
-                      <img src="images/products/avatar.png" class="img-fluid w-50 p-5" />
-                    </div>
-                    <div class="d-flex justify-content-center">
-                      <div class="btn btn-light btn-rounded" style="padding: 5px">
-                        <label class="form-label text-black m-1" for="customFile1">Seleccionar nuevas
-                            imagenes</label>
-                          <input type="file" class="form-control" id="product_image" name="product_image" multiple="multiple" accept=".jpg, .png, .jpeg" />
+                      <label for="user_image" class="text-center text-white">Foto de perfil</label>
+                      <div class="rounded-image text-center">
+                        <img src="images/products/avatar.png" class="img-fluid w-50 p-5" />
                       </div>
-                    </div>
+                      <div class="d-flex justify-content-center">
+                        <div class="btn btn-light btn-rounded" style="padding: 5px">
+                          <label class="form-label text-black m-1" for="customFile1">Seleccionar nuevas
+                            imagenes</label>
+                          <input type="file" class="form-control" id="product_image" name="product_image"
+                            multiple="multiple" accept=".jpg, .png, .jpeg"
+                            value="<%- locals.oldBody ? locals.oldBody.product_image : "" %>" required />
+                          <div class="invalid-feedback">
+                            Al menos una imagen del producto es requerida.
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
                   <!-- PRODUCTS DETAILS -->
                   <div class="col-md-8">
-                      <div class="card-body p-4 container">
-                        <h6 class="text-center fs-5">Detalles Producto</h6>
-                        <hr class="mt-0 mb-4">
-                        <div class="row pt-1">
-                          <div class="form-floating mb-3 col">
-                              <input type="number" name="product_sku" id="product_sku" class="form-control">
-                              <label for="product_sku">SKU</label>
+                    <div class="card-body p-4 container">
+                      <h6 class="text-center fs-5">Detalles Producto</h6>
+                      <hr class="mt-0 mb-4">
+                      <div class="row pt-1">
+                        <% if(existingProduct ||  existingProductbyName) { %>
+                        <div id="alert_sku_existent" class="alert alert-danger d-flex align-items-center" role="alert">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                          </svg>
+                          <div>
+                            <% if(existingProduct == true && existingProductbyName == true ) { %>
+                                Parece que este producto (SKU) y (NOMBRE) ya existe en base de datos, vuelve a intentar con datos diferentes.
+                              <% } else if (existingProduct == true && existingProductbyName == false) { %>
+                                  Parece que este producto (SKU) ya existe en base de datos, vuelve a intentar con datos diferentes.
+                              <% } else { %>
+                                    Parece que este producto (NOMBRE) ya existe en base de datos, vuelve a intentar con datos diferentes.
+                                <% } ; %>   
                           </div>
+                        </div>
+                        <% } ; %>
+                        <div class="form-floating mb-3 col">
+                          <input type="number" name="product_sku" id="product_sku" class="form-control"
+                            value="<%- locals.oldBody ? locals.oldBody.product_sku : "" %>" required>
+                          <label for="product_sku">SKU</label>
                           <div class="invalid-feedback">
-                            Please select a valid state.
-                          </div>
-                          <div class="form-floating mb-3 col">
-                              <input type="text" name="product_name" id="product_name" class="form-control">
-                              <label for="product_name">NOMBRE</label>
+                            El SKU es requerido.
                           </div>
                         </div>
-                        <div class="row pt-1">
-                          <div class="form-floating mb-3 col">
-                            <input type="number" name="product_price" id="product_price" class="form-control" minlength="1" required>
-                            <label for="product_price">PRECIO UNITARIO</label>
-                            <div class="invalid-feedback">
-                              Please select a valid state.
-                            </div>
-                          </div>
-                          <div class="form-floating mb-3 col">
-                            <input type="number" name="product_quantity" id="product_quantity" class="form-control" minlength="1" required>
-                            <label for="product_quantity">CANTIDAD STOCK</label>
-                          </div>
-                        </div>
-                        <div class="row pt-1">
-                          <div class="form-floating mb-3 col">
-                            <select class="form-select" name="product_artist" id="product_artist" aria-label="Default select example">
-                              <option selected>Seleccionar</option>
-                              <% artistList.forEach(artist => { %>
-                              <option value="<%- artist.id %>"><%- artist.name %></option>
-                              <% }); %>
-                            </select>
-                            <label for="product_artist">ARTISTA</label>
-                          </div>
-                          <div class="form-floating mb-3 col">
-                            <select class="form-select" name="product_category" id="product_category" aria-label="Default select example">
-                              <option selected>Seleccionar</option>
-                              <% categoriesList.forEach(category => { %>
-                              <option value="<%- category.id %>"><%- category.description %></option>
-                              <% }); %>
-                            </select>
-                            <label for="product_artist">CATEGORIA</label>
-                          </div>
-                        </div>
-                        <div class="row pt-1">
-                          <div class="form-floating mb-3 col">
-                            <input type="text" name="product_size" id="product_size" class="form-control">
-                            <label for="product_size">TALLE</label>
-                          </div>
-                          <div class="form-floating mb-3 col">
-                            <input type="text" name="product_format" id="product_format" class="form-control">
-                            <label for="product_format">FORMATO</label>
-                          </div>
-                        </div>
-                        <div class="row pt-1">
-                          <div class="form-floating mb-3 col">
-                            <input type="text" name="product_color" id="product_color" class="form-control">
-                            <label for="product_color">COLOR</label>
-                          </div>
-                          <div class="form-floating m-auto col">
-                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                              <input type="radio" class="btn-check" name="product_is_active" id="btnradio1" autocomplete="off" checked>
-                              <label class="btn btn-outline-dark" for="btnradio1">ACTIVO</label>
-                            
-                              <input type="radio" class="btn-check" name="product_is_active" id="btnradio2" autocomplete="off">
-                              <label class="btn btn-outline-dark" for="btnradio2">NO ACTIVO</label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row pt-1">
-                          <div class="form-floating mb-3 col">
-                            <textarea class="form-control" name="product_description" id="product_description" rows="3"
-                              required>Escriba la descripcion del producto aquí</textarea>
-                            <label for="product_description">DESCRIPCION</label>
+
+                        <div class="form-floating mb-3 col">
+                          <input type="text" name="product_name" id="product_name" class="form-control"
+                            value="<%- locals.oldBody ? locals.oldBody.product_name : "" %>" required minlength="5">
+                          <label for="product_name">NOMBRE</label>
+                          <div class="invalid-feedback">
+                            El nombre del producto es requerido.
                           </div>
                         </div>
                       </div>
+                      <div class="row pt-1">
+                        <div class="form-floating mb-3 col">
+                          <input type="number" name="product_price" id="product_price" class="form-control"
+                            minlength="1" value="<%- locals.oldBody ? locals.oldBody.product_price : "" %>" required>
+                          <label for="product_price">PRECIO UNITARIO</label>
+                          <div class="invalid-feedback">
+                            El precio unitario es requerido.
+                          </div>
+                        </div>
+                        <div class="form-floating mb-3 col">
+                          <input type="number" name="product_quantity" id="product_quantity" class="form-control"
+                            minlength="1" value="<%- locals.oldBody ? locals.oldBody.product_quantity : "" %>" required>
+                          <label for="product_quantity">CANTIDAD STOCK</label>
+                          <div class="invalid-feedback">
+                            La cantidad en stock es requerida.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row pt-1">
+                        <div class="form-floating mb-3 col">
+                          <select class="form-select" name="product_artist" id="product_artist"
+                            aria-label="Default select example" required>
+                            <% if (!locals.oldBody){ %>
+                              <option selected></option>
+                              <% }; %>
+                            <% artistList.forEach(artist => { %>
+                            <option value="<%- artist.id %>" 
+                              <% if (locals.oldBody && artist.id == locals.oldBody.product_artist){ %>
+                                selected
+                                <% }; %>
+                              ><%- artist.name %></option>
+                            <% }); %>
+                          </select>
+                          <label for="product_artist">ARTISTA</label>
+                          <div class="invalid-feedback">
+                            El artista asociado es requerido.
+                          </div>
+                        </div>
+                        <div class="form-floating mb-3 col">
+                          <select class="form-select" name="product_category" id="product_category"
+                            aria-label="Default select example" onchange="specialInputsSelect()" required>
+                            <% if (!locals.oldBody){ %>
+                              <option selected></option>
+                              <% }; %>
+                            <% categoriesList.forEach(category => { %>
+                            <option value="<%- category.id %>"
+                              <% if (locals.oldBody && category.id == locals.oldBody.product_category){ %>
+                                selected
+                                <% }; %>
+                              ><%- category.description %></option>
+                            <% }); %>
+                          </select>
+                          <label for="product_category">CATEGORIA</label>
+                          <div class="invalid-feedback">
+                            La categoria es requerida.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row pt-1">
+                        <div id="product_size" class="form-floating mb-3 col">
+                          <input type="text" name="product_size" id="product_size" class="form-control"
+                          value="<%- locals.oldBody ? locals.oldBody.product_size : "" %>">
+                          <label for="product_size">TALLE</label>
+                        </div>
+                        <div id="product_format" class="form-floating mb-3 col">
+                          <input type="text" name="product_format" id="product_format" class="form-control"
+                          value="<%- locals.oldBody ? locals.oldBody.product_format : "" %>">
+                          <label for="product_format">FORMATO</label>
+                        </div>
+                      </div>
+                      <div id="product_color" class="row pt-1">
+                        <div class="form-floating mb-3 col">
+                          <input type="text" name="product_color" id="product_color" class="form-control"
+                          value="<%- locals.oldBody ? locals.oldBody.product_color : "" %>">
+                          <label for="product_color">COLOR</label>
+                        </div>
+                      </div>
+                      <div class="row pt-1">
+                        <div class="form-floating mb-3 col">
+                          <textarea class="form-control" name="product_description" id="product_description" rows="3"
+                             required minlength="20"><%- locals.oldBody ? locals.oldBody.product_description : "" %></textarea>
+                          <label for="product_description">DESCRIPCION</label>
+                          <div class="invalid-feedback">
+                            La descripción es requerida.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row pt-1">
+                        <div class="form-floating m-auto col">
+                          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="product_is_active" id="btnradio1"
+                              autocomplete="off" checked>
+                            <label class="btn btn-outline-dark" for="btnradio1">ACTIVO</label>
+
+                            <input type="radio" class="btn-check" name="product_is_active" id="btnradio2"
+                              autocomplete="off">
+                            <label class="btn btn-outline-dark" for="btnradio2">NO ACTIVO</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <% if( locals.errors) { %>
+                    <p>Se presentaron errores en la creación del producto:</p>
+                    <p style="color: red"><%- errors.product_name ? errors.product_name.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_sku ? errors.product_sku.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_price ? errors.product_price.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_quantity ? errors.product_quantity.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_artist ? errors.product_artist.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_category ? errors.product_category.msg : "" %></p>
+                    <p style="color: red"><%- errors.product_description ? errors.product_description.msg : "" %></p>
+                    <% } %>
+
                   </div>
 
                   <!-- BUTTONS SECTION -->
                   <br><br><br>
                   <div class="container text-center py-3 bg-dark rounded-bottom">
-                      <div class="row gx-5">
-                        <div class="col">
-                          <button type="submit" class="btn btn-success btn-lg"> GUARDAR</button>
-                        </div>
-                        <div class="col">
-                          <a href="/">
-                            <button type="button" class="btn btn-secondary btn-lg">CANCELAR</button>
-                        </div>
+                    <div class="row gx-5">
+                      <div class="col">
+                        <button type="submit" class="btn btn-success"  >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-box-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                              d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z" />
+                            <path fill-rule="evenodd"
+                              d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z" />
+                          </svg>
+                          GUARDAR
+                        </button>
+                        <!-- Modal -->
                       </div>
+                      <div class="col">
+                        <a href="/">
+                          <button type="button" class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                              class="bi bi-x-square" viewBox="0 0 16 16">
+                              <path
+                                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                              <path
+                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                            CANCELAR
+                          </button>
+                      </div>
+                    </div>
                   </div>
-                
+
                 </div>
               </div>
             </div>
@@ -146,34 +243,13 @@
         </div>
       </section>
     </form>
+    <script type="application/javascript" src="/js/validationCreate.js"></script>
   </main>
 
   <footer>
     <%- include('../partials/footer.ejs') %>
   </footer>
-
-  <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (() => {
-      'use strict'
-
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      const forms = document.querySelectorAll('.needs-validation')
-
-      // Loop over them and prevent submission
-      Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-
-          form.classList.add('was-validated')
-        }, false)
-      })
-    })()
-  </script>
-
+  <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
