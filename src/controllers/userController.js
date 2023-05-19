@@ -246,8 +246,8 @@ const userController = {
         }
     },
     destroyUser: async function (req, res) {
+        let userLog = req.session;
         try {
-            console.log("FUNCIONA")
             let usuario = await User.findOne({
                 where: {id: req.params.id}
             });
@@ -255,14 +255,18 @@ const userController = {
             if(usuario)
             {
                 await usuario.destroy();
-                this.logout();
-                res.redirect('/')
+                if(usuario.dataValues.id == userLog.usuario.id){
+                    req.session.destroy();
+                    res.cookie('email', null, {
+                    maxAge: -1
+            })
+                }
             }
             
         } catch (result) {
             res.status(400).json(result);
         }
-        
+        res.redirect('/')
     }
 }
 

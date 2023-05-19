@@ -182,12 +182,14 @@
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary"
                               data-bs-dismiss="modal">CANCELAR</button>
-                              <% console.log("usuario1",locals._locals.usuario); %>
-                              <% console.log("usuario2",usuario); %>
-
+                              <% if(usuario.id == locals._locals.usuario.id){ %>
                               <a href="/deleteUser/<%= locals._locals.usuario.id %> ">
-                              <button type="button" class="btn btn-danger">ELIMINAR</button>
+                              <% } else { %>
+                                <a href="/deleteUser/<%= usuario.id %> ">
+                                  <% } %>
+                              <button type="button" class="btn btn-danger" id="delete_button">ELIMINAR</button>
                             </a>
+                          </a>
                           </div>
                         </div>
                       </div>
