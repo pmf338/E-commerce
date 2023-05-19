@@ -1,9 +1,9 @@
 const express = require('express');
-const router = express.Router();
+const artistsRouter = express.Router();
 const apiArtistsController = require('../../controllers/api/apiArtistsController');
 
+//Listado artistas
+artistsRouter.get('/api/dashboardArtists',apiArtistsController.dashboardArtists);
 
-router.get('/api/artists',apiArtistsController.artists);
-router.get('/api/artistDetail/:id',apiArtistsController.artistDetail);
 
-module.exports = router;
+module.exports = artistsRouter;
