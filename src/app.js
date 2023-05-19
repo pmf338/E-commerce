@@ -8,6 +8,7 @@ const productRoutes = require('./routes/productsRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 const methodOverride = require('method-override');
 const userSessionMiddleware = require('./middlewares/userSessionMiddleware');
+const cors = require('cors');
 
 //Rutas de las API
 const apiArtistsRoutes = require('../src/routes/api/apiArtistsRoutes');
@@ -30,11 +31,15 @@ app.use(express.json());
 app.use(methodOverride('_method')); //Middleware de aplicación el cual se encargue de controlar la posibilidad de usar otros métodos diferentes al GET y al POST, en nuestros formularios
 
 app.use(userSessionMiddleware); //Para verificar si el usuario esta o no logeado
-
+app.use(cors({
+    origin : '*',
+    }))
+    
 app.use('/', productRoutes);
 app.use('/', usersRoutes);
 app.use(apiArtistsRoutes);
 app.use(apiProductsRoutes);
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');

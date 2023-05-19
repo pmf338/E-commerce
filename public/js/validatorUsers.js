@@ -9,6 +9,7 @@ var titulos = document.querySelectorAll('h6');
 var searchBar = document.getElementById('search-navbar');
 var alert_usuario = document.getElementById('alert_user_existent');
 var mostrar = [oldPass,newPass,repeatPass,back];
+var alert_usuario = document.getElementById('alert_user_existent')
 
 
 /*----------------------------------------------------editProfile.ejs----------------------------------------------*/
@@ -36,6 +37,7 @@ function atras(){
     titulos.forEach(array2 => {array2.style.display = "block";});
     
 }
+
 
 
 function changeState(existingUser) {
