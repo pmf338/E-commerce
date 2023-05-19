@@ -13,78 +13,25 @@ const {
 } = require('sequelize');
 
 const apiArtistController = {
-    artists: async function (req, res) {
-        try {
-            let artistsList = await Artist.findAll();
+    dashboardArtists : async function (req,res){
+        let artistsList = await Artist.findAll();
+        try{
             let respuesta = {
-                todoOk: {
+                artistas: {
                     status: 200,
                     total: artistsList.length,
-                    url: 'http://localhost:3002/api/artists'
-
+                    url: 'http://localhost:3002/api/dashboardArtists'
                 },
                 data: artistsList
-
             }
-
             res.json(respuesta);
         } catch (error) {
             res.json({
-                status: 404,
-                data: artistsList,
-                message: 'Algo fallo en artists'
-
-            });
+            status: 404,            
+            data: artistsList,
+            message: 'Algo fallo en dashboardArtist'
+            })
         }
     },
-    artistDetail: async function (req, res) {
-        let artistId = req.params.id;
-        try {
-            let artist = await Artist.findByPk(artistId);
-            let artist_genre = await Artist.findByPk(artistId, {
-                include: [{
-                    association: "_genre"
-                }]
-            });
-            let artist_products = await Product.findAll({
-                where: {
-                    artist_id: artistId
-                }
-            }, {
-                include: [{
-                    limit: 3,
-                }]
-            })
-            let respuesta = {
-                artista: {
-                    status: 200,
-                    artistProducts: artist_products.length,
-                    url: 'http://localhost:3002/api/artistDetail/:id'
-
-                },
-                genero: {
-                    status: 200,
-                    url: 'http://localhost:3002/api/artistDetail/:id'
-                },
-                data: artist,
-                artist_genre,
-                artist_products
-
-            }
-
-            res.json(respuesta);
-        } catch (error) {
-            res.json({
-                status: 404,
-                
-                data: artist,
-                artist_genre,
-                artist_products,
-                
-                message: 'Algo fallo en artistDetail'
-
-            })
-        }
-    }
 }
 module.exports = apiArtistController;
