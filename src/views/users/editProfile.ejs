@@ -17,10 +17,12 @@
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col col-lg-10 mb-4 mb-lg-0">
             <form action="/editProfile/<%= usuario.id %>?_method=PUT" method="post" enctype="multipart/form-data">
-              <div class="card mb-3" style="border-radius: .5rem; ">
 
-                <!-- UP SECTION -->
+              <!-- CARD -->
+              <div class="card">
                 <div class="row g-0">
+
+                  <!-- UP SECTION -->
                   <div class="col-md-4 gradient-custom text-center"
                     style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                     <% if (usuario.imageProfile  == "404.jpg") { %>
@@ -40,96 +42,84 @@
                           accept=".jpg, .png, .jpeg, .webp" />
                       </div>
                     </div>
-                    </div>
+                  </div>
 
-                    <!-- DETAILS SECTION -->
-                    <div class="col-md-8">
+                  <!-- DETAILS SECTION -->
+                  <div class="col-md-8">
                     <div class="card-body p-4 text-center">
                       <h1>EDITAR PERFIL</h1>
                       <hr class="mt-0 mb-4">
                       <div class="row pt-1">
                         <div class="form-floating mb-3 col">
-                            <input type="text" name="user_name_edit" id="user_name_edit" class="form-control" minlength="3" value=<%= usuario.name %> required>
-                            <label for="user_name_edit">NOMBRE/S</label>
+                          <input type="text" name="user_name_edit" id="user_name_edit" class="form-control"
+                            minlength="3" value=<%= usuario.name %> required>
+                          <label for="user_name_edit">NOMBRE/S</label>
                         </div>
                         <div class="form-floating mb-3 col">
-                            <input type="text" name="user_surname_edit" id="user_surname_edit" class="form-control" minlength="3" value=<%= usuario.surname %> required>
-                            <label for="user_surname_edit">APELLIDO</label>
+                          <input type="text" name="user_surname_edit" id="user_surname_edit" class="form-control"
+                            minlength="3" value=<%= usuario.surname %> required>
+                          <label for="user_surname_edit">APELLIDO</label>
                         </div>
                       </div>
                       <div class="row pt-1">
                         <div class="form-floating mb-3 col">
-                          <input type="text" name="user_user_name_edit" id="user_user_name_edit" class="form-control" minlength="3" value=<%= usuario.userName %> required>
+                          <input type="text" name="user_user_name_edit" id="user_user_name_edit" class="form-control"
+                            minlength="3" value=<%= usuario.userName %> required>
                           <label for="user_user_name_edit">NOMBRE USUARIO</label>
                         </div>
                         <div class="form-floating mb-3 col">
-                          <input type="email" name="user_email_edit" id="user_email_edit" class="form-control" minlength="3" value=<%= usuario.email %> required>
+                          <input type="email" name="user_email_edit" id="user_email_edit" class="form-control"
+                            minlength="3" value=<%= usuario.email %> required>
                           <label for="user_email_edit">EMAIL</label>
                         </div>
                       </div>
                       <div class="row pt-1">
                         <div class="form-floating mb-3 col">
-                        </i><input type="text" name="user_address_edit" id="user_address_edit" class="form-control" minlength="3" value=<%= usuario.address %> required>
-                        <label for="user_address_edit">DIRECCION ENVIOS</label>
+                          </i><input type="text" name="user_address_edit" id="user_address_edit" class="form-control"
+                            minlength="3" value=<%= usuario.address %> required>
+                          <label for="user_address_edit">DIRECCION ENVIOS</label>
                         </div>
                       </div>
 
                       <!-- USER CATEGORIES -->
                       <div class="row pt-1">
                         <div class="form-floating mb-3 col">
-                          
-                                                        
-                        </div>
-                      </div>
-
-                      <div class="col-6 mb-3">
-                        <% if (locals._locals.usuario) { %>
-                        <% if (locals._locals.usuario.roles_id == 1) { %>
-                        <h6>Categoria del usuario</h6>
-                        <select class="form-select col-6 mb-3" name="roles_id" id="roles_id">
-                          <option selected>
-                            <%if(usuario.roles_id == 1){ %>
-                            Administrador
-                            <% }else if(usuario.roles_id == 2){ %>
-                            Cliente
+                          <% if (locals._locals.usuario) { %>
+                            <% if (locals._locals.usuario.roles_id == 1) { %>
+                              <%if(usuario.roles_id == 1){ %>
+                                <select class="form-select" name="roles_id" id="roles_id"
+                                aria-label="Default select example" required>
+                                <option selected value="1">Administrador</option>
+                                <option value="2">Cliente</option>
+                              <% }else if(usuario.roles_id == 2){ %>
+                                <option selected value="2">Cliente</option>
+                                <option value="1">Administrador</option>
+                              <% } %>                             
+                              </select>
+                              <label for="roles_id">ROL</label>
                             <% } %>
-                          </option>
-                          <option value="1">Administrador</option>
-                          <option value="2">Cliente</option>
-                        </select>
-                        <% } %>
-                        <% } %>
-                        </br>
-
-
-                        <button type="button" class="btn btn-warning" id="back" name="back" onclick="atras()">
-                          Atrás
-                        </button>
-                        </br>
+                          <% } %>
+                        </div>
                       </div>
 
                       <!-- PASSWORD SECTION -->
                       <div class="row pt-1">
-                        <div class="form-floating mb-3 col">
-                          <button type="button" class="btn btn-primary" id="changePass" name="changePass" onclick="cambiarPassword()">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                              class="bi bi-box-arrow-down" viewBox="0 0 16 16">
-                              <path fill-rule="evenodd"
-                                d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z" />
-                              <path fill-rule="evenodd"
-                                d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z" />
+                        <div class="form-floating">
+                          <button type="button" class="btn btn-dark" id="changePass" name="changePass"
+                            onclick="cambiarPassword()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+                              <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
                             </svg>
                             CAMBIAR CONTRASEÑA
                           </button>
                         </div>
                       </div>
 
-
-
-
+                      <!-- PASSWORD HIDE SECTION -->
+                      <div class="row pt-1">
                         <div class="col-6 mb-3">
                           <i class="fa-solid fa-user"></i><input type="password" name="user_password_old"
-                            placeholder="Ingresar contraseña actual" id="user_password_old" minlength="3">
+                          placeholder="Ingresar contraseña actual" id="user_password_old" minlength="3">
                         </div>
                         <div class="col-6 mb-3">
                           <i class="fa-solid fa-user"></i><input type="password" name="user_password_edit"
@@ -137,93 +127,86 @@
                         </div>
                         <div class="col-6 mb-3">
                           <i class="fa-solid fa-user"></i><input type="password" name="user_password_repeat"
-                            placeholder="Repetir contraseña nueva" id="user_password_repeat" minlength="3"> 
+                          placeholder="Repetir contraseña nueva" id="user_password_repeat" minlength="3">
                         </div>
-
-
-
                       </div>
+
                     </div>
                   </div>
-                </div>
 
-                <!-- BUTTONS SECTION -->
-                <div class="container text-center bg-dark rounded-bottom">
-                  <div class="row gx-5 justify-content-center">
-                    <div class="col-12 col-md-4 my-2">
-                    </div>
-                    <div class="col-12 col-md-4 my-2">
-                      <button type="submit" class="btn btn-success">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                          class="bi bi-box-arrow-down" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd"
-                            d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z" />
-                          <path fill-rule="evenodd"
-                            d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z" />
+                </div>
+              </div>
+
+              <!-- BUTTONS SECTION -->
+              <div class="container text-center bg-dark rounded-bottom py-3">
+                <div class="row gx-5 justify-content-center">
+                  <div class="col-12 col-md-4 my-2">
+                    <button type="submit" class="btn btn-success">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-box-arrow-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                          d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z" />
+                        <path fill-rule="evenodd"
+                          d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z" />
+                      </svg>
+                      GUARDAR
+                    </button>
+                  </div>
+                  <div class="col-12 col-md-4 my-2">
+                    <a href="/profile">
+                      <button type="button" class="btn btn-light">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                          class="bi bi-x-square" viewBox="0 0 16 16">
+                          <path
+                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                          <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                         </svg>
-                        GUARDAR
+                        CANCELAR
                       </button>
-                    </div>
-                    <div class="col-12 col-md-4 my-2">
-                      <a href="/profile">
-                        <button type="button" class="btn btn-primary">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-x-square" viewBox="0 0 16 16">
-                            <path
-                              d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                            <path
-                              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                          </svg>
-                          CANCELAR
-                        </button>
-                      </a>
-                    </div>
-                    <div class="col-12 col-md-4 my-2">
-                      <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                          data-bs-target="#exampleModal">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                            class="bi bi-trash" viewBox="0 0 16 16">
-                            <path
-                              d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
-                            <path
-                              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
-                          </svg>
-                          ELIMINAR
-                      </button>
-                      <!-- MODAL : DELETE USER -->
-                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    </a>
+                  </div>
+                  <div class="col-12 col-md-4 my-2">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-trash" viewBox="0 0 16 16">
+                        <path
+                          d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                        <path
+                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                      </svg>
+                      ELIMINAR
+                    </button>
+                    <!-- MODAL : DELETE USER -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                       aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">ELIMINAR USUARIO</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                              aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
                             ¿Estás seguro que desea eliminar el usuario?
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary"
-                              data-bs-dismiss="modal">CANCELAR</button>
-                              <% console.log("usuario1",locals._locals.usuario); %>
-                              <% console.log("usuario2",usuario); %>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
+                            <% console.log("usuario1",locals._locals.usuario); %>
+                            <% console.log("usuario2",usuario); %>
 
-                              <a href="/deleteUser/<%= locals._locals.usuario.id %> ">
+                            <a href="/deleteUser/<%= locals._locals.usuario.id %> ">
                               <button type="button" class="btn btn-danger">ELIMINAR</button>
                             </a>
                           </div>
                         </div>
                       </div>
-                      </div>
                     </div>
                   </div>
                 </div>
-
               </div>
-            </form>
-          </div>
+          </form>
         </div>
+      </div>
       </div>
     </section>
   </main>
