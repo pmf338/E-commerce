@@ -13,6 +13,8 @@ const cors = require('cors');
 //Rutas de las API
 const apiArtistsRoutes = require('../src/routes/api/apiArtistsRoutes');
 const apiProductsRoutes = require('../src/routes/api/apiProductsRoutes');
+const apiUsersRoutes = require('../src/routes/api/apiUsersRoutes');
+const apiCategoriesRoutes = require('../src/routes/api/apiCategoriesRoutes');
 
 //Middlewares
 
@@ -39,6 +41,8 @@ app.use('/', productRoutes);
 app.use('/', usersRoutes);
 app.use(apiArtistsRoutes);
 app.use(apiProductsRoutes);
+app.use(apiUsersRoutes);
+app.use(apiCategoriesRoutes);
 
 
 app.set('views', path.join(__dirname, 'views'));
