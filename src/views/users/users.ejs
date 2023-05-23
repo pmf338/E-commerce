@@ -12,50 +12,15 @@
     <%- include('../partials/header.ejs') %>
   </header>
   <main>
-    <section class="vh-100"
-      style="background: url('https://www.unidiversidad.com.ar/cache/recitales-cultura_1000_1100.jpg')">
+    <section style="min-height:100vh" class="d-flex align-items-center justify-content-center">
       <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col col-lg-9 mb-4 mb-lg-0">
             <div class="card mb-3" style="border-radius: .5rem; ">
               <div class="row g-0">
-                <div class="col-md-4 gradient-custom text-center text-white"
-                  style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-
-                  <% if (locals.usuario.imageProfile  == "404.jpg") { %>
-                  <img src="../../images/users/avatar.png" alt="Avatar" class="img-fluid my-5"
-                    style="width: 150px; border-radius: 40%;" />
-                  <% } else { %>
-                  <img src="../../images/users/<%= locals.usuario.imageProfile %>" alt="Avatar" class="img-fluid my-5"
-                    style="width: 150px; border-radius: 40%;" />
-                  <% } %>
-
-                  </br>
-                  <% if (locals.usuario) { %>
-                  <% if (locals.usuario.roles_id == 1) { %>
-                  <a href="/createProfile">
-                    <button type="button" class="btn btn-warning">
-                      Crear usuario
-                    </button>
-                  </a>
-                  <% } %>
-                  <% } %>
-
-                  </br>
-                  </br>
-                  <% if (locals.usuario) { %>
-                  <% if (locals.usuario.roles_id == 1) { %>
-                  <a href="/profile">
-                    <button type="button" class="btn btn-warning">
-                      Cancelar
-                    </button>
-                  </a>
-                  <% } %>
-                  <% } %>
-                  </br>
-                  </br>
-                </div>
-                <div class="col-md-8">
+                <!-- TABLE SECTION -->
+                <div class="col p-5">
+                    <h1 class="text-center my-3">ADMINISTRACIÓN DE USUARIOS</h1>
                     <hr class="mt-0 mb-4">
                     <div class="table-responsive">
                       <table id="users_table" class="table">
@@ -94,6 +59,46 @@
                       </table>
                   </div>
                 </div>
+
+                <!-- BUTTONS SECTION -->
+                <div class="container text-center bg-dark rounded-bottom py-3">
+                  <div class="row gx-5 justify-content-center">
+                    <div class="col-12 col-md-4 my-2">
+                      <% if (locals.usuario) { %>
+                        <% if (locals.usuario.roles_id == 1) { %>
+                        <a href="/createProfile">
+                          <button type="button" class="btn btn-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
+                              <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+                              <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
+                            </svg>
+                            CREAR USUARIO
+                          </button>
+                        </a>
+                        <% } %>
+                        <% } %>
+                    </div>
+                    <div class="col-12 col-md-4 my-2">
+                      <% if (locals.usuario) { %>
+                        <% if (locals.usuario.roles_id == 1) { %>
+                        <a href="/profile">
+                          <button type="button" class="btn btn-light">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-x-square" viewBox="0 0 16 16">
+                            <path
+                              d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            <path
+                              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                          </svg>
+                            CANCELAR
+                          </button>
+                        </a>
+                        <% } %>
+                        <% } %>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>

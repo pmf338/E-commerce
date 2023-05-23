@@ -28,7 +28,7 @@ const artistController = {
                 }
             },{
                 include : [{
-                    limit : 3,
+                    limit : 4,
                 }]
             })
             res.render("products/artistDetail",{
