@@ -38,6 +38,24 @@ function atras(){
     
 }
 
+function inicioApp() {
+  form.addEventListener('submit', crearProducto);
+  form.user_user_name.addEventListener('blur', validarFormulario);
+}
+
+function crearProducto(evt) {
+  evt.preventDefault()
+}
+
+function validarFormulario(evt) {
+  let input = evt.target 
+  if(input.tagName == 'input') {
+      if (!input.tagName.length){
+          input.style.borderBottomColor = 'red';
+          input.style.color = 'red';
+      }
+  }
+}
 
 
 function changeState(existingUser) {

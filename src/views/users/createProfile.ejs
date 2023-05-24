@@ -7,9 +7,10 @@
     
 </head>
 
-<body onload="specialInputs()">
+<body>
   <header>
     <%- include('../partials/header.ejs') %>
+    <% var funciona = false %>
   </header>
   <main>
     <%- existingUser ? console.log("Se encontro algo en usuarios existentes", existingUser) : "" %>
@@ -86,7 +87,7 @@
                         <div class="form-floating mb-3 col">
                           <input type="text" class="form-control" name="user_user_name"
                           id="user_user_name" value="<%= locals.validData ? locals.validData.user_user_name : '' %>"
-                          minlength="1" required>
+                          minlength="3" required>
                           <label for="user_user_name">NOMBRE USUARIO</label>
                           <div class="invalid-feedback">
                             El username es requerido.
@@ -168,6 +169,7 @@
                     <p>Se presentaron errores en la creación del usuario:</p>
                     <p style="color: red"><%- errors.user_name ? errors.user_name.msg : "" %></p>
                     <p style="color: red"><%- errors.user_surname ? errors.user_surname.msg : "" %></p>
+                    <p style="color: red"><%- errors.user_user_name ? errors.user_user_name.msg : "" %></p>
                     <p style="color: red"><%- errors.user_email ? errors.user_email.msg : "" %></p>
                     <p style="color: red"><%- errors.user_email_confirm ? errors.user_email_confirm.msg : "" %></p>
                     <p style="color: red"><%- errors.user_pass ? errors.user_pass.msg : "" %></p>
