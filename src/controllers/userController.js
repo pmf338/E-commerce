@@ -142,10 +142,12 @@ const userController = {
         let errors = validationResult(req);
         
             if (!errors.isEmpty()) {
+                let existingUser = false;
                 return res.render("users/createProfile", {
                     success: false,
                     title: "Registro de usuario",
                     errors: errors.mapped(),
+                    existingUser: existingUser,
                     validData: req.body
                 })
             }

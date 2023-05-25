@@ -15,7 +15,7 @@ const userRules = [
     .isEmail().withMessage('Ingrese un email válido'),
 
     body('user_email_confirm')
-    .isEmail().withMessage('Ingrese un email válido')
+    .isEmail().withMessage('Ingrese una confirmacion de email válida')
     .isLength({min:6}).withMessage('Ingrese al menos tres caracteres'),
 
     body('user_pass')
