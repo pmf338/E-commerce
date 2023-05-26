@@ -5,7 +5,7 @@
     <%- include('../partials/head.ejs') %>
 </head>
 
-<body>
+<body style="background-color: #15171E">
     <header>
         <%- include('../partials/header.ejs') %>
     </header>
@@ -45,27 +45,28 @@
         
         <!-- NEW PRODUCTS -->    
         <div>
-            <h1 class="display-2 text-center px-3 py-4">NOVEDADES</h1>
+            <h1 class="display-2 text-center px-3 py-4 text-white">NOVEDADES</h1>
         </div>
         <div>
-            <div class="container text-center">
+            <div class="container text-center" id="container-products">
                 <div class="row justify-content-center">
                     <% productsList.forEach(product => { %>
-                    <div class="col col-12 col-md-4 border p-4">
+                    <div class="col col-12 col-lg-3 p-3 m-1" style="background-color: #23252B">
                         <img src="/images/products/<%- product.imagePrimary %>" class="card-img-top index-products-img d-block" alt="imagen-producto">
-                        <p class="m-4 fs-4 text" style="height: 6rem;"><%- product.name %></p>
-                        <a href="/productdetail/<%- product.id %>" class="btn btn-lg btn-dark d-block mx-auto">
+                        <p class="m-4 fs-5 fw-bold" style="height: 6rem;color: #DCDCDD
+                        "><%- product.name %></p>
+                        <a href="/productdetail/<%- product.id %>" class="btn btn-lg btn-primary d-block mx-auto">
                             VISITAR</a>
                     </div>
                 <% }); %>
                 </div>
-            <a href="/shop" class="fs-4 my-2">Ir a Tienda</a>
+            <a href="/shop" class="fs-6 mt-3 text-decoration-none text-white btn btn-primary">Ir a Tienda</a>
             </div>
         </div>
 
-        <!-- Artists --> 
-        <h2 class="display-2 text-center px-5 my-5 ">ARTISTAS</h2>
-        <div class="container text-center my-5">
+        <!-- ARTISTS --> 
+        <h2 class="display-2 text-center px-5 my-5 text-white">ARTISTAS</h2>
+        <div class="container text-center my-5" id="container-artists">
             <div class="row row-cols-1 row-cols-md-3 g-2 g-lg-3 justify-content-center">
             <% artistsList.forEach(artist => { %>
               <div class="col">
@@ -77,7 +78,7 @@
               </div>
               <% }); %>
             </div>
-            <a href="/artists" class="fs-4 my-2">Ir a Artistas</a>
+            <a href="/artists" class="fs-6 mt-3 text-decoration-none text-white btn btn-primary">Ir a Artistas</a>
         </div>
             
     </main>

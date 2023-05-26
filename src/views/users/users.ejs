@@ -7,7 +7,7 @@
   <title>Perfil de usuario</title>
 </head>
 
-<body>
+<body id="users-body">
   <header>
     <%- include('../partials/header.ejs') %>
   </header>
@@ -16,20 +16,20 @@
       <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col col-lg-9 mb-4 mb-lg-0">
-            <div class="card mb-3" style="border-radius: .5rem; ">
+            <div class="card mb-3 border-0" style="border-radius: .5rem;background-color:#23252B">
               <div class="row g-0">
                 <!-- TABLE SECTION -->
                 <div class="col p-5">
-                    <h1 class="text-center my-3">ADMINISTRACIÓN DE USUARIOS</h1>
+                    <h1 class="text-center my-3 text-white display-4">PANEL DE USUARIOS</h1>
                     <hr class="mt-0 mb-4">
                     <div class="table-responsive">
-                      <table id="users_table" class="table">
+                      <table id="users_table" class="table bg-light rounded-1 text-center">
                         <thead>
-                          <tr>
+                          <tr class="bg-light">
                             <th scope="col">Usuario</th>
                             <th scope="col">Nombre usuario</th>
                             <th scope="col">Categoria</th>
-                            <th scope="col">Editar</th>
+                            <th scope="col"></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -61,13 +61,13 @@
                 </div>
 
                 <!-- BUTTONS SECTION -->
-                <div class="container text-center bg-dark rounded-bottom py-3">
+                <div class="container text-center rounded-bottom py-3 container-users-btns" style="background-color:#15171E">
                   <div class="row gx-5 justify-content-center">
                     <div class="col-12 col-md-4 my-2">
                       <% if (locals.usuario) { %>
                         <% if (locals.usuario.roles_id == 1) { %>
                         <a href="/createProfile">
-                          <button type="button" class="btn btn-success">
+                          <button type="button" class="btn btn-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
                               <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
                               <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
@@ -82,7 +82,7 @@
                       <% if (locals.usuario) { %>
                         <% if (locals.usuario.roles_id == 1) { %>
                         <a href="/profile">
-                          <button type="button" class="btn btn-light">
+                          <button type="button" class="btn btn-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-x-square" viewBox="0 0 16 16">
                             <path
