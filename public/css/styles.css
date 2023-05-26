@@ -10,10 +10,25 @@ a{
 main{
     min-height: 100vh;
 }
+/*----------------------------------------backgrounds imge ---------------------------------------------------------*/
+#artists-body,
+#login-body,
+#create-profile-body,
+#profile-body,
+#edit-profile-body,
+#users-body,
+#artist-details-body,
+#product-detail-body,
+#edit-product-body,
+#shop-body{
+    background-image: url('https://cdn.discordapp.com/attachments/1063604901541855232/1111389089925714092/Fondo_E_Commers.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 /*---------------------------------------- header.ejs ---------------------------------------------------------*/
 header {
-    background-color: #0B1320;
+    background-color: #23252B;
 }
 .img-logo{
     width:80px;
@@ -44,16 +59,17 @@ header .menu a{
     padding: 20px 40px;
 }
 header .menu a:hover{
-    color:#F3F6FA;
-    background-color: #AFC1D0;
-    border-radius: 8px;
+    background-color: #303237;
+    border-radius: 2px;
+    border-bottom: solid 3px #148EFF;
 }
 header .menu a svg{
     width: 35px;
     height: 35px;
+    color: #BDBDBF;
 }
 header .profile-btns a{
-    background-color: white;
+    color: #BDBDBF;
     display: inline-flex;
     border-radius: 100px;
     min-width: 60px;
@@ -67,8 +83,9 @@ header .profile-btns a svg{
     height: 30px;
 }
 header .profile-btns a:hover{
-    background: #4b4d4e;
+    background: #303237;
     color: #F3F6FA;
+    border: solid 1px #148EFF;
 }
 header .profile-btns .profile{
     height: 60px;
@@ -115,6 +132,12 @@ header .profile-btns div{
 .index-new-product{
     width: 20rem;
 }
+#container-products a:hover{
+    border:solid 1px #47A6FF;
+}
+#container-artists a:hover{
+    border:solid 1px #47A6FF;  
+}
 .index-container-artists{
     display: flex;
     position: relative;
@@ -135,16 +158,12 @@ header .profile-btns div{
 .artist-img:hover .artist-name{
     display: block;
 }
-.index-container-artist{
-    background-image: url('/images/artists/banner_badbunny.png');
-    background-repeat: no-repeat;
-}
 .index-container-artist a{
     text-decoration: none;
 }
 .index-products-img{
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
     object-fit: cover;
 }
 
@@ -162,6 +181,16 @@ header .profile-btns div{
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
+}
+#login-btn:hover{
+    color: #F3F6FA;
+    border: solid 1px #148EFF;
+}
+#login-container-login-as a{
+    color:#BDBDBF;
+}
+#login-container-login-as a:hover{
+    color:#148EFF;
 }
 
 /*----------------------------------------register.ejs---------------------------------------------------------*/
@@ -184,9 +213,18 @@ header .profile-btns div{
 #user_password_old, 
 #user_password_edit,
 #user_password_repeat,
-#back{
-
+#back_password,
+#lbl_user_password_old,
+#lbl_user_password_edit,
+#lbl_user_password_repeat{
     display: none;
+}
+#edit-profile-btn-save:hover,
+#edit-profile-btn-delete:hover{
+    border: solid 1px white;
+}
+#edit-profile-btn-cancel:hover{
+    border: solid 1px #47A6FF;
 }
 
 /*----------------------------------------artists.ejs---------------------------------------------------------*/
@@ -197,7 +235,7 @@ header .profile-btns div{
 .artists-card span{
     display: none;
 }
-.artists-card img:hover{
+#artist-card img:hover{
     border-radius: 200px;
 }
 .artists-card:hover span{
@@ -220,7 +258,7 @@ header .profile-btns div{
 	color: #ffffff; /* Color del texto */
 	border-radius: 5px; /* Borde del boton */
 	letter-spacing: 2px; /* Espacio entre letras */
-	background-color: black; /* Color de fondo */
+	background-color: #0074E0; /* Color de fondo */
 	padding: 18px 30px; /* Relleno del boton */
 	position: fixed;
 	bottom: 40px;
@@ -229,10 +267,13 @@ header .profile-btns div{
 	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 	z-index: 99;
 }
-.shop-btn-flotante:hover {
+.shop-btn-flotante:hover{
 	background-color: #2c2fa5; /* Color de fondo al pasar el cursor */
 	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
 	transform: translateY(-7px);
+}
+#container-shop-add-to-cart a:hover{
+    color: #229555;
 }
 
 @media only screen and (max-width: 600px) {
@@ -249,4 +290,101 @@ header .profile-btns div{
     object-fit: cover;
     width:100%;
     height:100%;
+}
+#artist-detail-btn-visit:hover{
+    border: solid 1px #47A6FF;
+}
+
+/*----------------------------------------footer.ejs---------------------------------------------------------*/
+footer {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+}
+.footer-copy-redes {
+	width: 100%;
+    background-color: #23252B;
+}
+.main-copy-redes {
+	width: 98%;
+	max-width: 1000px;
+	padding: 15px 0;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	-ms-align-items: center;
+	align-items: center;
+}
+.main-copy-redes .footer-copy {
+	width: 70%;
+	color: #fff;
+}
+.main-copy-redes .footer-redes {
+	width: 30%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.main-copy-redes .footer-redes svg {
+	display: inline-block;
+	text-decoration: none;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border-radius:20%;
+	color: #BDBDBF;
+	text-align: center;
+}
+.main-copy-redes .footer-copy {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.main-copy-redes .footer-redes {
+    width: 80%;
+    margin: auto;
+}
+.main-copy-redes .footer-redes svg:hover{
+    color: #47A6FF;
+}
+
+/*----------------------------------------ceateProfile.ejs---------------------------------------------------------*/
+#create-profile-btn-save:hover{
+    border: solid 1px white;
+}
+#create-profile-btn-clean:hover,
+#create-profile-btn-cancel:hover{
+    border: solid 1px #47A6FF;
+}
+
+
+/*----------------------------------------ceateProfile.ejs---------------------------------------------------------*/
+.container-profile-btns button:hover{
+    border: solid 1px #47A6FF;
+}
+
+/*----------------------------------------users.ejs---------------------------------------------------------*/
+.container-users-btns button:hover{
+    border: solid 1px #47A6FF;
+}
+#users_table tr:hover{
+    background-color: #0074E0;
+}
+
+/*----------------------------------------productDetail.ejs---------------------------------------------------------*/
+#product-detail-btn-add:hover{
+    border: solid 1px white;
+}
+#product-detail-btn-edit:hover,
+#product-detail-btn-back:hover{
+    border: solid 1px #47A6FF;
+}
+
+/*----------------------------------------editProduct.ejs---------------------------------------------------------*/
+#edit-product-btn-save:hover,
+#edit-product-btn-delete:hover{
+    border: solid 1px white
+}
+#edit-product-btn-cancel:hover{
+    border: solid 1px #47A6FF;
 }

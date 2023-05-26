@@ -3,7 +3,7 @@
 <head>
     <%- include('../partials/head.ejs') %>
 </head>
-<body>
+<body id="artist-details-body">
     <header>
         <%- include('../partials/header.ejs') %>
     </header>
@@ -14,14 +14,14 @@
       <!-- Artist Description-->
       <div class="container text-center my-5">
             <div class="row pt-5">
+                <!-- LEFT ARTIST SECTION -->
                 <div class="col-12 col-md-6 m-1">
-                    <div class="card-body text-center border border-1 rounded">
-                        <img src="/images/artists/<%- artist.logo %>"
-                            alt="avatar" class="rounded-circle img-fluid mt-4" style="width: 150px;">
-                        <p class="my-3 fs-2"><%- artist.name %></p>
-                        <div class="border-top pt-3 ">
+                    <div class="card-body text-center rounded border-0" style="background-color:#23252B">
+                        <img src="/images/artists/<%- artist.logo %>" alt="avatar" class="rounded-circle img-fluid mt-4" style="width: 150px;">
+                        <p class="my-3 fs-2 text-white fw-bold"><%- artist.name %></p>
+                        <div class="border-top py-2 text-white">
                           <p class="mb-1 fs-5"><%- artist_genre.dataValues._genre.dataValues.description %></p>
-                          <p class="mb-5">
+                          <p>
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-headphones" viewBox="0 0 16 16">
                                 <path d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5z"/>
                               </svg>
@@ -31,8 +31,9 @@
 
                     </div>
                 </div>
+                <!-- RIGHT ARTIST SECTION -->
                 <div class="col m-1">
-                    <div class="border p-3 text-start border-1 rounded fs-5"><%- artist.description %></div>
+                    <div class="border p-3 text-start border-1 rounded fs-5 text-white" style="background-color:#23252B"><%- artist.description %></div>
                     <div class="d-flex justify-content-center align-items-start mb-2 p-4">
                         <button type="button" class="btn btn-outline-success m-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
@@ -56,18 +57,21 @@
       </div>
 
       <!-- Artist / Products -->
-      <h2 class="text-center mx-5 pt-4">PRODUCTOS RELACIONADOS</h2>
-
+      <div class="container my-3 py-2 rounded-4" style="background-color: #23252B">
+        <h4 class="text-center mx-5 pt-1 fw-bold text-white">PRODUCTOS RELACIONADOS</h4>
+      </div>
+      
+      <!-- Products List -->
       <div style="max-width: 600px; margin: auto;" class="mb-4">
         <div class="row row-cols-2 g-3">
           <% artist_products.forEach(product => { %>
           <div class="col-12 col-sm-6">
-            <div class="card text-center mx-4" style="height:400px">
+            <div class="card text-center mx-4" style="height:400px;background-color: #23252B">
               <img src="/images/products/<%- product.imagePrimary %>" class="img-fluid rounded-start artist-products-card-img p-1 rounded mx-auto d-block" alt="..." style="width:200px;height:200px">
               <hr class="border border-dark border-2 opacity-50">
               <div class="card-body">
-                <h5 class="card-title"><%- product.name %></h5>
-                <a href="http://" class="btn btn-lg btn-dark d-block mx-auto">VISITAR</a>
+                <h5 class="card-title fw-bold" style="color: #DCDCDD"><%- product.name %></h5>
+                <a href="/productdetail/<%- product.id %>" class="btn btn-lg btn-primary d-block mx-auto" id="artist-detail-btn-visit">VISITAR</a>
               </div>
             </div>
           </div>

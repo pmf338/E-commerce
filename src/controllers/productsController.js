@@ -88,17 +88,21 @@ const productsController = {
     },
     storeProduct: async function (req, res) {
         let errors = validationResult(req);
-
+        let existingProduct = false
+        let existingProductbyName = false
         if(!errors.isEmpty()){
             let artistList = await Artist.findAll();
             let categoriesList = await Category.findAll();
+            console.log("error en validacion crear producto", errors)
            return res.render("products/createProduct", {
                 artistList,
                 categoriesList,
                 title: "Creación producto",
                 errors: errors.mapped(),
                 oldBody: req.body,
-                user: req.session.userLogged
+                user: req.session.userLogged,
+                existingProduct : existingProduct,
+                existingProductbyName: existingProductbyName
             });
         }
 
@@ -177,8 +181,8 @@ const productsController = {
                 imageThird : req.files[2] ? req.files[2].filename : "avatar.jpeg",
             });
             res.redirect ('/shop');
-        }catch(result){
-            res.send("error in productsController-createProduct : ",error)
+        }catch(error){
+            res.send("error in productsController-createProduct : ", error)
         } 
     },
 

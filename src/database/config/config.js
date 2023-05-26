@@ -24,4 +24,5 @@ module.exports =
   "dialect": "mysql",
   "port": "3306"
  }
+ 
 }

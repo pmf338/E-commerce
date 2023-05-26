@@ -7,7 +7,7 @@
   <title><%= title %></title>
 </head>
 
-<body>
+<body id="edit-profile-body">
   <header>
     <%- include('../partials/header.ejs') %>
   </header>
@@ -19,11 +19,11 @@
             <form action="/editProfile/<%= usuario.id %>?_method=PUT" method="post" enctype="multipart/form-data">
 
               <!-- CARD -->
-              <div class="card">
+              <div class="card" style="background-color:#23252B">
+                
                 <div class="row g-0">
-
                   <!-- UP SECTION -->
-                  <div class="col-md-4 gradient-custom text-center"
+                  <div class="col-md-4 gradient-custom text-center d-flex align-items-center justify-content-center"
                     style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                     <% if (usuario.imageProfile  == "404.jpg") { %>
                     <img src="../../images/users/avatar.png" alt="Avatar" class="img-fluid my-5"
@@ -35,8 +35,8 @@
                     </br>
 
                     <div class="d-flex justify-content-center">
-                      <div class="btn btn-light btn-rounded" style="padding: 3px">
-                        <label class="form-label text-black m-1" for="customFile1">Seleccionar foto de
+                      <div class="btn btn-light btn-rounded border-0" style="padding: 3px;background-color:#23252B">
+                        <label class="form-label text-black m-1 text-white" for="customFile1">Seleccionar foto de
                           perfil</label>
                         <input type="file" class="form-control" id="user_image_edit" name="user_image_edit"
                           accept=".jpg, .png, .jpeg, .webp" />
@@ -47,7 +47,7 @@
                   <!-- DETAILS SECTION -->
                   <div class="col-md-8">
                     <div class="card-body p-4 text-center">
-                      <h1>EDITAR PERFIL</h1>
+                      <h1 class="text-white display-4">EDITAR PERFIL</h1>
                       <hr class="mt-0 mb-4">
                       <div class="row pt-1">
                         <div class="form-floating mb-3 col">
@@ -75,8 +75,7 @@
                       </div>
                       <div class="row pt-1">
                         <div class="form-floating mb-3 col">
-                          </i><input type="text" name="user_address_edit" id="user_address_edit" class="form-control"
-                            minlength="3" value=<%= usuario.address %> required>
+                          <input type="text" name="user_address_edit" id="user_address_edit" class="form-control" minlength="3" value=<%= usuario.address %> required>
                           <label for="user_address_edit">DIRECCION ENVIOS</label>
                         </div>
                       </div>
@@ -105,8 +104,8 @@
                       <!-- PASSWORD SECTION -->
                       <div class="row pt-1">
                         <div class="form-floating">
-                          <button type="button" class="btn btn-dark" id="changePass" name="changePass"
-                            onclick="cambiarPassword()">
+                          <button type="button" class="btn btn-dark border border-1 border-light" id="changePass" name="changePass"
+                            onclick="changePassword()">
                             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
                               <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
                             </svg>
@@ -116,19 +115,26 @@
                       </div>
 
                       <!-- PASSWORD HIDE SECTION -->
+                      <div class="row pt-1 mt-3">
+                        <div class="form-floating col-6 mb-3">
+                          <input type="password" name="user_password_old" id="user_password_old" class="form-control" minlength="3">
+                          <label for="user_password_old" id="lbl_user_password_old">CONTRASEÑA ACTUAL</label>
+                        </div>
+                        <div class="form-floating col-6 mb-3">
+                          <input type="password" name="user_password_edit" id="user_password_edit" class="form-control" minlength="3">
+                          <label for="user_password_edit" id="lbl_user_password_edit">CONTRASEÑA NUEVA</label>
+                        </div>
+                      </div>
                       <div class="row pt-1">
-                        <div class="col-6 mb-3">
-                          <i class="fa-solid fa-user"></i><input type="password" name="user_password_old"
-                          placeholder="Ingresar contraseña actual" id="user_password_old" minlength="3">
-                        </div>
-                        <div class="col-6 mb-3">
-                          <i class="fa-solid fa-user"></i><input type="password" name="user_password_edit"
-                            placeholder="Ingresar nueva contraseña" id="user_password_edit" minlength="3">
-                        </div>
-                        <div class="col-6 mb-3">
-                          <i class="fa-solid fa-user"></i><input type="password" name="user_password_repeat"
-                          placeholder="Repetir contraseña nueva" id="user_password_repeat" minlength="3">
-                        </div>
+                          <div class="form-floating col-6 mb-3">
+                            <input type="password" name="user_password_repeat" id="user_password_repeat" class="form-control" minlength="3">
+                            <label for="user_password_repeat" id="lbl_user_password_repeat">CONFIRMAR CONTRASEÑA NUEVA</label>
+                          </div>
+                          <div class="form-floating col-6 mb-3 d-flex justify-content-center">
+                            <button type="button" class="btn border text-white border-1 border-light" id="back_password" name="back_password" onclick="hideButtons()">
+                            OCULTAR
+                          </button>
+                          </div>
                       </div>
 
                     </div>
@@ -138,10 +144,10 @@
               </div>
 
               <!-- BUTTONS SECTION -->
-              <div class="container text-center bg-dark rounded-bottom py-3">
+              <div class="container text-center rounded-bottom py-3" style="background-color:#15171E">
                 <div class="row gx-5 justify-content-center">
                   <div class="col-12 col-md-4 my-2">
-                    <button type="submit" class="btn btn-success">
+                    <button type="submit" class="btn btn-success" id="edit-profile-btn-save">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-box-arrow-down" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -154,7 +160,7 @@
                   </div>
                   <div class="col-12 col-md-4 my-2">
                     <a href="/profile">
-                      <button type="button" class="btn btn-light">
+                      <button type="button" class="btn btn-primary" id="edit-profile-btn-cancel">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                           class="bi bi-x-square" viewBox="0 0 16 16">
                           <path
@@ -167,7 +173,7 @@
                     </a>
                   </div>
                   <div class="col-12 col-md-4 my-2">
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" id="edit-profile-btn-delete">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-trash" viewBox="0 0 16 16">
                         <path

@@ -7,7 +7,7 @@
   <title>Detalle de producto</title>
 </head>
 
-<body onload="specialInputsDetails()">
+<body onload="specialInputsDetails()" id="product-detail-body">
   <header>
     <%- include('../partials/header.ejs') %>
   </header>
@@ -17,15 +17,13 @@
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-9 mb-9 mb-lg-9">
-              <div class="card mb-3" style="border-radius: .5rem; ">
-                
+              
+              <div class="card mb-3" style="border-radius: .5rem; background-color:#23252B">  
                 <div class="row g-0">
-                  
                   <!-- LEFT SECTION -->
-                  <div class="col-md-4 gradient-custom text-center text-gray mt-5"
-                    style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                    </br></br>
-                    <!-- CAROUSEL IMGS -->
+                  <div class="col-md-4 gradient-custom text-center text-gray mt-5 d-flex align-items-center justify-content-center" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                    
+                    <!-- CAROUSEL IMGS --> 
                     <div class="form-group input-field-register row">
                       <div id="carouselExampleIndicators" class="carousel slide p-3" data-bs-ride="true">
                         <div class="carousel-indicators">
@@ -36,7 +34,7 @@
                           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                             aria-label="Slide 3"></button>
                         </div>
-                        <div class="carousel-inner">
+                        <div class="carousel-inner border-3 border border-primary border-opacity-25 rounded-3">
                           <div class="carousel-item active">
                             <% if (product.dataValues.imagePrimary != null) { %>
                             <img src="../../images/products/<%= product.dataValues.imagePrimary %>"
@@ -62,25 +60,26 @@
                             <% } %>
                           </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        <button class="carousel-control-prev ms-3" type="button" data-bs-target="#carouselExampleIndicators"
                           data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="carousel-control-prev-icon bg-black" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        <button class="carousel-control-next me-3" type="button" data-bs-target="#carouselExampleIndicators"
                           data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="carousel-control-next-icon bg-black" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
                         </button>
                       </div>
 
                     </div>
+                    
                   </div>
 
                   <!-- PRODUCTS DETAILS -->
                   <div class="col-md-8">
                     <div class="card-body p-4 container">
-                      <h1 class="display-6 card-title text-center text-gray">DETALLES DEL PRODUCTO</h1>
+                      <h1 class="display-2 card-title text-center text-white display-5">DETALLES DEL PRODUCTO</h1>
                       <hr class="mt-0 mb-4">
                       <div class="row pt-1">
                         <div class="form-floating mb-3 col">
@@ -119,18 +118,18 @@
                         </div>
                       </div>
                       <div class="row pt-1">
-                        <div id="product_size" class="form-floating mb-3 col">
+                        <div class="form-floating mb-3 col">
                           <input type="text" name="product_size" id="product_size" class="form-control"
                             value="<%- product.size %>" disabled>
                           <label for="product_size">TALLE</label>
                         </div>
-                        <div id="product_format" class="form-floating mb-3 col">
+                        <div class="form-floating mb-3 col">
                           <input type="text" name="product_format" id="product_format" class="form-control"
                             value="<%- product.size %>" disabled>
                           <label for="product_format">FORMATO</label>
                         </div>
                       </div>
-                      <div id="product_color" class="row pt-1">
+                      <div class="row pt-1" id="product_color">
                         <div class="form-floating mb-3 col">
                           <input type="text" name="product_color" id="product_color" class="form-control"
                             value="<%- product.color %>" disabled>
@@ -139,59 +138,44 @@
                       </div>
                       <div class="row pt-1">
                         <div class="form-floating mb-3 col">
-                          <textarea class="form-control" name="product_description" id="product_description" rows="3"
-                            disabled><%- product.description %></textarea>
+                          <textarea class="form-control" name="product_description" id="product_description" rows="5"
+                          disabled style="resize:none;height:120px"><%- product.description %></textarea>
                           <label for="product_description">DESCRIPCION</label>
                         </div>
                       </div>
-                      <div class="row pt-1">
+                      <div class="row pt-1 text-end">
                         <div class="form-floating m-auto col">
                           <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                             <% if (product.is_active == 1){ %>
                             <input type="radio" class="btn-check" name="product_is_active" id="btnradio1"
                               autocomplete="off" checked disabled>
-                            <label class="btn btn-outline-dark" for="btnradio1">ACTIVO</label>
-
+                            <label class="btn btn-outline-success fw-bold" for="btnradio1">ACTIVO</label>
                             <input type="radio" class="btn-check" name="product_is_active" id="btnradio2"
                               autocomplete="off" disabled>
-                            <label class="btn btn-outline-dark" for="btnradio2">NO ACTIVO</label>
+                            <label class="btn btn-outline-light" for="btnradio2">NO ACTIVO</label>
+
                             <% }else{ %>
                             <input type="radio" class="btn-check" name="product_is_active" id="btnradio1"
                               autocomplete="off" disabled>
-                            <label class="btn btn-outline-dark" for="btnradio1">ACTIVO</label>
-
+                            <label class="btn btn-outline-light" for="btnradio1">ACTIVO</label>
                             <input type="radio" class="btn-check" name="product_is_active" id="btnradio2"
                               autocomplete="off" checked disabled>
-                            <label class="btn btn-outline-dark" for="btnradio2">NO ACTIVO</label>
+                            <label class="btn btn-outline-danger fw-bold" for="btnradio2">NO ACTIVO</label>
                             <% }; %>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="card-body p-4 container d-flex align-items-center justify-content-center">
-                        <a href="/">
-                          <button type="button" class="btn btn-success">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
-                              class="bi bi-cart-plus m-1" viewBox="0 0 16 16">
-                              <path
-                                d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
-                              <path
-                                d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                            </svg>
-                            AGREGAR AL CARRITO
-                          </button>
-                        </a>
-                    </div>
                   </div>
 
                   <!-- BUTTONS SECTION -->
-                  <div class="container text-center bg-dark rounded-bottom py-3">
+                  <div class="container text-center rounded-bottom py-3" style="background-color:#15171E">
                     <div class="row gx-5 justify-content-center">
                       <div class="col-12 col-md-4 my-2">
                         <% if (locals.usuario) { %>
                         <% if (locals.usuario.roles_id == 1) { %>
                         <a href="/editProduct/<%= product.id %>">
-                          <button type="button" class="btn btn-light">
+                          <button type="button" class="btn btn-primary" id="product-detail-btn-edit">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                               class="bi bi-pencil-square" viewBox="0 0 16 16">
                               <path
@@ -206,8 +190,22 @@
                         <% } %>
                       </div>
                       <div class="col-12 col-md-4 my-2">
+                        <a href="/">
+                          <button type="button" class="btn btn-success" id="product-detail-btn-add">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                              class="bi bi-cart-plus m-1" viewBox="0 0 16 16">
+                              <path
+                                d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
+                              <path
+                                d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                            </svg>
+                            AGREGAR AL CARRITO
+                          </button>
+                        </a>
+                      </div>
+                      <div class="col-12 col-md-4 my-2">
                         <a href="/shop">
-                          <button type="button" class="btn btn-light">
+                          <button type="button" class="btn btn-primary" id="product-detail-btn-back">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                               class="bi bi-backspace" viewBox="0 0 16 16">
                               <path
@@ -222,6 +220,7 @@
                     </div>
 
                   </div>
+
                 </div>
               </div>
             </div>
