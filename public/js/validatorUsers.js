@@ -1,5 +1,4 @@
 var form = document.getElementById('form')
-var oldPass = document.getElementById('user_password_old');
 var newPass = document.getElementById('user_password_edit');
 var repeatPass = document.getElementById('user_password_repeat');
 var back = document.getElementById('back');
@@ -8,7 +7,6 @@ var inputs = document.querySelectorAll('input');
 var titulos = document.querySelectorAll('h6');
 var searchBar = document.getElementById('search-navbar');
 var alert_usuario = document.getElementById('alert_user_existent');
-var mostrar = [oldPass,newPass,repeatPass,back];
 var alert_usuario = document.getElementById('alert_user_existent')
 
 
@@ -17,24 +15,28 @@ var alert_usuario = document.getElementById('alert_user_existent')
 
 
 //Sacar el required de las contraseñas cuando estas no se esten mostrando
-function cambiarPassword(){
+function changePassword(){
+  document.getElementById('user_password_old').style.display = "block";
+  document.getElementById('lbl_user_password_old').style.display = "block";
+  document.getElementById('user_password_edit').style.display = "block";
+  document.getElementById('lbl_user_password_edit').style.display = "block";
+  document.getElementById('user_password_repeat').style.display = "block";
+  document.getElementById('lbl_user_password_repeat').style.display = "block";
+  document.getElementById('back_password').style.display = "block";
 
-    inputs.forEach(arrayInputs =>{arrayInputs.style.display = "none"});
-    mostrar.forEach(array1 => {array1.style.display = "block";
-                                array1.required = true;});
-    titulos.forEach(array2 => {array2.style.display = "none";});
+  
 
-    searchBar.style.display = "block";
-    changePass.style.display = "none";
+
 }
 
-function atras(){
-    changePass.style.display = "inline";
-
-    inputs.forEach(arrayInputs =>{arrayInputs.style.display = "block"});
-    mostrar.forEach(array1 => {array1.style.display = "none";
-                                array1.required = false;});
-    titulos.forEach(array2 => {array2.style.display = "block";});
+function hideButtons(){
+  document.getElementById('user_password_old').style.display = "none";
+  document.getElementById('lbl_user_password_old').style.display = "none";
+  document.getElementById('user_password_edit').style.display = "none";
+  document.getElementById('lbl_user_password_edit').style.display = "none";
+  document.getElementById('user_password_repeat').style.display = "none";
+  document.getElementById('lbl_user_password_repeat').style.display = "none";
+  document.getElementById('back_password').style.display = "none";
     
 }
 
