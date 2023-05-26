@@ -6,7 +6,7 @@
   <title><%= title %></title>
 </head>
 
-<body onload="specialInputs()">
+<body onload="specialInputs()" id="edit-product-body">
   <header>
     <%- include('../partials/header.ejs') %>
   </header>
@@ -18,18 +18,17 @@
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-9 mb-4 mb-lg-0">
-              <div class="card mb-3" style="border-radius: .5rem;">
+              <div class="card mb-3" style="border-radius: .5rem;background-color:#23252B">
                 </br>
                 <div class="row g-0">
 
                   <!-- LEFT SECTION -->
-                  <div class="col-md-4 gradient-custom text-center text-gray"
+                  <div class="col-md-4 gradient-custom text-center text-gray d-flex align-items-center justify-content-center"
                     style="border-top-left-radius: .5rem;border-bottom-left-radius: .5rem;">
                     </br></br>
 
                     <!-- CAROUSEL IMGS -->
                     <div class="form-group input-field-register row">
-                      <label for="user_image" class="text-center text-gray fs-5 mt-3">Imagenes del producto</label>
                       <div id="carouselExampleIndicators" class="carousel slide p-3" data-bs-ride="true">
                         <div class="carousel-indicators ">
                           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
@@ -39,7 +38,7 @@
                           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                             aria-label="Slide 3"></button>
                         </div>
-                        <div class="carousel-inner">
+                        <div class="carousel-inner border-3 border border-primary border-opacity-25 rounded-3">
                           <div class="carousel-item active">
                             <% if (product.dataValues.imagePrimary != null) { %>
                             <img src="../../images/products/<%= product.dataValues.imagePrimary %>"
@@ -65,22 +64,22 @@
                             <% } %>
                           </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        <button class="carousel-control-prev ms-3" type="button" data-bs-target="#carouselExampleIndicators"
                           data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="carousel-control-prev-icon bg-black" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        <button class="carousel-control-next me-3" type="button" data-bs-target="#carouselExampleIndicators"
                           data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="carousel-control-next-icon bg-black" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
                         </button>
                       </div>
 
 
                       <div class="d-flex justify-content-center">
-                        <div class="btn btn-light btn-rounded mb-3" style="padding: 5px">
-                          <label class="form-label text-black m-1" for="customFile1">Seleccionar nuevas
+                        <div class="btn btn-light btn-rounded mb-3 border-0" style="padding: 3px;background-color:#23252B">
+                          <label class="form-label text-white m-1" for="customFile1">Seleccionar nuevas
                             imagenes</label>
                           <input type="file" class="form-control" id="product_image" name="product_image"
                             accept=".jpg, .png, .jpeg"/>
@@ -94,7 +93,7 @@
                   <!-- PRODUCTS DETAILS -->
                   <div class="col-md-8">
                     <div class="card-body p-4 text-center">
-                      <h1>EDITAR PRODUCTO</h1>
+                      <h1 class="display-2 card-title text-center text-white display-5">EDITAR PRODUCTO</h1>
                       <hr class="mt-0 mb-4">
                       <div class="row pt-1">
                         <div class="form-floating mb-3 col">
@@ -180,33 +179,32 @@
                       </div>
                       <div class="row pt-1">
                         <div class="form-floating mb-3 col">
-                          <textarea class="form-control" name="product_description" id="product_description" rows="3"
-                            required><%- product.description %></textarea>
+                          <textarea class="form-control" name="product_description" id="product_description" rows="5"
+                          required style="resize:none;height:120px"><%- product.description %></textarea>
                           <label for="product_description">DESCRIPCION</label>
                           <div class="invalid-feedback">
                             La descripción es requerida.
                           </div>
                         </div>
                       </div>
-                      <div class="row pt-1">
+                      <div class="row pt-1 text-end">
                         <div class="form-floating m-auto col">
                           <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                             <% if (product.is_active == 1){ %>
                             <input type="radio" class="btn-check" name="product_is_active" id="btnradio1" value="true"
                               autocomplete="off" checked>
-                            <label class="btn btn-outline-dark" for="btnradio1">ACTIVO</label>
-
+                            <label class="btn btn-outline-success fw-bold" for="btnradio1">ACTIVO</label>
                             <input type="radio" class="btn-check" name="product_is_active" id="btnradio2" value="false"
                               autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btnradio2">NO ACTIVO</label>
+                            <label class="btn btn-outline-light" for="btnradio2">NO ACTIVO</label>
+
                             <% }else{ %>
                             <input type="radio" class="btn-check" name="product_is_active" id="btnradio1" value="true"
                               autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btnradio1">ACTIVO</label>
-
+                            <label class="btn btn-outline-light" for="btnradio1">ACTIVO</label>
                             <input type="radio" class="btn-check" name="product_is_active" id="btnradio2" value="false"
                               autocomplete="off" checked>
-                            <label class="btn btn-outline-dark" for="btnradio2">NO ACTIVO</label>
+                            <label class="btn btn-outline-danger fw-bold" for="btnradio2">NO ACTIVO</label>
                             <% }; %>
                           </div>
                         </div>
@@ -228,10 +226,10 @@
                   </div>
 
                   <!-- BUTTONS SECTION -->
-                  <div class="container text-center bg-dark rounded-bottom py-3">
+                  <div class="container text-center rounded-bottom py-3" style="background-color:#15171E">
                     <div class="row gx-5 justify-content-center">
                       <div class="col-12 col-md-4 my-2">
-                        <button type="submit" class="btn btn-success">
+                        <button type="submit" class="btn btn-success" id="edit-product-btn-save">
                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                           class="bi bi-box-arrow-down" viewBox="0 0 16 16">
                           <path fill-rule="evenodd"
@@ -244,7 +242,7 @@
                       </div>
                       <div class="col-12 col-md-4 my-2">
                         <a href="/productDetail/<%= product.id %>">
-                          <button type="button" class="btn btn-secondary">
+                          <button type="button" class="btn btn-primary" id="edit-product-btn-cancel">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                               class="bi bi-x-square" viewBox="0 0 16 16">
                               <path
@@ -258,7 +256,7 @@
                       </div>
                       <div class="col-12 col-md-4 my-2">
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                          data-bs-target="#exampleModal">
+                          data-bs-target="#exampleModal" id="edit-product-btn-delete">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-trash" viewBox="0 0 16 16">
                             <path
