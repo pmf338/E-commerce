@@ -6,7 +6,11 @@ const {User} = require('../../database/models');
 
 const apiUsersController = {
     dashboardUsers : async function (req,res){
-        let usersList = await User.findAll();
+        let usersList = await User.findAll({
+            attributes: {
+              exclude: ['password','roles_id']
+            }
+        });
         try{
             let respuesta = {
                 usuarios: {
