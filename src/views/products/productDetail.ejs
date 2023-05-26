@@ -17,13 +17,12 @@
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-9 mb-9 mb-lg-9">
-              <div class="card mb-3" style="border-radius: .5rem; background-color:#23252B">
-                
+              
+              <div class="card mb-3" style="border-radius: .5rem; background-color:#23252B">  
                 <div class="row g-0">
-                  
                   <!-- LEFT SECTION -->
                   <div class="col-md-4 gradient-custom text-center text-gray mt-5 d-flex align-items-center justify-content-center" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                    </br></br>
+                    
                     <!-- CAROUSEL IMGS --> 
                     <div class="form-group input-field-register row">
                       <div id="carouselExampleIndicators" class="carousel slide p-3" data-bs-ride="true">
@@ -146,52 +145,37 @@
                       </div>
                       <div class="row pt-1 text-end">
                         <div class="form-floating m-auto col">
-                          <div class="btn-group bg-light" role="group" aria-label="Basic radio toggle button group">
+                          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                             <% if (product.is_active == 1){ %>
                             <input type="radio" class="btn-check" name="product_is_active" id="btnradio1"
                               autocomplete="off" checked disabled>
-                            <label class="btn btn-outline-dark fw-bold" for="btnradio1">ACTIVO</label>
-
+                            <label class="btn btn-outline-success fw-bold" for="btnradio1">ACTIVO</label>
                             <input type="radio" class="btn-check" name="product_is_active" id="btnradio2"
                               autocomplete="off" disabled>
-                            <label class="btn btn-outline-dark" for="btnradio2">NO ACTIVO</label>
+                            <label class="btn btn-outline-light" for="btnradio2">NO ACTIVO</label>
+
                             <% }else{ %>
                             <input type="radio" class="btn-check" name="product_is_active" id="btnradio1"
                               autocomplete="off" disabled>
-                            <label class="btn btn-outline-dark" for="btnradio1">ACTIVO</label>
-
+                            <label class="btn btn-outline-light" for="btnradio1">ACTIVO</label>
                             <input type="radio" class="btn-check" name="product_is_active" id="btnradio2"
                               autocomplete="off" checked disabled>
-                            <label class="btn btn-outline-dark fw-bold" for="btnradio2">NO ACTIVO</label>
+                            <label class="btn btn-outline-danger fw-bold" for="btnradio2">NO ACTIVO</label>
                             <% }; %>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="card-body p-4 container d-flex align-items-center justify-content-center">
-                        <a href="/">
-                          <button type="button" class="btn btn-success" id="product-detail-btn-add">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
-                              class="bi bi-cart-plus m-1" viewBox="0 0 16 16">
-                              <path
-                                d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
-                              <path
-                                d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                            </svg>
-                            AGREGAR AL CARRITO
-                          </button>
-                        </a>
-                    </div>
                   </div>
 
                   <!-- BUTTONS SECTION -->
-                  <div class="container text-center bg-dark rounded-bottom py-3">
+                  <div class="container text-center rounded-bottom py-3" style="background-color:#15171E">
                     <div class="row gx-5 justify-content-center">
                       <div class="col-12 col-md-4 my-2">
                         <% if (locals.usuario) { %>
                         <% if (locals.usuario.roles_id == 1) { %>
                         <a href="/editProduct/<%= product.id %>">
-                          <button type="button" class="btn btn-light">
+                          <button type="button" class="btn btn-primary" id="product-detail-btn-edit">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                               class="bi bi-pencil-square" viewBox="0 0 16 16">
                               <path
@@ -206,8 +190,22 @@
                         <% } %>
                       </div>
                       <div class="col-12 col-md-4 my-2">
+                        <a href="/">
+                          <button type="button" class="btn btn-success" id="product-detail-btn-add">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                              class="bi bi-cart-plus m-1" viewBox="0 0 16 16">
+                              <path
+                                d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
+                              <path
+                                d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                            </svg>
+                            AGREGAR AL CARRITO
+                          </button>
+                        </a>
+                      </div>
+                      <div class="col-12 col-md-4 my-2">
                         <a href="/shop">
-                          <button type="button" class="btn btn-light">
+                          <button type="button" class="btn btn-primary" id="product-detail-btn-back">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                               class="bi bi-backspace" viewBox="0 0 16 16">
                               <path
@@ -222,6 +220,7 @@
                     </div>
 
                   </div>
+
                 </div>
               </div>
             </div>

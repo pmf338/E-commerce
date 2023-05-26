@@ -57,18 +57,21 @@
       </div>
 
       <!-- Artist / Products -->
-      <h2 class="text-center mx-5 pt-4 display-4 fw-bold" style="color:#47A6FF">PRODUCTOS RELACIONADOS</h2>
-
+      <div class="container my-3 py-2 rounded-4" style="background-color: #23252B">
+        <h4 class="text-center mx-5 pt-1 fw-bold text-white">PRODUCTOS RELACIONADOS</h4>
+      </div>
+      
+      <!-- Products List -->
       <div style="max-width: 600px; margin: auto;" class="mb-4">
         <div class="row row-cols-2 g-3">
           <% artist_products.forEach(product => { %>
           <div class="col-12 col-sm-6">
-            <div class="card text-center mx-4" style="height:400px">
+            <div class="card text-center mx-4" style="height:400px;background-color: #23252B">
               <img src="/images/products/<%- product.imagePrimary %>" class="img-fluid rounded-start artist-products-card-img p-1 rounded mx-auto d-block" alt="..." style="width:200px;height:200px">
               <hr class="border border-dark border-2 opacity-50">
               <div class="card-body">
-                <h5 class="card-title"><%- product.name %></h5>
-                <a href="http://" class="btn btn-lg btn-dark d-block mx-auto">VISITAR</a>
+                <h5 class="card-title fw-bold" style="color: #DCDCDD"><%- product.name %></h5>
+                <a href="/productdetail/<%- product.id %>" class="btn btn-lg btn-primary d-block mx-auto" id="artist-detail-btn-visit">VISITAR</a>
               </div>
             </div>
           </div>

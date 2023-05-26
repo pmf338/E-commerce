@@ -18,7 +18,9 @@ main{
 #edit-profile-body,
 #users-body,
 #artist-details-body,
-#product-detail-body{
+#product-detail-body,
+#edit-product-body,
+#shop-body{
     background-image: url('https://cdn.discordapp.com/attachments/1063604901541855232/1111389089925714092/Fondo_E_Commers.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -256,7 +258,7 @@ header .profile-btns div{
 	color: #ffffff; /* Color del texto */
 	border-radius: 5px; /* Borde del boton */
 	letter-spacing: 2px; /* Espacio entre letras */
-	background-color: black; /* Color de fondo */
+	background-color: #0074E0; /* Color de fondo */
 	padding: 18px 30px; /* Relleno del boton */
 	position: fixed;
 	bottom: 40px;
@@ -265,10 +267,13 @@ header .profile-btns div{
 	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 	z-index: 99;
 }
-.shop-btn-flotante:hover {
+.shop-btn-flotante:hover{
 	background-color: #2c2fa5; /* Color de fondo al pasar el cursor */
 	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
 	transform: translateY(-7px);
+}
+#container-shop-add-to-cart a:hover{
+    color: #229555;
 }
 
 @media only screen and (max-width: 600px) {
@@ -285,6 +290,9 @@ header .profile-btns div{
     object-fit: cover;
     width:100%;
     height:100%;
+}
+#artist-detail-btn-visit:hover{
+    border: solid 1px #47A6FF;
 }
 
 /*----------------------------------------footer.ejs---------------------------------------------------------*/
@@ -360,10 +368,23 @@ footer {
     border: solid 1px #47A6FF;
 }
 #users_table tr:hover{
-    background-color: #47A6FF;
+    background-color: #0074E0;
 }
 
 /*----------------------------------------productDetail.ejs---------------------------------------------------------*/
 #product-detail-btn-add:hover{
     border: solid 1px white;
+}
+#product-detail-btn-edit:hover,
+#product-detail-btn-back:hover{
+    border: solid 1px #47A6FF;
+}
+
+/*----------------------------------------editProduct.ejs---------------------------------------------------------*/
+#edit-product-btn-save:hover,
+#edit-product-btn-delete:hover{
+    border: solid 1px white
+}
+#edit-product-btn-cancel:hover{
+    border: solid 1px #47A6FF;
 }

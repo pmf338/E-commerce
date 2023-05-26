@@ -23,9 +23,9 @@
                     <h1 class="text-center my-3 text-white display-4">PANEL DE USUARIOS</h1>
                     <hr class="mt-0 mb-4">
                     <div class="table-responsive">
-                      <table id="users_table" class="table bg-light rounded-1 text-center">
+                      <table id="users_table" class="table rounded-1 text-center text-white" style="background-color:#15171E">
                         <thead>
-                          <tr class="bg-light">
+                          <tr style="background-color:#15171E">
                             <th scope="col">Usuario</th>
                             <th scope="col">Nombre usuario</th>
                             <th scope="col">Categoria</th>
@@ -48,7 +48,7 @@
                             <td><%- user.roles_id == 1 ? "Administrador" : "Cliente" %></td>
                             <td> 
                               <a href="/editProfile/<%- user.id %>">
-                                <button type="button" class="btn btn-outline-dark">
+                                <button type="button" class="btn btn-outline-light">
                                   Editar
                                 </button>
                               </a>  
