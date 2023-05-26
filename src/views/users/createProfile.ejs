@@ -88,8 +88,8 @@
 
                       <div class="row pt-1">
                         <div class="form-floating mb-3 col">
-                          <input type="text" name="user_name" id="user_name" class="form-control" minlength="3"
-                            value="<%= locals.validData ? locals.validData.user_name : '' %>" minlength="2" required>
+                          <input type="text" name="user_name" id="user_name" class="form-control"
+                            value="<%= locals.validData ? locals.validData.user_name : '' %>" minlength="1" required>
                           <label for="user_name">NOMBRE/S</label>
                           <div class="invalid-feedback">
                             El nombre del usuario es requerido.
