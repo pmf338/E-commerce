@@ -388,3 +388,11 @@ footer {
 #edit-product-btn-cancel:hover{
     border: solid 1px #47A6FF;
 }
+
+/*----------------------------------------cart.ejs---------------------------------------------------------*/
+#cart-btn-delete:hover{
+    border: solid 1px white;
+}
+#cart-btn-clean:hover{
+    border: solid 1px #47A6FF;
+}

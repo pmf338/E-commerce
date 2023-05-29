@@ -3,17 +3,25 @@
 
 <head>
     <%- include('../partials/head.ejs') %>
-    <link rel="stylesheet" href="/css/styles_product_cart.css">
     <title>Carrito</title>
 </head>
-<body>
+<body style="background-color: #15171E">
     <header>
         <%- include('../partials/header.ejs') %>
     </header>
     <main>
+        <h1 class="display-3 text-start text-white my-5">CARRITO DE COMPRAS</h1>
+
+        <!-- LIST OF PRODUCTS -->
+        <div class="container text-center my-5 text-center p-0">
+            <div id="products"></div>
+        </div>
+
     </main>
 </body>
 <footer>
     <%- include('../partials/footer.ejs') %>
 </footer>
+<script src="/js/cart.js"></script>
+<script src="/js/common.js"></script>
 </html>

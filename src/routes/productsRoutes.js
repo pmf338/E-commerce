@@ -27,6 +27,8 @@ productsRouter.put('/editProduct/:id',upload.array('product_image'),rules,produc
 //Eliminación producto
 productsRouter.get('/deleteProduct/:id', guestMiddlewareAdmin, productController.destroyProduct);
 productsRouter.delete('/deleteProduct/:id',productController.destroyProduct);
+//Cart
+productsRouter.get('/cart', guestMiddlewareAdmin, productController.cart);
 
 
 
