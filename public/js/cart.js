@@ -31,7 +31,6 @@ function clearCart() {
 //eliminar un product en particular del cart
 function removeItem(productId) {
     let cart = getCart();
-    console.log("A eleiminar : ", cart)
     let newCart = cart.filter(product => product.id != productId);
     saveCart(newCart);
 }
