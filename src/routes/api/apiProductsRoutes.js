@@ -6,6 +6,7 @@ const apiProductsController = require ('../../controllers/api/apiProductsControl
 //Listado productos
 productsRouter.get('/api/dashboardProducts',apiProductsController.dashboardProducts);
 productsRouter.get('/api/dashboardLastProduct',apiProductsController.lastProduct);
+productsRouter.get('/api/categoriesList/:categoryId',apiProductsController.categoriesList);
 
 
 module.exports = productsRouter;
