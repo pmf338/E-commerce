@@ -185,7 +185,6 @@ const productsController = {
             res.send("error in productsController-createProduct : ", error)
         } 
     },
-
     editProduct : async function (req,res){
         let productId = req.params.id;
         try{
@@ -281,6 +280,16 @@ const productsController = {
             res.status(400).json(result);
         }
         
+    },
+    cart : async function (req,res){
+        try{
+            res.render("products/cart",{
+                title: "Carrito",
+                user: req.session.userLogged}
+        );
+        }catch(error){
+            res.send("error in cart : ",error)
+        }
     }
 }
 
