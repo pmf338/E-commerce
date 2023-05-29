@@ -7,7 +7,7 @@
   <title><%= title %></title>
 </head>
 
-<body id="edit-profile-body">
+<body id="edit-profile-body" locals.errors ? onload = "validDataListUsers(validData)" : null >
   <header>
     <%- include('../partials/header.ejs') %>
     <% var funciona = false %>
@@ -18,7 +18,7 @@
       <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col col-lg-10 mb-4 mb-lg-0">
-            <form action="/editProfile/<%= usuario.id %>?_method=PUT" method="post" enctype="multipart/form-data" novalidate>
+            <form class="form-edit-user needs-validation" action="/editProfile/<%= usuario.id %>?_method=PUT" method="post" enctype="multipart/form-data" novalidate>
 
               <!-- CARD -->
               <div class="card" style="background-color:#23252B">
@@ -67,7 +67,6 @@
 
                         <% if( locals.errors) { %>
                    
-                          <% console.log("errores",locals.errors) %>
                           <div id="alert_user_existent" class="alert alert-danger d-flex align-items-center" role="alert">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                               class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img"

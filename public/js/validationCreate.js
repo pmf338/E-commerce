@@ -5,7 +5,10 @@ var category = document.getElementById('product_category');
 var size = document.getElementById('product_size');
 var color = document.getElementById('product_color');
 var format = document.getElementById('product_format');
-var alert_sku = document.getElementById('alert_sku_existent')
+var alert_sku = document.getElementById('alert_sku_existent');
+var colorLabel = document.getElementById('color_label');
+var formatLabel = document.getElementById('format_label');
+var sizeLabel = document.getElementById('size_label');
 
 
 
@@ -47,6 +50,16 @@ function specialInputsDetails() {
     color.style.display = "none"
     format.style.display = "none"
   }
+}
+
+function specialLabelDetails(){ 
+
+  if(category.value != "Ropa"){
+    colorLabel.style.display = "none"
+    sizeLabel.style.display = "none"
+    formatLabel.style.display = "none"
+  }
+  
 }
 
 function specialInputsSelect() {

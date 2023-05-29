@@ -227,16 +227,30 @@ const userController = {
         let usuario = await User.findByPk(userId);
         let newPass = req.body.user_password_edit;
         let errors = validationResult(req);
+        let userLog = req.session;
         
             if (!errors.isEmpty()) {
                 let existingUser = false;
-                return res.render("users/editProfile", {
-                    success: false,
-                    title: "Edición de usuario",
-                    errors: errors.mapped(),
-                    existingUser: existingUser,
-                    validData: req.body
-                })
+                if(usuario.dataValues.id == userLog.usuario.id)
+                {
+                    return res.render("users/editProfile", {
+                        success: false,
+                        title: "Edición de usuario",
+                        errors: errors.mapped(),
+                        existingUser: existingUser,
+                        validData: req.session.usuario
+                    })
+                }else{
+                    return res.render("users/editProfile", {
+                        success: false,
+                        title: "Edición de usuario",
+                        errors: errors.mapped(),
+                        existingUser: existingUser,
+                        validData: req.body
+                    })
+
+                }
+                
             }
 
             const foundExistingUser = await User.findOne({

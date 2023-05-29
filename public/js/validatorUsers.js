@@ -47,6 +47,15 @@ function hideButtons(){
     
 }
 
+function validDataListUsers(validData) {
+
+    inputs.forEach(oldBody => {
+      console.log("HOLA");
+        oldBody.value = validData;
+
+    })
+}
+
 function inicioApp() {
   form.addEventListener('submit', crearProducto);
   form.user_user_name.addEventListener('blur', validarFormulario);
