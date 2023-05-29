@@ -7,7 +7,7 @@
   <title>Detalle de producto</title>
 </head>
 
-<body onload="specialInputsDetails()" id="product-detail-body">
+<body onload="specialInputsDetails(),specialLabelDetails()" id="product-detail-body">
   <header>
     <%- include('../partials/header.ejs') %>
   </header>
@@ -121,19 +121,19 @@
                         <div class="form-floating mb-3 col">
                           <input type="text" name="product_size" id="product_size" class="form-control"
                             value="<%- product.size %>" disabled>
-                          <label for="product_size" class="fw-bold text-primary">TALLE</label>
+                          <label for="product_size" name="size_label" id="size_label" class="fw-bold text-primary">TALLE</label>
                         </div>
                         <div class="form-floating mb-3 col">
                           <input type="text" name="product_format" id="product_format" class="form-control"
                             value="<%- product.size %>" disabled>
-                          <label for="product_format" class="fw-bold text-primary">FORMATO</label>
+                          <label for="product_format" name="format_label" id="format_label" class="fw-bold text-primary">FORMATO</label>
                         </div>
                       </div>
                       <div class="row pt-1">
                         <div class="form-floating mb-3 col">
                           <input type="text" name="product_color" id="product_color" class="form-control"
                             value="<%- product.color %>" disabled>
-                          <label for="product_color" class="fw-bold text-primary">COLOR</label>
+                          <label for="product_color" name="color_label" id="color_label" class="fw-bold text-primary">COLOR</label>
                         </div>
                       </div>
                       <div class="row pt-1">

@@ -24,6 +24,9 @@ function changePassword(){
   document.getElementById('lbl_user_password_repeat').style.display = "block";
   document.getElementById('back_password').style.display = "block";
 
+  document.getElementById('user_password_old').required = "true";
+  document.getElementById('user_password_edit').required = "true";
+  document.getElementById('user_password_repeat').required = "true";
   
 
 
@@ -37,7 +40,20 @@ function hideButtons(){
   document.getElementById('user_password_repeat').style.display = "none";
   document.getElementById('lbl_user_password_repeat').style.display = "none";
   document.getElementById('back_password').style.display = "none";
+
+  document.getElementById('user_password_old').required = "false";
+  document.getElementById('user_password_edit').required = "false";
+  document.getElementById('user_password_repeat').required = "false";
     
+}
+
+function validDataListUsers(validData) {
+
+    inputs.forEach(oldBody => {
+      console.log("HOLA");
+        oldBody.value = validData;
+
+    })
 }
 
 function inicioApp() {

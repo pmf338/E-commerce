@@ -22,8 +22,6 @@ const userRules = [
     .isLength({min: 8}).withMessage('Ingrese una contraseña de al menos 8 caracteres')
     .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[&@#$%/]).{8,}$/).withMessage('La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un caracter especial'),
     
-    
-    
 ];
 
 module.exports = userRules;
