@@ -6,7 +6,7 @@
   <title><%= title %></title>
 </head>
 
-<body onload="specialInputs()">
+<body onload="specialInputs()" id="edit-product-body">
   <header>
     <%- include('../partials/header.ejs') %>
     <% var funciona = false %>
@@ -19,15 +19,14 @@
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-9 mb-4 mb-lg-0">
-              <div class="card mb-3" style="border-radius: .5rem; ">
+              <div class="card mb-3" style="border-radius: .5rem; background-color:#23252B">
                 <div class="row g-0">
                   <!-- LEFT SECTION -->
-                  <div class="col-md-4 gradient-custom text-center text-gray"
+                  <div class="col-md-4 gradient-custom text-center text-gray d-flex align-items-center justify-content-center"
                     style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                     </br></br>
                     <!-- CAROUSEL IMGS -->
                     <div class="form-group input-field-register row">
-                      <label for="user_image" class="text-center text-white">Foto de perfil</label>
                       <div class="rounded-image text-center">
                         <img src="images/products/avatar.png" class="img-fluid w-50 p-5" />
                       </div>
@@ -49,7 +48,7 @@
                   <!-- PRODUCTS DETAILS -->
                   <div class="col-md-8">
                     <div class="card-body p-4 text-center">
-                      <h1>NUEVO PRODUCTO</h1>
+                      <h1 class="display-2 card-title text-center text-white display-5">NUEVO PRODUCTO</h1>
                       <hr class="mt-0 mb-4">
                       <div class="row pt-1">
                         <% if(existingProduct ||  existingProductbyName) { %>
