@@ -2,19 +2,19 @@ module.exports =
 {
  "development": {
    "username": "root",
-   "password": "root",
+   "password": "basededatos123",
    "database": "rocket_music",
    "host": "127.0.0.1",
    "dialect": "mysql",
-   "port": "3305"
+   "port": "3306"
  },
  "test": {
   "username": "root",
-  "password": "root",
+  "password": "basededatos123",
   "database": "rocket_music",
   "host": "127.0.0.1",
   "dialect": "mysql",
-  "port": "3305"
+  "port": "3306"
  },
  "production": {
   "username": "root",
@@ -24,4 +24,5 @@ module.exports =
   "dialect": "mysql",
   "port": "3305"
  }
+ 
 }

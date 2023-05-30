@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs') %>
+    <title>Carrito</title>
+</head>
+<body style="background-color: #15171E">
+    <header>
+        <%- include('../partials/header.ejs') %>
+    </header>
+    <main>
+        <!-- TITLE SECTION -->
+        <div class="container mt-3 py-3 rounded-4" style="background-color: #23252B">
+            <h1 class="display-3 text-center text-white my-5">CARRITO DE COMPRAS</h1>
+        </div>
+        
+
+        <!-- LIST OF PRODUCTS -->
+        <div class="container text-center my-5 text-center p-0">
+            <div id="products"></div>
+        </div>
+
+    </main>
+</body>
+<footer>
+    <%- include('../partials/footer.ejs') %>
+</footer>
+<script src="/js/cart.js"></script>
+<script src="/js/common.js"></script>
+</html>

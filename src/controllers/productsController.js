@@ -9,7 +9,7 @@ const productsController = {
     index : async function (req,res){
         try{
             let productsList = await Product.findAll({
-                order: [['updatedAt','ASC']],
+                order: [['updatedAt','DESC']],
                 limit: 3     
             });
             let artistsList = await Artist.findAll({
@@ -72,35 +72,89 @@ const productsController = {
         try{
             let artistList = await Artist.findAll();
             let categoriesList = await Category.findAll();
+            let existingProduct = false
+            let existingProductbyName = false
             res.render("products/createProduct", {
                 artistList,
                 categoriesList,
                 title: "Creación producto",
-                user: req.session.userLogged
+                user: req.session.userLogged,
+                existingProduct : existingProduct,
+                existingProductbyName: existingProductbyName
             });
         }catch(result){
-            //res.send("error in productsController-createProduct : ",error)
             res.status(400).json(result);
         }
     },
     storeProduct: async function (req, res) {
         let errors = validationResult(req);
-        console.log("validacion en guardar producto", errors);
-
+        let existingProduct = false
+        let existingProductbyName = false
         if(!errors.isEmpty()){
             let artistList = await Artist.findAll();
             let categoriesList = await Category.findAll();
+            console.log("error en validacion crear producto", errors)
            return res.render("products/createProduct", {
                 artistList,
                 categoriesList,
                 title: "Creación producto",
                 errors: errors.mapped(),
                 oldBody: req.body,
-                user: req.session.userLogged
+                user: req.session.userLogged,
+                existingProduct : existingProduct,
+                existingProductbyName: existingProductbyName
             });
         }
 
+        
+        const foundExistingProduct = await Product.findOne({ where: { sku: req.body.product_sku } });
+        const foundExistingProductbyName = await Product.findOne({ where: { name: req.body.product_name } });
 
+        if (foundExistingProduct && foundExistingProductbyName){
+            let artistList = await Artist.findAll();
+            let categoriesList = await Category.findAll();
+            let existingProduct = true;
+            let existingProductbyName = true
+           return res.render("products/createProduct", {
+                artistList,
+                categoriesList,
+                title: "Creación producto",
+                oldBody: req.body,
+                user: req.session.userLogged,
+                existingProduct : existingProduct,
+                existingProductbyName: existingProductbyName
+            });
+        } else if (foundExistingProduct) {
+            let artistList = await Artist.findAll();
+            let categoriesList = await Category.findAll();
+            let existingProduct = true;
+            let existingProductbyName = false
+           return res.render("products/createProduct", {
+                artistList,
+                categoriesList,
+                title: "Creación producto",
+                oldBody: req.body,
+                user: req.session.userLogged,
+                existingProduct : existingProduct,
+                existingProductbyName: existingProductbyName
+            });
+        } else if (foundExistingProductbyName) {
+            let artistList = await Artist.findAll();
+            let categoriesList = await Category.findAll();
+            let existingProduct = false;
+            let existingProductbyName = true
+           return res.render("products/createProduct", {
+                artistList,
+                categoriesList,
+                title: "Creación producto",
+                oldBody: req.body,
+                user: req.session.userLogged,
+                existingProduct : existingProduct,
+                existingProductbyName: existingProductbyName
+            });
+        }
+
+        
         try{
             let active_value;
             if (req.body.product_is_active == true){
@@ -127,9 +181,9 @@ const productsController = {
                 imageThird : req.files[2] ? req.files[2].filename : "avatar.jpeg",
             });
             res.redirect ('/shop');
-        }catch(result){
-            res.status(400).json(result);
-        }
+        }catch(error){
+            res.send("error in productsController-createProduct : ", error)
+        } 
     },
     editProduct : async function (req,res){
         let productId = req.params.id;
@@ -155,8 +209,9 @@ const productsController = {
     updateProduct: async function (req, res) {
 
         let errors = validationResult(req);
-        console.log("validacion en editar producto", errors);
         let productId = req.params.id;
+        let productImage = await Product.findByPk(productId);
+        console.log("producto",productImage);
         if(!errors.isEmpty()){
             let product = await Product.findByPk(productId);
             let artistList = await Artist.findAll();
@@ -196,9 +251,9 @@ const productsController = {
                 is_active : active_value,
                 description : req.body.product_description || "sin descripcion",
                 updatedAt : Date.now(),
-                imagePrimary : req.files[0] ? req.files[0].filename : "avatar.jpeg",
-                imageSecond : req.files[1] ? req.files[1].filename : "avatar.jpeg",
-                imageThird : req.files[2] ? req.files[2].filename : "avatar.jpeg",
+                imagePrimary : req.files[0] ? req.files[0].filename : productImage.dataValues.imagePrimary,
+                imageSecond : req.files[1] ? req.files[1].filename : productImage.dataValues.imageSecond,
+                imageThird : req.files[2] ? req.files[2].filename : productImage.dataValues.imageThird,
             },{
                 where : {
                     id : req.params.id
@@ -209,29 +264,42 @@ const productsController = {
             res.status(400).json(result);
         }     
     },
-    deleteProduct: async function (req,res){
+    destroyProduct: async function (req, res) {
         try {
-            Product.destroy({
-                where: {
-                    id: req.params.id
-                }
-            })
-        }catch(result){
+            let producto = await Product.findOne({
+                where: {id: req.params.id}
+            });
+            
+            if(producto)
+            {
+                await producto.destroy();
+                res.redirect('/')
+            }
+            
+        } catch (result) {
             res.status(400).json(result);
         }
-        res.redirect ('/shop')
+        
     },
-    destroyProduct: async function (req, res) {
+    cart : async function (req,res){
         try{
-            Product.destroy({
-                where: {
-                    id: req.params.id
-                }
-            })
+            res.render("products/cart",{
+                title: "Carrito",
+                user: req.session.userLogged}
+        );
         }catch(error){
-            res.send("error in productsController-destroyProduct : ",error)
+            res.send("error in cart : ",error)
         }
-        res.redirect ('/shop')
+    },
+    error : async function (req,res){
+        try{
+            res.render("products/404",{
+                title: "Error-404",
+                user: req.session.userLogged}
+        );
+        }catch(error){
+            res.send("error in 404 : ",error)
+        }
     }
 }
 

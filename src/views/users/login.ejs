@@ -7,7 +7,7 @@
     <title>titulo</title>
 </head>
 
-<body>
+<body id="login-body">
     <header>
         <%- include('../partials/header.ejs') %>
     </header>
@@ -16,11 +16,12 @@
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-lg-6">
-                        <div class="card mt-5">
-                            <div class="card-body rounded" style="background-color: #0b1320;">
-                                <h1 class="display-5 card-title text-center text-white">INGRESAR DATOS</h1>
+                        <div class="card mt-5 border-0">
+                            <div class="card-body rounded-3 " style="background-color: #23252B">
+                                <h1 class="display-4 card-title text-center text-white my-2">INICIAR SESIÓN</h1>
                                 <form class="form-login" action="/login" method="post">
                                     <div class="form-group input-field-login">
+                                        <!-- DATA LOGIN BTNS -->
                                         <div class="row pt-1">
                                             <div class="form-floating mb-3 col">
                                                 <input type="text" name="email" id="email" class="form-control">
@@ -45,26 +46,30 @@
                                                     Please provide a valid city.
                                                   </div>
                                             </div> 
-                                        </div>   
+                                        </div>
+
+                                        <!-- REMEBER ME -->   
                                         <div class="form-group">
                                             <div class="form-check">
                                                 <div class="d-flex justify-content-center">
-                                                    <input type="checkbox" class="form-check-input" id="remember_me" name="remember_me">
+                                                    <input type="checkbox" class="form-check-input p-0" id="remember_me" name="remember_me">
                                                     <label class="form-check-label text-white ms-1" for="remember_me">Recuerdame</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group text-center">
-                                            <button type="submit" class="btn btn-primary">Ingresar</button>
+                                            <button type="submit" class="btn btn-primary" id="login-btn">INGRESAR</button>
                                         </div>
+
+                                        <!-- LOGIN AS... -->
                                         <div class="row pt-3">
                                             <div class="form-group text-center">
-                                                <h3 class="display-6 text-white">ACCEDA CON:</h3>
+                                                <h3 class="fs-4 text-white mt-3">ACCEDA CON:</h3>
                                             </div>
-                                            <div class="container text-center">
+                                            <div class="container text-center" id="login-container-login-as">
                                                 <div class="zoom row">
                                                     <div class="col-4">
-                                                        <a href="#">
+                                                        <a href="#" >
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"
                                                                 fill="currentColor" class="bi bi-instagram"
                                                                 viewBox="0 0 16 16">
@@ -94,6 +99,8 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- SOCIAL MEDIA -->
                                         <div class="form-group text-center row pt-3">
                                             <a href="#" data-toggle="modal" data-target="#forgotPasswordModal"
                                                 class="link-info col-md-6">¿Olvido su contraseña?</a>

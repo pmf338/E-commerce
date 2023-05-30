@@ -25,9 +25,12 @@ productsRouter.post('/createProduct',upload.array('product_image'),rules,product
 productsRouter.get('/editProduct/:id', guestMiddlewareAdmin, productController.editProduct);
 productsRouter.put('/editProduct/:id',upload.array('product_image'),rules,productController.updateProduct);
 //Eliminación producto
-productsRouter.get('/deleteProduct/:id', guestMiddlewareAdmin, productController.deleteProduct);
+productsRouter.get('/deleteProduct/:id', guestMiddlewareAdmin, productController.destroyProduct);
 productsRouter.delete('/deleteProduct/:id',productController.destroyProduct);
-
+//Cart
+productsRouter.get('/cart', guestMiddleware, productController.cart);
+//404
+productsRouter.get('/404', productController.error);
 
 
 
