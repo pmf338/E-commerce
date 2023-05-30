@@ -1,25 +1,28 @@
 module.exports =
 {
  "development": {
-   "username": "test",
-   "password": "123qweasd-",
+   "username": "root",
+   "password": "basededatos123",
    "database": "rocket_music",
-   "host": "192.168.0.249",
-   "dialect": "mysql"
+   "host": "127.0.0.1",
+   "dialect": "mysql",
+   "port": "3306"
  },
  "test": {
-   "username": "test",
-   "password": "123qweasd-",
-   "database": "rocket_music",
-   "host": "192.168.0.249",
-   "dialect": "mysql"
+  "username": "root",
+  "password": "basededatos123",
+  "database": "rocket_music",
+  "host": "127.0.0.1",
+  "dialect": "mysql",
+  "port": "3306"
  },
  "production": {
-   "username": "test",
-   "password": "123qweasd-",
-   "database": "rocket_music",
-   "host": "192.168.0.249",
-   "dialect": "mysql"
+  "username": "root",
+  "password": "root",
+  "database": "rocket_music",
+  "host": "127.0.0.1",
+  "dialect": "mysql",
+  "port": "3305"
  }
  
 }

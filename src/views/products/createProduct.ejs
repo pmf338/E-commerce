@@ -31,8 +31,8 @@
                         <img src="images/products/avatar.png" class="img-fluid w-50 p-5" />
                       </div>
                       <div class="d-flex justify-content-center">
-                        <div class="btn btn-light btn-rounded" style="padding: 5px">
-                          <label class="form-label text-black m-1" for="customFile1">Seleccionar nuevas
+                        <div class="btn btn-light btn-rounded mb-3 border-0" style="padding: 3px;background-color:#23252B">
+                          <label class="form-label text-white m-1" for="customFile1">Seleccionar nuevas
                             imagenes</label>
                           <input type="file" class="form-control" id="product_image" name="product_image"
                             multiple="multiple" accept=".jpg, .png, .jpeg"
@@ -99,7 +99,7 @@
                         <div class="form-floating mb-3 col">
                           <input type="number" name="product_sku" id="product_sku" class="form-control"
                             value="<%- locals.oldBody ? locals.oldBody.product_sku : "" %>" required>
-                          <label for="product_sku">SKU</label>
+                          <label class="fw-bold text-primary" for="product_sku">SKU</label>
                           <div class="invalid-feedback">
                             El SKU es requerido.
                           </div>
@@ -107,7 +107,7 @@
                         <div class="form-floating mb-3 col">
                           <input type="text" name="product_name" id="product_name" class="form-control"
                             value="<%- locals.oldBody ? locals.oldBody.product_name : "" %>" minlength="5" required>
-                          <label for="product_name">NOMBRE</label>
+                          <label class="fw-bold text-primary" for="product_name">NOMBRE</label>
                           <div class="invalid-feedback">
                             El nombre del producto es requerido.
                           </div>
@@ -117,7 +117,7 @@
                         <div class="form-floating mb-3 col">
                           <input type="number" name="product_price" id="product_price" class="form-control"
                             minlength="1" value="<%- locals.oldBody ? locals.oldBody.product_price : "" %>" required>
-                          <label for="product_price">PRECIO UNITARIO</label>
+                          <label class="fw-bold text-primary" for="product_price">PRECIO UNITARIO</label>
                           <div class="invalid-feedback">
                             El precio unitario es requerido.
                           </div>
@@ -125,7 +125,7 @@
                         <div class="form-floating mb-3 col">
                           <input type="number" name="product_quantity" id="product_quantity" class="form-control"
                             minlength="1" value="<%- locals.oldBody ? locals.oldBody.product_quantity : "" %>" required>
-                          <label for="product_quantity">CANTIDAD STOCK</label>
+                          <label class="fw-bold text-primary" for="product_quantity">CANTIDAD STOCK</label>
                           <div class="invalid-feedback">
                             La cantidad en stock es requerida.
                           </div>
@@ -144,7 +144,7 @@
                               <% }; %>><%- artist.name %></option>
                             <% }); %>
                           </select>
-                          <label for="product_artist">ARTISTA</label>
+                          <label class="fw-bold text-primary" for="product_artist">ARTISTA</label>
                           <div class="invalid-feedback">
                             El artista asociado es requerido.
                           </div>
@@ -161,7 +161,7 @@
                               <% }; %>><%- category.description %></option>
                             <% }); %>
                           </select>
-                          <label for="product_category">CATEGORIA</label>
+                          <label class="fw-bold text-primary" for="product_category">CATEGORIA</label>
                           <div class="invalid-feedback">
                             La categoria es requerida.
                           </div>
@@ -171,19 +171,19 @@
                         <div id="product_size" class="form-floating mb-3 col">
                           <input type="text" name="product_size" id="product_size" class="form-control"
                             value="<%- locals.oldBody ? locals.oldBody.product_size : "" %>">
-                          <label for="product_size">TALLE</label>
+                          <label class="fw-bold text-primary" for="product_size">TALLE</label>
                         </div>
                         <div id="product_format" class="form-floating mb-3 col">
                           <input type="text" name="product_format" id="product_format" class="form-control"
                             value="<%- locals.oldBody ? locals.oldBody.product_format : "" %>">
-                          <label for="product_format">FORMATO</label>
+                          <label class="fw-bold text-primary" for="product_format">FORMATO</label>
                         </div>
                       </div>
                       <div id="product_color" class="row pt-1">
                         <div class="form-floating mb-3 col-6">
                           <input type="text" name="product_color" id="product_color" class="form-control"
                             value="<%- locals.oldBody ? locals.oldBody.product_color : "" %>">
-                          <label for="product_color">COLOR</label>
+                          <label class="fw-bold text-primary" for="product_color">COLOR</label>
                         </div>
                       </div>
                       <div class="row pt-1">
@@ -191,7 +191,7 @@
                           <textarea class="form-control" name="product_description" id="product_description" rows="3"
                             required
                             minlength="20"><%- locals.oldBody ? locals.oldBody.product_description : "" %></textarea>
-                          <label for="product_description">DESCRIPCION</label>
+                          <label class="fw-bold text-primary" for="product_description">DESCRIPCION</label>
                           <div class="invalid-feedback">
                             La descripción es requerida.
                           </div>
@@ -202,11 +202,11 @@
                           <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                             <input type="radio" class="btn-check" name="product_is_active" id="btnradio1"
                               autocomplete="off" checked>
-                            <label class="btn btn-outline-dark" for="btnradio1">ACTIVO</label>
+                            <label class="btn btn-outline-success fw-bold" for="btnradio1">ACTIVO</label>
 
                             <input type="radio" class="btn-check" name="product_is_active" id="btnradio2"
                               autocomplete="off">
-                            <label class="btn btn-outline-dark" for="btnradio2">NO ACTIVO</label>
+                            <label class="btn btn-outline-danger fw-bold" for="btnradio2">NO ACTIVO</label>
                           </div>
                         </div>
                       </div>
@@ -214,7 +214,7 @@
                   </div>
 
                   <!-- BUTTONS SECTION -->
-                  <div class="container text-center bg-dark rounded-bottom py-3">
+                  <div class="container text-center rounded-bottom py-3" style="background-color:#15171E">
                     <div class="row gx-5 justify-content-center">
                       <div class="col-12 col-md-4 my-2">
                         <button type="submit" class="btn btn-success">
@@ -231,7 +231,7 @@
                       </div>
                       <div class="col-12 col-md-4 my-2">
                         <a href="/">
-                          <button type="button" class="btn btn-secondary">
+                          <button type="button" class="btn btn-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                               class="bi bi-x-square" viewBox="0 0 16 16">
                               <path
