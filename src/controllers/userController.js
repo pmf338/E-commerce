@@ -207,13 +207,16 @@ const userController = {
     },
     editUser: async function (req, res) {
         let userId = req.params.id;
+        let existingUser = false;
         try {
             let usuario = await User.findByPk(userId);
+            console.log("usuario cargado incialmente", usuario)
             res.render("users/editProfile", {
-                usuario: {
+                validData: {
                     ...usuario.dataValues
                 },
                 title: "Edición de usuario",
+                existingUser: existingUser,
                 user: req.session.userLogged
             });
         } catch (result) {
@@ -224,7 +227,79 @@ const userController = {
         let userId = req.params.id;
         let usuario = await User.findByPk(userId);
         let newPass = req.body.user_password_edit;
+        let errors = validationResult(req);
+        let userLog = req.session;
+        
+        console.log("req= ", req.body);
+            if (!errors.isEmpty()) {
+                let existingUser = false;
+                if(usuario.dataValues.id == userLog.usuario.id)
+                {
+                    
+                    return res.render("users/editProfile", {
+                        success: false,
+                        title: "Edición de usuario",
+                        errors: errors.mapped(),
+                        existingUser: existingUser,
+                        validData: req.body,
+                        originalData: {
+                            ...usuario.dataValues
+                        },
+
+                    })
+                }else{
+                    
+                    return res.render("users/editProfile", {
+                        success: false,
+                        title: "Edición de usuario",
+                        errors: errors.mapped(),
+                        existingUser: existingUser,
+                        validData: req.body,
+                        originalData: {
+                            ...usuario.dataValues
+                        },
+                    })
+
+                }
+                
+            }
+
+            // const foundExistingUser = await User.findOne({
+            //     where: {
+            //         [Op.or]: [
+            //           {
+            //             email: {
+            //               [Op.like]: req.body.user_email_edit
+            //             }
+            //           },
+            //           {
+            //             userName: {
+            //               [Op.like]: req.body.user_user_name_edit
+            //             }
+            //           }
+            //         ]
+            //       }
+            // });  
+                 
+          
+            //   if (foundExistingUser) {
+                
+            //     let existingUser = true
+            //     return res.render("users/editProfile", {
+            //         title: "Registro de usuario",
+            //         validData: req.body,
+            //         existingUser: existingUser
+            //     });
+            //   }
+        
         try {
+            let active_value;
+            if (req.body.user_is_active == true){
+                active_value = 1;
+            }else{
+                active_value = 2;
+            }
+
             await User.update({
 
                 name: req.body.user_name_edit,
@@ -234,6 +309,7 @@ const userController = {
                 password: req.body.user_password_edit ? bcrypt.hashSync(req.body.user_password_edit, 10) : usuario.dataValues.password,
                 address: req.body.user_address_edit,
                 imageProfile: req.file ? req.file.filename : usuario.dataValues.imageProfile,
+                is_active : active_value,
                 roles_id: req.body.user_category_edit,
             }, {
                 where: {
@@ -250,7 +326,6 @@ const userController = {
     destroyUser: async function (req, res) {
         let userLog = req.session;
         try {
-            console.log("FUNCIONA")
             let usuario = await User.findOne({
                 where: {id: req.params.id}
             });
