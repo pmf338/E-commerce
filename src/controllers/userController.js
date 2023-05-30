@@ -116,9 +116,13 @@ const userController = {
         }
     },
     userList: async function (req, res) {
+        console.log("req session", req.session)
+        let userId = req.session.usuario.id
         try {
+            let usuarioLogueado = await User.findByPk(userId)
             let usersList = await User.findAll();
             res.render("users/Users", {
+                usuarioLogueado,
                 usersList,
                 title: "Usuarios",
                 user: req.session.userLogged
@@ -210,7 +214,6 @@ const userController = {
         let existingUser = false;
         try {
             let usuario = await User.findByPk(userId);
-            console.log("usuario cargado incialmente", usuario)
             res.render("users/editProfile", {
                 validData: {
                     ...usuario.dataValues
@@ -230,7 +233,6 @@ const userController = {
         let errors = validationResult(req);
         let userLog = req.session;
         
-        console.log("req= ", req.body);
             if (!errors.isEmpty()) {
                 let existingUser = false;
                 if(usuario.dataValues.id == userLog.usuario.id)
@@ -263,34 +265,6 @@ const userController = {
                 }
                 
             }
-
-            // const foundExistingUser = await User.findOne({
-            //     where: {
-            //         [Op.or]: [
-            //           {
-            //             email: {
-            //               [Op.like]: req.body.user_email_edit
-            //             }
-            //           },
-            //           {
-            //             userName: {
-            //               [Op.like]: req.body.user_user_name_edit
-            //             }
-            //           }
-            //         ]
-            //       }
-            // });  
-                 
-          
-            //   if (foundExistingUser) {
-                
-            //     let existingUser = true
-            //     return res.render("users/editProfile", {
-            //         title: "Registro de usuario",
-            //         validData: req.body,
-            //         existingUser: existingUser
-            //     });
-            //   }
         
         try {
             let active_value;
@@ -317,7 +291,7 @@ const userController = {
                     id: req.params.id
                 }
             });
-            res.redirect('/profile')
+            res.redirect('/profile/'+ req.params.id)
 
         } catch (result) {
             res.status(400).json(result);

@@ -52,16 +52,27 @@
     <nav class="profile-btns col-auto col-lg-3 col-xl-2 text-end d-flex align-items-center justify-content-end order-2 order-lg-3">
       <!--user logged, validation-->
       <% if (locals.usuario) { %>
-        <a href="/profile" class="profile">
-          <% if (locals._locals.usuario.imageProfile == "404.jpg") { %>
-            <!--user logged , no profile img -->
-            <img src="../../images/users/avatar.png" alt="Avatar"/> <span
-            class="fw-light d-none d-sm-block"><%= locals._locals.usuario.userName %></span>
-          <% } else { %>
-            <!--user logged , with profile img -->
-            <img src="../../images/users/<%= locals._locals.usuario.imageProfile %>" alt="Avatar" width="16" height="16"/> <span
-            class="fw-light d-none d-sm-block"><%= locals._locals.usuario.userName%></span>
-          <% } %>
+        <% console.log("LOCALS HEADER", locals)%>
+        <a href="/profile/<%= locals._locals.usuario.id %>" class="profile">
+
+          <% if (locals.usuarioLogueado) { %>
+              <!--user logged , with profile img -->
+              <img src="../../images/users/<%= locals.usuarioLogueado.dataValues.imageProfile %>" alt="Avatar" width="16" height="16" id="img_logged"/> <span
+              class="fw-light d-none d-sm-block"><%= locals._locals.usuario.userName%></span>
+              <% } else if (locals._locals.usuario.imageProfile == "404.jpg"){ %>
+              <!--user logged , no profile img -->
+              <img src="../../images/users/avatar.png" alt="Avatar"/> <span
+              class="fw-light d-none d-sm-block"><%= locals._locals.usuario.userName %></span>
+            <% } else { %>
+              <img src="../../images/users/<%= locals._locals.usuario.imageProfile %>" alt="Avatar" width="16" height="16" id="img_logged"/> <span
+              class="fw-light d-none d-sm-block"><%= locals._locals.usuario.userName%></span>
+              <% } %>
+
+         
+
+
+
+
         </a>
         <a href="/logout" id="logout" onclick="clearCart()">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left"
@@ -94,3 +105,14 @@
   </div>
 </div>
 <script src="/js/cart.js"></script>
+
+<script> 
+ 
+    var container = document.getElementById("img_logged");
+    var content = container.innerHTML;
+    container.innerHTML= content; 
+    
+   //this line is to watch the result in console , you can remove it later	
+    console.log("Refreshed"); 
+
+</script>

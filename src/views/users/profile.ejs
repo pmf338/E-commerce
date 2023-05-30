@@ -24,11 +24,11 @@
                 <!-- IMAGE SECTION -->
                 <div class="col-md-4 gradient-custom text-center text-white d-flex align-items-center justify-content-center" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
 
-                  <% if (usuario.imageProfile  == "404.jpg") { %>
+                  <% if (usuarioLogueado.imageProfile  == "404.jpg") { %>
                   <img src="../../images/users/avatar.png" alt="Avatar" class="img-fluid my-5"
                     style="width: 150px; border-radius: 40%;" />
                   <% } else { %>
-                  <img src="../../images/users/<%= usuario.imageProfile %>" alt="Avatar" class="img-fluid my-5"
+                  <img src="../../images/users/<%= usuarioLogueado.imageProfile %>" alt="Avatar" class="img-fluid my-5"
                     style="width: 150px; border-radius: 40%;" />
                   <% } %>
                 </div>
@@ -41,23 +41,23 @@
                     <div class="row pt-1">
                       <div class="col-6 mb-3">
                         <h6 class="fw-bold">Nombre</h6>
-                        <p><%= usuario.name %></p>
+                        <p><%= usuarioLogueado.name %></p>
                       </div>
                       <div class="col-6 mb-3">
                         <h6 class="fw-bold">Apellidos</h6>
-                        <p><%= usuario.surname %></p>
+                        <p><%= usuarioLogueado.surname %></p>
                       </div>
                       <div class="col-6 mb-3">
                         <h6 class="fw-bold">Nombre de usuario</h6>
-                        <p><%= usuario.userName %></p>
+                        <p><%= usuarioLogueado.userName %></p>
                       </div>
                       <div class="col-6 mb-3">
                         <h6 class="fw-bold">Correo electronico</h6>
-                        <p><%= usuario.email %></p>
+                        <p><%= usuarioLogueado.email %></p>
                       </div>
                       <div class="col-6 mb-3">
                         <h6 class="fw-bold">Dirección de envios</h6>
-                        <p><%= usuario.address %></p>
+                        <p><%= usuarioLogueado.address %></p>
                       </div>
                       <div class="col-6 mb-3">
                         <h6 class="fw-bold">Categoria</h6>
