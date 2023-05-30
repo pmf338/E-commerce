@@ -116,9 +116,13 @@ const userController = {
         }
     },
     userList: async function (req, res) {
+        console.log("req session", req.session)
+        let userId = req.session.usuario.id
         try {
+            let usuarioLogueado = await User.findByPk(userId)
             let usersList = await User.findAll();
             res.render("users/Users", {
+                usuarioLogueado,
                 usersList,
                 title: "Usuarios",
                 user: req.session.userLogged
@@ -211,7 +215,7 @@ const userController = {
         try {
             let usuario = await User.findByPk(userId);
             res.render("users/editProfile", {
-                usuario: {
+                validData: {
                     ...usuario.dataValues
                 },
                 title: "Edición de usuario",
@@ -233,53 +237,34 @@ const userController = {
                 let existingUser = false;
                 if(usuario.dataValues.id == userLog.usuario.id)
                 {
+                    
                     return res.render("users/editProfile", {
                         success: false,
                         title: "Edición de usuario",
                         errors: errors.mapped(),
                         existingUser: existingUser,
-                        validData: req.session.usuario
+                        validData: req.body,
+                        originalData: {
+                            ...usuario.dataValues
+                        },
+
                     })
                 }else{
+                    
                     return res.render("users/editProfile", {
                         success: false,
                         title: "Edición de usuario",
                         errors: errors.mapped(),
                         existingUser: existingUser,
-                        validData: req.body
+                        validData: req.body,
+                        originalData: {
+                            ...usuario.dataValues
+                        },
                     })
 
                 }
                 
             }
-
-            const foundExistingUser = await User.findOne({
-                where: {
-                    [Op.or]: [
-                      {
-                        email: {
-                          [Op.like]: req.body.user_email_edit
-                        }
-                      },
-                      {
-                        userName: {
-                          [Op.like]: req.body.user_user_name_edit
-                        }
-                      }
-                    ]
-                  }
-            });  
-                 
-          
-              if (foundExistingUser) {
-                
-                let existingUser = true
-                return res.render("users/editProfile", {
-                    title: "Registro de usuario",
-                    validData: req.body,
-                    existingUser: existingUser
-                });
-              }
         
         try {
             let active_value;
@@ -306,7 +291,7 @@ const userController = {
                     id: req.params.id
                 }
             });
-            res.redirect('/profile')
+            res.redirect('/profile/'+ req.params.id)
 
         } catch (result) {
             res.status(400).json(result);
@@ -315,7 +300,6 @@ const userController = {
     destroyUser: async function (req, res) {
         let userLog = req.session;
         try {
-            console.log("FUNCIONA")
             let usuario = await User.findOne({
                 where: {id: req.params.id}
             });
