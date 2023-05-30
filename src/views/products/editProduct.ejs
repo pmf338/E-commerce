@@ -99,7 +99,7 @@
                         <div class="form-floating mb-3 col">
                           <input type="number" name="product_sku" id="product_sku" class="form-control"
                             value="<%- product.sku %>" required>
-                          <label for="product_sku">SKU</label>
+                          <label for="product_sku" class="fw-bold text-primary">SKU</label>
                           <div class="invalid-feedback">
                             El SKU es requerido.
                           </div>
@@ -107,7 +107,7 @@
                         <div class="form-floating mb-3 col">
                           <input type="text" name="product_name" id="product_name" class="form-control"
                             value="<%- product.name %>" required>
-                          <label for="product_name">NOMBRE</label>
+                          <label for="product_name" class="fw-bold text-primary">NOMBRE</label>
                           <div class="invalid-feedback">
                             El nombre del producto es requerido.
                           </div>
@@ -117,7 +117,7 @@
                         <div class="form-floating mb-3 col">
                           <input type="number" name="product_price" id="product_price" class="form-control"
                             minlength="1" required value="<%- product.price %>">
-                          <label for="product_price">PRECIO UNITARIO</label>
+                          <label for="product_price" class="fw-bold text-primary">PRECIO UNITARIO</label>
                           <div class="invalid-feedback">
                             El precio unitario es requerido.
                           </div>
@@ -125,7 +125,7 @@
                         <div class="form-floating mb-3 col">
                           <input type="number" name="product_quantity" id="product_quantity" class="form-control"
                             minlength="1" required value="<%- product.quantity %>">
-                          <label for="product_quantity">CANTIDAD STOCK</label>
+                          <label for="product_quantity" class="fw-bold text-primary">CANTIDAD STOCK</label>
                           <div class="invalid-feedback">
                             La cantidad en stock es requerida.
                           </div>
@@ -142,7 +142,7 @@
                             <% }; %>
                             <% }); %>
                           </select>
-                          <label for="product_artist">ARTISTA</label>
+                          <label for="product_artist" class="fw-bold text-primary">ARTISTA</label>
                         </div>
                         <div class="form-floating mb-3 col">
                           <select class="form-select" name="product_category" id="product_category"
@@ -155,33 +155,33 @@
                             <% }; %>
                             <% }); %>
                           </select>
-                          <label for="product_category">CATEGORIA</label>
+                          <label for="product_category" class="fw-bold text-primary">CATEGORIA</label>
                         </div>
                       </div>
                       <div class="row pt-1">
                         <div id="product_size"  class="form-floating mb-3 col">
                           <input type="text" name="product_size" id="product_size" class="form-control"
                             value="<%- product.size %>">
-                          <label for="product_size">TALLE</label>
+                          <label for="product_size" class="fw-bold text-primary">TALLE</label>
                         </div>
                         <div id="product_format" class="form-floating mb-3 col">
                           <input type="text" name="product_format" id="product_format" class="form-control"
                             value="<%- product.size %>">
-                          <label for="product_format">FORMATO</label>
+                          <label for="product_format" class="fw-bold text-primary">FORMATO</label>
                         </div>
                       </div>
                       <div id="product_color" class="row pt-1">
                         <div class="form-floating mb-3 col-6">
                           <input type="text" name="product_color" id="product_color" class="form-control"
                             value="<%- product.color %>">
-                          <label for="product_color">COLOR</label>
+                          <label for="product_color" class="fw-bold text-primary">COLOR</label>
                         </div>
                       </div>
                       <div class="row pt-1">
                         <div class="form-floating mb-3 col">
                           <textarea class="form-control" name="product_description" id="product_description" rows="5"
                           required style="resize:none;height:120px"><%- product.description %></textarea>
-                          <label for="product_description">DESCRIPCION</label>
+                          <label for="product_description" class="fw-bold text-primary">DESCRIPCION</label>
                           <div class="invalid-feedback">
                             La descripción es requerida.
                           </div>
