@@ -13,7 +13,6 @@
     <% var funciona = false %>
   </header>
   <main>
-    <%- existingUser ? console.log("Se encontro algo en usuarios existentes", existingUser) : "" %>
     <%-console.log("validData= ", validData) %>
     <section style="min-height:100vh" class="d-flex align-items-center justify-content-center">
       <div class="container py-5 h-100">
@@ -27,24 +26,30 @@
                 <div class="row g-0">
                   <!-- UP SECTION -->
                   <div class="col-md-4 gradient-custom text-center d-flex align-items-center justify-content-center"
-                    style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                    <% if (validData.imageProfile  == "404.jpg") { %>
-                    <img src="../../images/users/avatar.png" alt="Avatar" class="img-fluid my-5"
+                  style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                  </br></br>
+                  <!-- IMG SECTION -->
+                  <div class="container text-center">
+                    <div class="row row-col-12 d-flex justify-content-center">
+                      <% if (validData.imageProfile  == "404.jpg") { %>
+                        <img src="../../images/users/avatar.png" alt="Avatar" class="img-fluid my-5 d-block w-75"
                       style="width: 150px; border-radius: 40%;" />
-                    <% } else { %>
-                    <img src="../../images/users/<%= locals.errors ? originalData.imageProfile : validData.imageProfile %>" alt="Avatar" class="img-fluid my-5"
-                      style="width: 150px; border-radius: 40%;" />
-                    <% } %>
-                    </br>
-                    <div class="d-flex justify-content-center">
-                      <div class="btn btn-light btn-rounded border-0" style="padding: 3px;background-color:#23252B">
+                      <% } else { %>
+                        <img src="../../images/users/<%= validData.imageProfile %>" alt="Avatar" class="img-fluid my-5 d-block w-75"
+                      style="width: 150px; border-radius: 40%;"/>
+                      <% } %>
+                      </br>
+                    </div>
+                    <div class="row row-col-12 d-flex justify-content-center">
+                    <div class="btn btn-light btn-rounded border-0" style="padding: 3px;background-color:#23252B">
                         <label class="form-label text-black m-1 text-white" for="customFile1">Seleccionar foto de
                           perfil</label>
                         <input type="file" class="form-control" id="user_image_edit" name="user_image_edit"
                           accept=".jpg, .png, .jpeg, .webp" />
-                      </div>
+                    </div>
                     </div>
                   </div>
+                </div>
 
                   <!-- DETAILS SECTION -->
                   <div class="col-md-8">
@@ -207,7 +212,7 @@
               <!-- BUTTONS SECTION -->
               <div class="container text-center rounded-bottom py-3" style="background-color:#15171E">
                 <div class="row gx-5 justify-content-center">
-                  <div class="col-12 col-md-4 my-2">
+                  <div class="col-12 col-md-3 my-2">
                     <button type="submit" class="btn btn-success" id="edit-profile-btn-save">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-box-arrow-down" viewBox="0 0 16 16">
@@ -219,7 +224,7 @@
                       GUARDAR
                     </button>
                   </div>
-                  <div class="col-12 col-md-4 my-2">
+                  <div class="col-12 col-md-3 my-2">
                     <button class="btn btn-primary" onclick="resetForm()" id="create-profile-btn-clean">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -231,8 +236,8 @@
                       LIMPIAR
                     </button>
                   </div>
-                  <div class="col-12 col-md-4 my-2">
-                    <a href="/profile">
+                  <div class="col-12 col-md-3 my-2">
+                    <a href="/profile/<%= locals._locals.usuario.id %>">
                       <button type="button" class="btn btn-primary" id="edit-profile-btn-cancel">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                           class="bi bi-x-square" viewBox="0 0 16 16">
@@ -245,7 +250,7 @@
                       </button>
                     </a>
                   </div>
-                  <div class="col-12 col-md-4 my-2">
+                  <div class="col-12 col-md-3 my-2">
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" id="edit-profile-btn-delete">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-trash" viewBox="0 0 16 16">
@@ -270,9 +275,15 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
-                            <a href="/deleteUser/<%= locals._locals.usuario.id %> ">
+                            <% if (validData.id == locals._locals.usuario.id) { %> 
+                              <a href="/deleteUser/<%= locals._locals.usuario.id %> ">
                               <button type="button" class="btn btn-danger">ELIMINAR</button>
                             </a>
+                            <%} else { %> 
+                              <a href="/deleteUser/<%= validData.id %> ">
+                                <button type="button" class="btn btn-danger">ELIMINAR</button>
+                              </a>
+                              <%} %> 
                           </div>
                         </div>
                       </div>

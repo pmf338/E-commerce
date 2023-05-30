@@ -21,7 +21,7 @@ usersRouter.post('/createProfile',uploadUser.single('user_image'),rulesUsers,use
 usersRouter.get('/editProfile/:id',userController.editUser);
 usersRouter.put('/editProfile/:id',uploadUser.single('user_image_edit'),rulesUsersEdit,userController.updateUser);
 //Entrar a la página de perfil del usuario
-usersRouter.get('/profile', guestMiddleware, userController.userProfile);
+usersRouter.get('/profile/:id', guestMiddleware, userController.userProfile);
 //Eliminación usuario
 usersRouter.get('/deleteUser/:id', guestMiddlewareAdmin, userController.destroyUser);
 usersRouter.delete('/deleteUser/:id',userController.destroyUser);

@@ -81,7 +81,7 @@
                     <div class="col-12 col-md-4 my-2">
                       <% if (locals.usuario) { %>
                         <% if (locals.usuario.roles_id == 1) { %>
-                        <a href="/profile">
+                        <a href="/profile/<%= locals._locals.usuario.id %>">
                           <button type="button" class="btn btn-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-x-square" viewBox="0 0 16 16">
