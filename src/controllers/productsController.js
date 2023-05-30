@@ -290,6 +290,16 @@ const productsController = {
         }catch(error){
             res.send("error in cart : ",error)
         }
+    },
+    error : async function (req,res){
+        try{
+            res.render("products/404",{
+                title: "Error-404",
+                user: req.session.userLogged}
+        );
+        }catch(error){
+            res.send("error in 404 : ",error)
+        }
     }
 }
 

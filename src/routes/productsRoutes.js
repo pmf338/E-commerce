@@ -29,7 +29,8 @@ productsRouter.get('/deleteProduct/:id', guestMiddlewareAdmin, productController
 productsRouter.delete('/deleteProduct/:id',productController.destroyProduct);
 //Cart
 productsRouter.get('/cart', guestMiddleware, productController.cart);
-
+//404
+productsRouter.get('/404', productController.error);
 
 
 

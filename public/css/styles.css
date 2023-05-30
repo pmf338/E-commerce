@@ -20,7 +20,8 @@ main{
 #artist-details-body,
 #product-detail-body,
 #edit-product-body,
-#shop-body{
+#shop-body,
+#contact-body {
     background-image: url('https://cdn.discordapp.com/attachments/1063604901541855232/1111389089925714092/Fondo_E_Commers.jpg');
     background-repeat: no-repeat;
     background-size: cover;
