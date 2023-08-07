@@ -1,5 +1,5 @@
 # proyecto_e-commerce
-Grupo 11 - Digital House Full Stack Node
+Proyecto final realizado para el curso de Desarrollo web Fullstack Node de Digital House
 
 Una breve descripción de la oferta de productos y/o servicios ofrecidos por su
 sitio. También agregar una breve descripción del público al que apunta el sitio.
