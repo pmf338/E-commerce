@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head.ejs') %>
+  <link rel="stylesheet" href="/css/styles.css">
+  <title><%= title %></title>
+</head>
+
+<body id="edit-profile-body" >
+  <header>
+    <%- include('../partials/header.ejs') %>
+    <% var funciona = false %>
+  </header>
+  <main>
+    <%-console.log("validData= ", validData) %>
+    <section style="min-height:100vh" class="d-flex align-items-center justify-content-center">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-lg-10 mb-4 mb-lg-0">
+            <form class="form-edit-user needs-validation" action="/editProfile/<%= validData.id %>?_method=PUT" method="post" enctype="multipart/form-data" novalidate>
+
+              <!-- CARD -->
+              <div class="card" style="background-color:#23252B">
+                
+                <div class="row g-0">
+                  <!-- UP SECTION -->
+                  <div class="col-md-4 gradient-custom text-center d-flex align-items-center justify-content-center"
+                  style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                  </br></br>
+                  <!-- IMG SECTION -->
+                  <div class="container text-center">
+                    <div class="row row-col-12 d-flex justify-content-center">
+                      <% if (validData.imageProfile  == "404.jpg") { %>
+                        <img src="../../images/users/avatar.png" alt="Avatar" class="img-fluid my-5 d-block w-75"
+                      style="width: 150px; border-radius: 40%;" />
+                      <% } else { %>
+                        <img src="../../images/users/<%= validData.imageProfile %>" alt="Avatar" class="img-fluid my-5 d-block w-75"
+                      style="width: 150px; border-radius: 40%;"/>
+                      <% } %>
+                      </br>
+                    </div>
+                    <div class="row row-col-12 d-flex justify-content-center">
+                    <div class="btn btn-light btn-rounded border-0" style="padding: 3px;background-color:#23252B">
+                        <label class="form-label text-black m-1 text-white" for="customFile1">Seleccionar foto de
+                          perfil</label>
+                        <input type="file" class="form-control" id="user_image_edit" name="user_image_edit"
+                          accept=".jpg, .png, .jpeg, .webp" />
+                    </div>
+                    </div>
+                  </div>
+                </div>
+
+                  <!-- DETAILS SECTION -->
+                  <div class="col-md-8">
+                    <div class="card-body p-4 text-center">
+                      <h1 class="text-white display-4">EDITAR PERFIL</h1>
+                      <hr class="mt-0 mb-4">
+                      <% if(existingUser) { %>
+                        <div id="alert_user_existent" class="alert alert-danger d-flex align-items-center" role="alert">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img"
+                            aria-label="Warning:">
+                            <path
+                              d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                          </svg>
+                          <div>
+                            Parece que este usuario ya existe en base de datos, vuelve a intentar con datos diferentes.
+                          </div>
+                        </div>
+                        <% }; %>
+
+                        <% if( locals.errors) { %>
+                   
+                          <div id="alert_user_existent" class="alert alert-danger d-flex align-items-center" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                              class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img"
+                              aria-label="Warning:">
+                              <path
+                                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg>
+                            <div>
+                              <p>Se presentaron errores en la edición del usuario:</p>
+                              <p><%- errors.user_pass_edit ? errors.user_pass_edit.msg : "" %></p>
+                              <p><%- errors.user_password_old ? errors.user_password_old.msg : "" %></p>
+                              <p><%- errors.user_email_edit ? errors.user_email_edit.msg : "" %></p>
+                              <p><%- errors.user_user_name_edit ? errors.user_user_name_edit.msg : "" %></p>
+                              <p><%- errors.user_surname_edit ? errors.user_surname_edit.msg : "" %></p>
+                              <p><%- errors.user_name_edit ? errors.user_name_edit.msg : "" %></p>
+                            </div>
+                          </div>
+      
+                          <% } %>
+                      <div class="row pt-1">
+                        <div class="form-floating mb-3 col">
+                          <input type="text" name="user_name_edit" id="user_name_edit" class="form-control"
+                            minlength="3" value=<%= locals.errors ? validData.user_name_edit : validData.name %> required>
+                          <label for="user_name_edit">NOMBRE/S</label>
+                          <div class="invalid-feedback">
+                            El nombre del usuario es requerido, no ha ingresado al menos tres caracteres
+                          </div>
+                        </div>
+                        <div class="form-floating mb-3 col">
+                          <input type="text" name="user_surname_edit" id="user_surname_edit" class="form-control"
+                            minlength="2" value=<%= locals.errors ? validData.user_surname_edit : validData.surname %> required>
+                          <label for="user_surname_edit">APELLIDO</label>
+                          <div class="invalid-feedback">
+                            El apellido del usuario es requerido, no ha ingresado al menos dos caracteres
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row pt-1">
+                        <div class="form-floating mb-3 col">
+                          <input type="text" name="user_user_name_edit" id="user_user_name_edit" class="form-control"
+                            minlength="3" value=<%= locals.errors ? validData.user_user_name_edit : validData.userName %> required>
+                          <label for="user_user_name_edit">NOMBRE USUARIO</label>
+                          <div class="invalid-feedback">
+                            El username es requerido, no ha ingresado al menos tres caracteres
+                          </div>
+                        </div>
+                        <div class="form-floating mb-3 col">
+                          <input type="email" name="user_email_edit" id="user_email_edit" class="form-control"
+                            minlength="3" value=<%= locals.errors ? validData.user_email_edit : validData.email %> required>
+                          <label for="user_email_edit">EMAIL</label>
+                          <div class="invalid-feedback">
+                            El email es requerido.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row pt-1">
+                        <div class="form-floating mb-3 col">
+                          <input type="text" name="user_address_edit" id="user_address_edit" class="form-control" minlength="3" value=<%= locals.errors ? validData.user_address_edit : validData.address %> required>
+                          <label for="user_address_edit">DIRECCION ENVIOS</label>
+                          <div class="invalid-feedback">
+                            La dirección es requerida
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- USER CATEGORIES -->
+                      <div class="row pt-1">
+                        <div class="form-floating mb-3 col">
+                          <% if (locals._locals.usuario) { %>
+                            <% if (locals._locals.usuario.roles_id == 1) { %>
+                              <%if(validData.roles_id == 1){ %>
+                                <select class="form-select" name="roles_id" id="roles_id"
+                                aria-label="Default select example" required>
+                                <option selected value="1">Administrador</option>
+                                <option value="2">Cliente</option>
+                              <% }else if(validData.roles_id == 2){ %>
+                                <option selected value="2">Cliente</option>
+                                <option value="1">Administrador</option>
+                              <% } %>                             
+                              </select>
+                              <label for="roles_id">ROL</label>
+                            <% } %>
+                          <% } %>
+                        </div>
+                      </div>
+
+                      <!-- PASSWORD SECTION -->
+                      <div class="row pt-1">
+                        <div class="form-floating">
+                          <button type="button" class="btn btn-dark border border-1 border-light" id="changePass" name="changePass"
+                            onclick="changePassword()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+                              <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+                            </svg>
+                            CAMBIAR CONTRASEÑA
+                          </button>
+                        </div>
+                      </div>
+
+                      <!-- PASSWORD HIDE SECTION -->
+                      <div class="row pt-1 mt-3">
+                        <div class="form-floating col-6 mb-3">
+                          <input type="password" name="user_password_old" id="user_password_old" class="form-control" minlength="8">
+                          <label for="user_password_old" id="lbl_user_password_old">CONTRASEÑA ACTUAL</label>
+                          <div class="invalid-feedback">
+                            La contraseña actual es requerida
+                          </div>
+                        </div>
+                        <div class="form-floating col-6 mb-3">
+                          <input type="password" name="user_password_edit" id="user_password_edit" class="form-control" minlength="8">
+                          <label for="user_password_edit" id="lbl_user_password_edit">CONTRASEÑA NUEVA</label>
+                          <div class="invalid-feedback">
+                            Debe ingresar la nueva contraseña, debe ser de al menos 8 caracteres de longitud
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row pt-1">
+                          <div class="form-floating col-6 mb-3">
+                            <input type="password" name="user_password_repeat" id="user_password_repeat" class="form-control" minlength="8">
+                            <label for="user_password_repeat" id="lbl_user_password_repeat">CONFIRMAR CONTRASEÑA NUEVA</label>
+                            <div class="invalid-feedback">
+                              Debe confirmar la nueva contraseña
+                            </div>
+                          </div>
+                          <div class="form-floating col-6 mb-3 d-flex justify-content-center">
+                            <button type="button" class="btn border text-white border-1 border-light" id="back_password" name="back_password" onclick="hideButtons()">
+                            CANCELAR CAMBIO
+                          </button>
+                          </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- BUTTONS SECTION -->
+              <div class="container text-center rounded-bottom py-3" style="background-color:#15171E">
+                <div class="row gx-5 justify-content-center">
+                  <div class="col-12 col-md-3 my-2">
+                    <button type="submit" class="btn btn-success" id="edit-profile-btn-save">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-box-arrow-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                          d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z" />
+                        <path fill-rule="evenodd"
+                          d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z" />
+                      </svg>
+                      GUARDAR
+                    </button>
+                  </div>
+                  <div class="col-12 col-md-3 my-2">
+                    <button class="btn btn-primary" onclick="resetForm()" id="create-profile-btn-clean">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path
+                          d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                        <path fill-rule="evenodd"
+                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                      </svg>
+                      LIMPIAR
+                    </button>
+                  </div>
+                  <div class="col-12 col-md-3 my-2">
+                    <a href="/profile/<%= locals._locals.usuario.id %>">
+                      <button type="button" class="btn btn-primary" id="edit-profile-btn-cancel">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                          class="bi bi-x-square" viewBox="0 0 16 16">
+                          <path
+                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                          <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                        CANCELAR
+                      </button>
+                    </a>
+                  </div>
+                  <div class="col-12 col-md-3 my-2">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" id="edit-profile-btn-delete">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-trash" viewBox="0 0 16 16">
+                        <path
+                          d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                        <path
+                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                      </svg>
+                      ELIMINAR
+                    </button>
+                    <!-- MODAL : DELETE USER -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">ELIMINAR USUARIO</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            ¿Estás seguro que desea eliminar el usuario?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
+                            <% if (validData.id == locals._locals.usuario.id) { %> 
+                              <a href="/deleteUser/<%= locals._locals.usuario.id %> ">
+                              <button type="button" class="btn btn-danger">ELIMINAR</button>
+                            </a>
+                            <%} else { %> 
+                              <a href="/deleteUser/<%= validData.id %> ">
+                                <button type="button" class="btn btn-danger">ELIMINAR</button>
+                              </a>
+                              <%} %> 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </form>
+        </div>
+      </div>
+      </div>
+    </section>
+    <script type="application/javascript" src="/js/validatorUsers.js"></script>
+  </main>
+
+  <footer>
+    <%- include('../partials/footer.ejs') %>
+  </footer>
+
+
+  <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

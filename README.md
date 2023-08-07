@@ -1,5 +1,8 @@
-# E-commerce
-Proyecto de e-commerce realizado como proyecto final para curso de desarrollo .Net fullstack
+# proyecto_e-commerce
+Grupo 11 - Digital House Full Stack Node
+
+Una breve descripción de la oferta de productos y/o servicios ofrecidos por su
+sitio. También agregar una breve descripción del público al que apunta el sitio.
 
 Servicio : Venta de productos musicales de Rock (merchandising - discos musicales)
 Público Dirigido : Fanáticos del rock - Coleccionistas
@@ -38,7 +41,7 @@ Biografías
 
 - Hola mi nombre es Pablo, tengo 26 años, vivo en Morón con mi abuela y mi perro y estoy estudiando Ingeniería en Informática en la Universidad Nacional de la Matanza. Hasta Octubre de 2022 estaba realizando una pasantía en Cepem Consultorios Médicos en Morón y como conseguí tiempo libre decidí anotarme a este curso. Tengo conocimientos en el lenguaje de programación C gracias a la facultad y conocimientos básicos de base de datos
 
-
+- Soy Marco Rodriguez! tengo 21 años, vivo en Marcos Paz, Bs As, Arg. Estoy interesado en la programación desde los 17 años  despues de una charla de Maximo Cavazzani y recién este año me animé a empezar con el curso en Digital House.
 
 
 ====================================================================

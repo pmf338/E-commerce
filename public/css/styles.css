@@ -1,0 +1,399 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+a{
+    text-decoration: none;
+}
+main{
+    min-height: 100vh;
+}
+/*----------------------------------------backgrounds imge ---------------------------------------------------------*/
+#artists-body,
+#login-body,
+#create-profile-body,
+#profile-body,
+#edit-profile-body,
+#users-body,
+#artist-details-body,
+#product-detail-body,
+#edit-product-body,
+#shop-body,
+#contact-body {
+    background-image: url('https://cdn.discordapp.com/attachments/1063604901541855232/1111389089925714092/Fondo_E_Commers.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*---------------------------------------- header.ejs ---------------------------------------------------------*/
+header {
+    background-color: #23252B;
+}
+.img-logo{
+    width:80px;
+    height:80px;
+}
+.logo{
+    display:inline-block;
+}
+.icon{
+    position: absolute;
+    top : 11px;
+    left : 15px;
+}
+header .search-bar{
+    position: relative;
+    width: 100%;
+}
+header .search-bar input{
+    width: 100%;
+    border: none;
+    height: 60px;
+    width: auto;
+    border-radius: 100px;
+    padding: 0 5px 0 60px;
+}
+header .menu a{
+    display: inline-block;
+    padding: 20px 40px;
+}
+header .menu a:hover{
+    background-color: #303237;
+    border-radius: 2px;
+    border-bottom: solid 3px #148EFF;
+}
+header .menu a svg{
+    width: 35px;
+    height: 35px;
+    color: #BDBDBF;
+}
+header .profile-btns a{
+    color: #BDBDBF;
+    display: inline-flex;
+    border-radius: 100px;
+    min-width: 60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 7px;
+}
+header .profile-btns a svg{
+    width: 30px;
+    height: 30px;
+}
+header .profile-btns a:hover{
+    background: #303237;
+    color: #F3F6FA;
+    border: solid 1px #148EFF;
+}
+header .profile-btns .profile{
+    height: 60px;
+    padding: 0 7px;
+    background: none;
+    min-width: max-content;
+    color: white;
+    text-decoration: none;
+}
+header .profile-btns .profile img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    margin-right: 5px;
+}
+header .profile-btns div{
+    background-color: black;
+}
+
+
+@media screen and (max-width: 992px){
+    header{
+        padding: 10px 20px;
+    }
+    .menu{
+        margin-top:10px;
+    }
+    /*header .search-bar input,
+    .icon{
+        display: none;
+    }*/
+}
+@media screen and (max-width: 1200px){
+    header .menu a{
+        padding: 10px 20px;
+    }
+}
+
+/*----------------------------------------index.ejs---------------------------------------------------------*/
+.shop-container, 
+.index-container-artists{
+    margin-top: 220px;
+}
+.index-new-product{
+    width: 20rem;
+}
+#container-products a:hover{
+    border:solid 1px #47A6FF;
+}
+#container-artists a:hover{
+    border:solid 1px #47A6FF;  
+}
+.index-container-artists{
+    display: flex;
+    position: relative;
+    margin:0px;
+}
+.artist-img:hover{
+    box-shadow: 0px 0px 20px rgb(100, 100, 100); 
+}
+.artist-name{
+    display:none;
+    position: absolute;
+    left: 20px;
+    bottom: 5px;
+}
+.artist-name p{
+    margin-bottom: 0px;
+}
+.artist-img:hover .artist-name{
+    display: block;
+}
+.index-container-artist a{
+    text-decoration: none;
+}
+.index-products-img{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+/*----------------------------------------login.ejs---------------------------------------------------------*/
+.input-field-login {
+    position: relative;
+}
+.input-field-login input {
+    padding-left: 30px;
+    margin-bottom: 30px;
+}
+.input-field-login i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+#login-btn:hover{
+    color: #F3F6FA;
+    border: solid 1px #148EFF;
+}
+#login-container-login-as a{
+    color:#BDBDBF;
+}
+#login-container-login-as a:hover{
+    color:#148EFF;
+}
+
+/*----------------------------------------register.ejs---------------------------------------------------------*/
+.input-field-register {
+    position: relative;
+}
+.input-field-register input {
+    padding-left: 30px;
+    margin-bottom: 30px;
+}
+.input-field-register i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+/*----------------------------------------editProfile.ejs---------------------------------------------------------*/
+#user_password_old, 
+#user_password_edit,
+#user_password_repeat,
+#back_password,
+#lbl_user_password_old,
+#lbl_user_password_edit,
+#lbl_user_password_repeat{
+    display: none;
+}
+#edit-profile-btn-save:hover,
+#edit-profile-btn-delete:hover{
+    border: solid 1px white;
+}
+#edit-profile-btn-cancel:hover{
+    border: solid 1px #47A6FF;
+}
+
+/*----------------------------------------artists.ejs---------------------------------------------------------*/
+.artists-container img{
+    height: 150px;
+    width: 150px;
+}
+.artists-card span{
+    display: none;
+}
+#artist-card img:hover{
+    border-radius: 200px;
+}
+.artists-card:hover span{
+    display: block;
+}
+
+/*----------------------------------------shop.ejs---------------------------------------------------------*/
+.shop-card-img{
+    object-fit: cover;
+    width:100%;
+    height:100%;
+}
+.shop-products-card-footer{
+    display: none;
+}
+.shop-btn-flotante {
+	font-size: 16px; /* Cambiar el tamaño de la tipografia */
+	text-transform: uppercase; /* Texto en mayusculas */
+	font-weight: bold; /* Fuente en negrita o bold */
+	color: #ffffff; /* Color del texto */
+	border-radius: 5px; /* Borde del boton */
+	letter-spacing: 2px; /* Espacio entre letras */
+	background-color: #0074E0; /* Color de fondo */
+	padding: 18px 30px; /* Relleno del boton */
+	position: fixed;
+	bottom: 40px;
+	right: 40px;
+	transition: all 300ms ease 0ms;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	z-index: 99;
+}
+.shop-btn-flotante:hover{
+	background-color: #2c2fa5; /* Color de fondo al pasar el cursor */
+	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+	transform: translateY(-7px);
+}
+#container-shop-add-to-cart a:hover{
+    color: #229555;
+}
+
+@media only screen and (max-width: 600px) {
+ 	.shop-btn-flotante {
+		font-size: 14px;
+		padding: 12px 20px;
+		bottom: 20px;
+		right: 20px;
+	}
+} 
+
+/*----------------------------------------artistDetail.ejs---------------------------------------------------------*/
+.artist-products-card-img{
+    object-fit: cover;
+    width:100%;
+    height:100%;
+}
+#artist-detail-btn-visit:hover{
+    border: solid 1px #47A6FF;
+}
+
+/*----------------------------------------footer.ejs---------------------------------------------------------*/
+footer {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+}
+.footer-copy-redes {
+	width: 100%;
+    background-color: #23252B;
+}
+.main-copy-redes {
+	width: 98%;
+	max-width: 1000px;
+	padding: 15px 0;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	-ms-align-items: center;
+	align-items: center;
+}
+.main-copy-redes .footer-copy {
+	width: 70%;
+	color: #fff;
+}
+.main-copy-redes .footer-redes {
+	width: 30%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.main-copy-redes .footer-redes svg {
+	display: inline-block;
+	text-decoration: none;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border-radius:20%;
+	color: #BDBDBF;
+	text-align: center;
+}
+.main-copy-redes .footer-copy {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.main-copy-redes .footer-redes {
+    width: 80%;
+    margin: auto;
+}
+.main-copy-redes .footer-redes svg:hover{
+    color: #47A6FF;
+}
+
+/*----------------------------------------ceateProfile.ejs---------------------------------------------------------*/
+#create-profile-btn-save:hover{
+    border: solid 1px white;
+}
+#create-profile-btn-clean:hover,
+#create-profile-btn-cancel:hover{
+    border: solid 1px #47A6FF;
+}
+
+
+/*----------------------------------------ceateProfile.ejs---------------------------------------------------------*/
+.container-profile-btns button:hover{
+    border: solid 1px #47A6FF;
+}
+
+/*----------------------------------------users.ejs---------------------------------------------------------*/
+.container-users-btns button:hover{
+    border: solid 1px #47A6FF;
+}
+#users_table tr:hover{
+    background-color: #0074E0;
+}
+
+/*----------------------------------------productDetail.ejs---------------------------------------------------------*/
+#product-detail-btn-add:hover{
+    border: solid 1px white;
+}
+#product-detail-btn-edit:hover,
+#product-detail-btn-back:hover{
+    border: solid 1px #47A6FF;
+}
+
+/*----------------------------------------editProduct.ejs---------------------------------------------------------*/
+#edit-product-btn-save:hover,
+#edit-product-btn-delete:hover{
+    border: solid 1px white
+}
+#edit-product-btn-cancel:hover{
+    border: solid 1px #47A6FF;
+}
+
+/*----------------------------------------cart.ejs---------------------------------------------------------*/
+#cart-btn-delete:hover{
+    border: solid 1px white;
+}
+#cart-btn-clean:hover{
+    border: solid 1px #47A6FF;
+}

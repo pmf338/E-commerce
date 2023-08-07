@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head.ejs') %>
+  <link rel="stylesheet" href="/css/styles_register.css">
+  <title>Perfil de usuario</title>
+</head>
+
+<body id="profile-body">
+  <header>
+    <%- include('../partials/header.ejs') %>
+  </header>
+  <main>
+    <form class="form-create-product" method="post" action="/profile?_method=PUT">
+    <section style="min-height:100vh" class="d-flex align-items-center justify-content-center">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-lg-9 mb-4 mb-lg-0">
+            <div class="card mb-3 border-0" style="border-radius: .5rem;background-color:#23252B">
+              
+              <!-- UP SECTION -->
+              <div class="row g-0">
+                <!-- IMAGE SECTION -->
+                <div class="col-md-4 gradient-custom text-center text-white d-flex align-items-center justify-content-center" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+
+                  <% if (usuarioLogueado.imageProfile  == "404.jpg") { %>
+                  <img src="../../images/users/avatar.png" alt="Avatar" class="img-fluid my-5"
+                    style="width: 150px; border-radius: 40%;" />
+                  <% } else { %>
+                  <img src="../../images/users/<%= usuarioLogueado.imageProfile %>" alt="Avatar" class="img-fluid my-5"
+                    style="width: 150px; border-radius: 40%;" />
+                  <% } %>
+                </div>
+                
+                <!-- USER DETAILS SECTION -->
+                <div class="col-md-8">
+                  <div class="card-body p-4 text-center text-white">
+                    <h1 class="text-white display-4">PERFIL DE USUARIO</h1>
+                    <hr class="mt-0 mb-4">
+                    <div class="row pt-1">
+                      <div class="col-6 mb-3">
+                        <h6 class="fw-bold">Nombre</h6>
+                        <p><%= usuarioLogueado.name %></p>
+                      </div>
+                      <div class="col-6 mb-3">
+                        <h6 class="fw-bold">Apellidos</h6>
+                        <p><%= usuarioLogueado.surname %></p>
+                      </div>
+                      <div class="col-6 mb-3">
+                        <h6 class="fw-bold">Nombre de usuario</h6>
+                        <p><%= usuarioLogueado.userName %></p>
+                      </div>
+                      <div class="col-6 mb-3">
+                        <h6 class="fw-bold">Correo electronico</h6>
+                        <p><%= usuarioLogueado.email %></p>
+                      </div>
+                      <div class="col-6 mb-3">
+                        <h6 class="fw-bold">Dirección de envios</h6>
+                        <p><%= usuarioLogueado.address %></p>
+                      </div>
+                      <div class="col-6 mb-3">
+                        <h6 class="fw-bold">Categoria</h6>
+                        <p><%if(locals.usuario.roles_id == 1){ %>
+                          Administrador
+                          <% }else if(locals.usuario.roles_id == 2){ %>
+                          Cliente
+                          <% } %>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BUTTONS SECTION -->
+              <div class="container text-center rounded-bottom py-3 container-profile-btns" style="background-color:#15171E">
+                <div class="row gx-5 justify-content-center">
+                  <div class="col-12 col-md-4 my-2">
+                    <a href="/editProfile/<%- usuario.id %>">
+                      <button type="button" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                          <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                          <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                        </svg>
+                        EDITAR
+                      </button>
+                    </a>
+                  </div>
+                  <div class="col-12 col-md-4 my-2">
+                    <% if (locals.usuario) { %>
+                      <% if (locals.usuario.roles_id == 1) { %>
+                      <a href="/users">
+                        <button type="button" class="btn btn-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
+                          </svg>
+                          ADMINISTRAR
+                        </button>
+                      </a>
+                      <% } %>
+                      <% } %>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </form>
+  </main>
+
+  <footer>
+    <%- include('../partials/footer.ejs') %>
+  </footer>
+
+</body>
+
+</html>

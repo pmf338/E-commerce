@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+
+<body style="background-color: #15171E">
+    <header>
+        <%- include('../partials/header.ejs') %>
+    </header>
+    <main>
+        <!-- BANNER -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/images/index/banners/banner_ofertas.svg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="/images/index/banners/banner_musical.svg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="/images/index/banners/banner_musical.svg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        
+        <!-- NEW PRODUCTS -->    
+        <div>
+            <h1 class="display-2 text-center px-3 py-4 text-white">NOVEDADES</h1>
+        </div>
+        <div>
+            <div class="container text-center" id="container-products">
+                <div class="row justify-content-center">
+                    <% productsList.forEach(product => { %>
+                    <div class="col col-12 col-lg-3 p-3 m-1" style="background-color: #23252B">
+                        <img src="/images/products/<%- product.imagePrimary %>" class="card-img-top index-products-img d-block" alt="imagen-producto">
+                        <p class="m-4 fs-5 fw-bold" style="height: 6rem;color: #DCDCDD"><%- product.name %></p>
+                        <a href="/productdetail/<%- product.id %>" class="btn btn-lg btn-primary d-block mx-auto">
+                            VISITAR</a>
+                    </div>
+                <% }); %>
+                </div>
+            <a href="/shop" class="fs-6 mt-3 text-decoration-none text-white btn btn-primary">Ir a Tienda</a>
+            </div>
+        </div>
+
+        <!-- ARTISTS --> 
+        <h2 class="display-2 text-center px-5 my-5 text-white">ARTISTAS</h2>
+        <div class="container text-center my-5" id="container-artists">
+            <div class="row row-cols-1 row-cols-md-3 g-2 g-lg-3 justify-content-center">
+            <% artistsList.forEach(artist => { %>
+              <div class="col">
+                <div class="card border-0" >
+                  <a href="/artistDetail/<%- artist.id %>">
+                    <img src="/images/artists/<%- artist.logo %>" class="card-img-top" alt="...">
+                  </a>   
+                </div>
+              </div>
+              <% }); %>
+            </div>
+            <a href="/artists" class="fs-6 mt-3 text-decoration-none text-white btn btn-primary">Ir a Artistas</a>
+        </div>
+            
+    </main>
+    <footer>
+        <%- include('../partials/footer.ejs') %>
+    </footer>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
